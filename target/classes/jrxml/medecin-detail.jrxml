@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cfc53307-9163-4985-8bb8-644446672b7e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID" class="java.lang.String"/>
+	<field name="nometprenom" class="java.lang.String"/>
+	<field name="specialite" class="java.lang.String"/>
+	<field name="login" class="java.lang.String"/>
+	<field name="password" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="169" y="4" width="239" height="33" uuid="1b6f2153-2341-46a2-9394-d9d4ace25f6e"/>
+				<textElement>
+					<font fontName="Serif" size="24" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Medecin Detail]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="122" height="40" isRemoveLineWhenBlank="true" uuid="3ac65a0a-6d2b-461e-9c4b-2bff434eb6cb"/>
+				<imageExpression><![CDATA["jrxml/logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="190" splitType="Stretch">
+			<textField>
+				<reportElement x="131" y="5" width="400" height="20" uuid="3e5186d4-71f3-43de-ada5-fa25a951e69c"/>
+				<textFieldExpression><![CDATA[$F{nometprenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="35" width="400" height="20" uuid="c0d22357-d9bc-46a4-ab8b-c4c941f23876"/>
+				<textFieldExpression><![CDATA[$F{specialite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="132" width="400" height="20" uuid="a2552d88-efae-4340-9436-15ea45a6506b"/>
+				<textFieldExpression><![CDATA[$F{login}]]></textFieldExpression>
+			</textField>
+
+			<staticText>
+				<reportElement x="45" y="5" width="86" height="20" uuid="c0ba80b4-6960-4c01-8ad6-242101fd2126"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Nom et Prenom :]]></text>
+			</staticText>
+
+
+			<staticText>
+				<reportElement x="44" y="132" width="87" height="20" uuid="d32978d1-4fdf-442e-9f3c-9c5061f3b7c1"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Specialite :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="100" width="87" height="20" uuid="5b36a53e-8bae-4219-9442-d986c571f4c4"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Login :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="131" y="100" width="400" height="20" uuid="6ef3a556-9ce1-4c2a-9440-de9d436e9796"/>
+				<textFieldExpression><![CDATA[$F{specialite}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="-3" width="555" height="1" uuid="d9d657fc-61a1-4874-a828-5406aee625a3"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="3" splitType="Stretch"/>
+	</summary>
+</jasperReport>

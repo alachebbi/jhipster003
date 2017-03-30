@@ -1,0 +1,72 @@
+<div style="margin-left: 30px;">
+<div *ngIf="fichemedicale">
+    <h2><span jhiTranslate="avancementApp.fichemedicale.detail.title">Fichemedicale</span> {{fichemedicale.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt>Nom : </dt>
+        <dd>
+            <span>{{fichemedicale.nom}}</span>
+        </dd>
+        <dt>Prenom : </dt>
+        <dd>
+            <span>{{fichemedicale.prenom}}</span>
+        </dd>
+        <dt>Medecin traitant : </dt>
+        <dd>
+            <span>{{fichemedicale.medecintraitan}} </span>
+        </dd>
+        <dt>Date de naissance : </dt>
+        <dd>
+            <span>{{fichemedicale.datenaissance | date:'mediumDate'}}</span>
+        </dd>
+        <dt>Antécedents : </dt>
+        <dd>
+            <span>{{fichemedicale.antecedents}}</span>
+        </dd>
+        <dt>Resultat du dernier examen : </dt>
+        <dd>
+            <span>{{fichemedicale.resultatdudernierexamen}}</span>
+        </dd>
+        <dt>Notes profitionnels paramedicaux : </dt>
+        <dd>
+            <span>{{fichemedicale.notesprofitionnelsparamedicaux}}</span>
+        </dd>
+        <dt>Comptes rendus : </dt>
+        <dd>
+            <span>{{fichemedicale.comptesrendus}}</span>
+        </dd>
+        <dt>Récommandations : </dt>
+        <dd>
+            <span>{{fichemedicale.recommandations}}</span>
+        </dd>
+        <dt>Perscriptions medicamenteuses</dt>
+        <dd>
+            <span>{{fichemedicale.perscriptionmedicamenteuses}}</span>
+        </dd>
+        <dt>Groupe sanguin : </dt>
+        <dd>
+            <span>{{fichemedicale.groupesanguin}}</span>
+        </dd>
+        <dt>Compte rendue : </dt>
+        <dd>
+            <div *ngIf="fichemedicale.compte">
+                <a (click)="openFile(fichemedicale.compteContentType, fichemedicale.compte)" jhiTranslate="entity.action.open">open</a>
+
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'fichemedicale/'+ fichemedicale.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div></div>

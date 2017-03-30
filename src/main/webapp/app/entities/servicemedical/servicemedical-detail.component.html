@@ -1,0 +1,32 @@
+<div style="margin-left: 30px;">
+<div *ngIf="servicemedical">
+    <h2><span jhiTranslate="avancementApp.servicemedical.detail.title">Service medical</span> {{servicemedical.nom}}</h2>
+    <h3>Liste des medecins inscrits dans ce service </h3>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="table-responsive" *ngIf="doctors">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+
+                <th>Nom </th>
+
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let doctor of doctors ">
+
+                <td>{{doctor.nometprenom}}</td>
+
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</div>

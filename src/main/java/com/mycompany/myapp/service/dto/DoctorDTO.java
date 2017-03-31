@@ -25,7 +25,7 @@ public class DoctorDTO {
     private LocalDate daten;
 
     private String nometprenom;
-    
+
     private String email;
 
 
@@ -36,6 +36,7 @@ public class DoctorDTO {
         this.id = id;
         this.motdepasse = motdepasse;
         this.login = login;
+        this.servicemedi= servicemedi;
         this.photo = photo;
         this.photoContentType = photoContentType;
         this.specialite = specialite;

@@ -64,15 +64,15 @@ public class InfirmierResource {
     @PostMapping("/infirmiers")
     @Timed
     public ResponseEntity<Infirmier> createInfirmier(@RequestBody Infirmier infirmier) throws URISyntaxException {
-        /*log.debug("REST request to save Infirmier : {}", infirmier);
+        log.debug("REST request to save Infirmier : {}", infirmier);
         if (infirmier.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new infirmier cannot already have an ID")).body(null);
         }
         Set<String> autrority = new HashSet<>();
-       // autrority.add("ROLE_MEDECIN_CHEF");
-        autrority.add("ROLE_ADMIN");
-        UserDTO userDTO = new UserDTO(null, infirmier.getLogin(),infirmier.getNom(),infirmier.getPrenom(),"azse@htmail.fr",
-         true,null, "en",null,null,null,null,autrority);
+        autrority.add("ROLE_MEDECIN");
+        //autrority.add("ROLE_ADMIN");
+        UserDTO userDTO = new UserDTO(null, infirmier.getLogin(), infirmier.getNom(), infirmier.getPrenom(), "mohamed.benkhedher@esprit.tn",
+            true, null, "en", null, null, null, null, autrority);
         User createUser = userService.createUser(userDTO);
         infirmier.setPassword(createUser.getPassword());
         Infirmier result = infirmierRepository.save(infirmier);
@@ -80,9 +80,8 @@ public class InfirmierResource {
         return ResponseEntity.created(new URI("/api/infirmiers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
-
-    }*/
-        log.debug("REST request to save Medecin : {}", infirmier);
+    }
+  /*      log.debug("REST request to save Medecin : {}", infirmier);
         if (infirmier.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new medecin cannot already have an ID")).body(null);
         }
@@ -90,7 +89,9 @@ public class InfirmierResource {
         return ResponseEntity.created(new URI("/api/infirmiers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
-    }
+    }*/
+
+
 
 
 

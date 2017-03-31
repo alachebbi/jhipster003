@@ -8,14 +8,21 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.proj
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mycompany.myapp.domain.Infirmier;
+import com.mycompany.myapp.domain.User;
+import com.mycompany.myapp.service.MailService;
+import com.mycompany.myapp.service.UserService;
+import com.mycompany.myapp.service.dto.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,14 +73,20 @@ public class DoctorResource {
 	private static final String ENTITY_NAME = "doctor";
 
 	private final DoctorRepository doctorRepository;
+
+    private final UserService userService;
+
+    private final MailService mailService;
     @Autowired
     MongoTemplate mongoTemplate;
 
 	@Autowired
 	DynamicReporGenerator reportGenarator ;
 
-	public DoctorResource(DoctorRepository doctorRepository) {
+	public DoctorResource(DoctorRepository doctorRepository, UserService userService, MailService mailService) {
 		this.doctorRepository = doctorRepository;
+        this.userService = userService ;
+        this.mailService = mailService;
 
 	}
 
@@ -97,6 +110,23 @@ public class DoctorResource {
 				.body(result);
 	}
 
+     /*   log.debug("REST request to save Doctor : {}", doctor);
+        if (doctor.getId() != null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new infirmier cannot already have an ID")).body(null);
+        }
+        Set<String> autrority = new HashSet<>();
+        // autrority.add("ROLE_MEDECIN_CHEF");
+        autrority.add("ROLE_MEDECIN");
+        UserDTO userDTO = new UserDTO(null, doctor.getLogin(), doctor.getNometprenom(), doctor.getNometprenom(), "forsys@htmail.fr",
+            true, null, "en", null, null, null, null, autrority);
+        User createUser = userService.createUser(userDTO);
+        doctor.setMotdepasse(createUser.getPassword());
+        Doctor result = doctorRepository.save(doctor);
+        mailService.sendCreationEmail(createUser);
+        return ResponseEntity.created(new URI("/api/doctors/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }*/
 	/**
 	 * PUT  /doctors : Updates an existing doctor.
 	 *

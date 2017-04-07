@@ -21,6 +21,7 @@
                 "doctor": "Doctor",
                 "traitement": "Traitement",
                 "infirmier": "Infirmier",
+                "dosier": "Dosier",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

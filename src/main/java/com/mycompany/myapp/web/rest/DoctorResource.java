@@ -100,7 +100,7 @@ public class DoctorResource {
 	@PostMapping("/doctors")
 	@Timed
 	public ResponseEntity<Doctor> createDoctor(@RequestBody Doctor doctor) throws URISyntaxException {
-		log.debug("REST request to save Doctor : {}", doctor);
+		/*log.debug("REST request to save Doctor : {}", doctor);
 		if (doctor.getId() != null) {
 			return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new doctor cannot already have an ID")).body(null);
 		}
@@ -108,16 +108,16 @@ public class DoctorResource {
 		return ResponseEntity.created(new URI("/api/doctors/" + result.getId()))
 				.headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
 				.body(result);
-	}
+	}*/
 
-     /*   log.debug("REST request to save Doctor : {}", doctor);
+       log.debug("REST request to save Doctor : {}", doctor);
         if (doctor.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new infirmier cannot already have an ID")).body(null);
         }
         Set<String> autrority = new HashSet<>();
         // autrority.add("ROLE_MEDECIN_CHEF");
         autrority.add("ROLE_MEDECIN");
-        UserDTO userDTO = new UserDTO(null, doctor.getLogin(), doctor.getNometprenom(), doctor.getNometprenom(), "forsys@htmail.fr",
+        UserDTO userDTO = new UserDTO(null, doctor.getLogin(), doctor.getNometprenom(), doctor.getNometprenom(),doctor.getEmail(),
             true, null, "en", null, null, null, null, autrority);
         User createUser = userService.createUser(userDTO);
         doctor.setMotdepasse(createUser.getPassword());
@@ -126,7 +126,7 @@ public class DoctorResource {
         return ResponseEntity.created(new URI("/api/doctors/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
-    }*/
+    }
 	/**
 	 * PUT  /doctors : Updates an existing doctor.
 	 *

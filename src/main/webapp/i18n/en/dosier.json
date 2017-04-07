@@ -1,0 +1,30 @@
+{
+    "avancementApp": {
+        "dosier" : {
+            "home": {
+                "title": "Dosiers",
+                "createLabel": "Create a new Dosier",
+                "createOrEditLabel": "Create or edit a Dosier",
+                "search": "Search for Dosier"
+            },
+            "created": "A new Dosier is created with identifier {{ param }}",
+            "updated": "A Dosier is updated with identifier {{ param }}",
+            "deleted": "A Dosier is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Dosier {{ id }}?"
+            },
+            "detail": {
+                "title": "Dosier"
+            },
+            "perscreptionsmedicamenteuses": "Perscreptionsmedicamenteuses",
+            "nom": "Nom",
+            "numero": "Numero",
+            "date": "Date",
+            "antecedents": "Antecedents",
+            "groupesanguin": "Groupesanguin",
+            "recommandations": "Recommandations",
+            "resultatdernierexamen": "Resultatdernierexamen",
+            "cituationfamiliale": "Cituationfamiliale"
+        }
+    }
+}

@@ -1,0 +1,138 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myDosierLabel" >Ajouter ou modifier un Dossier Medical</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_nom">Nom complet du patient :</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="dosier.nom"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_numero">Numero de télephone :</label>
+            <input type="number" class="form-control" name="numero" id="field_numero"
+                [(ngModel)]="dosier.numero"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_cituationfamiliale">Cituation familiale : </label>
+
+            <select class="form-control" name="cituationfamiliale" id="field_cituationfamiliale" [(ngModel)]="dosier.cituationfamiliale"  >
+                <option value="Marié " >Marié(e)</option>
+                <option value="Célibataire" >Célibataire</option>
+                <option value="Divorcé" >Divorcé(e)</option>
+                <option value="Veuf" >Veuf(ve)</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_date">Date de naissance :</label>
+            <div class="input-group">
+                <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="dosier.date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="dateDp.open()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_groupesanguin">Groupe sanguin :</label>
+            <select class="form-control" name="groupesanguin" id="field_groupesanguin" [(ngModel)]="dosier.groupesanguin"  >
+                <option value="A + " >A +</option>
+                <option value="A -" >A -</option>
+                <option value="B +" >B +</option>
+                <option value="B -" >B -</option>
+                <option value="O +" >O +</option>
+                <option value="O -" >O -</option>
+                <option value="AB -" >AB +</option>
+                <option value="AB +" >AB -</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_perscreptionsmedicamenteuses">Perscreptions medicamenteuses :</label>
+            <div>
+                <div *ngIf="dosier.perscreptionsmedicamenteuses" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(dosier.perscreptionsmedicamenteusesContentType, dosier.perscreptionsmedicamenteuses)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{dosier.perscreptionsmedicamenteusesContentType}}, {{byteSize(dosier.perscreptionsmedicamenteuses)}}</span>
+                    <button type="button" (click)="dosier.perscreptionsmedicamenteuses=null;dosier.perscreptionsmedicamenteusesContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, dosier, 'perscreptionsmedicamenteuses', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="perscreptionsmedicamenteuses" id="field_perscreptionsmedicamenteuses"
+                   [(ngModel)]="dosier.perscreptionsmedicamenteuses"
+            />
+            <input type="hidden" class="form-control" name="perscreptionsmedicamenteusesContentType" id="field_perscreptionsmedicamenteusesContentType"
+                   [(ngModel)]="dosier.perscreptionsmedicamenteusesContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_antecedents">Antécedents :</label>
+            <select class="form-control" name="antecedents" [(ngModel)]="dosier.antecedents" id="field_antecedents" >
+                <option value="Hypertension" jhiTranslate="avancementApp.Antecedents.Hypertension">Hypertension</option>
+                <option value="Hypotension" jhiTranslate="avancementApp.Antecedents.Hypotension">Hypotension</option>
+                <option value="Triglyceride" jhiTranslate="avancementApp.Antecedents.Triglyceride">Triglyceride</option>
+                <option value="Diabete" jhiTranslate="avancementApp.Antecedents.Diabete">Diabete</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label"  for="field_recommandations">Récommandations :</label>
+            <div>
+                <div *ngIf="dosier.recommandations" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(dosier.recommandationsContentType, dosier.recommandations)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{dosier.recommandationsContentType}}, {{byteSize(dosier.recommandations)}}</span>
+                    <button type="button" (click)="dosier.recommandations=null;dosier.recommandationsContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, dosier, 'recommandations', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="recommandations" id="field_recommandations"
+                [(ngModel)]="dosier.recommandations"
+             />
+            <input type="hidden" class="form-control" name="recommandationsContentType" id="field_recommandationsContentType"
+                [(ngModel)]="dosier.recommandationsContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.dosier.resultatdernierexamen" for="field_resultatdernierexamen">Resultat du dernier examen :</label>
+            <div>
+                <div *ngIf="dosier.resultatdernierexamen" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(dosier.resultatdernierexamenContentType, dosier.resultatdernierexamen)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{dosier.resultatdernierexamenContentType}}, {{byteSize(dosier.resultatdernierexamen)}}</span>
+                    <button type="button" (click)="dosier.resultatdernierexamen=null;dosier.resultatdernierexamenContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, dosier, 'resultatdernierexamen', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="resultatdernierexamen" id="field_resultatdernierexamen"
+                [(ngModel)]="dosier.resultatdernierexamen"
+             />
+            <input type="hidden" class="form-control" name="resultatdernierexamenContentType" id="field_resultatdernierexamenContentType"
+                [(ngModel)]="dosier.resultatdernierexamenContentType" />
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

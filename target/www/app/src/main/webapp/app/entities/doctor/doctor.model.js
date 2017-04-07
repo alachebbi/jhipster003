@@ -1,6 +1,6 @@
 "use strict";
 var Doctor = (function () {
-    function Doctor(id, motdepasse, login, servicemedi, photo, specialite, nometprenom, datenaissance, daten) {
+    function Doctor(id, motdepasse, login, servicemedi, photo, specialite, nometprenom, datenaissance, daten, email) {
         this.id = id;
         this.motdepasse = motdepasse;
         this.login = login;
@@ -10,6 +10,7 @@ var Doctor = (function () {
         this.nometprenom = nometprenom;
         this.datenaissance = datenaissance;
         this.daten = daten;
+        this.email = email;
     }
     return Doctor;
 }());

@@ -1,0 +1,66 @@
+
+<div *ngIf="dosier">
+    <h2><span jhiTranslate="avancementApp.dosier.detail.title">Dosier</span> {{dosier.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.dosier.perscreptionsmedicamenteuses">Perscreptionsmedicamenteuses</span></dt>
+        <dd>
+            <div *ngIf="dosier.perscreptionsmedicamenteuses">
+                <a (click)="openFile(dosier.perscreptionsmedicamenteusesContentType, dosier.perscreptionsmedicamenteuses)" jhiTranslate="entity.action.open">open</a>
+                {{dosier.perscreptionsmedicamenteusesContentType}}, {{byteSize(dosier.perscreptionsmedicamenteuses)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dosier.nom">Nom</span></dt>
+        <dd>
+            <span>{{dosier.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dosier.numero">Numero</span></dt>
+        <dd>
+            <span>{{dosier.numero}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dosier.date">Date</span></dt>
+        <dd>
+            <span>{{dosier.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dosier.antecedents">Antecedents</span></dt>
+        <dd>
+            <span jhiTranslate="{{'avancementApp.Antecedents.' + dosier.antecedents}}">{{dosier.antecedents}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dosier.groupesanguin">Groupesanguin</span></dt>
+        <dd>
+            <span>{{dosier.groupesanguin}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dosier.recommandations">Recommandations</span></dt>
+        <dd>
+            <div *ngIf="dosier.recommandations">
+                <a (click)="openFile(dosier.recommandationsContentType, dosier.recommandations)" jhiTranslate="entity.action.open">open</a>
+                {{dosier.recommandationsContentType}}, {{byteSize(dosier.recommandations)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dosier.resultatdernierexamen">Resultatdernierexamen</span></dt>
+        <dd>
+            <div *ngIf="dosier.resultatdernierexamen">
+                <a (click)="openFile(dosier.resultatdernierexamenContentType, dosier.resultatdernierexamen)" jhiTranslate="entity.action.open">open</a>
+                {{dosier.resultatdernierexamenContentType}}, {{byteSize(dosier.resultatdernierexamen)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dosier.cituationfamiliale">Cituationfamiliale</span></dt>
+        <dd>
+            <span>{{dosier.cituationfamiliale}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dosier/'+ dosier.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

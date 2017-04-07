@@ -35,6 +35,14 @@
         {
             "fieldName": "daten",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
         }
     ],
     "dto": "no",

@@ -9,5 +9,6 @@ export class Doctor {
         public nometprenom?: string,
         public datenaissance?: any,
         public daten?: any,
+        public email?: string,
     ) { }
 }

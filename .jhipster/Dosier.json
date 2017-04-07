@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "perscreptionsmedicamenteuses",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "antecedents",
+            "fieldType": "Antecedents",
+            "fieldValues": "Hypertension , Hypotension , Triglyceride , Diabete"
+        },
+        {
+            "fieldName": "groupesanguin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recommandations",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "resultatdernierexamen",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "cituationfamiliale",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "dosier",
+    "pagination": "no"
+}

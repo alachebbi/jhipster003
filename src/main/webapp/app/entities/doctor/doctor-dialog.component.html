@@ -20,9 +20,15 @@
 
 
         <div class="form-group">
-            <label class="form-control-label" for="field_daten">Date de naissance : </label>
-            <input type="date" class="form-control" name="daten" id="field_daten"
-                   [(ngModel)]="doctor.daten"
+            <label class="form-control-label" for="field_email">Email: </label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                   [(ngModel)]="doctor.email"
+            />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_date">Date de naissance: </label>
+            <input type="date" class="form-control" name="date" id="field_date"
+                   [(ngModel)]="doctor.date"
             />
         </div>
 

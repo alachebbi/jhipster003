@@ -1,3 +1,10 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
 <div>
     <h2><span>Liste des dossiers médicaux</span>
         <button class="btn btn-primary float-xs-right create-dosier" [routerLink]="['/', { outlets: { popup: ['dosier-new'] } }]">
@@ -28,16 +35,7 @@
 
                 <th><span >Cituation familiale</span></th>
 
-                <th><span >Pérscreptions medicamenteuses</span></th>
 
-
-            <th><span >Antécedents</span></th>
-
-            <th><span >Groupe sanguin</span></th>
-
-            <th><span >Récommandations</span></th>
-
-            <th><span >Resultat de dernier examen</span></th>
 
             <th></th>
             </tr>
@@ -48,21 +46,9 @@
                 <td>{{dosier.numero}}</td>
                 <td>{{dosier.date | date:'mediumDate'}}</td>
                 <td>{{dosier.cituationfamiliale}}</td>
-                <td>
-                    <a *ngIf="dosier.perscreptionsmedicamenteuses" (click)="openFile(dosier.perscreptionsmedicamenteusesContentType, dosier.perscreptionsmedicamenteuses)" jhiTranslate="entity.action.open">open</a>
-                    <span *ngIf="dosier.perscreptionsmedicamenteuses">{{dosier.perscreptionsmedicamenteusesContentType}}, {{byteSize(dosier.perscreptionsmedicamenteuses)}}</span>
-                </td>
 
-                <td jhiTranslate="{{'avancementApp.Antecedents.' + dosier.antecedents}}">{{dosier.antecedents}}</td>
-                <td>{{dosier.groupesanguin}}</td>
-                <td>
-                    <a *ngIf="dosier.recommandations" (click)="openFile(dosier.recommandationsContentType, dosier.recommandations)" jhiTranslate="entity.action.open">open</a>
-                    <span *ngIf="dosier.recommandations">{{dosier.recommandationsContentType}}, {{byteSize(dosier.recommandations)}}</span>
-                </td>
-                <td>
-                    <a *ngIf="dosier.resultatdernierexamen" (click)="openFile(dosier.resultatdernierexamenContentType, dosier.resultatdernierexamen)" jhiTranslate="entity.action.open">open</a>
-                    <span *ngIf="dosier.resultatdernierexamen">{{dosier.resultatdernierexamenContentType}}, {{byteSize(dosier.resultatdernierexamen)}}</span>
-                </td>
+
+
 
                 <td class="text-xs-right">
                     <div class="btn-group flex-btn-group-container">
@@ -93,3 +79,4 @@
         </table>
     </div>
 </div>
+        </div></section></div>

@@ -6,11 +6,12 @@
 
 
 <div>
-    <h2><span jhiTranslate="avancementApp.reclamation.home.title">Reclamations</span>
+    <div *ngIf="reclamations">
+    <h2><span jhiTranslate="avancementApp.reclamation.home.title">Vous avez {{reclamations.length}} reclamations </span>
         <button class="btn btn-primary float-xs-right create-reclamation" [routerLink]="['/', { outlets: { popup: ['reclamation-new'] } }]">
             <span class="fa fa-plus"></span>
 
-        </button></h2>
+        </button></h2></div>
     <jhi-alert></jhi-alert>
 
     <div class="container-fluid">

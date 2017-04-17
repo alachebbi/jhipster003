@@ -32,7 +32,7 @@ spring:
         host: smtp.gmail.com
         port: 587
         username: alaeddine.chebbi@forsyslab.com #Replace this field with your Gmail username.
-        password: ********          #Replace this field with your Gmail password.
+        password: 11111111          #Replace this field with your Gmail password.
         protocol: smtp
         tls: true
         properties.mail.smtp:

@@ -1,131 +1,113 @@
-<div class="container">
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-md-3">
-            <div class="list-group">
-                <a href="#" class="list-group-item disabled">
-                    List of users
-                </a>
-                <div style="height: 400px; overflow-y: scroll">
-                    <span *ngFor="let user of users" (click)="onUserSelected(user)" [ngClass]="{'chat-selected':user.active,'hasMsg':user.hasMsg}" class="list-group-item">{{user.login}}</span>
+<div class="content-wrapper">
 
-                </div>
-            </div>
-        </div>
-        <div class="col-md-7 col-lg-7">
-            <div class="panel panel-primary">
-                <div class="panel-heading chat-header" >
-                    <span class="glyphicon glyphicon-comment"></span> Chat Room - [ {{receiver}} ]
-                </div>
-                <hr class="line" />
-                <div  angular2-auto-scroll lock-y-offset="5" observe-attributes class="panel-body chat-body">
-                    <ul class="chat">
+    <section class="content">
+
+    <div class='row'>
+        <div class='col-md-4'>
+            <!-- USERS LIST -->
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title"> Members</h3>
+                    <div class="box-tools pull-right">
+
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+
+
+
+
+
+
+
+
+
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+
+                        <div *ngFor="let user of users" (click)="onUserSelected(user)" [ngClass]="{'chat-selected':user.active,'hasMsg':user.hasMsg}" class="list-group-item">
+
+
+                        <li>
+
+
+                            <a class="users-list-name" >{{user.firstName}}</a>
+
+                        </li>
+                        </div>
+                    </ul><!-- /.users-list -->
+                </div><!-- /.box-body -->
+
+            </div><!--/.box -->
+        </div><!-- /.col -->
+
+
+        <div class='col-md-7'>
+            <!-- DIRECT CHAT -->
+            <div id="myDirectChat" class="box box-warning direct-chat direct-chat-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chat to {{receiver}}</h3>
+                    <div class="box-tools pull-right">
+
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <!-- Conversations are loaded here -->
+                    <div class="direct-chat-messages">
+                        <!-- Message. Default to the left -->
                         <div *ngFor="let msg of receiverMessage">
-                            <li *ngIf="msg.senderName != sender" class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                                <div class="chat-body clearfix">
-                                    <div class="header">
-                                        <strong class="primary-font">{{msg.senderName}}</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>{{msg.createdDate | date :'medium'}}</small>
-                                    </div>
-                                    <div class="direct-chat-text">
-                                    <p>
-                                        {{msg.msg}}
-                                    </p></div>
-                                </div>
-                            </li>
-                            <li *ngIf="msg.senderName == sender "  class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                                <div class="chat-body clearfix">
-                                    <div class="header">
-                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>{{msg.createdDate | date :'medium' }}</small>
-                                        <strong class="pull-right primary-font">{{msg.senderName}}</strong>
-                                    </div>
-                                    <div class="direct-chat-text-left">
-                                    <p>
-                                        {{msg.msg}}
-                                    </p></div>
-                                </div>
-                            </li>
-                        </div>
-                    </ul>
-                </div>
+                        <!-- Message to the right -->
+                        <div  *ngIf="msg.senderName != sender" class="direct-chat-msg right">
+                            <div class='direct-chat-info clearfix'>
+                                <span class='direct-chat-name pull-right'>{{msg.senderName}}</span>
+                                <span class='direct-chat-timestamp pull-left'>{{msg.createdDate | date :'medium'}}</span>
+                            </div><!-- /.direct-chat-info -->
+                            <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=U" alt="message user image" /><!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                {{msg.msg}}
+                            </div><!-- /.direct-chat-text -->
+                        </div><!-- /.direct-chat-msg -->
 
-                <div class="panel-footer chat-footer">
-                    <form name="sendForm" role="form" novalidate  #sendForm="ngForm">
+                        <!-- Message. Default to the left -->
+                        <div  *ngIf="msg.senderName == sender "  class="direct-chat-msg">
+                            <div class='direct-chat-info clearfix'>
+                                <span class='direct-chat-name pull-left'>{{msg.senderName}}</span>
+                                <span class='direct-chat-timestamp pull-right'>{{msg.createdDate | date :'medium' }}</span>
+                            </div><!-- /.direct-chat-info -->
+                            <img class="direct-chat-img" src="http://placehold.it/50/FA6F57/fff&text=ME"  alt="message user image" /><!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                {{msg.msg}}
+                            </div><!-- /.direct-chat-text -->
+                        </div><!-- /.direct-chat-msg -->
+
+                        <!-- Message to the right -->
+
+
+                    </div><!--/.direct-chat-messages-->
+
+
+
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <form  name="sendForm" role="form" novalidate  #sendForm="ngForm">
                         <div class="input-group">
-                            <input id="btn-input" type="text" autocomplete="off" [(ngModel)]="sendText" name="text"  required class="form-control input-sm" placeholder="Type your message here..." />
+                            <input type="text" autocomplete="off" [(ngModel)]="sendText" name="text"  placeholder="Type Message ..." class="form-control"/>
                             <span class="input-group-btn">
-                            <button [disabled]="sendForm.form.invalid" (click)="sendMessage()" class="btn btn-primary" id="btn-chat">Send</button>
-                        </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- DIRECT CHAT -->
-    <!-- DIRECT CHAT -->
-    <!--<div id="myDirectChat" class="box box-warning direct-chat direct-chat-warning">
-        <div class="box-header with-border">
-            <h3 class="box-title">Direct Chat</h3>
-            <div class="box-tools pull-right">
-                <span data-toggle="tooltip" title="3 New Messages" class='badge bg-yellow'>3</span>
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
-                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-            </div>
-        </div>&lt;!&ndash; /.box-header &ndash;&gt;
-        <div class="box-body">
-
-            &lt;!&ndash; Conversations are loaded here &ndash;&gt;
-            <div class="direct-chat-messages">
-
-                &lt;!&ndash; Message to the right &ndash;&gt;
-                <div *ngFor="let msg of receiverMessage">
-                &lt;!&ndash; Message. Default to the left &ndash;&gt;
-                <div class="direct-chat-msg">
-                    <li *ngIf="msg.senderName != sender"  class='direct-chat-info clearfix'>
-                        <span class='direct-chat-name pull-right'>{{msg.senderName}}</span>
-                        <span class='direct-chat-timestamp pull-left'>{{msg.createdDate | date :'medium'}}</span>
-                    </li>&lt;!&ndash; /.direct-chat-info &ndash;&gt;
-                    <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=U" alt="message user image" />&lt;!&ndash; /.direct-chat-img &ndash;&gt;
-                    <div class="direct-chat-text-left">
-                        {{msg.msg}}
-                    </div>&lt;!&ndash; /.direct-chat-text &ndash;&gt;
-                    </div>&lt;!&ndash; /.direct-chat-msg &ndash;&gt;
-
-
-
-                    <div class="direct-chat-msg right">
-                        <li *ngIf="msg.senderName == sender " class='direct-chat-info clearfix'>
-                            <span class='direct-chat-name pull-right'>{{msg.senderName}}</span>
-                            <span class='direct-chat-timestamp pull-left'>{{msg.createdDate | date :'medium' }}</span>
-                        </li>&lt;!&ndash; /.direct-chat-info &ndash;&gt;
-                        <img class="direct-chat-img" src="http://placehold.it/50/FA6F57/fff&text=ME" alt="message user image" />&lt;!&ndash; /.direct-chat-img &ndash;&gt;
-                        <div class="direct-chat-text">
-                            {{msg.msg}}
-                        </div>&lt;!&ndash; /.direct-chat-text &ndash;&gt;
-                    </div>&lt;!&ndash; /.direct-chat-msg &ndash;&gt;
-
-
-
-
-                </div>&lt;!&ndash; /.direct-chat-msg &ndash;&gt;
-
-
-
-            </div>&lt;!&ndash;/.direct-chat-messages&ndash;&gt;
-            <div class="box-footer">
-                <form name="sendForm" role="form" novalidate  #sendForm="ngForm">
-                    <div class="input-group">
-                        <input type="text" [(ngModel)]="sendText" name="message" placeholder="Type Message ..." class="form-control"/>
-                        <span class="input-group-btn">
                         <button type="button" [disabled]="sendForm.form.invalid" (click)="sendMessage()" class="btn btn-warning btn-flat">Send</button>
                       </span>
-                    </div>
-                </form>
-            </div>&lt;!&ndash; /.box-footer&ndash;&gt;
--->
+                        </div>
+                    </form>
+                </div><!-- /.box-footer-->
+            </div><!--/.direct-chat -->
+        </div><!-- /.col -->
+        </div></div>
+    </section>
+</div>
+
+
+
+

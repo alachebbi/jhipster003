@@ -16,12 +16,12 @@ var fichepatient_popup_service_1 = require("./fichepatient-popup.service");
 var fichepatient_service_1 = require("./fichepatient.service");
 var doctor_service_1 = require("../doctor/doctor.service");
 var FichepatientDialogComponent = (function () {
-    function FichepatientDialogComponent(activeModal, jhiLanguageService, dataUtils, alertService, medecinService, fichepatientService, eventManager, router) {
+    function FichepatientDialogComponent(activeModal, jhiLanguageService, dataUtils, alertService, doctorService, fichepatientService, eventManager, router) {
         this.activeModal = activeModal;
         this.jhiLanguageService = jhiLanguageService;
         this.dataUtils = dataUtils;
         this.alertService = alertService;
-        this.medecinService = medecinService;
+        this.doctorService = doctorService;
         this.fichepatientService = fichepatientService;
         this.eventManager = eventManager;
         this.router = router;
@@ -56,8 +56,8 @@ var FichepatientDialogComponent = (function () {
     };
     FichepatientDialogComponent.prototype.loadAllserv = function () {
         var _this = this;
-        this.medecinService.query().subscribe(function (res) {
-            _this.medecins = res.json();
+        this.doctorService.query().subscribe(function (res) {
+            _this.doctors = res.json();
         }, function (res) { return _this.onError(res.json()); });
     };
     FichepatientDialogComponent.prototype.save = function () {
@@ -95,7 +95,9 @@ FichepatientDialogComponent = __decorate([
     __metadata("design:paramtypes", [ng_bootstrap_1.NgbActiveModal,
         ng_jhipster_1.JhiLanguageService,
         ng_jhipster_1.DataUtils,
-        ng_jhipster_1.AlertService, typeof (_a = typeof doctor_service_1.MedecinService !== "undefined" && doctor_service_1.MedecinService) === "function" && _a || Object, fichepatient_service_1.FichepatientService,
+        ng_jhipster_1.AlertService,
+        doctor_service_1.DoctorService,
+        fichepatient_service_1.FichepatientService,
         ng_jhipster_1.EventManager,
         router_1.Router])
 ], FichepatientDialogComponent);
@@ -132,5 +134,4 @@ FichepatientPopupComponent = __decorate([
         fichepatient_popup_service_1.FichepatientPopupService])
 ], FichepatientPopupComponent);
 exports.FichepatientPopupComponent = FichepatientPopupComponent;
-var _a;
 //# sourceMappingURL=fichepatient-dialog.component.js.map

@@ -1,4 +1,10 @@
-<div>
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+<!--<div>
     <h2>Medecins
         <button class="btn btn-primary float-xs-right create-doctor" [routerLink]="['/', { outlets: { popup: ['doctor-new'] } }]">
             <span class="fa fa-plus"></span>
@@ -104,4 +110,45 @@
             <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
-</div>
+</div>-->
+
+
+                <div class="box-header">
+                    <h3 class="box-title">Liste des medecins</h3>
+                    <button class="btn btn-primary pull-right" style="margin-right: 5px;border-radius: 25px;" (click)="print()"><i class="fa fa-download" ></i> Générer PDF</button>
+                    <button class="btn btn-info pull-right" style="margin-right: 5px;border-radius: 25px;" [routerLink]="['/', { outlets: { popup: ['doctor-new'] } }]"><i class="fa fa-download" ></i> Ajouter un nouveau medecin</button>
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding" *ngIf="doctors">
+                    <table class="table table-condensed">
+                        <tr >
+                            <th style="width: 23%">Nom Complet</th>
+                            <th style="width: 13%">Photo</th>
+                            <th style="width: 33%">Service Medical</th>
+                            <th style="width: 34%">Action</th>
+                        </tr>
+                        <tr *ngFor="let doctor of doctors ">
+                            <td>{{doctor.nometprenom}}</td>
+                            <td><a *ngIf="doctor.photo" (click)="openFile(doctor.photoContentType, doctor.photo)">
+                                <img [src]="'data:' + doctor.photoContentType + ';base64,' + doctor.photo" style="border-radius: 50%;max-height: 50px;max-width: 50px;" alt="doctor image"/>
+                            </a></td>
+                            <td>
+                                {{doctor.servicemedi}}
+                            </td>
+<td><button class="btn btn-success pull-right" style="margin-right: 5px;"
+            type="submit" (click)="print(doctor.id)"><i class="fa fa-download"></i> </button>
+    <button class="btn btn-primary pull-right" style="margin-right: 5px;" type="submit"
+            [routerLink]="['/', { outlets: { popup: 'doctor/'+ doctor.id + '/edit'} }]"
+            replaceUrl="true"><i class="fa fa-edit"></i> </button>
+    <button class="btn btn-warning pull-right" style="margin-right: 5px;"
+            type="submit"
+            [routerLink]="['../doctor', doctor.id ]"><i class="fa fa-eye"></i> </button>
+    <button class="btn btn-danger pull-right" style="margin-right: 5px;" type="submit"
+            [routerLink]="['/', { outlets: { popup: 'doctor/'+ doctor.id + '/delete'} }]"
+            replaceUrl="true"><i class="fa fa-trash-o"></i> </button></td>
+                        </tr>
+
+                    </table>
+                </div><!-- /.box-body -->
+
+        </div></section></div>

@@ -1,10 +1,15 @@
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
+
 <div>
     <h2><span jhiTranslate="avancementApp.reclamation.home.title">Reclamations</span>
         <button class="btn btn-primary float-xs-right create-reclamation" [routerLink]="['/', { outlets: { popup: ['reclamation-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="avancementApp.reclamation.home.createLabel">
-            Create new Reclamation
-            </span>
+
         </button></h2>
     <jhi-alert></jhi-alert>
 
@@ -61,3 +66,4 @@
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
 </div>
+        </div></section></div>

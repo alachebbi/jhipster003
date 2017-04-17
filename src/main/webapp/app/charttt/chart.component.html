@@ -1,5 +1,12 @@
-<div>
-    <div style="display: block" class="chart">
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+            <div class='col-md-3'>
+
+
         <canvas baseChart
                 [datasets]="barChartData"
                 [labels]="barChartLabels"
@@ -9,6 +16,8 @@
                 [chartType]="barChartType"
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
-    </div>
+
     <button type="button" class="btn btn-success"  (click)="changeCharType()">change chart type</button>
 </div>
+
+        </div></section></div>

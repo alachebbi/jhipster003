@@ -1,15 +1,15 @@
 
-}squid:UselessImportCheck"VRemove this unused import 'net.sf.dynamicreports.report.builder.component.Components'.(Üá¹şÿÿÿÿ
 Xsquid:UselessImportCheck"1Remove this unused import 'java.io.OutputStream'.(Ó ³ÿÿÿÿÿ
-]squid:UselessImportCheck";Remove this unused import 'javax.servlet.ServletException'.(Š‰™Œ
 usquid:UselessImportCheck"TRemove this unused import 'net.sf.dynamicreports.report.builder.style.StyleBuilder'.(„á§B
-}squid:UselessImportCheck"VRemove this unused import 'net.sf.dynamicreports.report.constant.HorizontalAlignment'.(ñˆ£ûÿÿÿÿ
-vsquid:UselessImportCheck"ORemove this unused import 'net.sf.dynamicreports.report.exception.DRException'.(ÔÃ„üÿÿÿÿ
 wsquid:UselessImportCheck"PRemove this unused import 'net.sf.dynamicreports.report.builder.DynamicReports'.(ñÄé·ıÿÿÿÿ
-Esquid:UselessImportCheck"Remove this duplicated import.(ùÈãÈøÿÿÿÿ
-esquid:UselessImportCheck"CRemove this unused import 'javax.servlet.http.HttpServletResponse'.(Á¨ïë
-Wsquid:UselessImportCheck"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
-rsquid:UselessImportCheck"PRemove this unused import 'net.sf.dynamicreports.report.builder.column.Columns'.(¶£•´
+}squid:UselessImportCheck"VRemove this unused import 'net.sf.dynamicreports.report.builder.component.Components'.(Üá¹şÿÿÿÿ
+vsquid:UselessImportCheck"ORemove this unused import 'net.sf.dynamicreports.report.exception.DRException'.(ÔÃ„üÿÿÿÿ
+]squid:UselessImportCheck";Remove this unused import 'javax.servlet.ServletException'.(Š‰™Œ
 squid:UselessImportCheck"XRemove this unused import 'net.sf.jasperreports.engine.data.JRBeanCollectionDataSource'.(¦ŸŸ˜ıÿÿÿÿ
+Wsquid:UselessImportCheck"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+Esquid:UselessImportCheck"Remove this duplicated import.(ùÈãÈøÿÿÿÿ
+rsquid:UselessImportCheck"PRemove this unused import 'net.sf.dynamicreports.report.builder.column.Columns'.(¶£•´
+}squid:UselessImportCheck"VRemove this unused import 'net.sf.dynamicreports.report.constant.HorizontalAlignment'.(ñˆ£ûÿÿÿÿ
+esquid:UselessImportCheck"CRemove this unused import 'javax.servlet.http.HttpServletResponse'.(Á¨ïë
 Rsquid:UselessImportCheck"+Remove this unused import 'java.awt.Color'.(ùÈãÈøÿÿÿÿ
 {squid:UselessImportCheck"TRemove this unused import 'net.sf.dynamicreports.report.builder.datatype.DataTypes'.(Óê¹´øÿÿÿÿ

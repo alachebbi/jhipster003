@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import { JhiLanguageService , EventManager} from 'ng-jhipster';
 
 import { ProfileService } from '../profiles/profile.service'; // FIXME barrel doesnt work here
-import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
+import { JhiLanguageHelper, Principal, LoginModalService, LoginService, Account } from '../../shared';
 
 import { VERSION, DEBUG_INFO_ENABLED } from '../../app.constants';
 
@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    account: Account;
 
     constructor(
         private loginService: LoginService,
@@ -31,6 +32,7 @@ export class NavbarComponent implements OnInit {
         private principal: Principal,
         private loginModalService: LoginModalService,
         private profileService: ProfileService,
+        private eventManager: EventManager,
         private router: Router
     ) {
         this.version = DEBUG_INFO_ENABLED ? 'v' + VERSION : '';
@@ -39,10 +41,14 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.principal.identity().then((account) => {
+            this.account = account;
+
+        });
         this.languageHelper.getAll().then((languages) => {
             this.languages = languages;
         });
-
+        this.registerAuthenticationSuccess();
         this.profileService.getProfileInfo().subscribe(profileInfo => {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
@@ -64,7 +70,13 @@ export class NavbarComponent implements OnInit {
     login() {
         this.modalRef = this.loginModalService.open();
     }
-
+    registerAuthenticationSuccess() {
+        this.eventManager.subscribe('authenticationSuccess', (message) => {
+            this.principal.identity().then((account) => {
+                this.account = account;
+            });
+        });
+    }
     logout() {
         this.collapseNavbar();
         this.loginService.logout();

@@ -1,0 +1,23 @@
+{
+    "avancementApp": {
+        "forsys" : {
+            "home": {
+                "title": "Forsys",
+                "createLabel": "Créer un nouveau Forsys",
+                "createOrEditLabel": "Créer ou éditer un Forsys",
+                "search": "Recherche pour Forsys"
+            },
+            "created": "Un nouveau Forsys a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Forsys avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Forsys avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Forsys {{ id }} ?"
+            },
+            "detail": {
+                "title": "Forsys"
+            },
+            "medecintraitant": "Medecintraitant",
+            "patient": "Patient"
+        }
+    }
+}

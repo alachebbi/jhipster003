@@ -1,0 +1,33 @@
+{
+    "avancementApp": {
+        "dossierMedical" : {
+            "home": {
+                "title": "DossierMedicals",
+                "createLabel": "Créer un nouveau Dossier Medical",
+                "createOrEditLabel": "Créer ou éditer un Dossier Medical",
+                "search": "Recherche pour Dossier Medical"
+            },
+            "created": "Un nouveau Dossier Medical a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Dossier Medical avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Dossier Medical avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Dossier Medical {{ id }} ?"
+            },
+            "detail": {
+                "title": "Dossier Medical"
+            },
+            "perscreptionsmedicamenteuses": "Perscreptionsmedicamenteuses",
+            "nomdupatient": "Nomdupatient",
+            "numerotel": "Numerotel",
+            "datedenaissance": "Datedenaissance",
+            "antecedents": "Antecedents",
+            "ant": "Ant",
+            "groupessanguin": "Groupessanguin",
+            "recommandations": "Recommandations",
+            "resultatdudernierexamen": "Resultatdudernierexamen",
+            "resultatdudernierexamenn": "Resultatdudernierexamenn",
+            "situationfamiliale": "Situationfamiliale",
+            "notesparamedicaux": "Notesparamedicaux"
+        }
+    }
+}

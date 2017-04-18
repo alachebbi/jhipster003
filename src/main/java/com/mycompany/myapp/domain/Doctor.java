@@ -1,6 +1,7 @@
 package com.mycompany.myapp.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -52,6 +53,19 @@ public class Doctor implements Serializable {
 
     @Field("date")
     private LocalDate date;
+
+    @DBRef
+    private User user ;
+
+    public User getUser() {
+        return user;
+    }
+
+
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getId() {
         return id;

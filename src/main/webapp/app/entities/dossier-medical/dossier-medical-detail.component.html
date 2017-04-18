@@ -1,0 +1,78 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+<div *ngIf="dossierMedical">
+    <h2><span jhiTranslate="avancementApp.dossierMedical.detail.title">Dossier Medical</span> {{dossierMedical.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.dossierMedical.perscreptionsmedicamenteuses">Perscreptionsmedicamenteuses</span></dt>
+        <dd>
+            <span>{{dossierMedical.perscreptionsmedicamenteuses}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.nomdupatient">Nomdupatient</span></dt>
+        <dd>
+            <span>{{dossierMedical.nomdupatient}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.numerotel">Numerotel</span></dt>
+        <dd>
+            <span>{{dossierMedical.numerotel}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.datedenaissance">Datedenaissance</span></dt>
+        <dd>
+            <span>{{dossierMedical.datedenaissance | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.antecedents">Antecedents</span></dt>
+        <dd>
+            <span>{{dossierMedical.antecedents}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.ant">Ant</span></dt>
+        <dd>
+            <span>{{dossierMedical.ant}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.groupessanguin">Groupessanguin</span></dt>
+        <dd>
+            <span>{{dossierMedical.groupessanguin}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.recommandations">Recommandations</span></dt>
+        <dd>
+            <span>{{dossierMedical.recommandations}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.resultatdudernierexamen">Resultatdudernierexamen</span></dt>
+        <dd>
+            <span>{{dossierMedical.resultatdudernierexamen}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.resultatdudernierexamenn">Resultatdudernierexamenn</span></dt>
+        <dd>
+            <div *ngIf="dossierMedical.resultatdudernierexamenn">
+                <a (click)="openFile(dossierMedical.resultatdudernierexamennContentType, dossierMedical.resultatdudernierexamenn)" jhiTranslate="entity.action.open">open</a>
+                {{dossierMedical.resultatdudernierexamennContentType}}, {{byteSize(dossierMedical.resultatdudernierexamenn)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.situationfamiliale">Situationfamiliale</span></dt>
+        <dd>
+            <span>{{dossierMedical.situationfamiliale}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.dossierMedical.notesparamedicaux">Notesparamedicaux</span></dt>
+        <dd>
+            <span>{{dossierMedical.notesparamedicaux}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dossier-medical/'+ dossierMedical.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+        </div></section></div>

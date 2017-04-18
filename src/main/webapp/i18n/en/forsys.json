@@ -1,0 +1,23 @@
+{
+    "avancementApp": {
+        "forsys" : {
+            "home": {
+                "title": "Forsys",
+                "createLabel": "Create a new Forsys",
+                "createOrEditLabel": "Create or edit a Forsys",
+                "search": "Search for Forsys"
+            },
+            "created": "A new Forsys is created with identifier {{ param }}",
+            "updated": "A Forsys is updated with identifier {{ param }}",
+            "deleted": "A Forsys is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Forsys {{ id }}?"
+            },
+            "detail": {
+                "title": "Forsys"
+            },
+            "medecintraitant": "Medecintraitant",
+            "patient": "Patient"
+        }
+    }
+}

@@ -22,6 +22,10 @@
                 "traitement": "Traitement",
                 "infirmier": "Infirmier",
                 "dosier": "Dosier",
+                "dossierMedical": "Dossier Medical",
+                "med": "Med",
+                "teacher": "Teacher",
+                "forsys": "Forsys",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

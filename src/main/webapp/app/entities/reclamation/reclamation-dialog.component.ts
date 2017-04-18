@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgModule } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Response } from '@angular/http';
 
@@ -8,6 +8,8 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { Reclamation } from './reclamation.model';
 import { ReclamationPopupService } from './reclamation-popup.service';
 import { ReclamationService } from './reclamation.service';
+import {BrowserModule} from "@angular/platform-browser";
+
 @Component({
     selector: 'jhi-reclamation-dialog',
     templateUrl: './reclamation-dialog.component.html'

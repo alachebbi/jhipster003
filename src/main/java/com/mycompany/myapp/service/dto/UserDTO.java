@@ -36,8 +36,6 @@ public class UserDTO {
     @Size(max = 256)
     private String imageUrl;
 
-    private byte[] photo;
-
     private boolean activated = false;
 
     @Size(min = 2, max = 5)
@@ -59,14 +57,14 @@ public class UserDTO {
 
     public UserDTO(User user) {
         this(user.getId(), user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getPhoto(), user.getActivated(), user.getImageUrl(), user.getLangKey(),
+            user.getEmail(), user.getActivated(), user.getImageUrl(), user.getLangKey(),
             user.getCreatedBy(), user.getCreatedDate(), user.getLastModifiedBy(), user.getLastModifiedDate(),
             user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
     public UserDTO(String id, String login, String firstName, String lastName,
-                   String email, byte[] photo, boolean activated, String imageUrl, String langKey,
+                   String email, boolean activated, String imageUrl, String langKey,
                    String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate,
                    Set<String> authorities) {
 
@@ -79,7 +77,6 @@ public class UserDTO {
         this.imageUrl = imageUrl;
         this.langKey = langKey;
         this.createdBy = createdBy;
-        this.photo = this.photo;
         this.createdDate = createdDate;
         this.lastModifiedBy = lastModifiedBy;
         this.lastModifiedDate = lastModifiedDate;
@@ -130,14 +127,6 @@ public class UserDTO {
         return createdBy;
     }
 
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
-
     public ZonedDateTime getCreatedDate() {
         return createdDate;
     }
@@ -168,7 +157,6 @@ public class UserDTO {
             ", imageUrl='" + imageUrl + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
-            ", photo='" + photo + '\'' +
             ", createdBy=" + createdBy +
             ", createdDate=" + createdDate +
             ", lastModifiedBy='" + lastModifiedBy + '\'' +

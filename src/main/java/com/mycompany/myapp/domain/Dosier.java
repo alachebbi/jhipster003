@@ -58,6 +58,12 @@ public class Dosier implements Serializable {
     @Field("cituationfamiliale")
     private String cituationfamiliale;
 
+    @Field("cnss")
+    private String cnss;
+
+    @Field("notesparamedicaux")
+    private String notesparamedicaux;
+
     public String getId() {
         return id;
     }
@@ -222,6 +228,32 @@ public class Dosier implements Serializable {
         this.cituationfamiliale = cituationfamiliale;
     }
 
+    public String getCnss() {
+        return cnss;
+    }
+
+    public Dosier cnss(String cnss) {
+        this.cnss = cnss;
+        return this;
+    }
+
+    public void setCnss(String cnss) {
+        this.cnss = cnss;
+    }
+
+    public String getNotesparamedicaux() {
+        return notesparamedicaux;
+    }
+
+    public Dosier notesparamedicaux(String notesparamedicaux) {
+        this.notesparamedicaux = notesparamedicaux;
+        return this;
+    }
+
+    public void setNotesparamedicaux(String notesparamedicaux) {
+        this.notesparamedicaux = notesparamedicaux;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -258,6 +290,8 @@ public class Dosier implements Serializable {
             ", resultatdernierexamen='" + resultatdernierexamen + "'" +
             ", resultatdernierexamenContentType='" + resultatdernierexamenContentType + "'" +
             ", cituationfamiliale='" + cituationfamiliale + "'" +
+            ", cnss='" + cnss + "'" +
+            ", notesparamedicaux='" + notesparamedicaux + "'" +
             '}';
     }
 }

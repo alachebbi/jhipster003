@@ -1,9 +1,9 @@
 
-Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(ï∂â
-Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(∑ù‰¢
-‚squid:S1160"ÃRefactor this method to throw at most one checked exception instead of: javax.servlet.ServletException, java.io.IOException, java.net.URISyntaxException, net.sf.dynamicreports.report.exception.DRException(¢Ô †
-Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢æä¿
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Îíû∆8ò§Ω†≥+
-hsquid:UselessImportCheck"ARemove this unused import 'com.mycompany.myapp.domain.Infirmier'.(¢îà∑˛ˇˇˇˇ
-`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ó◊è√
-·squid:S1160"ÃRefactor this method to throw at most one checked exception instead of: javax.servlet.ServletException, java.io.IOException, java.net.URISyntaxException, net.sf.dynamicreports.report.exception.DRException(◊√´+
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ó◊è√8Ìîõç∏+
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Îíû∆8Ìîõç∏+
+Èsquid:S1160"ÃRefactor this method to throw at most one checked exception instead of: javax.servlet.ServletException, java.io.IOException, java.net.URISyntaxException, net.sf.dynamicreports.report.exception.DRException(¢Ô †8Óîõç∏+
+[squid:S1858"?"getId" returns a string, there's no need to call "toString()".(∑ù‰¢8Ìîõç∏+
+[squid:S1858"?"getId" returns a string, there's no need to call "toString()".(ï∂â8Ìîõç∏+
+Ësquid:S1160"ÃRefactor this method to throw at most one checked exception instead of: javax.servlet.ServletException, java.io.IOException, java.net.URISyntaxException, net.sf.dynamicreports.report.exception.DRException(◊√´+8Óîõç∏+
+asquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢æä¿8Óîõç∏+
+osquid:UselessImportCheck"ARemove this unused import 'com.mycompany.myapp.domain.Infirmier'.(¢îà∑˛ˇˇˇˇ8§Ì«å∏+

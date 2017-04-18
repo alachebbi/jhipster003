@@ -1,0 +1,18 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "medecintraitant",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "patient",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "forsys",
+    "pagination": "pagination"
+}

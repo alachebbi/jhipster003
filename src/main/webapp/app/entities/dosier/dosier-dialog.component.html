@@ -45,8 +45,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label"  for="field_groupesanguin">Groupe sanguin :</label>
-            <select class="form-control" name="groupesanguin" id="field_groupesanguin" [(ngModel)]="dosier.groupesanguin"  >
+            <label class="form-control-label"   for="field_notesparamedicaux">Notes Paramedicaux :</label>
+            <textarea
+                type="text" class="form-control" name="notesparamedicaux" id="field_notesparamedicaux"
+                [(ngModel)]="dosier.notesparamedicaux"></textarea></div>
+        <div class="form-group">
+            <label class="form-control-label"   for="field_groupesanguin">Groupe sanguin :</label>
+            <select class="form-control"  name="groupesanguin" id="field_groupesanguin" [(ngModel)]="dosier.groupesanguin"  >
                 <option value="A + " >A +</option>
                 <option value="A -" >A -</option>
                 <option value="B +" >B +</option>
@@ -78,11 +83,11 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_antecedents">Antécedents :</label>
-            <select class="form-control" name="antecedents" [(ngModel)]="dosier.antecedents" id="field_antecedents" >
-                <option value="Hypertension" jhiTranslate="avancementApp.Antecedents.Hypertension">Hypertension</option>
-                <option value="Hypotension" jhiTranslate="avancementApp.Antecedents.Hypotension">Hypotension</option>
-                <option value="Triglyceride" jhiTranslate="avancementApp.Antecedents.Triglyceride">Triglyceride</option>
-                <option value="Diabete" jhiTranslate="avancementApp.Antecedents.Diabete">Diabete</option>
+            <select class="form-control"  multiple  name="antecedents" [(ngModel)]="dosier.antecedents" id="field_antecedents" >
+                <option value="Hypertension" >Hypertension</option>
+                <option value="Hypotension" >Hypotension</option>
+                <option value="Triglyceride">Triglyceride</option>
+                <option value="Diabete" >Diabete</option>
             </select>
         </div>
 

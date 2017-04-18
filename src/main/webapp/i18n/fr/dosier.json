@@ -24,7 +24,9 @@
             "groupesanguin": "Groupesanguin",
             "recommandations": "Recommandations",
             "resultatdernierexamen": "Resultatdernierexamen",
-            "cituationfamiliale": "Cituationfamiliale"
+            "cituationfamiliale": "Cituationfamiliale",
+            "cnss": "Cnss",
+            "notesparamedicaux": "Notesparamedicaux"
         }
     }
 }

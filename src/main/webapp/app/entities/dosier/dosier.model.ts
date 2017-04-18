@@ -16,5 +16,7 @@ export class Dosier {
         public recommandations?: any,
         public resultatdernierexamen?: any,
         public cituationfamiliale?: string,
+        public cnss?: string,
+        public notesparamedicaux?: string,
     ) { }
 }

@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "perscreptionsmedicamenteuses",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nomdupatient",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numerotel",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "datedenaissance",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "antecedents",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ant",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "groupessanguin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recommandations",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resultatdudernierexamen",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resultatdudernierexamenn",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "situationfamiliale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notesparamedicaux",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "dossier_medical",
+    "pagination": "pagination"
+}

@@ -16,6 +16,10 @@ import { AvancementDoctorModule } from './doctor/doctor.module';
 import { AvancementTraitementModule } from './traitement/traitement.module';
 import { AvancementInfirmierModule } from './infirmier/infirmier.module';
 import { AvancementDosierModule } from './dosier/dosier.module';
+import { AvancementDossierMedicalModule } from './dossier-medical/dossier-medical.module';
+
+
+import { AvancementForsysModule } from './forsys/forsys.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -35,6 +39,10 @@ import { AvancementDosierModule } from './dosier/dosier.module';
         AvancementTraitementModule,
         AvancementInfirmierModule,
         AvancementDosierModule,
+        AvancementDossierMedicalModule,
+
+
+        AvancementForsysModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

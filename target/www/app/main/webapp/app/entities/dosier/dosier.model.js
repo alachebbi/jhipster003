@@ -1,7 +1,7 @@
 "use strict";
 ;
 var Dosier = (function () {
-    function Dosier(id, perscreptionsmedicamenteuses, nom, numero, date, antecedents, groupesanguin, recommandations, resultatdernierexamen, cituationfamiliale) {
+    function Dosier(id, perscreptionsmedicamenteuses, nom, numero, date, antecedents, groupesanguin, recommandations, resultatdernierexamen, cituationfamiliale, cnss, notesparamedicaux) {
         this.id = id;
         this.perscreptionsmedicamenteuses = perscreptionsmedicamenteuses;
         this.nom = nom;
@@ -12,6 +12,8 @@ var Dosier = (function () {
         this.recommandations = recommandations;
         this.resultatdernierexamen = resultatdernierexamen;
         this.cituationfamiliale = cituationfamiliale;
+        this.cnss = cnss;
+        this.notesparamedicaux = notesparamedicaux;
     }
     return Dosier;
 }());

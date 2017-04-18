@@ -20,7 +20,6 @@
     "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
-    "clientFramework": "angular2",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "enableTranslation": true,
@@ -28,6 +27,8 @@
     "languages": [
       "fr",
       "en"
-    ]
+    ],
+    "serviceDiscoveryType": false,
+    "clientFramework": "angular2"
   }
 }

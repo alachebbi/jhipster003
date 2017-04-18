@@ -41,6 +41,14 @@
         {
             "fieldName": "cituationfamiliale",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "cnss",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notesparamedicaux",
+            "fieldType": "String"
         }
     ],
     "dto": "no",

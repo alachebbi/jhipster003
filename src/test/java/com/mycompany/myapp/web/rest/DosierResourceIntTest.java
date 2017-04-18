@@ -71,6 +71,12 @@ public class DosierResourceIntTest {
     private static final String DEFAULT_CITUATIONFAMILIALE = "AAAAAAAAAA";
     private static final String UPDATED_CITUATIONFAMILIALE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CNSS = "AAAAAAAAAA";
+    private static final String UPDATED_CNSS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NOTESPARAMEDICAUX = "AAAAAAAAAA";
+    private static final String UPDATED_NOTESPARAMEDICAUX = "BBBBBBBBBB";
+
     @Autowired
     private DosierRepository dosierRepository;
 
@@ -112,7 +118,9 @@ public class DosierResourceIntTest {
                 .recommandationsContentType(DEFAULT_RECOMMANDATIONS_CONTENT_TYPE)
                 .resultatdernierexamen(DEFAULT_RESULTATDERNIEREXAMEN)
                 .resultatdernierexamenContentType(DEFAULT_RESULTATDERNIEREXAMEN_CONTENT_TYPE)
-                .cituationfamiliale(DEFAULT_CITUATIONFAMILIALE);
+                .cituationfamiliale(DEFAULT_CITUATIONFAMILIALE)
+                .cnss(DEFAULT_CNSS)
+                .notesparamedicaux(DEFAULT_NOTESPARAMEDICAUX);
         return dosier;
     }
 
@@ -149,6 +157,8 @@ public class DosierResourceIntTest {
         assertThat(testDosier.getResultatdernierexamen()).isEqualTo(DEFAULT_RESULTATDERNIEREXAMEN);
         assertThat(testDosier.getResultatdernierexamenContentType()).isEqualTo(DEFAULT_RESULTATDERNIEREXAMEN_CONTENT_TYPE);
         assertThat(testDosier.getCituationfamiliale()).isEqualTo(DEFAULT_CITUATIONFAMILIALE);
+        assertThat(testDosier.getCnss()).isEqualTo(DEFAULT_CNSS);
+        assertThat(testDosier.getNotesparamedicaux()).isEqualTo(DEFAULT_NOTESPARAMEDICAUX);
     }
 
     @Test
@@ -191,7 +201,9 @@ public class DosierResourceIntTest {
             .andExpect(jsonPath("$.[*].recommandations").value(hasItem(Base64Utils.encodeToString(DEFAULT_RECOMMANDATIONS))))
             .andExpect(jsonPath("$.[*].resultatdernierexamenContentType").value(hasItem(DEFAULT_RESULTATDERNIEREXAMEN_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].resultatdernierexamen").value(hasItem(Base64Utils.encodeToString(DEFAULT_RESULTATDERNIEREXAMEN))))
-            .andExpect(jsonPath("$.[*].cituationfamiliale").value(hasItem(DEFAULT_CITUATIONFAMILIALE.toString())));
+            .andExpect(jsonPath("$.[*].cituationfamiliale").value(hasItem(DEFAULT_CITUATIONFAMILIALE.toString())))
+            .andExpect(jsonPath("$.[*].cnss").value(hasItem(DEFAULT_CNSS.toString())))
+            .andExpect(jsonPath("$.[*].notesparamedicaux").value(hasItem(DEFAULT_NOTESPARAMEDICAUX.toString())));
     }
 
     @Test
@@ -215,7 +227,9 @@ public class DosierResourceIntTest {
             .andExpect(jsonPath("$.recommandations").value(Base64Utils.encodeToString(DEFAULT_RECOMMANDATIONS)))
             .andExpect(jsonPath("$.resultatdernierexamenContentType").value(DEFAULT_RESULTATDERNIEREXAMEN_CONTENT_TYPE))
             .andExpect(jsonPath("$.resultatdernierexamen").value(Base64Utils.encodeToString(DEFAULT_RESULTATDERNIEREXAMEN)))
-            .andExpect(jsonPath("$.cituationfamiliale").value(DEFAULT_CITUATIONFAMILIALE.toString()));
+            .andExpect(jsonPath("$.cituationfamiliale").value(DEFAULT_CITUATIONFAMILIALE.toString()))
+            .andExpect(jsonPath("$.cnss").value(DEFAULT_CNSS.toString()))
+            .andExpect(jsonPath("$.notesparamedicaux").value(DEFAULT_NOTESPARAMEDICAUX.toString()));
     }
 
     @Test
@@ -245,7 +259,9 @@ public class DosierResourceIntTest {
                 .recommandationsContentType(UPDATED_RECOMMANDATIONS_CONTENT_TYPE)
                 .resultatdernierexamen(UPDATED_RESULTATDERNIEREXAMEN)
                 .resultatdernierexamenContentType(UPDATED_RESULTATDERNIEREXAMEN_CONTENT_TYPE)
-                .cituationfamiliale(UPDATED_CITUATIONFAMILIALE);
+                .cituationfamiliale(UPDATED_CITUATIONFAMILIALE)
+                .cnss(UPDATED_CNSS)
+                .notesparamedicaux(UPDATED_NOTESPARAMEDICAUX);
 
         restDosierMockMvc.perform(put("/api/dosiers")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -268,6 +284,8 @@ public class DosierResourceIntTest {
         assertThat(testDosier.getResultatdernierexamen()).isEqualTo(UPDATED_RESULTATDERNIEREXAMEN);
         assertThat(testDosier.getResultatdernierexamenContentType()).isEqualTo(UPDATED_RESULTATDERNIEREXAMEN_CONTENT_TYPE);
         assertThat(testDosier.getCituationfamiliale()).isEqualTo(UPDATED_CITUATIONFAMILIALE);
+        assertThat(testDosier.getCnss()).isEqualTo(UPDATED_CNSS);
+        assertThat(testDosier.getNotesparamedicaux()).isEqualTo(UPDATED_NOTESPARAMEDICAUX);
     }
 
     @Test

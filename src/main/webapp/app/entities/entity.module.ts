@@ -20,6 +20,7 @@ import { AvancementDossierMedicalModule } from './dossier-medical/dossier-medica
 
 
 import { AvancementForsysModule } from './forsys/forsys.module';
+import { AvancementDossierMedicalVFModule } from './dossier-medical-vf/dossier-medical-vf.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -43,6 +44,7 @@ import { AvancementForsysModule } from './forsys/forsys.module';
 
 
         AvancementForsysModule,
+        AvancementDossierMedicalVFModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

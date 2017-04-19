@@ -163,3 +163,7 @@ j
 :src/main/java/com/mycompany/myapp/service/MailService.java,d/6/d650297a44e6c1950214743ea478478217eef317
 j
 :src/main/java/com/mycompany/myapp/service/UserService.java,1/5/15250cad5312c9c4c256b3810b26c407cb00f46b
+†
+Vsrc/main/webapp/app/entities/dossier-medical-vf/dossier-medical-vf-dialog.component.ts,c/b/cb4e696c688b88135b8895da2f1ccfa1c11d9260
+|
+Lsrc/main/webapp/app/entities/dossier-medical-vf/dossier-medical-vf.module.ts,b/6/b6aca1f63ad77f308a00a1aae16e85b7a2df8786

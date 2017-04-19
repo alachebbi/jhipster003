@@ -9,20 +9,20 @@ import { DateUtils, DataUtils } from 'ng-jhipster';
 import { JhiLanguageService } from 'ng-jhipster';
 import { MockLanguageService } from '../../../helpers/mock-language.service';
 import { MockActivatedRoute } from '../../../helpers/mock-route.service';
-import { MedDetailComponent } from '../../../../../../main/webapp/app/entities/med/med-detail.component';
-import { MedService } from '../../../../../../main/webapp/app/entities/med/med.service';
-import { Med } from '../../../../../../main/webapp/app/entities/med/med.model';
+import { DossierMedicalVFDetailComponent } from '../../../../../../main/webapp/app/entities/dossier-medical-vf/dossier-medical-vf-detail.component';
+import { DossierMedicalVFService } from '../../../../../../main/webapp/app/entities/dossier-medical-vf/dossier-medical-vf.service';
+import { DossierMedicalVF } from '../../../../../../main/webapp/app/entities/dossier-medical-vf/dossier-medical-vf.model';
 
 describe('Component Tests', () => {
 
-    describe('Med Management Detail Component', () => {
-        let comp: MedDetailComponent;
-        let fixture: ComponentFixture<MedDetailComponent>;
-        let service: MedService;
+    describe('DossierMedicalVF Management Detail Component', () => {
+        let comp: DossierMedicalVFDetailComponent;
+        let fixture: ComponentFixture<DossierMedicalVFDetailComponent>;
+        let service: DossierMedicalVFService;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                declarations: [MedDetailComponent],
+                declarations: [DossierMedicalVFDetailComponent],
                 providers: [
                     MockBackend,
                     BaseRequestOptions,
@@ -44,9 +44,9 @@ describe('Component Tests', () => {
                         provide: JhiLanguageService,
                         useClass: MockLanguageService
                     },
-                    MedService
+                    DossierMedicalVFService
                 ]
-            }).overrideComponent(MedDetailComponent, {
+            }).overrideComponent(DossierMedicalVFDetailComponent, {
                 set: {
                     template: ''
                 }
@@ -54,23 +54,23 @@ describe('Component Tests', () => {
         }));
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(MedDetailComponent);
+            fixture = TestBed.createComponent(DossierMedicalVFDetailComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(MedService);
+            service = fixture.debugElement.injector.get(DossierMedicalVFService);
         });
 
 
         describe('OnInit', () => {
             it('Should call load all on init', () => {
             // GIVEN
-            spyOn(service, 'find').and.returnValue(Observable.of(new Med('aaa')));
+            spyOn(service, 'find').and.returnValue(Observable.of(new DossierMedicalVF('aaa')));
 
             // WHEN
             comp.ngOnInit();
 
             // THEN
             expect(service.find).toHaveBeenCalledWith(123);
-            expect(comp.med).toEqual(jasmine.objectContaining({id:'aaa'}));
+            expect(comp.dossierMedicalVF).toEqual(jasmine.objectContaining({id:'aaa'}));
             });
         });
     });

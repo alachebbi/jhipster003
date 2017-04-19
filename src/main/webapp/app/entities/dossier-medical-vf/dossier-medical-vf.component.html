@@ -1,0 +1,88 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
+
+<div>
+    <h2><span>Gestion des dossiers médicals</span>
+        <button  class="btn btn-info pull-right" style="margin-right: 5px;border-radius: 25px;" [routerLink]="['/', { outlets: { popup: ['dossier-medical-vf-new'] } }]"><i class="fa fa-download" ></i>
+
+            Ajouter un nouveau dossier médical
+
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+
+        </div>
+    </div>
+    <br/>
+
+
+    </div>
+
+        <div class="input-group">
+    <span class="input-group-btn"> <div class="col-lg-3 col-xs-6">
+            <input type="text" [(ngModel)]="filter" class="form-control" placeholder="chercher par nom et prénom..." />
+    </div>
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span></div>
+    <div class="table-responsive" *ngIf="dossierMedicalVFS">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+
+            <th jhiSortBy="nomprenom">Nom et prenom du patient </th>
+            <th jhiSortBy="datenaissance">Date de naissance </th>
+            <th jhiSortBy="situationfamiliale">Situation familiale </th>
+            <th jhiSortBy="numerotel">Numéro de télephone </th>
+
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dossierMedicalVF of dossierMedicalVFS | filterBy : ['medecintraitant']: currentAccount.firstName | pureFilter:filter:'nomprenom';trackBy: trackId">
+
+                <td>{{dossierMedicalVF.nomprenom}}</td>
+                <td>{{dossierMedicalVF.datenaissance | date:'mediumDate'}}</td>
+                <td>{{dossierMedicalVF.situationfamiliale}}</td>
+                <td>{{dossierMedicalVF.numerotel}}</td>
+
+
+
+
+
+
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button class="btn btn-warning pull-right" style="margin-right: 5px;"
+                                type="submit"
+                                [routerLink]="['../dossier-medical-vf', dossierMedicalVF.id ]"
+                        ><i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn btn-primary pull-right" style="margin-right: 5px;" type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dossier-medical-vf/'+ dossierMedicalVF.id + '/edit'} }]"
+                                replaceUrl="true"><i class="fa fa-edit"></i>
+
+                        </button>
+                        <button class="btn btn-danger pull-right" style="margin-right: 5px;" type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dossier-medical-vf/'+ dossierMedicalVF.id + '/delete'} }]"
+                                replaceUrl="true"><i class="fa fa-trash-o"></i>
+
+
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="dossierMedicalVFS && dossierMedicalVFS.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div></section></div>

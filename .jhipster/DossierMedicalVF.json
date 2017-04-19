@@ -1,0 +1,72 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nomprenom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "7"
+        },
+        {
+            "fieldName": "datenaissance",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "situationfamiliale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numerotel",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": "8"
+        },
+        {
+            "fieldName": "groupesanguin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "antecedents",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "perscriptionsmedicamenteuses",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "recommandations",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "resultatdernierexamen",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "notesparamedicaux",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "medecintraitant",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "dossier_medicalvf",
+    "pagination": "pagination"
+}

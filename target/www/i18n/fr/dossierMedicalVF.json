@@ -1,0 +1,32 @@
+{
+    "avancementApp": {
+        "dossierMedicalVF" : {
+            "home": {
+                "title": "DossierMedicalVFS",
+                "createLabel": "Créer un nouveau Dossier Medical VF",
+                "createOrEditLabel": "Créer ou éditer un Dossier Medical VF",
+                "search": "Recherche pour Dossier Medical VF"
+            },
+            "created": "Un nouveau Dossier Medical VF a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Dossier Medical VF avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Dossier Medical VF avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Dossier Medical VF {{ id }} ?"
+            },
+            "detail": {
+                "title": "Dossier Medical VF"
+            },
+            "nomprenom": "Nomprenom",
+            "datenaissance": "Datenaissance",
+            "situationfamiliale": "Situationfamiliale",
+            "numerotel": "Numerotel",
+            "groupesanguin": "Groupesanguin",
+            "antecedents": "Antecedents",
+            "perscriptionsmedicamenteuses": "Perscriptionsmedicamenteuses",
+            "recommandations": "Recommandations",
+            "resultatdernierexamen": "Resultatdernierexamen",
+            "notesparamedicaux": "Notesparamedicaux",
+            "medecintraitant": "Medecintraitant"
+        }
+    }
+}

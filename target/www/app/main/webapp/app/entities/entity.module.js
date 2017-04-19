@@ -23,6 +23,7 @@ var infirmier_module_1 = require("./infirmier/infirmier.module");
 var dosier_module_1 = require("./dosier/dosier.module");
 var dossier_medical_module_1 = require("./dossier-medical/dossier-medical.module");
 var forsys_module_1 = require("./forsys/forsys.module");
+var dossier_medical_vf_module_1 = require("./dossier-medical-vf/dossier-medical-vf.module");
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 var AvancementEntityModule = (function () {
     function AvancementEntityModule() {
@@ -49,6 +50,7 @@ AvancementEntityModule = __decorate([
             dosier_module_1.AvancementDosierModule,
             dossier_medical_module_1.AvancementDossierMedicalModule,
             forsys_module_1.AvancementForsysModule,
+            dossier_medical_vf_module_1.AvancementDossierMedicalVFModule,
         ],
         declarations: [],
         entryComponents: [],

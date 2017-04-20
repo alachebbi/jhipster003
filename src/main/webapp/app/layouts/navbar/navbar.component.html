@@ -109,7 +109,7 @@
                             <strong>   Gestion des Materiels</strong>
                         </a>
 
-                        <a class="dropdown-item" routerLink="hello" jhiHasAuthority="ROLE_MEDECIN" (click)="collapseNavbar()">
+                        <a class="dropdown-item"  jhiHasAuthority="ROLE_MEDECIN"routerLink="hello" (click)="collapseNavbar()">
 
                             <strong>  Gestion des traitements</strong>
                         </a>
@@ -118,15 +118,15 @@
 
                             <strong> Gestion des Medicaments</strong>
                         </a>
-                        <a class="dropdown-item" jhiHasAuthority="ROLE_CHEF_SERVICE , ROLE_PHARMACIEN"routerLink="demandemedicament" (click)="collapseNavbar()">
+                        <a class="dropdown-item" jhiHasAuthority="ROLE_MEDECIN"routerLink="demande-medicament-vf" (click)="collapseNavbar()">
 
                             <strong>    Demandes des medicaments</strong>
                         </a>
-                        <a class="dropdown-item" jhiHasAuthority="ROLE_CHEF_SERVICE , ROLE_GESTIONNAIREDEMATERIEL"routerLink="demandemateriel" routerLinkActive="active" (click)="collapseNavbar()">
+                        <a class="dropdown-item" jhiHasAuthority="['ROLE_CHEF_SERVICE' , 'ROLE_MEDECIN','ROLE_GESTIONNAIREDEMATERIEL']"routerLink="demandemateriel" routerLinkActive="active" (click)="collapseNavbar()">
 
                             <strong> Demandes des materiels</strong>
                         </a>
-                    <li class="dropdown-item"  jhiHasAuthority="['ROLE_ADMIN','ROLE_MEDECIN'ROLE_USER']"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                   <!-- <li class="dropdown-item"  jhiHasAuthority="[ROLE_ADMIN,ROLE_MEDECIN]"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link" routerLink="chart" (click)="collapseNavbar()">
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                             <span class="hidden-sm-down">Chart Medecin</span>
@@ -135,7 +135,7 @@
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                             <span class="hidden-sm-down">Chat Module</span>
                         </a>
-                    </li></div>
+                    </li>--></div>
 
 
 

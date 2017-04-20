@@ -1,0 +1,50 @@
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+<div *ngIf="demandeMedicamentVf">
+    <h2><span jhiTranslate="avancementApp.demandeMedicamentVf.detail.title">Demande Medicament Vf</span> {{demandeMedicamentVf.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.demandeMedicamentVf.medicamentid">Medicamentid</span></dt>
+        <dd>
+            <span>{{demandeMedicamentVf.medicamentid}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demandeMedicamentVf.date">Date</span></dt>
+        <dd>
+            <span>{{demandeMedicamentVf.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demandeMedicamentVf.typedemande">Typedemande</span></dt>
+        <dd>
+            <span>{{demandeMedicamentVf.typedemande}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demandeMedicamentVf.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{demandeMedicamentVf.quantity}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demandeMedicamentVf.etat">Etat</span></dt>
+        <dd>
+            <span>{{demandeMedicamentVf.etat}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demandeMedicamentVf.signature">Signature</span></dt>
+        <dd>
+            <span>{{demandeMedicamentVf.signature}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'demande-medicament-vf/'+ demandeMedicamentVf.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+        </div></section></div>

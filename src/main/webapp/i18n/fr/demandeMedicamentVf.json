@@ -1,0 +1,27 @@
+{
+    "avancementApp": {
+        "demandeMedicamentVf" : {
+            "home": {
+                "title": "DemandeMedicamentVfs",
+                "createLabel": "Créer un nouveau Demande Medicament Vf",
+                "createOrEditLabel": "Créer ou éditer un Demande Medicament Vf",
+                "search": "Recherche pour Demande Medicament Vf"
+            },
+            "created": "Un nouveau Demande Medicament Vf a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Demande Medicament Vf avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Demande Medicament Vf avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Demande Medicament Vf {{ id }} ?"
+            },
+            "detail": {
+                "title": "Demande Medicament Vf"
+            },
+            "medicamentid": "Medicamentid",
+            "date": "Date",
+            "typedemande": "Typedemande",
+            "quantity": "Quantity",
+            "etat": "Etat",
+            "signature": "Signature"
+        }
+    }
+}

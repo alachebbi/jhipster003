@@ -14,14 +14,16 @@ var ng_jhipster_1 = require("ng-jhipster");
 var medicament_service_1 = require("./medicament.service");
 var shared_1 = require("../../shared");
 var uib_pagination_config_1 = require("../../blocks/config/uib-pagination.config");
+var demande_medicament_vf_service_1 = require("../demande-medicament-vf/demande-medicament-vf.service");
 var MedicamentComponent = (function () {
-    function MedicamentComponent(jhiLanguageService, medicamentService, parseLinks, alertService, principal, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
+    function MedicamentComponent(jhiLanguageService, medicamentService, parseLinks, alertService, principal, demandemedicamentService, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
         var _this = this;
         this.jhiLanguageService = jhiLanguageService;
         this.medicamentService = medicamentService;
         this.parseLinks = parseLinks;
         this.alertService = alertService;
         this.principal = principal;
+        this.demandemedicamentService = demandemedicamentService;
         this.activatedRoute = activatedRoute;
         this.router = router;
         this.eventManager = eventManager;
@@ -70,6 +72,7 @@ var MedicamentComponent = (function () {
     MedicamentComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loadAll();
+        this.loadAllDemandes();
         this.principal.identity().then(function (account) {
             _this.currentAccount = account;
         });
@@ -80,6 +83,12 @@ var MedicamentComponent = (function () {
     };
     MedicamentComponent.prototype.trackId = function (index, item) {
         return item.id;
+    };
+    MedicamentComponent.prototype.loadAllDemandes = function () {
+        var _this = this;
+        this.demandemedicamentService.query().subscribe(function (res) {
+            _this.demandes = res.json();
+        }, function (res) { return _this.onError(res.json()); });
     };
     MedicamentComponent.prototype.registerChangeInMedicaments = function () {
         var _this = this;
@@ -114,6 +123,7 @@ MedicamentComponent = __decorate([
         ng_jhipster_1.ParseLinks,
         ng_jhipster_1.AlertService,
         shared_1.Principal,
+        demande_medicament_vf_service_1.DemandeMedicamentVfService,
         router_1.ActivatedRoute,
         router_1.Router,
         ng_jhipster_1.EventManager,

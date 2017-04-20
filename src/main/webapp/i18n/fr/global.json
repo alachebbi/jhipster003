@@ -27,6 +27,7 @@
                 "teacher": "Teacher",
                 "forsys": "Forsys",
                 "dossierMedicalVf": "Dossier Medical VF",
+                "demandeMedicamentVf": "Demande Medicament Vf",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

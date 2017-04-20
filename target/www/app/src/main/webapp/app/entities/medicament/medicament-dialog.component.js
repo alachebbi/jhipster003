@@ -12,7 +12,7 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var ng_jhipster_1 = require("ng-jhipster");
-var medicament_popup_service_1 = require("./medicament-popup.service");
+var medicament_popup_servic_1 = require("./medicament-popup.servic");
 var medicament_service_1 = require("./medicament.service");
 var MedicamentDialogComponent = (function () {
     function MedicamentDialogComponent(activeModal, jhiLanguageService, alertService, medicamentService, eventManager, router) {
@@ -26,6 +26,8 @@ var MedicamentDialogComponent = (function () {
     }
     MedicamentDialogComponent.prototype.ngOnInit = function () {
         this.isSaving = false;
+        this.loadAlldoc();
+        this.loadAllmedi();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     };
     MedicamentDialogComponent.prototype.clear = function () {
@@ -100,8 +102,8 @@ MedicamentPopupComponent = __decorate([
         selector: 'jhi-medicament-popup',
         template: ''
     }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        medicament_popup_service_1.MedicamentPopupService])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, typeof (_a = typeof medicament_popup_servic_1.MedicamentPopupService !== "undefined" && medicament_popup_servic_1.MedicamentPopupService) === "function" && _a || Object])
 ], MedicamentPopupComponent);
 exports.MedicamentPopupComponent = MedicamentPopupComponent;
+var _a;
 //# sourceMappingURL=medicament-dialog.component.js.map

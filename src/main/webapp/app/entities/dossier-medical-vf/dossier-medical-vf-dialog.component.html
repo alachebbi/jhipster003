@@ -9,14 +9,10 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!dossierMedicalVF.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="dossierMedicalVF.id" readonly />
-        </div>
+
         <div class="form-group">
             <label class="form-control-label"  for="field_nomprenom">Nom et prenom du patient </label>
-            <input type="text" class="form-control" name="nomprenom" id="field_nomprenom"
+            <input  style="width : 60%;" type="text" class="form-control" name="nomprenom" id="field_nomprenom"
                 [(ngModel)]="dossierMedicalVF.nomprenom"
             minlength="7" />
             <div [hidden]="!(editForm.controls.nomprenom?.dirty && editForm.controls.nomprenom?.invalid)">
@@ -29,7 +25,7 @@
         <div class="form-group">
             <label class="form-control-label"  for="field_datenaissance">Date de naissance</label>
             <div class="input-group">
-                <input id="field_datenaissance"  class="form-control" name="datenaissance" ngbDatepicker  #datenaissanceDp="ngbDatepicker" [(ngModel)]="dossierMedicalVF.datenaissance"
+                <input  style="width : 60%;" id="field_datenaissance"  class="form-control" name="datenaissance" ngbDatepicker  #datenaissanceDp="ngbDatepicker" [(ngModel)]="dossierMedicalVF.datenaissance"
                 required/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" (click)="datenaissanceDp.open()"><i class="fa fa-calendar"></i></button>
@@ -45,7 +41,7 @@
         <div class="form-group">
             <label class="form-control-label"  for="field_situationfamiliale">Situation familiale</label>
 
-            <select class="form-control"  name="situationfamiliale" id="field_situationfamiliale" [(ngModel)]="dossierMedicalVF.situationfamiliale"  >
+            <select style="width : 60%;" class="form-control"  name="situationfamiliale" id="field_situationfamiliale" [(ngModel)]="dossierMedicalVF.situationfamiliale"  >
                 <option value="célibataire" >Celibataire</option>
                 <option value="marié" >Marié(e)</option>
                 <option value="divorcé" >Divorcé(e)</option>
@@ -54,7 +50,7 @@
         </div>
         <div class="form-group">
             <label class="form-control-label"  for="field_numerotel">Numéro de télephone</label>
-            <input type="number" class="form-control" name="numerotel" id="field_numerotel"
+            <input style="width : 60%;" type="number" class="form-control" name="numerotel" id="field_numerotel"
                 [(ngModel)]="dossierMedicalVF.numerotel"
             min="8" />
             <div [hidden]="!(editForm.controls.numerotel?.dirty && editForm.controls.numerotel?.invalid)">
@@ -70,7 +66,7 @@
         </div>
         <div class="form-group">
             <label class="form-control-label"  for="field_groupesanguin">Groupe sanguin</label>
-            <select class="form-control"  name="groupesanguin" id="field_groupesanguin" [(ngModel)]="dossierMedicalVF.groupesanguin"  >
+            <select style="width : 60%;" class="form-control"  name="groupesanguin" id="field_groupesanguin" [(ngModel)]="dossierMedicalVF.groupesanguin"  >
                 <option value="A + " >A +</option>
                 <option value="A -" >A -</option>
                 <option value="B +" >B +</option>
@@ -137,20 +133,20 @@
         </div>
         <div class="form-group">
             <label class="form-control-label"  for="field_perscriptionsmedicamenteuses">Perscriptions médicamenteuses</label>
-            <textarea type="text" class="form-control" name="perscriptionsmedicamenteuses" id="field_perscriptionsmedicamenteuses"
+            <textarea style="width : 60%;height: 100px;" type="text" class="form-control" name="perscriptionsmedicamenteuses" id="field_perscriptionsmedicamenteuses"
                 [(ngModel)]="dossierMedicalVF.perscriptionsmedicamenteuses"
             ></textarea>
         </div>
         <div class="form-group">
             <label class="form-control-label"  for="field_recommandations">Récommandations</label>
-            <textarea type="text" class="form-control" name="recommandations" id="field_recommandations"
+            <textarea style="width : 60%;height: 100px;" type="text" class="form-control" name="recommandations" id="field_recommandations"
                 [(ngModel)]="dossierMedicalVF.recommandations"
             ></textarea>
         </div>
 
         <div class="form-group">
             <label class="form-control-label" for="field_notesparamedicaux">Notes paramedicaux</label>
-            <textarea type="text" class="form-control" name="notesparamedicaux" id="field_notesparamedicaux"
+            <textarea  style="width : 60%;height: 100px;"type="text" class="form-control" name="notesparamedicaux" id="field_notesparamedicaux"
                 [(ngModel)]="dossierMedicalVF.notesparamedicaux"
             ></textarea>
         </div>

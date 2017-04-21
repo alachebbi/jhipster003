@@ -1,18 +1,18 @@
 
-@squid:UselessImportCheck"Remove this duplicated import.(Ø¯Ÿï
 {squid:UselessImportCheck"TRemove this unused import 'net.sf.dynamicreports.report.builder.datatype.DataTypes'.(Óê¹´øÿÿÿÿ
-vsquid:UselessImportCheck"ORemove this unused import 'net.sf.dynamicreports.report.exception.DRException'.(ÔÃ„üÿÿÿÿ
-wsquid:UselessImportCheck"PRemove this unused import 'net.sf.dynamicreports.report.builder.DynamicReports'.(ñÄé·ıÿÿÿÿ
-Ysquid:S1858"?"getId" returns a string, there's no need to call "toString()".(ªÁ´äüÿÿÿÿ
 Xsquid:UselessImportCheck"1Remove this unused import 'java.io.OutputStream'.(Ó ³ÿÿÿÿÿ
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢
+rsquid:UselessImportCheck"PRemove this unused import 'net.sf.dynamicreports.report.builder.column.Columns'.(¶£•´
+@squid:UselessImportCheck"Remove this duplicated import.(Ø¯Ÿï
+squid:UselessImportCheck"XRemove this unused import 'net.sf.jasperreports.engine.data.JRBeanCollectionDataSource'.(¦ŸŸ˜ıÿÿÿÿ
+Rsquid:UselessImportCheck"+Remove this unused import 'java.awt.Color'.(ùÈãÈøÿÿÿÿ
+wsquid:UselessImportCheck"PRemove this unused import 'net.sf.dynamicreports.report.builder.DynamicReports'.(ñÄé·ıÿÿÿÿ
+esquid:UselessImportCheck"CRemove this unused import 'javax.servlet.http.HttpServletResponse'.(Á¨ïë
+vsquid:UselessImportCheck"ORemove this unused import 'net.sf.dynamicreports.report.exception.DRException'.(ÔÃ„üÿÿÿÿ
 ]squid:UselessImportCheck";Remove this unused import 'javax.servlet.ServletException'.(Š‰™Œ
 }squid:UselessImportCheck"VRemove this unused import 'net.sf.dynamicreports.report.builder.component.Components'.(Üá¹şÿÿÿÿ
-squid:UselessImportCheck"XRemove this unused import 'net.sf.jasperreports.engine.data.JRBeanCollectionDataSource'.(¦ŸŸ˜ıÿÿÿÿ
-rsquid:UselessImportCheck"PRemove this unused import 'net.sf.dynamicreports.report.builder.column.Columns'.(¶£•´
-Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ
-esquid:UselessImportCheck"CRemove this unused import 'javax.servlet.http.HttpServletResponse'.(Á¨ïë
-Wsquid:UselessImportCheck"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
 }squid:UselessImportCheck"VRemove this unused import 'net.sf.dynamicreports.report.constant.HorizontalAlignment'.(ñˆ£ûÿÿÿÿ
-Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢
-Rsquid:UselessImportCheck"+Remove this unused import 'java.awt.Color'.(ùÈãÈøÿÿÿÿ
+Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ
 usquid:UselessImportCheck"TRemove this unused import 'net.sf.dynamicreports.report.builder.style.StyleBuilder'.(„á§B
+Wsquid:UselessImportCheck"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+Ysquid:S1858"?"getId" returns a string, there's no need to call "toString()".(ªÁ´äüÿÿÿÿ

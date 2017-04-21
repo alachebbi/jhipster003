@@ -8,8 +8,8 @@
 
 
 <div>
-    <h2><span jhiTranslate="avancementApp.medicament.home.title">Medicaments</span>
-        <button class="btn btn-primary float-xs-right create-medicament" [routerLink]="['/', { outlets: { popup: ['medicament-new'] } }]">
+    <h2>Stock de Medicaments
+        <button class="btn btn-primary float-xs-right create-medicament" style="margin-right: 5px;border-radius: 25px;" [routerLink]="['/', { outlets: { popup: ['medicament-new'] } }]">
             <span class="fa fa-plus"></span>
             <span  jhiTranslate="avancementApp.medicament.home.createLabel">
             Create new Medicament
@@ -56,17 +56,16 @@
             </thead>
             <tbody>
 
-            <!--<span  *ngFor="let demandeMedicamentVf of demandeMedicamentVfs" >
+
+
+           <!-- <span  *ngFor="let demandeMedicamentVf of demandeMedicamentVfs" >
                 <span *ngFor="let medicament of medicaments">
                     <span *ngIf="demandeMedicamentVf?.medicamentid == medicament?.nom &&
                        demandeMedicamentVF?.etat =='1' ">
-                        <span medicament?.quantity -= medicament?.quantity -
+                       <td> {{medicament.quantity - demandeMedicamentVf.quantity }}  </td>
                     </span>
                 </span>
             </span>-->
-
-
-
 
 
 
@@ -76,36 +75,65 @@
 
                 <td>{{medicament.nom}}</td>
                 <td>{{medicament.type}}</td>
-                <td>{{medicament.quantity}}</td>
+
+
+
+              <td>
+
+
+
+                      {{medicament.quantity}}
+              </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <td>{{medicament.ref}}</td>
                 <td>{{medicament.datevalidite | date:'mediumDate'}}</td>
                 <td>{{medicament.dateproduction | date:'mediumDate'}}</td>
                 <td class="text-xs-right">
                     <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../medicament', medicament.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
+
+
+
+
+                        <button class="btn btn-warning pull-right" style="margin-right: 5px;"
+                                type="submit"
+                                [routerLink]="['../medicament', medicament.id ]"><i class="fa fa-eye"></i> </button>
+
+
+                        <button class="btn btn-primary pull-right" style="margin-right: 5px;" type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'medicament/'+ medicament.id + '/edit'} }]"
-                                replaceUrl="true"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
+                                replaceUrl="true"><i class="fa fa-edit"></i> </button>
+
+                        <button class="btn btn-danger pull-right" style="margin-right: 5px;" type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'medicament/'+ medicament.id + '/delete'} }]"
-                                replaceUrl="true"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
+                                replaceUrl="true"><i class="fa fa-trash-o"></i> </button>
+
+
+
                     </div>
                 </td>
-            </tr>
-            </tbody>
+
+           </tr>
+         </tbody>
         </table>
     </div>
         <div class="text-xs-center" *ngIf="medicaments && medicaments.length">

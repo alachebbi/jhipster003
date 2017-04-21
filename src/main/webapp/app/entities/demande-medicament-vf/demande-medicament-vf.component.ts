@@ -8,6 +8,7 @@ import { DemandeMedicamentVf } from './demande-medicament-vf.model';
 import { DemandeMedicamentVfService } from './demande-medicament-vf.service';
 import { ITEMS_PER_PAGE, Principal } from '../../shared';
 import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
+import {NgbActiveModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
     selector: 'jhi-demande-medicament-vf',
@@ -29,6 +30,8 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    isSaving: boolean;
+    r: any;
 
     constructor(
         private jhiLanguageService: JhiLanguageService,
@@ -38,6 +41,7 @@ currentAccount: any;
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
         private router: Router,
+        public activeModal: NgbActiveModal,
         private eventManager: EventManager,
         private paginationUtil: PaginationUtil,
         private paginationConfig: PaginationConfig
@@ -77,6 +81,20 @@ currentAccount: any;
         });
         this.loadAll();
     }
+    private onSaveSuccess (result: DemandeMedicamentVf) {
+        this.eventManager.broadcast({ name: 'demandemedicamentListModification', content: 'OK'});
+        this.isSaving = false;
+
+
+    }
+    AccepterDemande (r) {
+    r.etat = 1;
+
+        this.demandeMedicamentVfService.update(r).subscribe((res: DemandeMedicamentVf) => this.onSaveSuccess(res),
+                (res: Response) => this.onSaveError(res.json()));
+
+            };
+
 
     clear() {
         this.page = 0;
@@ -85,6 +103,11 @@ currentAccount: any;
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);
         this.loadAll();
+    }
+
+    private onSaveError (error) {
+        this.isSaving = false;
+        this.onError(error);
     }
     ngOnInit() {
         this.loadAll();

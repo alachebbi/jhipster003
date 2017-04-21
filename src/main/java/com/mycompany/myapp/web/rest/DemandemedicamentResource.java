@@ -32,7 +32,7 @@ public class DemandemedicamentResource {
     private final Logger log = LoggerFactory.getLogger(DemandemedicamentResource.class);
 
     private static final String ENTITY_NAME = "demandemedicament";
-        
+
     private final DemandemedicamentRepository demandemedicamentRepository;
 
     public DemandemedicamentResource(DemandemedicamentRepository demandemedicamentRepository) {
@@ -125,5 +125,7 @@ public class DemandemedicamentResource {
         demandemedicamentRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+
 
 }

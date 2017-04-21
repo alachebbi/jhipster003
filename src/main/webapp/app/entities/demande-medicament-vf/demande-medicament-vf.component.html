@@ -55,11 +55,10 @@
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'demande-medicament-vf/'+ demandeMedicamentVf.id + '/edit'} }]"
-                                replaceUrl="true"
+                               (click)="AccepterDemande(demandeMedicamentVf)"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.accpeter">Accepter</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'demande-medicament-vf/'+ demandeMedicamentVf.id + '/delete'} }]"

@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "etat",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "medicamentid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quatite",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": []
+        }
+    ],
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "demandemedicamentvff",
+    "pagination": "pagination"
+}

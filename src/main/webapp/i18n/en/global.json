@@ -28,6 +28,8 @@
                 "forsys": "Forsys",
                 "dossierMedicalVf": "Dossier Medical VF",
                 "demandeMedicamentVf": "Demande Medicament Vf",
+                "demande": "Demande",
+                "demandemedicamentvff": "Demandemedicamentvff",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -14,18 +14,18 @@ var ng_jhipster_1 = require("ng-jhipster");
 var demande_medicament_vf_service_1 = require("./demande-medicament-vf.service");
 var shared_1 = require("../../shared");
 var uib_pagination_config_1 = require("../../blocks/config/uib-pagination.config");
-var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
+var medicament_service_1 = require("../medicament/medicament.service");
 var DemandeMedicamentVfComponent = (function () {
-    function DemandeMedicamentVfComponent(jhiLanguageService, demandeMedicamentVfService, parseLinks, alertService, principal, activatedRoute, router, activeModal, eventManager, paginationUtil, paginationConfig) {
+    function DemandeMedicamentVfComponent(jhiLanguageService, demandeMedicamentVfService, parseLinks, alertService, medicamentService, principal, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
         var _this = this;
         this.jhiLanguageService = jhiLanguageService;
         this.demandeMedicamentVfService = demandeMedicamentVfService;
         this.parseLinks = parseLinks;
         this.alertService = alertService;
+        this.medicamentService = medicamentService;
         this.principal = principal;
         this.activatedRoute = activatedRoute;
         this.router = router;
-        this.activeModal = activeModal;
         this.eventManager = eventManager;
         this.paginationUtil = paginationUtil;
         this.paginationConfig = paginationConfig;
@@ -65,12 +65,11 @@ var DemandeMedicamentVfComponent = (function () {
         this.eventManager.broadcast({ name: 'demandemedicamentListModification', content: 'OK' });
         this.isSaving = false;
     };
-    DemandeMedicamentVfComponent.prototype.AccepterDemande = function (r) {
+    DemandeMedicamentVfComponent.prototype.Accepter = function (DemandeMedicamentVf) {
         var _this = this;
-        r.etat = 1;
-        this.demandeMedicamentVfService.update(r).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
+        DemandeMedicamentVf.etat = 300;
+        this.demandeMedicamentVfService.update(DemandeMedicamentVf).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
     };
-    ;
     DemandeMedicamentVfComponent.prototype.clear = function () {
         this.page = 0;
         this.router.navigate(['/demande-medicament-vf', {
@@ -129,10 +128,10 @@ DemandeMedicamentVfComponent = __decorate([
         demande_medicament_vf_service_1.DemandeMedicamentVfService,
         ng_jhipster_1.ParseLinks,
         ng_jhipster_1.AlertService,
+        medicament_service_1.MedicamentService,
         shared_1.Principal,
         router_1.ActivatedRoute,
         router_1.Router,
-        ng_bootstrap_1.NgbActiveModal,
         ng_jhipster_1.EventManager,
         ng_jhipster_1.PaginationUtil,
         uib_pagination_config_1.PaginationConfig])

@@ -15,11 +15,13 @@ var ng_jhipster_1 = require("ng-jhipster");
 var doctor_service_1 = require("../doctor/doctor.service");
 var dossier_medical_vf_popup_service_1 = require("./dossier-medical-vf-popup.service");
 var dossier_medical_vf_service_1 = require("./dossier-medical-vf.service");
+var medicament_service_1 = require("../medicament/medicament.service");
 var DossierMedicalVFDialogComponent = (function () {
-    function DossierMedicalVFDialogComponent(activeModal, jhiLanguageService, doctorService, dataUtils, alertService, dossierMedicalVFService, eventManager, router) {
+    function DossierMedicalVFDialogComponent(activeModal, jhiLanguageService, doctorService, medicamentService, dataUtils, alertService, dossierMedicalVFService, eventManager, router) {
         this.activeModal = activeModal;
         this.jhiLanguageService = jhiLanguageService;
         this.doctorService = doctorService;
+        this.medicamentService = medicamentService;
         this.dataUtils = dataUtils;
         this.alertService = alertService;
         this.dossierMedicalVFService = dossierMedicalVFService;
@@ -95,6 +97,7 @@ DossierMedicalVFDialogComponent = __decorate([
     __metadata("design:paramtypes", [ng_bootstrap_1.NgbActiveModal,
         ng_jhipster_1.JhiLanguageService,
         doctor_service_1.DoctorService,
+        medicament_service_1.MedicamentService,
         ng_jhipster_1.DataUtils,
         ng_jhipster_1.AlertService,
         dossier_medical_vf_service_1.DossierMedicalVFService,

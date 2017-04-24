@@ -80,6 +80,10 @@
                             <strong> Dossier Medical</strong>
                         </a>
 
+ <a class="dropdown-item" routerLink="demandemedicamentvff"  (click)="collapseNavbar()">
+
+                            <strong> Demande Medicaments</strong>
+                        </a>
 
 
 
@@ -115,10 +119,10 @@
 
                             <strong> Gestion des Medicaments</strong>
                         </a>
-                        <a class="dropdown-item" jhiHasAuthority="ROLE_MEDECIN"routerLink="demande-medicament-vf" (click)="collapseNavbar()">
+                       <!-- <a class="dropdown-item" jhiHasAuthority="ROLE_MEDECIN"routerLink="demande-medicament-vf" (click)="collapseNavbar()">
 
                             <strong>    Demandes des medicaments</strong>
-                        </a>
+                        </a>-->
                         <a class="dropdown-item" jhiHasAuthority="['ROLE_CHEF_SERVICE' , 'ROLE_MEDECIN','ROLE_GESTIONNAIREDEMATERIEL']"routerLink="demandemateriel" routerLinkActive="active" (click)="collapseNavbar()">
 
                             <strong> Demandes des materiels</strong>

@@ -55,13 +55,7 @@ currentAccount: any;
         });
         this.jhiLanguageService.setLocations(['demandemedicament']);
     }
-   bb(i:Demandemedicament)
-    {
-        i.etat="1";
 
-        this.demandemedicamentService.update(i)
-            .subscribe((res: Demandemedicament) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
-    }
     private onSaveSuccess (result: Demandemedicament) {
         this.eventManager.broadcast({ name: 'demandemedicamentListModification', content: 'OK'});
         this.isSaving = false;

@@ -13,6 +13,11 @@ import {DoctorService} from "../doctor/doctor.service";
 import { DossierMedicalVF } from './dossier-medical-vf.model';
 import { DossierMedicalVFPopupService } from './dossier-medical-vf-popup.service';
 import { DossierMedicalVFService } from './dossier-medical-vf.service';
+
+import { MedicamentService } from '../medicament/medicament.service';
+import { Medicament } from '../medicament/medicament.model';
+
+
 @Component({
     selector: 'jhi-dossier-medical-vf-dialog',
     templateUrl: './dossier-medical-vf-dialog.component.html'
@@ -21,12 +26,14 @@ export class DossierMedicalVFDialogComponent implements OnInit {
 
     dossierMedicalVF: DossierMedicalVF;
     doctors:Doctor[];
+    medicaments:Medicament[];
     authorities: any[];
     isSaving: boolean;
     constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private doctorService: DoctorService,
+        private medicamentService :MedicamentService,
         private dataUtils: DataUtils,
         private alertService: AlertService,
         private dossierMedicalVFService: DossierMedicalVFService,

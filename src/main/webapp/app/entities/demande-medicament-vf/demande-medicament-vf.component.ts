@@ -8,8 +8,11 @@ import { DemandeMedicamentVf } from './demande-medicament-vf.model';
 import { DemandeMedicamentVfService } from './demande-medicament-vf.service';
 import { ITEMS_PER_PAGE, Principal } from '../../shared';
 import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
-import {NgbActiveModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import { NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
+
+import { MedicamentService } from '../medicament/medicament.service';
+import { Medicament } from '../medicament/medicament.model';
 @Component({
     selector: 'jhi-demande-medicament-vf',
     templateUrl: './demande-medicament-vf.component.html'
@@ -20,6 +23,7 @@ currentAccount: any;
     demandeMedicamentVfs: DemandeMedicamentVf[];
     error: any;
     success: any;
+    medicaments : Medicament [];
     eventSubscriber: Subscription;
     routeData: any;
     links: any;
@@ -38,10 +42,10 @@ currentAccount: any;
         private demandeMedicamentVfService: DemandeMedicamentVfService,
         private parseLinks: ParseLinks,
         private alertService: AlertService,
+        private medicamentService :MedicamentService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
         private router: Router,
-        public activeModal: NgbActiveModal,
         private eventManager: EventManager,
         private paginationUtil: PaginationUtil,
         private paginationConfig: PaginationConfig
@@ -87,13 +91,12 @@ currentAccount: any;
 
 
     }
-    AccepterDemande (r) {
-    r.etat = 1;
+    Accepter(DemandeMedicamentVf){
 
-        this.demandeMedicamentVfService.update(r).subscribe((res: DemandeMedicamentVf) => this.onSaveSuccess(res),
-                (res: Response) => this.onSaveError(res.json()));
-
-            };
+        DemandeMedicamentVf.etat=300;
+        this.demandeMedicamentVfService.update(DemandeMedicamentVf).subscribe((res: DemandeMedicamentVf) => this.onSaveSuccess(res),
+            (res: Response) => this.onError(res.json()));
+    }
 
 
     clear() {

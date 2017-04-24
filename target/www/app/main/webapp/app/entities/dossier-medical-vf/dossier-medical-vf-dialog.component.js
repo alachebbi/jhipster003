@@ -12,12 +12,14 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var ng_jhipster_1 = require("ng-jhipster");
+var doctor_service_1 = require("../doctor/doctor.service");
 var dossier_medical_vf_popup_service_1 = require("./dossier-medical-vf-popup.service");
 var dossier_medical_vf_service_1 = require("./dossier-medical-vf.service");
 var DossierMedicalVFDialogComponent = (function () {
-    function DossierMedicalVFDialogComponent(activeModal, jhiLanguageService, dataUtils, alertService, dossierMedicalVFService, eventManager, router) {
+    function DossierMedicalVFDialogComponent(activeModal, jhiLanguageService, doctorService, dataUtils, alertService, dossierMedicalVFService, eventManager, router) {
         this.activeModal = activeModal;
         this.jhiLanguageService = jhiLanguageService;
+        this.doctorService = doctorService;
         this.dataUtils = dataUtils;
         this.alertService = alertService;
         this.dossierMedicalVFService = dossierMedicalVFService;
@@ -27,6 +29,7 @@ var DossierMedicalVFDialogComponent = (function () {
     }
     DossierMedicalVFDialogComponent.prototype.ngOnInit = function () {
         this.isSaving = false;
+        this.loadAlldoc();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     };
     DossierMedicalVFDialogComponent.prototype.byteSize = function (field) {
@@ -46,6 +49,12 @@ var DossierMedicalVFDialogComponent = (function () {
                 dossierMedicalVF[field + "ContentType"] = $file_1.type;
             });
         }
+    };
+    DossierMedicalVFDialogComponent.prototype.loadAlldoc = function () {
+        var _this = this;
+        this.doctorService.query().subscribe(function (res) {
+            _this.doctors = res.json();
+        }, function (res) { return _this.onError(res.json()); });
     };
     DossierMedicalVFDialogComponent.prototype.clear = function () {
         this.activeModal.dismiss('cancel');
@@ -85,6 +94,7 @@ DossierMedicalVFDialogComponent = __decorate([
     }),
     __metadata("design:paramtypes", [ng_bootstrap_1.NgbActiveModal,
         ng_jhipster_1.JhiLanguageService,
+        doctor_service_1.DoctorService,
         ng_jhipster_1.DataUtils,
         ng_jhipster_1.AlertService,
         dossier_medical_vf_service_1.DossierMedicalVFService,

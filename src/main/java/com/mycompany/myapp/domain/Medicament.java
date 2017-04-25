@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -26,6 +27,7 @@ public class Medicament implements Serializable {
     @Field("type")
     private String type;
 
+    @Min(value = 1)
     @Field("quantity")
     private Integer quantity;
 

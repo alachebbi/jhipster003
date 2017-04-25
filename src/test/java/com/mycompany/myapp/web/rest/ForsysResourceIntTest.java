@@ -40,6 +40,9 @@ public class ForsysResourceIntTest {
     private static final String DEFAULT_PATIENT = "AAAAAAAAAA";
     private static final String UPDATED_PATIENT = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_AQW = 1;
+    private static final Integer UPDATED_AQW = 2;
+
     @Autowired
     private ForsysRepository forsysRepository;
 
@@ -71,7 +74,8 @@ public class ForsysResourceIntTest {
     public static Forsys createEntity() {
         Forsys forsys = new Forsys()
                 .medecintraitant(DEFAULT_MEDECINTRAITANT)
-                .patient(DEFAULT_PATIENT);
+                .patient(DEFAULT_PATIENT)
+                .aqw(DEFAULT_AQW);
         return forsys;
     }
 
@@ -98,6 +102,7 @@ public class ForsysResourceIntTest {
         Forsys testForsys = forsysList.get(forsysList.size() - 1);
         assertThat(testForsys.getMedecintraitant()).isEqualTo(DEFAULT_MEDECINTRAITANT);
         assertThat(testForsys.getPatient()).isEqualTo(DEFAULT_PATIENT);
+        assertThat(testForsys.getAqw()).isEqualTo(DEFAULT_AQW);
     }
 
     @Test
@@ -130,7 +135,8 @@ public class ForsysResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(forsys.getId())))
             .andExpect(jsonPath("$.[*].medecintraitant").value(hasItem(DEFAULT_MEDECINTRAITANT.toString())))
-            .andExpect(jsonPath("$.[*].patient").value(hasItem(DEFAULT_PATIENT.toString())));
+            .andExpect(jsonPath("$.[*].patient").value(hasItem(DEFAULT_PATIENT.toString())))
+            .andExpect(jsonPath("$.[*].aqw").value(hasItem(DEFAULT_AQW)));
     }
 
     @Test
@@ -144,7 +150,8 @@ public class ForsysResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(forsys.getId()))
             .andExpect(jsonPath("$.medecintraitant").value(DEFAULT_MEDECINTRAITANT.toString()))
-            .andExpect(jsonPath("$.patient").value(DEFAULT_PATIENT.toString()));
+            .andExpect(jsonPath("$.patient").value(DEFAULT_PATIENT.toString()))
+            .andExpect(jsonPath("$.aqw").value(DEFAULT_AQW));
     }
 
     @Test
@@ -164,7 +171,8 @@ public class ForsysResourceIntTest {
         Forsys updatedForsys = forsysRepository.findOne(forsys.getId());
         updatedForsys
                 .medecintraitant(UPDATED_MEDECINTRAITANT)
-                .patient(UPDATED_PATIENT);
+                .patient(UPDATED_PATIENT)
+                .aqw(UPDATED_AQW);
 
         restForsysMockMvc.perform(put("/api/forsys")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -177,6 +185,7 @@ public class ForsysResourceIntTest {
         Forsys testForsys = forsysList.get(forsysList.size() - 1);
         assertThat(testForsys.getMedecintraitant()).isEqualTo(UPDATED_MEDECINTRAITANT);
         assertThat(testForsys.getPatient()).isEqualTo(UPDATED_PATIENT);
+        assertThat(testForsys.getAqw()).isEqualTo(UPDATED_AQW);
     }
 
     @Test

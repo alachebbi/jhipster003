@@ -114,24 +114,28 @@ currentAccount: any;
          (res: Response) => this.onError(res.json())
          );*/
 
-this.loadAllmed();
-        this.medicamentService.query().subscribe((res: Response) => {
-                this.medicaments = res.json();
-                this.medicaments.forEach((Medicament, index) => {
-                    if (Medicament.nom == Demandemedicamentvff.medicamentid) {
-                        Medicament.quantity = 30;
-                        this.medicamentService.update(Medicament).subscribe((res: Medicament) => this.onSaveSuccess(res),
+
+        this.medicamentService.findbyname(Demandemedicamentvff.medicamentid)
+            .subscribe(med => {
+
+
+                        med.quantity -=  Demandemedicamentvff.quatite;
+                        this.medicamentService.modifier(med).subscribe((res: Medicament) => this.onSaveSuccess(res),
                             (res: Response) => this.onError(res.json()));
 
-                    }
-                })
-            },
-            (res: Response) => this.onError(res.json())
-        );
+
+                });
+
 
     }
 
     private onSaveSuccess (result: Demandemedicamentvff) {
+        this.eventManager.broadcast({ name: 'demandeModification', content: 'OK'});
+        this.isSaving = false;
+
+
+    }
+    private onSaveSuccess2 (result: Medicament) {
         this.eventManager.broadcast({ name: 'demandeModification', content: 'OK'});
         this.isSaving = false;
 
@@ -147,7 +151,7 @@ this.loadAllmed();
     }
     Refuser(Demandemedicamentvff){
         Demandemedicamentvff.etat="Refusée";
-        this.demandemedicamentvffService.update(Demandemedicamentvff).subscribe((res: Demandemedicamentvff) => this.onSaveSuccess(res),
+        this.demandemedicamentvffService.update(Demandemedicamentvff).subscribe((res: Demandemedicamentvff) => this.onSaveSuccess2(res),
             (res: Response) => this.onError(res.json()));
     }
     ngOnInit() {

@@ -5,5 +5,6 @@ export class Demandemedicamentvff {
         public medicamentid?: string,
         public quatite?: number,
         public date?: any,
+        public d?: string,
     ) { }
 }

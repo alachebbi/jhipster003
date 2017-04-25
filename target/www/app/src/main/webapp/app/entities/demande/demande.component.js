@@ -14,9 +14,8 @@ var ng_jhipster_1 = require("ng-jhipster");
 var demande_service_1 = require("./demande.service");
 var shared_1 = require("../../shared");
 var uib_pagination_config_1 = require("../../blocks/config/uib-pagination.config");
-var medicament_service_1 = require("../medicament/medicament.service");
 var DemandeComponent = (function () {
-    function DemandeComponent(jhiLanguageService, demandeService, parseLinks, alertService, principal, activatedRoute, router, eventManager, paginationUtil, medicamentService, paginationConfig) {
+    function DemandeComponent(jhiLanguageService, demandeService, parseLinks, alertService, principal, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
         var _this = this;
         this.jhiLanguageService = jhiLanguageService;
         this.demandeService = demandeService;
@@ -27,7 +26,6 @@ var DemandeComponent = (function () {
         this.router = router;
         this.eventManager = eventManager;
         this.paginationUtil = paginationUtil;
-        this.medicamentService = medicamentService;
         this.paginationConfig = paginationConfig;
         this.itemsPerPage = shared_1.ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe(function (data) {
@@ -83,29 +81,6 @@ var DemandeComponent = (function () {
     DemandeComponent.prototype.trackId = function (index, item) {
         return item.id;
     };
-    DemandeComponent.prototype.onSaveSuccess = function (result) {
-        this.eventManager.broadcast({ name: 'demandeModification', content: 'OK' });
-        this.isSaving = false;
-    };
-    DemandeComponent.prototype.Accepter = function (Demande) {
-        var _this = this;
-        this.medicamentService.query().subscribe(function (res) {
-            _this.medicaments = res.json();
-            _this.medicaments.forEach(function (item, index) {
-                if (item.nom == Demande.medicamentid && Demande.etat == "oui") {
-                    item.quantity = item.quantity - Demande.quatity;
-                    _this.medicamentService.update(item).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
-                }
-            });
-        }, function (res) { return _this.onError(res.json()); });
-        Demande.etat = "oui";
-        this.demandeService.update(Demande).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
-    };
-    DemandeComponent.prototype.Refuser = function (Demande) {
-        var _this = this;
-        Demande.etat = "non";
-        this.demandeService.update(Demande).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
-    };
     DemandeComponent.prototype.registerChangeInDemandes = function () {
         var _this = this;
         this.eventSubscriber = this.eventManager.subscribe('demandeListModification', function (response) { return _this.loadAll(); });
@@ -143,7 +118,6 @@ DemandeComponent = __decorate([
         router_1.Router,
         ng_jhipster_1.EventManager,
         ng_jhipster_1.PaginationUtil,
-        medicament_service_1.MedicamentService,
         uib_pagination_config_1.PaginationConfig])
 ], DemandeComponent);
 exports.DemandeComponent = DemandeComponent;

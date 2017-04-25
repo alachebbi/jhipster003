@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Medicament;
 
 import com.mycompany.myapp.repository.MedicamentRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import io.swagger.annotations.ApiParam;
@@ -81,6 +82,8 @@ public class MedicamentResource {
             .body(result);
     }
 
+
+
     /**
      * GET  /medicaments : get all the medicaments.
      *
@@ -109,6 +112,15 @@ public class MedicamentResource {
     public ResponseEntity<Medicament> getMedicament(@PathVariable String id) {
         log.debug("REST request to get Medicament : {}", id);
         Medicament medicament = medicamentRepository.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(medicament));
+    }
+
+
+    @GetMapping("/medicaments2/{nom}")
+    @Timed
+    public ResponseEntity<Medicament> getMedicamentByNom(@PathVariable String nom) {
+
+        Medicament medicament = medicamentRepository.findByname(nom);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(medicament));
     }
 

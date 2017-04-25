@@ -32,6 +32,9 @@ public class Demandemedicamentvff implements Serializable {
     @Field("date")
     private LocalDate date;
 
+    @Field("d")
+    private String d;
+
     public String getId() {
         return id;
     }
@@ -92,6 +95,19 @@ public class Demandemedicamentvff implements Serializable {
         this.date = date;
     }
 
+    public String getD() {
+        return d;
+    }
+
+    public Demandemedicamentvff d(String d) {
+        this.d = d;
+        return this;
+    }
+
+    public void setD(String d) {
+        this.d = d;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -120,6 +136,7 @@ public class Demandemedicamentvff implements Serializable {
             ", medicamentid='" + medicamentid + "'" +
             ", quatite='" + quatite + "'" +
             ", date='" + date + "'" +
+            ", d='" + d + "'" +
             '}';
     }
 }

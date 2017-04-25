@@ -49,6 +49,9 @@ public class DemandemedicamentvffResourceIntTest {
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
+    private static final String DEFAULT_D = "AAAAAAAAAA";
+    private static final String UPDATED_D = "BBBBBBBBBB";
+
     @Autowired
     private DemandemedicamentvffRepository demandemedicamentvffRepository;
 
@@ -85,7 +88,8 @@ public class DemandemedicamentvffResourceIntTest {
                 .etat(DEFAULT_ETAT)
                 .medicamentid(DEFAULT_MEDICAMENTID)
                 .quatite(DEFAULT_QUATITE)
-                .date(DEFAULT_DATE);
+                .date(DEFAULT_DATE)
+                .d(DEFAULT_D);
         return demandemedicamentvff;
     }
 
@@ -114,6 +118,7 @@ public class DemandemedicamentvffResourceIntTest {
         assertThat(testDemandemedicamentvff.getMedicamentid()).isEqualTo(DEFAULT_MEDICAMENTID);
         assertThat(testDemandemedicamentvff.getQuatite()).isEqualTo(DEFAULT_QUATITE);
         assertThat(testDemandemedicamentvff.getDate()).isEqualTo(DEFAULT_DATE);
+        assertThat(testDemandemedicamentvff.getD()).isEqualTo(DEFAULT_D);
     }
 
     @Test
@@ -148,7 +153,8 @@ public class DemandemedicamentvffResourceIntTest {
             .andExpect(jsonPath("$.[*].etat").value(hasItem(DEFAULT_ETAT.toString())))
             .andExpect(jsonPath("$.[*].medicamentid").value(hasItem(DEFAULT_MEDICAMENTID.toString())))
             .andExpect(jsonPath("$.[*].quatite").value(hasItem(DEFAULT_QUATITE)))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
+            .andExpect(jsonPath("$.[*].d").value(hasItem(DEFAULT_D.toString())));
     }
 
     @Test
@@ -164,7 +170,8 @@ public class DemandemedicamentvffResourceIntTest {
             .andExpect(jsonPath("$.etat").value(DEFAULT_ETAT.toString()))
             .andExpect(jsonPath("$.medicamentid").value(DEFAULT_MEDICAMENTID.toString()))
             .andExpect(jsonPath("$.quatite").value(DEFAULT_QUATITE))
-            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
+            .andExpect(jsonPath("$.d").value(DEFAULT_D.toString()));
     }
 
     @Test
@@ -187,7 +194,8 @@ public class DemandemedicamentvffResourceIntTest {
                 .etat(UPDATED_ETAT)
                 .medicamentid(UPDATED_MEDICAMENTID)
                 .quatite(UPDATED_QUATITE)
-                .date(UPDATED_DATE);
+                .date(UPDATED_DATE)
+                .d(UPDATED_D);
 
         restDemandemedicamentvffMockMvc.perform(put("/api/demandemedicamentvffs")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -202,6 +210,7 @@ public class DemandemedicamentvffResourceIntTest {
         assertThat(testDemandemedicamentvff.getMedicamentid()).isEqualTo(UPDATED_MEDICAMENTID);
         assertThat(testDemandemedicamentvff.getQuatite()).isEqualTo(UPDATED_QUATITE);
         assertThat(testDemandemedicamentvff.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testDemandemedicamentvff.getD()).isEqualTo(UPDATED_D);
     }
 
     @Test

@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -48,7 +49,7 @@ public class ForsysResource {
      */
     @PostMapping("/forsys")
     @Timed
-    public ResponseEntity<Forsys> createForsys(@RequestBody Forsys forsys) throws URISyntaxException {
+    public ResponseEntity<Forsys> createForsys(@Valid @RequestBody Forsys forsys) throws URISyntaxException {
         log.debug("REST request to save Forsys : {}", forsys);
         if (forsys.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new forsys cannot already have an ID")).body(null);
@@ -70,7 +71,7 @@ public class ForsysResource {
      */
     @PutMapping("/forsys")
     @Timed
-    public ResponseEntity<Forsys> updateForsys(@RequestBody Forsys forsys) throws URISyntaxException {
+    public ResponseEntity<Forsys> updateForsys(@Valid @RequestBody Forsys forsys) throws URISyntaxException {
         log.debug("REST request to update Forsys : {}", forsys);
         if (forsys.getId() == null) {
             return createForsys(forsys);

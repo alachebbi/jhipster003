@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -24,6 +25,10 @@ public class Forsys implements Serializable {
 
     @Field("patient")
     private String patient;
+
+    @Min(value = 1)
+    @Field("aqw")
+    private Integer aqw;
 
     public String getId() {
         return id;
@@ -59,6 +64,19 @@ public class Forsys implements Serializable {
         this.patient = patient;
     }
 
+    public Integer getAqw() {
+        return aqw;
+    }
+
+    public Forsys aqw(Integer aqw) {
+        this.aqw = aqw;
+        return this;
+    }
+
+    public void setAqw(Integer aqw) {
+        this.aqw = aqw;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -85,6 +103,7 @@ public class Forsys implements Serializable {
             "id=" + id +
             ", medecintraitant='" + medecintraitant + "'" +
             ", patient='" + patient + "'" +
+            ", aqw='" + aqw + "'" +
             '}';
     }
 }

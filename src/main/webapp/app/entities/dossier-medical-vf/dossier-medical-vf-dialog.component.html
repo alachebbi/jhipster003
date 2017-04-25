@@ -25,11 +25,9 @@
         <div class="form-group">
             <label class="form-control-label"  for="field_datenaissance">Date de naissance</label>
             <div class="input-group">
-                <input  style="width : 60%;" id="field_datenaissance"  class="form-control" name="datenaissance" ngbDatepicker  #datenaissanceDp="ngbDatepicker" [(ngModel)]="dossierMedicalVF.datenaissance"
+                <input type="date" style="width : 60%;" id="field_datenaissance"  class="form-control" name="datenaissance" ngbDatepicker  #datenaissanceDp="ngbDatepicker" [(ngModel)]="dossierMedicalVF.datenaissance"
                 required/>
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" (click)="datenaissanceDp.open()"><i class="fa fa-calendar"></i></button>
-                </span>
+
             </div>
             <div [hidden]="!(editForm.controls.datenaissance?.dirty && editForm.controls.datenaissance?.invalid)">
                 <small class="form-text text-danger"
@@ -52,11 +50,11 @@
             <label class="form-control-label"  for="field_numerotel">Numéro de télephone</label>
             <input style="width : 60%;" type="number" class="form-control" name="numerotel" id="field_numerotel"
                 [(ngModel)]="dossierMedicalVF.numerotel"
-            min="8" />
+            min="8" max="8"/>
             <div [hidden]="!(editForm.controls.numerotel?.dirty && editForm.controls.numerotel?.invalid)">
                 <small class="form-text text-danger"
                     [hidden]="!editForm.controls.numerotel?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 8 }">
-                    This field should be at least 8.
+                    This field should be  8.
                 </small>
                 <small class="form-text text-danger"
                     [hidden]="!editForm.controls.numerotel?.errors?.number" jhiTranslate="entity.validation.number">
@@ -82,7 +80,7 @@
             <label class="form-control-label">Medecin traitant </label>
 
 
-            <select class="form-control" name="medecintraitant" [(ngModel)]="dossierMedicalVF.medecintraitant">
+            <select style="width : 60%;"  class="form-control" name="medecintraitant" [(ngModel)]="dossierMedicalVF.medecintraitant">
                 <option *ngFor="let doctor of doctors ;trackBy: trackId" [value]="doctor.nometprenom">{{doctor.nometprenom}}</option>
             </select>
         </div>

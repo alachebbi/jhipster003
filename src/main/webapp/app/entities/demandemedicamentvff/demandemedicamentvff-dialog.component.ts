@@ -20,6 +20,7 @@ export class DemandemedicamentvffDialogComponent implements OnInit {
     demandemedicamentvff: Demandemedicamentvff;
     authorities: any[];
     medicaments:Medicament[];
+    medicament:Medicament;
     isSaving: boolean;
     dem : any;
     today = new Date();
@@ -33,6 +34,7 @@ export class DemandemedicamentvffDialogComponent implements OnInit {
         private medicamentService :MedicamentService,
         private demandemedicamentvffService: DemandemedicamentvffService,
         private eventManager: EventManager,
+
         private router: Router
     ) {
         this.jhiLanguageService.setLocations(['demandemedicamentvff']);
@@ -41,20 +43,9 @@ export class DemandemedicamentvffDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.loadAllmed();
-        this.dd = this.today.getDate();
-        this.mm = this.today.getMonth()+1; //January is 0!
-        this.yyyy = this.today.getFullYear();
 
-        if(this.dd<10) {
-            this.dd='0'+this.dd
-        }
-
-        if(this.mm<10) {
-            this.mm='0'+this.mm
-        }
-
-        var date = this.mm+'/'+this.dd+'/'+this.yyyy;
-        this.dem = { "date": date}
+        this.demandemedicamentvff.etat = "en attente ";
+       // this.demandemedicamentvff.date = new Date().toISOString();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     }
     clear () {

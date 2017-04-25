@@ -16,6 +16,7 @@ var MedicamentService = (function () {
         this.http = http;
         this.dateUtils = dateUtils;
         this.resourceUrl = 'api/medicaments';
+        this.resourceUrl2 = 'api/medicaments2';
     }
     MedicamentService.prototype.create = function (medicament) {
         var copy = Object.assign({}, medicament);
@@ -27,11 +28,21 @@ var MedicamentService = (function () {
             return res.json();
         });
     };
+    MedicamentService.prototype.modifier = function (medicament) {
+        var copy = Object.assign({}, medicament);
+        copy.datevalidite; //= this.dateUtils;//.toDate(medicament.datevalidite);
+        //.convertLocalDateToServer(medicament.datevalidite);
+        copy.dateproduction; // = this.dateUtils;//.toDate(medicament.dateproduction);
+        //.convertLocalDateToServer(medicament.dateproduction);
+        return this.http.put(this.resourceUrl, copy).map(function (res) {
+            return res.json();
+        });
+    };
     MedicamentService.prototype.update = function (medicament) {
         var copy = Object.assign({}, medicament);
-        copy.datevalidite = this.dateUtils
+        copy.datevalidite = this.dateUtils //.toDate(medicament.datevalidite);
             .convertLocalDateToServer(medicament.datevalidite);
-        copy.dateproduction = this.dateUtils
+        copy.dateproduction = this.dateUtils //.toDate(medicament.dateproduction);
             .convertLocalDateToServer(medicament.dateproduction);
         return this.http.put(this.resourceUrl, copy).map(function (res) {
             return res.json();
@@ -40,6 +51,17 @@ var MedicamentService = (function () {
     MedicamentService.prototype.find = function (id) {
         var _this = this;
         return this.http.get(this.resourceUrl + "/" + id).map(function (res) {
+            var jsonResponse = res.json();
+            jsonResponse.datevalidite = _this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.datevalidite);
+            jsonResponse.dateproduction = _this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.dateproduction);
+            return jsonResponse;
+        });
+    };
+    MedicamentService.prototype.findbyname = function (nom) {
+        var _this = this;
+        return this.http.get(this.resourceUrl2 + "/" + nom).map(function (res) {
             var jsonResponse = res.json();
             jsonResponse.datevalidite = _this.dateUtils
                 .convertLocalDateFromServer(jsonResponse.datevalidite);

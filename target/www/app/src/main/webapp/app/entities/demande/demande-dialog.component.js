@@ -14,11 +14,9 @@ var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var ng_jhipster_1 = require("ng-jhipster");
 var demande_popup_service_1 = require("./demande-popup.service");
 var demande_service_1 = require("./demande.service");
-var medicament_service_1 = require("../medicament/medicament.service");
 var DemandeDialogComponent = (function () {
-    function DemandeDialogComponent(activeModal, medicamentService, jhiLanguageService, alertService, demandeService, eventManager, router) {
+    function DemandeDialogComponent(activeModal, jhiLanguageService, alertService, demandeService, eventManager, router) {
         this.activeModal = activeModal;
-        this.medicamentService = medicamentService;
         this.jhiLanguageService = jhiLanguageService;
         this.alertService = alertService;
         this.demandeService = demandeService;
@@ -28,18 +26,11 @@ var DemandeDialogComponent = (function () {
     }
     DemandeDialogComponent.prototype.ngOnInit = function () {
         this.isSaving = false;
-        this.loadAllmedicaments();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     };
     DemandeDialogComponent.prototype.clear = function () {
         this.activeModal.dismiss('cancel');
         this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true });
-    };
-    DemandeDialogComponent.prototype.loadAllmedicaments = function () {
-        var _this = this;
-        this.medicamentService.query().subscribe(function (res) {
-            _this.medicaments = res.json();
-        }, function (res) { return _this.onError(res.json()); });
     };
     DemandeDialogComponent.prototype.save = function () {
         var _this = this;
@@ -74,7 +65,6 @@ DemandeDialogComponent = __decorate([
         templateUrl: './demande-dialog.component.html'
     }),
     __metadata("design:paramtypes", [ng_bootstrap_1.NgbActiveModal,
-        medicament_service_1.MedicamentService,
         ng_jhipster_1.JhiLanguageService,
         ng_jhipster_1.AlertService,
         demande_service_1.DemandeService,

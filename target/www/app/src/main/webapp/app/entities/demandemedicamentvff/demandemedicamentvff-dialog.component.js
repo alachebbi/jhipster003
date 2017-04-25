@@ -30,17 +30,8 @@ var DemandemedicamentvffDialogComponent = (function () {
     DemandemedicamentvffDialogComponent.prototype.ngOnInit = function () {
         this.isSaving = false;
         this.loadAllmed();
-        this.dd = this.today.getDate();
-        this.mm = this.today.getMonth() + 1; //January is 0!
-        this.yyyy = this.today.getFullYear();
-        if (this.dd < 10) {
-            this.dd = '0' + this.dd;
-        }
-        if (this.mm < 10) {
-            this.mm = '0' + this.mm;
-        }
-        var date = this.mm + '/' + this.dd + '/' + this.yyyy;
-        this.dem = { "date": date };
+        this.demandemedicamentvff.etat = "en attente ";
+        // this.demandemedicamentvff.date = new Date().toISOString();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     };
     DemandemedicamentvffDialogComponent.prototype.clear = function () {

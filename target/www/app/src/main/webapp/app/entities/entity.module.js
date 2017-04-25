@@ -26,6 +26,7 @@ var forsys_module_1 = require("./forsys/forsys.module");
 var dossier_medical_vf_module_1 = require("./dossier-medical-vf/dossier-medical-vf.module");
 var demande_medicament_vf_module_1 = require("./demande-medicament-vf/demande-medicament-vf.module");
 var demande_module_1 = require("./demande/demande.module");
+var demandemedicamentvff_module_1 = require("./demandemedicamentvff/demandemedicamentvff.module");
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 var AvancementEntityModule = (function () {
     function AvancementEntityModule() {
@@ -55,6 +56,7 @@ AvancementEntityModule = __decorate([
             dossier_medical_vf_module_1.AvancementDossierMedicalVFModule,
             demande_medicament_vf_module_1.AvancementDemandeMedicamentVfModule,
             demande_module_1.AvancementDemandeModule,
+            demandemedicamentvff_module_1.AvancementDemandemedicamentvffModule,
         ],
         declarations: [],
         entryComponents: [],

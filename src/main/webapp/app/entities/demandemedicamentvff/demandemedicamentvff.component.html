@@ -5,12 +5,12 @@
         <div class='row'>
 
 <div>
-    <h2><span jhiTranslate="avancementApp.demandemedicamentvff.home.title">Demandemedicamentvffs</span>
-        <button class="btn btn-primary float-xs-right create-demandemedicamentvff" [routerLink]="['/', { outlets: { popup: ['demandemedicamentvff-new'] } }]">
+    <h2>Demande de medicaments
+        <button class="btn btn-info float-xs-right create-demandemedicamentvff" style="margin-right: 5px;border-radius: 25px;" [routerLink]="['/', { outlets: { popup: ['demandemedicamentvff-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="avancementApp.demandemedicamentvff.home.createLabel">
-            Create new Demandemedicamentvff
-            </span>
+
+           Créer une nouvelle demande
+
         </button></h2>
     <jhi-alert></jhi-alert>
 
@@ -37,32 +37,32 @@
                 <td>{{demandemedicamentvff.etat}}</td>
                 <td>{{demandemedicamentvff.medicamentid}}</td>
                 <td>{{demandemedicamentvff.quatite}}</td>
+                <td>{{demandemedicamentvff.da}}</td>
 
                 <td class="text-xs-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../demandemedicamentvff', demandemedicamentvff.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
+
+
+
+
+
+                        <button class="btn btn-warning pull-right" style="margin-right: 5px;"
+                                type="submit"
+                                [routerLink]="['../demandemedicamentvff', demandemedicamentvff.id ]"><i class="fa fa-eye"></i> </button>
+
+
+                        <button class="btn btn-primary pull-right" style="margin-right: 5px;" type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'demandemedicamentvff/'+ demandemedicamentvff.id + '/edit'} }]"
-                                replaceUrl="true"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
+                                replaceUrl="true"><i class="fa fa-edit"></i> </button>
+
+                       <!-- <button class="btn btn-danger pull-right" style="margin-right: 5px;" type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'demandemedicamentvff/'+ demandemedicamentvff.id + '/delete'} }]"
-                                replaceUrl="true"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                        <button type="submit" (click)="Accepter(demandemedicamentvff,medicament)" >Accepter</button>
-                        <button type="submit" (click)="Refuser(demandemedicamentvff)" >Refuser</button>
-                    </div>
+                                replaceUrl="true"><i class="fa fa-trash-o"></i> </button>-->
+
+
+
+                        <button class="btn btn-success pull-right" style="margin-right: 5px;" type="submit" (click)="Accepter(demandemedicamentvff,medicament)" ><i class="fa fa-check"></i></button>
+                        <button class="btn btn-danger pull-right" style="margin-right: 5px;" type="submit" (click)="Refuser(demandemedicamentvff)" ><i class="fa fa-ban"></i></button>
+
                 </td>
             </tr>
             </tbody>

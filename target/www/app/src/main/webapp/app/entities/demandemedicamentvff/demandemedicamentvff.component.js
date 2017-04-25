@@ -88,18 +88,17 @@ var DemandemedicamentvffComponent = (function () {
          },
          (res: Response) => this.onError(res.json())
          );*/
-        this.loadAllmed();
-        this.medicamentService.query().subscribe(function (res) {
-            _this.medicaments = res.json();
-            _this.medicaments.forEach(function (Medicament, index) {
-                if (Medicament.nom == Demandemedicamentvff.medicamentid) {
-                    Medicament.quantity = 30;
-                    _this.medicamentService.update(Medicament).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
-                }
-            });
-        }, function (res) { return _this.onError(res.json()); });
+        this.medicamentService.findbyname(Demandemedicamentvff.medicamentid)
+            .subscribe(function (med) {
+            med.quantity -= Demandemedicamentvff.quatite;
+            _this.medicamentService.modifier(med).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
+        });
     };
     DemandemedicamentvffComponent.prototype.onSaveSuccess = function (result) {
+        this.eventManager.broadcast({ name: 'demandeModification', content: 'OK' });
+        this.isSaving = false;
+    };
+    DemandemedicamentvffComponent.prototype.onSaveSuccess2 = function (result) {
         this.eventManager.broadcast({ name: 'demandeModification', content: 'OK' });
         this.isSaving = false;
     };
@@ -112,7 +111,7 @@ var DemandemedicamentvffComponent = (function () {
     DemandemedicamentvffComponent.prototype.Refuser = function (Demandemedicamentvff) {
         var _this = this;
         Demandemedicamentvff.etat = "Refusée";
-        this.demandemedicamentvffService.update(Demandemedicamentvff).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
+        this.demandemedicamentvffService.update(Demandemedicamentvff).subscribe(function (res) { return _this.onSaveSuccess2(res); }, function (res) { return _this.onError(res.json()); });
     };
     DemandemedicamentvffComponent.prototype.ngOnInit = function () {
         var _this = this;

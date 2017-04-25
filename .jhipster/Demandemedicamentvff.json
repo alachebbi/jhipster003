@@ -18,6 +18,10 @@
             "fieldName": "date",
             "fieldType": "LocalDate",
             "fieldValidateRules": []
+        },
+        {
+            "fieldName": "d",
+            "fieldType": "String"
         }
     ],
     "dto": "no",

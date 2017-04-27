@@ -1,9 +1,9 @@
 
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(î×Ã8í”›¸+
-[squid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢8í”›¸+
 gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ë’žÆ8í”›¸+
-[squid:S1858"?"getId" returns a string, there's no need to call "toString()".(ð•¶‰8í”›¸+
 èsquid:S1160"ÌRefactor this method to throw at most one checked exception instead of: javax.servlet.ServletException, java.io.IOException, java.net.URISyntaxException, net.sf.dynamicreports.report.exception.DRException(×Ã«+8î”›¸+
-asquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ8î”›¸+
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(î×Ã8í”›¸+
 osquid:UselessImportCheck"ARemove this unused import 'com.mycompany.myapp.domain.Infirmier'.(¢”ˆ·þÿÿÿÿ8¤íÇŒ¸+
+asquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ8î”›¸+
 ésquid:S1160"ÌRefactor this method to throw at most one checked exception instead of: javax.servlet.ServletException, java.io.IOException, java.net.URISyntaxException, net.sf.dynamicreports.report.exception.DRException(¢ïÊ 8î”›¸+
+[squid:S1858"?"getId" returns a string, there's no need to call "toString()".(ð•¶‰8í”›¸+
+[squid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢8í”›¸+

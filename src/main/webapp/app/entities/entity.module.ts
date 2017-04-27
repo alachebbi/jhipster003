@@ -24,6 +24,10 @@ import { AvancementDossierMedicalVFModule } from './dossier-medical-vf/dossier-m
 import { AvancementDemandeMedicamentVfModule } from './demande-medicament-vf/demande-medicament-vf.module';
 import { AvancementDemandeModule } from './demande/demande.module';
 import { AvancementDemandemedicamentvffModule } from './demandemedicamentvff/demandemedicamentvff.module';
+import { AvancementArticleModule } from './article/article.module';
+
+import { AvancementPharmacieModule } from './pharmacie/pharmacie.module';
+import { AvancementLikesModule } from './likes/likes.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -51,6 +55,9 @@ import { AvancementDemandemedicamentvffModule } from './demandemedicamentvff/dem
         AvancementDemandeMedicamentVfModule,
         AvancementDemandeModule,
         AvancementDemandemedicamentvffModule,
+        AvancementArticleModule,
+        AvancementPharmacieModule,
+        AvancementLikesModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

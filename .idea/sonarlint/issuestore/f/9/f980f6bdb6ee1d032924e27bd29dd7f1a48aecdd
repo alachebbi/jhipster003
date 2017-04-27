@@ -1,6 +1,6 @@
 
-Isquid:S1068"/Remove this unused "authorities" private field.(µûæ»ýÿÿÿÿ
-tsquid:S1450"ZRemove the "authorities" field and declare it as a local variable in the relevant methods.(µûæ»ýÿÿÿÿ
-Psquid:S1213";Move this constructor to comply with Java Code Conventions.(ë²ê‰
-Wsquid:S00107"AConstructor has 9 parameters, which is greater than 7 authorized.(ÂÆ—ë
 Csquid:S1068")Remove this unused "email" private field.(ª«Õìùÿÿÿÿ
+Wsquid:S00107"AConstructor has 9 parameters, which is greater than 7 authorized.(ÂÆ—ë
+Isquid:S1068"/Remove this unused "authorities" private field.(µûæ»ýÿÿÿÿ
+Psquid:S1213";Move this constructor to comply with Java Code Conventions.(ë²ê‰
+tsquid:S1450"ZRemove the "authorities" field and declare it as a local variable in the relevant methods.(µûæ»ýÿÿÿÿ

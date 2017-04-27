@@ -27,6 +27,9 @@ var dossier_medical_vf_module_1 = require("./dossier-medical-vf/dossier-medical-
 var demande_medicament_vf_module_1 = require("./demande-medicament-vf/demande-medicament-vf.module");
 var demande_module_1 = require("./demande/demande.module");
 var demandemedicamentvff_module_1 = require("./demandemedicamentvff/demandemedicamentvff.module");
+var article_module_1 = require("./article/article.module");
+var pharmacie_module_1 = require("./pharmacie/pharmacie.module");
+var likes_module_1 = require("./likes/likes.module");
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 var AvancementEntityModule = (function () {
     function AvancementEntityModule() {
@@ -57,6 +60,9 @@ AvancementEntityModule = __decorate([
             demande_medicament_vf_module_1.AvancementDemandeMedicamentVfModule,
             demande_module_1.AvancementDemandeModule,
             demandemedicamentvff_module_1.AvancementDemandemedicamentvffModule,
+            article_module_1.AvancementArticleModule,
+            pharmacie_module_1.AvancementPharmacieModule,
+            likes_module_1.AvancementLikesModule,
         ],
         declarations: [],
         entryComponents: [],

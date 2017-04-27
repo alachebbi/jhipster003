@@ -1,0 +1,48 @@
+
+<div *ngIf="article">
+    <h2><span jhiTranslate="avancementApp.article.detail.title">Article</span> {{article.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.article.titre">Titre</span></dt>
+        <dd>
+            <span>{{article.titre}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.article.text">Text</span></dt>
+        <dd>
+            <span>{{article.text}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.article.utilisateur">Utilisateur</span></dt>
+        <dd>
+            <span>{{article.utilisateur}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.article.vote">Vote</span></dt>
+        <dd>
+            <span>{{article.vote}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.article.date">Date</span></dt>
+        <dd>
+            <span>{{article.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.article.doc">Doc</span></dt>
+        <dd>
+            <div *ngIf="article.doc">
+                <a (click)="openFile(article.docContentType, article.doc)" jhiTranslate="entity.action.open">open</a>
+                {{article.docContentType}}, {{byteSize(article.doc)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

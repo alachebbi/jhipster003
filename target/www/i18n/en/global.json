@@ -30,6 +30,10 @@
                 "demandeMedicamentVf": "Demande Medicament Vf",
                 "demande": "Demande",
                 "demandemedicamentvff": "Demandemedicamentvff",
+                "article": "Article",
+                "pharmacien": "Pharmacien",
+                "pharmacie": "Pharmacie",
+                "likes": "Likes",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

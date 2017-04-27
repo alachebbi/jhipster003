@@ -1,0 +1,7 @@
+
+[squid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢8Ä…öóº+
+|squid:UselessImportCheck"SRemove this unused import 'com.mycompany.myapp.service.util.DynamicReporGenerator'.(ë’’‘8Ûª—óº+
+gsquid:UselessImportCheck">Remove this unused import 'com.mycompany.myapp.domain.Doctor'.(¾Ôä«8Ûª—óº+
+`squid:S1858"?"getId" returns a string, there's no need to call "toString()".(¨µ®©ùÿÿÿÿ8Ä…öóº+
+Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ë’žÆ8ÁÏýòº+

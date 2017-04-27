@@ -63,6 +63,18 @@
 
 
 
+
+
+                        <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="likes" (click)="collapseNavbar()">
+
+                            <strong> Likes</strong>
+                        </a>
+
+
+
+
+
+
                         <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chart" (click)="collapseNavbar()">
 
                             <strong> Chart</strong>
@@ -84,8 +96,15 @@
 
                             <strong> Demande Medicaments</strong>
                         </a>
+                <a class="dropdown-item" routerLink="article"  (click)="collapseNavbar()">
 
+                            <strong> Article</strong>
+                        </a>
 
+ <a class="dropdown-item" routerLink="pharmacie" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
+
+                            <strong>  Gestion des pharmaciens</strong>
+                        </a>
 
                         <a class="dropdown-item" routerLink="servicemedical" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
 

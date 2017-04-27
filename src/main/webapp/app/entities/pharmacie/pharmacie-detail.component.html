@@ -1,0 +1,66 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+            <div style="margin-left: 60px;" *ngIf="pharmacie"></div>
+
+            <div style="margin-left: 30px;">
+                <div *ngIf="pharmacie">
+                    <div  *ngIf="pharmacie.photo" >
+                        <a (click)="openFile(pharmacie.photoContentType, pharmacie.photo)">
+                            <img [src]="'data:' + pharmacie.photoContentType + ';base64,' + pharmacie.photo" style="max-width: 100px;max-height: 100px;" alt="pharmacie image"/>
+                        </a>
+
+                    </div>
+                    <hr>
+                    <jhi-alert-error></jhi-alert-error>
+                    <dl class="row">
+                        <dt> <span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Nom et prenom :</span> </dt>
+                        <dd>
+                            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 140px;font-family:Times New Roman;">{{pharmacie.nometprenom}}</span>
+                        </dd>
+
+
+                        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Date de naissance:</span></dt>
+                        <dd>
+                            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 140px;font-family:Times New Roman;">{{pharmacie.datedenaissance | date:'dd/MM/yyyy'}}</span>
+                        </dd>
+                        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Email :</span></dt>
+                        <dd>
+                            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 140px;font-family:Times New Roman;">{{pharmacie.email}}</span>
+                        </dd>
+                        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Login</span></dt>
+                        <dd>
+                            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 140px;font-family:Times New Roman;">{{pharmacie.login}}</span>
+                        </dd>
+
+
+
+
+
+                    </dl>
+
+                    <button type="submit"
+                            (click)="previousState()"
+                            class="btn btn-info"
+                            style="border-radius: 25px">
+                        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+                    </button>
+
+                    <button type="button"
+                            [routerLink]="['/', { outlets: { popup: 'pharmacie/'+ pharmacie.id + '/edit'} }]"
+                            replaceUrl="true"
+                            class="btn btn-primary"
+                            style="border-radius: 25px">
+                        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+                    </button>
+                </div>
+            </div>
+
+        </div >
+
+    </section >
+
+</div>

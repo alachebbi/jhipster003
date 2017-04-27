@@ -1,0 +1,27 @@
+{
+    "avancementApp": {
+        "pharmacie" : {
+            "home": {
+                "title": "Pharmacies",
+                "createLabel": "Créer un nouveau Pharmacie",
+                "createOrEditLabel": "Créer ou éditer un Pharmacie",
+                "search": "Recherche pour Pharmacie"
+            },
+            "created": "Un nouveau Pharmacie a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Pharmacie avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Pharmacie avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Pharmacie {{ id }} ?"
+            },
+            "detail": {
+                "title": "Pharmacie"
+            },
+            "nometprenom": "Nometprenom",
+            "datedenaissance": "Datedenaissance",
+            "email": "Email",
+            "photo": "Photo",
+            "motdepasse": "Motdepasse",
+            "login": "Login"
+        }
+    }
+}

@@ -7,5 +7,6 @@ export class Article {
         public vote?: number,
         public date?: any,
         public doc?: any,
+        public ispushed?: boolean,
     ) { }
 }

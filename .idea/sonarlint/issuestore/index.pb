@@ -291,3 +291,15 @@ c
 3src/main/webapp/app/entities/likes/likes.service.ts,3/1/31d9f1c66b3e4c6601cb8ea55849d17922b9c697
 l
 <src/main/webapp/app/entities/likes/likes-dialog.component.ts,8/7/876be76bf0069fb9d9f12f78239095e844b18f78
+e
+5src/main/webapp/app/entities/likes/likes.component.ts,9/a/9aacc06f258b2119d351774964118e3133443dde
+|
+Lsrc/main/java/com/mycompany/myapp/web/rest/DemandemedicamentvffResource.java,b/d/bd9990da5bed3bdd05f9554cee814cf16c019849
+
+Osrc/main/webapp/app/entities/dossier-medical-vf/dossier-medical-vf.component.ts,a/5/a57b1f3a094e8c0f4bae5a731bc179860a608fe6
+q
+Asrc/main/java/com/mycompany/myapp/repository/LikesRepository.java,6/7/6748d913400f9aa00a58e8e5b0cb9a4812fe8d99
+m
+=src/main/java/com/mycompany/myapp/web/rest/LikesResource.java,c/c/cc86a06094794ef81bc3487e39f195a607e45cd7
+t
+Dsrc/test/java/com/mycompany/myapp/web/rest/LikesResourceIntTest.java,1/5/15212fdc9eb4298ec6f4c908b1b299f83330a5b8

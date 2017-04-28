@@ -1,5 +1,5 @@
 
-Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(∑ù‰¢
-Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(Õ´ô∞
 Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢æä¿
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(Õ´ô∞
 psquid:UselessImportCheck"GRemove this unused import 'com.mycompany.myapp.security.SecurityUtils'.(∑Ñ¨°8Âµ‹£∫+
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(∑ù‰¢

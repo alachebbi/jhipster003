@@ -2,6 +2,8 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Likes;
+import com.mycompany.myapp.domain.Medicament;
+import com.mycompany.myapp.repository.LikesRepository;
 import com.mycompany.myapp.service.LikesService;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
@@ -31,11 +33,14 @@ public class LikesResource {
     private final Logger log = LoggerFactory.getLogger(LikesResource.class);
 
     private static final String ENTITY_NAME = "likes";
-        
+
     private final LikesService likesService;
 
-    public LikesResource(LikesService likesService) {
+    private final LikesRepository likesRepository;
+
+    public LikesResource(LikesService likesService,LikesRepository likesRepository) {
         this.likesService = likesService;
+        this.likesRepository=likesRepository;
     }
 
     /**
@@ -123,6 +128,15 @@ public class LikesResource {
         log.debug("REST request to delete Likes : {}", id);
         likesService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+
+    @GetMapping("/likes/{articleid}/{userid}")
+    @Timed
+    public ResponseEntity<Likes> findByidandname(@PathVariable String articleid, @PathVariable String userid) {
+
+        Likes likes = likesRepository.findByidandname(articleid,userid);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(likes));
     }
 
 }

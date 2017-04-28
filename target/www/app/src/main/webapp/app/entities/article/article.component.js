@@ -31,7 +31,7 @@ var ArticleComponent = (function () {
         this.eventManager = eventManager;
         this.paginationUtil = paginationUtil;
         this.paginationConfig = paginationConfig;
-        this.isPushed = 1;
+        this.isPushed = false;
         this.itemsPerPage = shared_1.ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe(function (data) {
             _this.page = data['pagingParams'].page;
@@ -72,6 +72,17 @@ var ArticleComponent = (function () {
             }]);
         this.loadAll();
     };
+    ArticleComponent.prototype.loadAlllikes = function () {
+        var _this = this;
+        this.articles.forEach(function (item, index) {
+            _this.likesService.findByidandname(item.id, _this.currentAccount.firstName)
+                .subscribe(function (likes) {
+                if (likes.userid == _this.currentAccount.firstName) {
+                    document.getElementById("l" + index).style.opacity = "0.3";
+                }
+            });
+        });
+    };
     ArticleComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loadAll();
@@ -89,11 +100,9 @@ var ArticleComponent = (function () {
             });
         });
     };
-    ArticleComponent.prototype.VoterPour = function (Article, isPushed, likes) {
+    ArticleComponent.prototype.VoterPour = function (Article, likes) {
         var _this = this;
-        this.isPushed = 0;
-        //this.likes.articleid="aze";
-        //  this.likes.userid="azer";
+        // Article.ispushed=true;
         Article.vote += 1;
         this.articleService.modifier(Article)
             .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
@@ -153,6 +162,7 @@ var ArticleComponent = (function () {
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.articles = data;
+        this.loadAlllikes();
     };
     ArticleComponent.prototype.onError = function (error) {
         this.alertService.error(error.message, null, null);

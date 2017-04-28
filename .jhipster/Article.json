@@ -37,6 +37,11 @@
             "fieldName": "doc",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "ispushed",
+            "fieldType": "Boolean",
+            "fieldValidateRules": []
         }
     ],
     "dto": "no",

@@ -73,21 +73,6 @@ var DemandemedicamentvffComponent = (function () {
         var _this = this;
         Demandemedicamentvff.etat = "Acceptée";
         this.demandemedicamentvffService.update(Demandemedicamentvff).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
-        /* this.medicamentService.query().subscribe((res: Response) => {
-         this.medicaments = res.json();
-         this.medicaments.forEach((Medicament,index)=>
-         {
-         if (Medicament.nom == Demandemedicamentvff.medicamentid )
-         {
-         Medicament.quantity = 30;
-         this.medicamentService.update(Medicament).subscribe((res: Medicament) => this.onSaveSuccess(res),
-         (res: Response) => this.onError(res.json()));
-
-         }
-         })
-         },
-         (res: Response) => this.onError(res.json())
-         );*/
         this.medicamentService.findbyname(Demandemedicamentvff.medicamentid)
             .subscribe(function (med) {
             med.quantity -= Demandemedicamentvff.quatite;

@@ -32,6 +32,12 @@ var LikesService = (function () {
             return res.json();
         });
     };
+    LikesService.prototype.findByidandname = function (articleid, userid) {
+        return this.http.get(this.resourceUrl + "/" + articleid + "/" + userid)
+            .map(function (res) {
+            return res.json();
+        });
+    };
     LikesService.prototype.query = function (req) {
         var options = this.createRequestOption(req);
         return this.http.get(this.resourceUrl, options);

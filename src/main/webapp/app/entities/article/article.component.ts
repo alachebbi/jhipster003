@@ -26,13 +26,14 @@ currentAccount: any;
     articles: Article[];
     likess : Likes[];
     likes: Likes;
-    isPushed = 1;
+    isPushed = false;
     account: Account;
     error: any;
     success: any;
     eventSubscriber: Subscription;
     routeData: any;
     links: any;
+
     totalItems: any;
     queryCount: any;
     itemsPerPage: any;
@@ -101,13 +102,30 @@ currentAccount: any;
         }]);
         this.loadAll();
     }
+    loadAlllikes() {
+        this.articles.forEach((item,index)=>{
+            this.likesService.findByidandname(item.id,this.currentAccount.firstName)
+                .subscribe(
+                    likes=>{
+                        if (likes.userid==this.currentAccount.firstName )
+                        {
+                            document.getElementById("l" + index).style.opacity="0.3"
+
+                        }
+                    }
+                );
+            }
+        );
+    }
     ngOnInit() {
         this.loadAll();
+
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
         this.registerChangeInArticles();
         this.registerAuthenticationSuccess();
+
     }
     registerAuthenticationSuccess() {
         this.eventManager.subscribe('authenticationSuccess', (message) => {
@@ -116,15 +134,14 @@ currentAccount: any;
             });
         });
     }
-    VoterPour(Article,isPushed,likes:Likes) {
-        this.isPushed = 0;
-        //this.likes.articleid="aze";
-      //  this.likes.userid="azer";
+
+    VoterPour(Article,likes:Likes) {
+       // Article.ispushed=true;
         Article.vote += 1;
         this.articleService.modifier(Article)
             .subscribe((res: Article) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
 
-this.likes= new Likes;
+       this.likes= new Likes;
        this.likes.articleid=Article.id;
         this.principal.identity().then((account) => {
             this.currentAccount = account;
@@ -132,11 +149,6 @@ this.likes= new Likes;
         this.likes.userid=this.currentAccount.firstName;
         this.likesService.create(this.likes)
             .subscribe((res: Likes) => this.onSaveSuccess2(res), (res: Response) => this.onSaveError(res.json()));
-
-
-
-
-
     }
     VoterContre(Article) {
         Article.vote -= 1;
@@ -195,6 +207,7 @@ this.likes= new Likes;
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.articles = data;
+        this.loadAlllikes();
     }
 
     private onError (error) {

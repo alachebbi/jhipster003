@@ -58,6 +58,9 @@ public class ArticleResourceIntTest {
     private static final String DEFAULT_DOC_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_DOC_CONTENT_TYPE = "image/png";
 
+    private static final Boolean DEFAULT_ISPUSHED = false;
+    private static final Boolean UPDATED_ISPUSHED = true;
+
     @Autowired
     private ArticleRepository articleRepository;
 
@@ -97,7 +100,8 @@ public class ArticleResourceIntTest {
                 .vote(DEFAULT_VOTE)
                 .date(DEFAULT_DATE)
                 .doc(DEFAULT_DOC)
-                .docContentType(DEFAULT_DOC_CONTENT_TYPE);
+                .docContentType(DEFAULT_DOC_CONTENT_TYPE)
+                .ispushed(DEFAULT_ISPUSHED);
         return article;
     }
 
@@ -129,6 +133,7 @@ public class ArticleResourceIntTest {
         assertThat(testArticle.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testArticle.getDoc()).isEqualTo(DEFAULT_DOC);
         assertThat(testArticle.getDocContentType()).isEqualTo(DEFAULT_DOC_CONTENT_TYPE);
+        assertThat(testArticle.isIspushed()).isEqualTo(DEFAULT_ISPUSHED);
     }
 
     @Test
@@ -200,7 +205,8 @@ public class ArticleResourceIntTest {
             .andExpect(jsonPath("$.[*].vote").value(hasItem(DEFAULT_VOTE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].docContentType").value(hasItem(DEFAULT_DOC_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].doc").value(hasItem(Base64Utils.encodeToString(DEFAULT_DOC))));
+            .andExpect(jsonPath("$.[*].doc").value(hasItem(Base64Utils.encodeToString(DEFAULT_DOC))))
+            .andExpect(jsonPath("$.[*].ispushed").value(hasItem(DEFAULT_ISPUSHED.booleanValue())));
     }
 
     @Test
@@ -219,7 +225,8 @@ public class ArticleResourceIntTest {
             .andExpect(jsonPath("$.vote").value(DEFAULT_VOTE))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.docContentType").value(DEFAULT_DOC_CONTENT_TYPE))
-            .andExpect(jsonPath("$.doc").value(Base64Utils.encodeToString(DEFAULT_DOC)));
+            .andExpect(jsonPath("$.doc").value(Base64Utils.encodeToString(DEFAULT_DOC)))
+            .andExpect(jsonPath("$.ispushed").value(DEFAULT_ISPUSHED.booleanValue()));
     }
 
     @Test
@@ -245,7 +252,8 @@ public class ArticleResourceIntTest {
                 .vote(UPDATED_VOTE)
                 .date(UPDATED_DATE)
                 .doc(UPDATED_DOC)
-                .docContentType(UPDATED_DOC_CONTENT_TYPE);
+                .docContentType(UPDATED_DOC_CONTENT_TYPE)
+                .ispushed(UPDATED_ISPUSHED);
 
         restArticleMockMvc.perform(put("/api/articles")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -263,6 +271,7 @@ public class ArticleResourceIntTest {
         assertThat(testArticle.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testArticle.getDoc()).isEqualTo(UPDATED_DOC);
         assertThat(testArticle.getDocContentType()).isEqualTo(UPDATED_DOC_CONTENT_TYPE);
+        assertThat(testArticle.isIspushed()).isEqualTo(UPDATED_ISPUSHED);
     }
 
     @Test

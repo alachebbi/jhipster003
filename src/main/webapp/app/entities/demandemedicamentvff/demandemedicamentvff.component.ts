@@ -98,21 +98,7 @@ currentAccount: any;
             (res: Response) => this.onError(res.json()));
 
 
-        /* this.medicamentService.query().subscribe((res: Response) => {
-         this.medicaments = res.json();
-         this.medicaments.forEach((Medicament,index)=>
-         {
-         if (Medicament.nom == Demandemedicamentvff.medicamentid )
-         {
-         Medicament.quantity = 30;
-         this.medicamentService.update(Medicament).subscribe((res: Medicament) => this.onSaveSuccess(res),
-         (res: Response) => this.onError(res.json()));
 
-         }
-         })
-         },
-         (res: Response) => this.onError(res.json())
-         );*/
 
 
         this.medicamentService.findbyname(Demandemedicamentvff.medicamentid)

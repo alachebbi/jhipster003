@@ -59,11 +59,11 @@ public class LikesResourceIntTest {
 
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
+        /*MockitoAnnotations.initMocks(this);
         LikesResource likesResource = new LikesResource(likesService);
         this.restLikesMockMvc = MockMvcBuilders.standaloneSetup(likesResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setMessageConverters(jacksonMessageConverter).build();
+            .setMessageConverters(jacksonMessageConverter).build();*/
     }
 
     /**

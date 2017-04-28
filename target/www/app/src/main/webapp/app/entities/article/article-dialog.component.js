@@ -91,7 +91,7 @@ var ArticleDialogComponent = (function () {
         else {
             this.article.utilisateur = this.account.firstName;
             this.article.vote = 0;
-            // this.article.date=new Date().toISOString();
+            this.article.ispushed = false;
             this.articleService.create(this.article)
                 .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
         }

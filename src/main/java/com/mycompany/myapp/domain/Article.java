@@ -45,6 +45,9 @@ public class Article implements Serializable {
     @Field("doc_content_type")
     private String docContentType;
 
+    @Field("ispushed")
+    private Boolean ispushed;
+
     public String getId() {
         return id;
     }
@@ -144,6 +147,19 @@ public class Article implements Serializable {
         this.docContentType = docContentType;
     }
 
+    public Boolean isIspushed() {
+        return ispushed;
+    }
+
+    public Article ispushed(Boolean ispushed) {
+        this.ispushed = ispushed;
+        return this;
+    }
+
+    public void setIspushed(Boolean ispushed) {
+        this.ispushed = ispushed;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -175,6 +191,7 @@ public class Article implements Serializable {
             ", date='" + date + "'" +
             ", doc='" + doc + "'" +
             ", docContentType='" + docContentType + "'" +
+            ", ispushed='" + ispushed + "'" +
             '}';
     }
 }

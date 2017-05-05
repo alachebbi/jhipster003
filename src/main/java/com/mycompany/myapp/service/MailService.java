@@ -1,6 +1,7 @@
 package com.mycompany.myapp.service;
 
 import com.mycompany.myapp.domain.User;
+import com.mycompany.myapp.domain.Reclamation;
 
 import io.github.jhipster.config.JHipsterProperties;
 
@@ -30,6 +31,9 @@ public class MailService {
     private final Logger log = LoggerFactory.getLogger(MailService.class);
 
     private static final String USER = "user";
+
+    private static final String RECLAMATION = "reclamation";
+
 
     private static final String BASE_URL = "baseUrl";
 
@@ -92,6 +96,18 @@ public class MailService {
         String content = templateEngine.process("creationEmail", context);
         String subject = messageSource.getMessage("email.activation.title", null, locale);
         sendEmail(user.getEmail(), subject, content, false, true);
+    }
+
+    @Async
+    public void sendReclamationEmail(Reclamation reclamation) {
+        log.debug("Sending reclamation e-mail to '{}'", reclamation.getRecusermail());
+        Locale locale = Locale.forLanguageTag(reclamation.getTitre());
+        Context context = new Context(locale);
+        context.setVariable(RECLAMATION, reclamation);
+        context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+        String content = templateEngine.process("reclamationEmail", context);
+        String subject = "Traitment Reclamation";
+        sendEmail(reclamation.getRecusermail(), subject, content, false, true);
     }
 
     @Async

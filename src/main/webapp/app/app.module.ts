@@ -10,6 +10,7 @@ import { AvancementAdminModule } from './admin/admin.module';
 import { AvancementAccountModule } from './account/account.module';
 import { AvancementEntityModule } from './entities/entity.module';
 import { AvancementChartModule } from './chart/chart.module';
+import { AvancementChartmedicamentModule } from './chartmedicament/chartmedicament.module';
 import { AvancementChatModule } from './chat/chat.module';
 
 
@@ -39,6 +40,7 @@ import {
         AvancementAccountModule,
         AvancementEntityModule,
         AvancementChartModule,
+        AvancementChartmedicamentModule,
         AvancementChatModule
     ],
 

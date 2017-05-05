@@ -1,10 +1,11 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Likes;
 import com.mycompany.myapp.domain.Reclamation;
 
 import com.mycompany.myapp.repository.ReclamationRepository;
-import com.mycompany.myapp.security.AuthoritiesConstants;
+import com.mycompany.myapp.service.MailService;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import io.swagger.annotations.ApiParam;
@@ -16,7 +17,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -35,10 +35,13 @@ public class ReclamationResource {
 
     private static final String ENTITY_NAME = "reclamation";
 
+    private final MailService mailService;
+
     private final ReclamationRepository reclamationRepository;
 
-    public ReclamationResource(ReclamationRepository reclamationRepository) {
+    public ReclamationResource(ReclamationRepository reclamationRepository , MailService mailService) {
         this.reclamationRepository = reclamationRepository;
+        this.mailService = mailService;
     }
 
     /**
@@ -50,7 +53,6 @@ public class ReclamationResource {
      */
     @PostMapping("/reclamations")
     @Timed
-    //@Secured(AuthoritiesConstants.MEDECIN)
     public ResponseEntity<Reclamation> createReclamation(@RequestBody Reclamation reclamation) throws URISyntaxException {
         log.debug("REST request to save Reclamation : {}", reclamation);
         if (reclamation.getId() != null) {
@@ -73,13 +75,13 @@ public class ReclamationResource {
      */
     @PutMapping("/reclamations")
     @Timed
-   // @Secured(AuthoritiesConstants.MEDECIN)
     public ResponseEntity<Reclamation> updateReclamation(@RequestBody Reclamation reclamation) throws URISyntaxException {
         log.debug("REST request to update Reclamation : {}", reclamation);
         if (reclamation.getId() == null) {
             return createReclamation(reclamation);
         }
         Reclamation result = reclamationRepository.save(reclamation);
+        mailService.sendReclamationEmail(reclamation);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, reclamation.getId().toString()))
             .body(result);
@@ -94,7 +96,6 @@ public class ReclamationResource {
      */
     @GetMapping("/reclamations")
     @Timed
- //   @Secured(AuthoritiesConstants.MEDECIN)
     public ResponseEntity<List<Reclamation>> getAllReclamations(@ApiParam Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Reclamations");
@@ -111,7 +112,6 @@ public class ReclamationResource {
      */
     @GetMapping("/reclamations/{id}")
     @Timed
- //   @Secured(AuthoritiesConstants.MEDECIN)
     public ResponseEntity<Reclamation> getReclamation(@PathVariable String id) {
         log.debug("REST request to get Reclamation : {}", id);
         Reclamation reclamation = reclamationRepository.findOne(id);
@@ -126,11 +126,12 @@ public class ReclamationResource {
      */
     @DeleteMapping("/reclamations/{id}")
     @Timed
-  //  @Secured(AuthoritiesConstants.MEDECIN)
     public ResponseEntity<Void> deleteReclamation(@PathVariable String id) {
         log.debug("REST request to delete Reclamation : {}", id);
         reclamationRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+
 
 }

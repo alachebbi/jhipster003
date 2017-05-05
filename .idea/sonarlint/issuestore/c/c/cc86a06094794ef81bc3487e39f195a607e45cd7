@@ -1,5 +1,5 @@
 
-ksquid:UselessImportCheck"BRemove this unused import 'com.mycompany.myapp.domain.Medicament'.(÷Àˆ8‚èª¦»+
-Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ
-Ysquid:S1858"?"getId" returns a string, there's no need to call "toString()".(ÉÀ®†øÿÿÿÿ
 Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢
+Ysquid:S1858"?"getId" returns a string, there's no need to call "toString()".(ÉÀ®†øÿÿÿÿ
+Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ
+ksquid:UselessImportCheck"BRemove this unused import 'com.mycompany.myapp.domain.Medicament'.(÷Àˆ8‚èª¦»+

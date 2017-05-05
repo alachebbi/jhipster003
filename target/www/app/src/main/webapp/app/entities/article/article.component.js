@@ -78,6 +78,7 @@ var ArticleComponent = (function () {
             _this.likesService.findByidandname(item.id, _this.currentAccount.firstName)
                 .subscribe(function (likes) {
                 if (likes.userid == _this.currentAccount.firstName) {
+                    document.getElementById("l" + index).setAttribute("disabled", "disabled");
                     document.getElementById("l" + index).style.opacity = "0.3";
                 }
             });

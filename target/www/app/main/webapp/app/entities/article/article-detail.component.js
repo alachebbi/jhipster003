@@ -13,8 +13,9 @@ var router_1 = require("@angular/router");
 var ng_jhipster_1 = require("ng-jhipster");
 var article_service_1 = require("./article.service");
 var ArticleDetailComponent = (function () {
-    function ArticleDetailComponent(jhiLanguageService, articleService, route) {
+    function ArticleDetailComponent(jhiLanguageService, dataUtils, articleService, route) {
         this.jhiLanguageService = jhiLanguageService;
+        this.dataUtils = dataUtils;
         this.articleService = articleService;
         this.route = route;
         this.jhiLanguageService.setLocations(['article']);
@@ -31,6 +32,12 @@ var ArticleDetailComponent = (function () {
             _this.article = article;
         });
     };
+    ArticleDetailComponent.prototype.byteSize = function (field) {
+        return this.dataUtils.byteSize(field);
+    };
+    ArticleDetailComponent.prototype.openFile = function (contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    };
     ArticleDetailComponent.prototype.previousState = function () {
         window.history.back();
     };
@@ -45,6 +52,7 @@ ArticleDetailComponent = __decorate([
         templateUrl: './article-detail.component.html'
     }),
     __metadata("design:paramtypes", [ng_jhipster_1.JhiLanguageService,
+        ng_jhipster_1.DataUtils,
         article_service_1.ArticleService,
         router_1.ActivatedRoute])
 ], ArticleDetailComponent);

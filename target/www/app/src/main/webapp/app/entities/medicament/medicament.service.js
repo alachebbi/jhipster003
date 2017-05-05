@@ -48,6 +48,16 @@ var MedicamentService = (function () {
             return res.json();
         });
     };
+    MedicamentService.prototype.getChartData = function () {
+        return this.http.get(this.resourceUrl + '/chartdata').map(function (res) {
+            return res.json();
+        });
+    };
+    MedicamentService.prototype.getAllMedicaments = function () {
+        return this.http.get(this.resourceUrl).map(function (res) {
+            return res.json();
+        });
+    };
     MedicamentService.prototype.find = function (id) {
         var _this = this;
         return this.http.get(this.resourceUrl + "/" + id).map(function (res) {

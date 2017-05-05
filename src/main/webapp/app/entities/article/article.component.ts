@@ -109,7 +109,10 @@ currentAccount: any;
                     likes=>{
                         if (likes.userid==this.currentAccount.firstName )
                         {
+                            document.getElementById("l" + index).setAttribute("disabled","disabled")
                             document.getElementById("l" + index).style.opacity="0.3"
+                                //style.opacity="0.3"
+                             // l.disabled=true;
 
                         }
                     }

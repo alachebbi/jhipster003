@@ -10,34 +10,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var ng_jhipster_1 = require("ng-jhipster");
 var ArticleService = (function () {
-    function ArticleService(http) {
+    function ArticleService(http, dateUtils) {
         this.http = http;
+        this.dateUtils = dateUtils;
         this.resourceUrl = 'api/articles';
     }
     ArticleService.prototype.create = function (article) {
         var copy = Object.assign({}, article);
+        copy.date = this.dateUtils
+            .convertLocalDateToServer(article.date);
         return this.http.post(this.resourceUrl, copy).map(function (res) {
+            return res.json();
+        });
+    };
+    ArticleService.prototype.modifier = function (article) {
+        var copy = Object.assign({}, article);
+        copy.date; //= this.dateUtils;//.toDate(medicament.datevalidite);
+        //.convertLocalDateToServer(medicament.datevalidite);
+        // copy.dateproduction;// = this.dateUtils;//.toDate(medicament.dateproduction);
+        //.convertLocalDateToServer(medicament.dateproduction);
+        return this.http.put(this.resourceUrl, copy).map(function (res) {
             return res.json();
         });
     };
     ArticleService.prototype.update = function (article) {
         var copy = Object.assign({}, article);
+        copy.date = this.dateUtils
+            .convertLocalDateToServer(article.date);
         return this.http.put(this.resourceUrl, copy).map(function (res) {
             return res.json();
         });
     };
     ArticleService.prototype.find = function (id) {
+        var _this = this;
         return this.http.get(this.resourceUrl + "/" + id).map(function (res) {
-            return res.json();
+            var jsonResponse = res.json();
+            jsonResponse.date = _this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.date);
+            return jsonResponse;
         });
     };
     ArticleService.prototype.query = function (req) {
+        var _this = this;
         var options = this.createRequestOption(req);
-        return this.http.get(this.resourceUrl, options);
+        return this.http.get(this.resourceUrl, options)
+            .map(function (res) { return _this.convertResponse(res); });
     };
     ArticleService.prototype.delete = function (id) {
         return this.http.delete(this.resourceUrl + "/" + id);
+    };
+    ArticleService.prototype.convertResponse = function (res) {
+        var jsonResponse = res.json();
+        for (var i = 0; i < jsonResponse.length; i++) {
+            jsonResponse[i].date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].date);
+        }
+        res._body = jsonResponse;
+        return res;
     };
     ArticleService.prototype.createRequestOption = function (req) {
         var options = new http_1.BaseRequestOptions();
@@ -57,7 +88,7 @@ var ArticleService = (function () {
 }());
 ArticleService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, ng_jhipster_1.DateUtils])
 ], ArticleService);
 exports.ArticleService = ArticleService;
 //# sourceMappingURL=article.service.js.map

@@ -14,10 +14,14 @@ var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var ng_jhipster_1 = require("ng-jhipster");
 var demande_medicament_vf_popup_service_1 = require("./demande-medicament-vf-popup.service");
 var demande_medicament_vf_service_1 = require("./demande-medicament-vf.service");
+var doctor_service_1 = require("../doctor/doctor.service");
+var medicament_service_1 = require("../medicament/medicament.service");
 var DemandeMedicamentVfDialogComponent = (function () {
-    function DemandeMedicamentVfDialogComponent(activeModal, jhiLanguageService, alertService, demandeMedicamentVfService, eventManager, router) {
+    function DemandeMedicamentVfDialogComponent(activeModal, jhiLanguageService, doctorService, medicamentService, alertService, demandeMedicamentVfService, eventManager, router) {
         this.activeModal = activeModal;
         this.jhiLanguageService = jhiLanguageService;
+        this.doctorService = doctorService;
+        this.medicamentService = medicamentService;
         this.alertService = alertService;
         this.demandeMedicamentVfService = demandeMedicamentVfService;
         this.eventManager = eventManager;
@@ -26,11 +30,25 @@ var DemandeMedicamentVfDialogComponent = (function () {
     }
     DemandeMedicamentVfDialogComponent.prototype.ngOnInit = function () {
         this.isSaving = false;
+        this.loadAlldoctors();
+        this.loadAllmedicaments();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     };
     DemandeMedicamentVfDialogComponent.prototype.clear = function () {
         this.activeModal.dismiss('cancel');
         this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true });
+    };
+    DemandeMedicamentVfDialogComponent.prototype.loadAllmedicaments = function () {
+        var _this = this;
+        this.medicamentService.query().subscribe(function (res) {
+            _this.medicaments = res.json();
+        }, function (res) { return _this.onError(res.json()); });
+    };
+    DemandeMedicamentVfDialogComponent.prototype.loadAlldoctors = function () {
+        var _this = this;
+        this.doctorService.query().subscribe(function (res) {
+            _this.doctors = res.json();
+        }, function (res) { return _this.onError(res.json()); });
     };
     DemandeMedicamentVfDialogComponent.prototype.save = function () {
         var _this = this;
@@ -66,6 +84,8 @@ DemandeMedicamentVfDialogComponent = __decorate([
     }),
     __metadata("design:paramtypes", [ng_bootstrap_1.NgbActiveModal,
         ng_jhipster_1.JhiLanguageService,
+        doctor_service_1.DoctorService,
+        medicament_service_1.MedicamentService,
         ng_jhipster_1.AlertService,
         demande_medicament_vf_service_1.DemandeMedicamentVfService,
         ng_jhipster_1.EventManager,

@@ -73,7 +73,7 @@ var ChartComponent = (function () {
 ChartComponent = __decorate([
     core_1.Component({
         selector: 'bar-chart-demo',
-        templateUrl: './chart.component.html',
+        templateUrl: './chartmedicament.component.html',
         styleUrls: [
             'chart.css'
         ]

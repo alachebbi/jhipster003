@@ -117,7 +117,7 @@ public class DoctorResource {
         Set<String> autrority = new HashSet<>();
         // autrority.add("ROLE_MEDECIN_CHEF");
         autrority.add("ROLE_MEDECIN");
-        UserDTO userDTO = new UserDTO(null, doctor.getLogin(), doctor.getNometprenom(), doctor.getNometprenom(), doctor.getEmail(),true, null, "en", null, null, null, null, autrority);
+        UserDTO userDTO = new UserDTO(null, doctor.getLogin(), doctor.getNometprenom(), doctor.getNometprenom(), doctor.getEmail(),true, null, "en", null, null, null, null,doctor.getPhoto(), autrority);
         User createUser = userService.createUser(userDTO);
         doctor.setMotdepasse(createUser.getPassword());
         Doctor result = doctorRepository.save(doctor);

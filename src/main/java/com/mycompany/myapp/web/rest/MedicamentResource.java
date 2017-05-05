@@ -1,18 +1,25 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Doctor;
 import com.mycompany.myapp.domain.Medicament;
 
 import com.mycompany.myapp.repository.MedicamentRepository;
 import com.mycompany.myapp.security.SecurityUtils;
+import com.mycompany.myapp.service.dto.ChartData;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +29,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 /**
  * REST controller for managing Medicament.
@@ -40,6 +49,8 @@ public class MedicamentResource {
         this.medicamentRepository = medicamentRepository;
     }
 
+    @Autowired
+    MongoTemplate mongoTemplate;
     /**
      * POST  /medicaments : Create a new medicament.
      *
@@ -138,6 +149,21 @@ public class MedicamentResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+    @GetMapping("/medicaments/chartdata")
+    public List<ChartData> getMedicamentChartData(){
+        Aggregation agg = newAggregation(
+            match(Criteria.where("_id").ne(null)),
 
+            group("quantity").count().as("value"),
+            //group("name").count().as("value"),
+            project("name").and("title").previousOperation()
+        );
+
+        AggregationResults<ChartData> groupResults
+            = mongoTemplate.aggregate(agg, Medicament.class, ChartData.class);
+        return groupResults.getMappedResults();
+
+
+    }
 
 }

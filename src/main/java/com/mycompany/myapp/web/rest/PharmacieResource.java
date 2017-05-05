@@ -1,7 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.mycompany.myapp.domain.Doctor;
 import com.mycompany.myapp.domain.Pharmacie;
 
 import com.mycompany.myapp.domain.User;
@@ -9,7 +8,6 @@ import com.mycompany.myapp.repository.PharmacieRepository;
 import com.mycompany.myapp.service.MailService;
 import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.service.dto.UserDTO;
-import com.mycompany.myapp.service.util.DynamicReporGenerator;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import io.swagger.annotations.ApiParam;
@@ -80,7 +78,7 @@ public class PharmacieResource {
         Set<String> autrority = new HashSet<>();
         // autrority.add("ROLE_MEDECIN_CHEF");
         autrority.add("ROLE_PHARMACIEN");
-        UserDTO userDTO = new UserDTO(null, pharmacie.getLogin(), pharmacie.getNometprenom(), pharmacie.getNometprenom(), pharmacie.getEmail(),true, null, "en", null, null, null, null, autrority);
+        UserDTO userDTO = new UserDTO(null, pharmacie.getLogin(), pharmacie.getNometprenom(), pharmacie.getNometprenom(), pharmacie.getEmail(),true, null, "en", null, null, null, null, null, autrority);
         User createUser = userService.createUser(userDTO);
         pharmacie.setMotdepasse(createUser.getPassword());
         Pharmacie result = pharmacieRepository.save(pharmacie);

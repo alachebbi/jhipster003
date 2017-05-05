@@ -31,9 +31,9 @@
 
 
 
-   <h3 style="float: left;padding-top:6px;margin-left:340px;padding-bottom:15px;font-family:Times New Roman;">{{article.titre}}</h3><br/>
+   <h3 style="color:#8c0f15;float: left;padding-top:6px;margin-left:340px;padding-bottom:15px;font-family:Times New Roman;">{{article.titre}}</h3><br/>
     <p style=" width:100%;margin-top: 40px;font-family:Times New Roman ;padding-right: 18px;">{{article.text}}</p><br/>
-  <div style="display: inline;" > <strong style="font-family:Times New Roman; ">Publié par</strong><p style="font-family:Times New Roman; ">{{article.utilisateur}}</p></div>
+  <div style="display: inline;" > <strong style="color:#242b5d;font-family:Times New Roman; ">Publié par</strong><p style="font-family:Times New Roman; ">{{article.utilisateur}}</p></div>
 
 
 
@@ -73,15 +73,15 @@
             id="l{{i}}"
 
              style="border-radius: 25px;float: right;margin-right: 5px;margin-left: 5px;opacity: 2;"
-             class="btn btn-danger btn-sm">
+             class="btn btn-primary btn-sm">
                             <span class="fa fa-thumbs-up"></span>
 
                         </button>
     <button type="submit"
             (click)=" VoterContre(article)"
-            class="btn btn-danger btn-sm"
+            class="btn btn-warning btn-sm"
             style="border-radius: 25px;float: right;margin-right: 5px;margin-left: 5px">
-        <span class="fa fa-frown-o"></span>
+        <span class="fa fa-thumbs-down"></span>
     </button>
 
 
@@ -91,7 +91,7 @@
                 [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/delete'} }]"
                 replaceUrl="true"
                 style="border-radius: 25px;float: right;margin-right: 5px;margin-left: 5px;"
-                class="btn btn-primary btn-sm">
+                class="btn btn-danger btn-sm">
                             <span class="fa fa-trash-o"></span>
 
                         </button>

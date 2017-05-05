@@ -41,74 +41,85 @@
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
             <!-- Sidebar user panel -->
-                                     <div class="user-panel">
+                                     <div class="user-panel" style="padding-top: 10px">
+                                         <div *ngIf="account?.firstName=='admin'">
+            <div class="pull-left image">
+                <img  style="width: 60px;height: 60px;border-radius: 40px;" src="http://www.shzongyue.com/data/out/3/38655058-admin.png"></div></div>
+<div *ngFor="let doctor of doctor  ">
+    <div *ngIf="doctor.nometprenom == account?.firstName">
 
+
+                                        <div class="pull-left image">
+                                         <img style="width: 60px;height: 60px;border-radius: 40px;" [src]="'data:' + doctor.photoContentType + ';base64,' + doctor.photo" alt="doctor image"/>
+                                        </div></div></div>
+<!--<span>pp</span></div>-->
                                                    <div class="pull-left info">
                                                        <p>{{account?.firstName}} </p>
 
                                                               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                                                    </div>
-                                     </div>
+                                        </div>
 
             <!-- search form -->
 
 
-            <div  [ngSwitch]="isAuthenticated()">
+            <div style="padding-top: 50px;" [ngSwitch]="isAuthenticated()">
 
 
-                <a class="dropdown-item" jhiHasAuthority= "ROLE_ADMIN" routerLink="reclamation" (click)="collapseNavbar()">
+                <a  class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_ADMIN"  routerLink="reclamation" (click)="collapseNavbar()">
 
-                    <strong>  Envoyer une reclamation</strong>
+               <span class="fa fa-envelope-o"></span>     Envoyer une reclamation
                 </a>
 
 
 
 
 
-                        <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="likes" (click)="collapseNavbar()">
 
-                            <strong> Likes</strong>
+
+
+
+
+
+
+                        <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chart" (click)="collapseNavbar()">
+
+                            <span class="fa fa-adjust"> </span>  Statistiques des medecins
+                        </a>
+                 <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chartmedicament" (click)="collapseNavbar()">
+
+                         <span class="fa fa-bar-chart-o"></span>   Statistiques des medicaments
+                        </a>
+                        <a  uiSrefActive="active"style="padding-bottom: 10px;padding-top: 10px"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chat" (click)="collapseNavbar()">
+
+                      <span class="fa fa-comments"></span>   Chat
+                        </a>
+                        <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="doctor" (click)="collapseNavbar()">
+
+                      <span class="fa fa-stethoscope"></span>       Gérer les medecins
+                        </a>
+                        <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_MEDECIN"  class="dropdown-item" routerLink="dossier-medical-vf" (click)="collapseNavbar()">
+
+                        <span class="fa fa-archive"></span>     Dossier Medical
                         </a>
 
+ <a class="dropdown-item" routerLink="demandemedicamentvff"style="padding-bottom: 10px;padding-top: 10px"  (click)="collapseNavbar()">
 
-
-
-
-
-                        <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chart" (click)="collapseNavbar()">
-
-                            <strong> Chart</strong>
+                       <span class="fa fa-plus-square"></span>   Demande Medicaments
                         </a>
-                        <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chat" (click)="collapseNavbar()">
+                <a class="dropdown-item" routerLink="article" style="padding-bottom: 10px;padding-top: 10px" (click)="collapseNavbar()">
 
-                            <strong>  Chat</strong>
-                        </a>
-                        <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="doctor" (click)="collapseNavbar()">
-
-                            <strong>  Gérer les medecins</strong>
-                        </a>
-                        <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_MEDECIN"  class="dropdown-item" routerLink="dossier-medical-vf" (click)="collapseNavbar()">
-
-                            <strong> Dossier Medical</strong>
+                 <span class="fa fa-comment-o"></span>  Avis Medical
                         </a>
 
- <a class="dropdown-item" routerLink="demandemedicamentvff"  (click)="collapseNavbar()">
+ <a class="dropdown-item" routerLink="pharmacie" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
 
-                            <strong> Demande Medicaments</strong>
-                        </a>
-                <a class="dropdown-item" routerLink="article"  (click)="collapseNavbar()">
-
-                            <strong> Article</strong>
+    <span class="fa fa-medkit"></span> Gestion des pharmaciens
                         </a>
 
- <a class="dropdown-item" routerLink="pharmacie" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
+                        <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" routerLink="servicemedical" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
 
-                            <strong>  Gestion des pharmaciens</strong>
-                        </a>
-
-                        <a class="dropdown-item" routerLink="servicemedical" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
-
-                            <strong>  Gestion des services medicals</strong>
+                     <span class="fa fa-hospital-o"></span>     Gestion des services medicals
                         </a>
 
 
@@ -124,27 +135,27 @@
 
                             Gestion des Patients
                         </a>-->
-                        <a class="dropdown-item" routerLink="materiel" jhiHasAuthority="ROLE_CHEF_SERVICE" (click)="collapseNavbar()">
+                        <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" routerLink="materiel" jhiHasAuthority="ROLE_CHEF_SERVICE" (click)="collapseNavbar()">
 
-                            <strong>   Gestion des Materiels</strong>
+                     <span class="fa fa-wheelchair"></span>  Gestion des Materiels
                         </a>
 
-                        <a class="dropdown-item"  jhiHasAuthority="ROLE_MEDECIN"routerLink="hello" (click)="collapseNavbar()">
+                        <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority="ROLE_MEDECIN"routerLink="hello" (click)="collapseNavbar()">
 
-                            <strong>  Gestion des traitements</strong>
+                         <span class="fa fa-plus-square"></span>    Gestion des traitements
                         </a>
 
-                        <a class="dropdown-item" jhiHasAuthority="ROLE_MEDECIN"routerLink="medicament" (click)="collapseNavbar()">
+                        <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority="ROLE_MEDECIN"routerLink="medicament" (click)="collapseNavbar()">
 
-                            <strong> Gestion des Medicaments</strong>
+                      <span class="fa fa-medkit"></span>    Gestion des Medicaments
                         </a>
                        <!-- <a class="dropdown-item" jhiHasAuthority="ROLE_MEDECIN"routerLink="demande-medicament-vf" (click)="collapseNavbar()">
 
                             <strong>    Demandes des medicaments</strong>
                         </a>-->
-                        <a class="dropdown-item" jhiHasAuthority="['ROLE_CHEF_SERVICE' , 'ROLE_MEDECIN','ROLE_GESTIONNAIREDEMATERIEL']"routerLink="demandemateriel" routerLinkActive="active" (click)="collapseNavbar()">
+                        <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority="['ROLE_CHEF_SERVICE' , 'ROLE_MEDECIN','ROLE_GESTIONNAIREDEMATERIEL']"routerLink="demandemateriel" routerLinkActive="active" (click)="collapseNavbar()">
 
-                            <strong> Demandes des materiels</strong>
+                   <span class="fa  fa-wheelchair"></span>   Demandes des materiels
                         </a>
                    <!-- <li class="dropdown-item"  jhiHasAuthority="[ROLE_ADMIN,ROLE_MEDECIN]"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link" routerLink="chart" (click)="collapseNavbar()">
@@ -155,8 +166,8 @@
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                             <span class="hidden-sm-down">Chat Module</span>
                         </a>
-                    </li>--></div>
-
+                    </li>-->
+</div>
 
 
 

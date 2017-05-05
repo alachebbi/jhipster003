@@ -82,7 +82,7 @@ public class UserService {
     }
 
     public User createUser(String login, String password, String firstName, String lastName, String email,
-                           String imageUrl, String langKey) {
+                           String imageUrl, String langKey, byte[] photo) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -100,6 +100,7 @@ public class UserService {
         newUser.setActivated(false);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
+        newUser.setPhoto(photo);
         authorities.add(authority);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);

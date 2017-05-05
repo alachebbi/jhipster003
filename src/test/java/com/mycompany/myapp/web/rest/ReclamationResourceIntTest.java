@@ -18,6 +18,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,6 +42,18 @@ public class ReclamationResourceIntTest {
     private static final String DEFAULT_OBJET = "AAAAAAAAAA";
     private static final String UPDATED_OBJET = "BBBBBBBBBB";
 
+    private static final String DEFAULT_RECUSERMAIL = "AAAAAAAAAA";
+    private static final String UPDATED_RECUSERMAIL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_RECUSERNAME = "AAAAAAAAAA";
+    private static final String UPDATED_RECUSERNAME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ETAT = "AAAAAAAAAA";
+    private static final String UPDATED_ETAT = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
+
     @Autowired
     private ReclamationRepository reclamationRepository;
 
@@ -53,7 +67,7 @@ public class ReclamationResourceIntTest {
 
     private Reclamation reclamation;
 
-    @Before
+  /*  @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
             ReclamationResource reclamationResource = new ReclamationResource(reclamationRepository);
@@ -61,7 +75,7 @@ public class ReclamationResourceIntTest {
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
     }
-
+*/
     /**
      * Create an entity for this test.
      *
@@ -71,7 +85,11 @@ public class ReclamationResourceIntTest {
     public static Reclamation createEntity() {
         Reclamation reclamation = new Reclamation()
                 .titre(DEFAULT_TITRE)
-                .objet(DEFAULT_OBJET);
+                .objet(DEFAULT_OBJET)
+                .recusermail(DEFAULT_RECUSERMAIL)
+                .recusername(DEFAULT_RECUSERNAME)
+                .etat(DEFAULT_ETAT)
+                .date(DEFAULT_DATE);
         return reclamation;
     }
 
@@ -98,6 +116,10 @@ public class ReclamationResourceIntTest {
         Reclamation testReclamation = reclamationList.get(reclamationList.size() - 1);
         assertThat(testReclamation.getTitre()).isEqualTo(DEFAULT_TITRE);
         assertThat(testReclamation.getObjet()).isEqualTo(DEFAULT_OBJET);
+        assertThat(testReclamation.getRecusermail()).isEqualTo(DEFAULT_RECUSERMAIL);
+        assertThat(testReclamation.getRecusername()).isEqualTo(DEFAULT_RECUSERNAME);
+        assertThat(testReclamation.getEtat()).isEqualTo(DEFAULT_ETAT);
+        assertThat(testReclamation.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
     @Test
@@ -130,7 +152,11 @@ public class ReclamationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(reclamation.getId())))
             .andExpect(jsonPath("$.[*].titre").value(hasItem(DEFAULT_TITRE.toString())))
-            .andExpect(jsonPath("$.[*].objet").value(hasItem(DEFAULT_OBJET.toString())));
+            .andExpect(jsonPath("$.[*].objet").value(hasItem(DEFAULT_OBJET.toString())))
+            .andExpect(jsonPath("$.[*].recusermail").value(hasItem(DEFAULT_RECUSERMAIL.toString())))
+            .andExpect(jsonPath("$.[*].recusername").value(hasItem(DEFAULT_RECUSERNAME.toString())))
+            .andExpect(jsonPath("$.[*].etat").value(hasItem(DEFAULT_ETAT.toString())))
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
     }
 
     @Test
@@ -144,7 +170,11 @@ public class ReclamationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(reclamation.getId()))
             .andExpect(jsonPath("$.titre").value(DEFAULT_TITRE.toString()))
-            .andExpect(jsonPath("$.objet").value(DEFAULT_OBJET.toString()));
+            .andExpect(jsonPath("$.objet").value(DEFAULT_OBJET.toString()))
+            .andExpect(jsonPath("$.recusermail").value(DEFAULT_RECUSERMAIL.toString()))
+            .andExpect(jsonPath("$.recusername").value(DEFAULT_RECUSERNAME.toString()))
+            .andExpect(jsonPath("$.etat").value(DEFAULT_ETAT.toString()))
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
     }
 
     @Test
@@ -164,7 +194,11 @@ public class ReclamationResourceIntTest {
         Reclamation updatedReclamation = reclamationRepository.findOne(reclamation.getId());
         updatedReclamation
                 .titre(UPDATED_TITRE)
-                .objet(UPDATED_OBJET);
+                .objet(UPDATED_OBJET)
+                .recusermail(UPDATED_RECUSERMAIL)
+                .recusername(UPDATED_RECUSERNAME)
+                .etat(UPDATED_ETAT)
+                .date(UPDATED_DATE);
 
         restReclamationMockMvc.perform(put("/api/reclamations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -177,6 +211,10 @@ public class ReclamationResourceIntTest {
         Reclamation testReclamation = reclamationList.get(reclamationList.size() - 1);
         assertThat(testReclamation.getTitre()).isEqualTo(UPDATED_TITRE);
         assertThat(testReclamation.getObjet()).isEqualTo(UPDATED_OBJET);
+        assertThat(testReclamation.getRecusermail()).isEqualTo(UPDATED_RECUSERMAIL);
+        assertThat(testReclamation.getRecusername()).isEqualTo(UPDATED_RECUSERNAME);
+        assertThat(testReclamation.getEtat()).isEqualTo(UPDATED_ETAT);
+        assertThat(testReclamation.getDate()).isEqualTo(UPDATED_DATE);
     }
 
     @Test

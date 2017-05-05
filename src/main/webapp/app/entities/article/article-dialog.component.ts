@@ -11,7 +11,7 @@ import { ArticleService } from './article.service';
 
 
 import  { UserService} from  '../../shared/user/user.service'
-import { Account, LoginModalService, Principal,LoginService, } from '../../shared';
+import { Account, LoginModalService, Principal,LoginService } from '../../shared';
 
 @Component({
     selector: 'jhi-article-dialog',

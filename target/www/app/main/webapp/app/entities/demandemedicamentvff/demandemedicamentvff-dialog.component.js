@@ -14,18 +14,24 @@ var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var ng_jhipster_1 = require("ng-jhipster");
 var demandemedicamentvff_popup_service_1 = require("./demandemedicamentvff-popup.service");
 var demandemedicamentvff_service_1 = require("./demandemedicamentvff.service");
+var medicament_service_1 = require("../medicament/medicament.service");
 var DemandemedicamentvffDialogComponent = (function () {
-    function DemandemedicamentvffDialogComponent(activeModal, jhiLanguageService, alertService, demandemedicamentvffService, eventManager, router) {
+    function DemandemedicamentvffDialogComponent(activeModal, jhiLanguageService, alertService, medicamentService, demandemedicamentvffService, eventManager, router) {
         this.activeModal = activeModal;
         this.jhiLanguageService = jhiLanguageService;
         this.alertService = alertService;
+        this.medicamentService = medicamentService;
         this.demandemedicamentvffService = demandemedicamentvffService;
         this.eventManager = eventManager;
         this.router = router;
+        this.today = new Date();
         this.jhiLanguageService.setLocations(['demandemedicamentvff']);
     }
     DemandemedicamentvffDialogComponent.prototype.ngOnInit = function () {
         this.isSaving = false;
+        this.loadAllmed();
+        this.demandemedicamentvff.etat = "en attente ";
+        // this.demandemedicamentvff.date = new Date().toISOString();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     };
     DemandemedicamentvffDialogComponent.prototype.clear = function () {
@@ -73,6 +79,7 @@ DemandemedicamentvffDialogComponent = __decorate([
     __metadata("design:paramtypes", [ng_bootstrap_1.NgbActiveModal,
         ng_jhipster_1.JhiLanguageService,
         ng_jhipster_1.AlertService,
+        medicament_service_1.MedicamentService,
         demandemedicamentvff_service_1.DemandemedicamentvffService,
         ng_jhipster_1.EventManager,
         router_1.Router])

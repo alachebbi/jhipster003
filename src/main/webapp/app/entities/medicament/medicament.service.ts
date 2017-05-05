@@ -45,6 +45,16 @@ export class MedicamentService {
         });
     }
 
+    getChartData(): Observable<any> {
+        return this.http.get(this.resourceUrl+'/chartdata').map((res: Response) => {
+            return res.json();
+        });
+    }
+    getAllMedicaments(): Observable<any> {
+        return this.http.get(this.resourceUrl).map((res: Response) => {
+            return res.json();
+        });
+    }
 
     find(id: number): Observable<Medicament> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {

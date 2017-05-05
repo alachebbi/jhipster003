@@ -14,6 +14,7 @@ var admin_module_1 = require("./admin/admin.module");
 var account_module_1 = require("./account/account.module");
 var entity_module_1 = require("./entities/entity.module");
 var chart_module_1 = require("./chart/chart.module");
+var chartmedicament_module_1 = require("./chartmedicament/chartmedicament.module");
 var chat_module_1 = require("./chat/chat.module");
 var layouts_1 = require("./layouts");
 var home_1 = require("./home");
@@ -36,6 +37,7 @@ AvancementAppModule = __decorate([
             account_module_1.AvancementAccountModule,
             entity_module_1.AvancementEntityModule,
             chart_module_1.AvancementChartModule,
+            chartmedicament_module_1.AvancementChartMedicamentModule,
             chat_module_1.AvancementChatModule
         ],
         declarations: [

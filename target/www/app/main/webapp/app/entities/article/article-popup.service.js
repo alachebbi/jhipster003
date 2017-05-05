@@ -26,6 +26,13 @@ var ArticlePopupService = (function () {
         this.isOpen = true;
         if (id) {
             this.articleService.find(id).subscribe(function (article) {
+                if (article.date) {
+                    article.date = {
+                        year: article.date.getFullYear(),
+                        month: article.date.getMonth() + 1,
+                        day: article.date.getDate()
+                    };
+                }
                 _this.articleModalRef(component, article);
             });
         }

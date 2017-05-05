@@ -72,7 +72,7 @@ public class InfirmierResource {
         autrority.add("ROLE_MEDECIN");
         //autrority.add("ROLE_ADMIN");
         UserDTO userDTO = new UserDTO(null, infirmier.getLogin(), infirmier.getNom(), infirmier.getPrenom(), "mohamed.benkhedher@esprit.tn",
-            true, null, "en", null, null, null, null, autrority);
+            true, null, "en", null, null, null, null, null, autrority);
         User createUser = userService.createUser(userDTO);
         infirmier.setPassword(createUser.getPassword());
         Infirmier result = infirmierRepository.save(infirmier);

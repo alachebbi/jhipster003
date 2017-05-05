@@ -17,6 +17,7 @@ export class ReclamationService {
         });
     }
 
+
     update(reclamation: Reclamation): Observable<Reclamation> {
         let copy: Reclamation = Object.assign({}, reclamation);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
@@ -24,7 +25,7 @@ export class ReclamationService {
         });
     }
 
-    find(id: number): Observable<Reclamation> {
+    find(id: string): Observable<Reclamation> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             return res.json();
         });

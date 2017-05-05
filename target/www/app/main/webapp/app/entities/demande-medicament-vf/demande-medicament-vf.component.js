@@ -14,13 +14,15 @@ var ng_jhipster_1 = require("ng-jhipster");
 var demande_medicament_vf_service_1 = require("./demande-medicament-vf.service");
 var shared_1 = require("../../shared");
 var uib_pagination_config_1 = require("../../blocks/config/uib-pagination.config");
+var medicament_service_1 = require("../medicament/medicament.service");
 var DemandeMedicamentVfComponent = (function () {
-    function DemandeMedicamentVfComponent(jhiLanguageService, demandeMedicamentVfService, parseLinks, alertService, principal, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
+    function DemandeMedicamentVfComponent(jhiLanguageService, demandeMedicamentVfService, parseLinks, alertService, medicamentService, principal, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
         var _this = this;
         this.jhiLanguageService = jhiLanguageService;
         this.demandeMedicamentVfService = demandeMedicamentVfService;
         this.parseLinks = parseLinks;
         this.alertService = alertService;
+        this.medicamentService = medicamentService;
         this.principal = principal;
         this.activatedRoute = activatedRoute;
         this.router = router;
@@ -126,6 +128,7 @@ DemandeMedicamentVfComponent = __decorate([
         demande_medicament_vf_service_1.DemandeMedicamentVfService,
         ng_jhipster_1.ParseLinks,
         ng_jhipster_1.AlertService,
+        medicament_service_1.MedicamentService,
         shared_1.Principal,
         router_1.ActivatedRoute,
         router_1.Router,

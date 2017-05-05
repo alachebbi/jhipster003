@@ -12,10 +12,12 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var ng_jhipster_1 = require("ng-jhipster");
 var article_service_1 = require("./article.service");
+var likes_service_1 = require("../likes/likes.service");
+var likes_model_1 = require("../likes/likes.model");
 var shared_1 = require("../../shared");
 var uib_pagination_config_1 = require("../../blocks/config/uib-pagination.config");
 var ArticleComponent = (function () {
-    function ArticleComponent(jhiLanguageService, articleService, parseLinks, alertService, principal, activatedRoute, dataUtils, router, eventManager, paginationUtil, paginationConfig) {
+    function ArticleComponent(jhiLanguageService, articleService, parseLinks, alertService, principal, activatedRoute, dataUtils, router, likesService, eventManager, paginationUtil, paginationConfig) {
         var _this = this;
         this.jhiLanguageService = jhiLanguageService;
         this.articleService = articleService;
@@ -25,10 +27,11 @@ var ArticleComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.dataUtils = dataUtils;
         this.router = router;
+        this.likesService = likesService;
         this.eventManager = eventManager;
         this.paginationUtil = paginationUtil;
         this.paginationConfig = paginationConfig;
-        this.isPushed = 1;
+        this.isPushed = false;
         this.itemsPerPage = shared_1.ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe(function (data) {
             _this.page = data['pagingParams'].page;
@@ -69,6 +72,18 @@ var ArticleComponent = (function () {
             }]);
         this.loadAll();
     };
+    ArticleComponent.prototype.loadAlllikes = function () {
+        var _this = this;
+        this.articles.forEach(function (item, index) {
+            _this.likesService.findByidandname(item.id, _this.currentAccount.firstName)
+                .subscribe(function (likes) {
+                if (likes.userid == _this.currentAccount.firstName) {
+                    document.getElementById("l" + index).setAttribute("disabled", "disabled");
+                    document.getElementById("l" + index).style.opacity = "0.3";
+                }
+            });
+        });
+    };
     ArticleComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loadAll();
@@ -86,18 +101,30 @@ var ArticleComponent = (function () {
             });
         });
     };
-    ArticleComponent.prototype.VoterPour = function (Article, isPushed) {
+    ArticleComponent.prototype.VoterPour = function (Article, likes) {
         var _this = this;
-        this.isPushed = 0;
+        // Article.ispushed=true;
         Article.vote += 1;
         this.articleService.modifier(Article)
             .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
+        this.likes = new likes_model_1.Likes;
+        this.likes.articleid = Article.id;
+        this.principal.identity().then(function (account) {
+            _this.currentAccount = account;
+        });
+        this.likes.userid = this.currentAccount.firstName;
+        this.likesService.create(this.likes)
+            .subscribe(function (res) { return _this.onSaveSuccess2(res); }, function (res) { return _this.onSaveError(res.json()); });
     };
     ArticleComponent.prototype.VoterContre = function (Article) {
         var _this = this;
         Article.vote -= 1;
         this.articleService.modifier(Article)
             .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
+    };
+    ArticleComponent.prototype.onSaveSuccess2 = function (result) {
+        this.eventManager.broadcast({ name: 'articleListModification', content: 'OK' });
+        this.isSaving = false;
     };
     ArticleComponent.prototype.onSaveSuccess = function (result) {
         this.eventManager.broadcast({ name: 'articleListModification', content: 'OK' });
@@ -136,6 +163,7 @@ var ArticleComponent = (function () {
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.articles = data;
+        this.loadAlllikes();
     };
     ArticleComponent.prototype.onError = function (error) {
         this.alertService.error(error.message, null, null);
@@ -155,6 +183,7 @@ ArticleComponent = __decorate([
         router_1.ActivatedRoute,
         ng_jhipster_1.DataUtils,
         router_1.Router,
+        likes_service_1.LikesService,
         ng_jhipster_1.EventManager,
         ng_jhipster_1.PaginationUtil,
         uib_pagination_config_1.PaginationConfig])

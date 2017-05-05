@@ -38,12 +38,6 @@ var DemandemedicamentComponent = (function () {
         });
         this.jhiLanguageService.setLocations(['demandemedicament']);
     }
-    DemandemedicamentComponent.prototype.bb = function (i) {
-        var _this = this;
-        i.etat = "1";
-        this.demandemedicamentService.update(i)
-            .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
-    };
     DemandemedicamentComponent.prototype.onSaveSuccess = function (result) {
         this.eventManager.broadcast({ name: 'demandemedicamentListModification', content: 'OK' });
         this.isSaving = false;

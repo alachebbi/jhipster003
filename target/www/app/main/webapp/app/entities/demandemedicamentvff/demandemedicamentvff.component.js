@@ -14,11 +14,13 @@ var ng_jhipster_1 = require("ng-jhipster");
 var demandemedicamentvff_service_1 = require("./demandemedicamentvff.service");
 var shared_1 = require("../../shared");
 var uib_pagination_config_1 = require("../../blocks/config/uib-pagination.config");
+var medicament_service_1 = require("../medicament/medicament.service");
 var DemandemedicamentvffComponent = (function () {
-    function DemandemedicamentvffComponent(jhiLanguageService, demandemedicamentvffService, parseLinks, alertService, principal, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
+    function DemandemedicamentvffComponent(jhiLanguageService, demandemedicamentvffService, medicamentService, parseLinks, alertService, principal, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
         var _this = this;
         this.jhiLanguageService = jhiLanguageService;
         this.demandemedicamentvffService = demandemedicamentvffService;
+        this.medicamentService = medicamentService;
         this.parseLinks = parseLinks;
         this.alertService = alertService;
         this.principal = principal;
@@ -67,24 +69,34 @@ var DemandemedicamentvffComponent = (function () {
             }]);
         this.loadAll();
     };
-    DemandemedicamentvffComponent.prototype.Accepter = function (Demandemedicamentvff) {
+    DemandemedicamentvffComponent.prototype.Accepter = function (Demandemedicamentvff, Medicament) {
+        var _this = this;
+        Demandemedicamentvff.etat = "Acceptée";
+        this.demandemedicamentvffService.update(Demandemedicamentvff).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
+        this.medicamentService.findbyname(Demandemedicamentvff.medicamentid)
+            .subscribe(function (med) {
+            med.quantity -= Demandemedicamentvff.quatite;
+            _this.medicamentService.modifier(med).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
+        });
+    };
+    DemandemedicamentvffComponent.prototype.onSaveSuccess = function (result) {
+        this.eventManager.broadcast({ name: 'demandeModification', content: 'OK' });
+        this.isSaving = false;
+    };
+    DemandemedicamentvffComponent.prototype.onSaveSuccess2 = function (result) {
+        this.eventManager.broadcast({ name: 'demandeModification', content: 'OK' });
+        this.isSaving = false;
+    };
+    DemandemedicamentvffComponent.prototype.loadAllmed = function () {
         var _this = this;
         this.medicamentService.query().subscribe(function (res) {
             _this.medicaments = res.json();
-            _this.medicaments.forEach(function (item, index) {
-                if (item.nom == Demandemedicamentvff.medicamentid && Demandemedicamentvff.etat == "oui") {
-                    item.quantity = item.quantity - Demandemedicamentvff.quatite;
-                    _this.medicamentService.update(item).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
-                }
-            });
         }, function (res) { return _this.onError(res.json()); });
-        Demande.etat = "oui";
-        this.demandeService.update(Demande).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
     };
-    DemandemedicamentvffComponent.prototype.Refuser = function (Demande) {
+    DemandemedicamentvffComponent.prototype.Refuser = function (Demandemedicamentvff) {
         var _this = this;
-        Demande.etat = "non";
-        this.demandeService.update(Demande).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
+        Demandemedicamentvff.etat = "Refusée";
+        this.demandemedicamentvffService.update(Demandemedicamentvff).subscribe(function (res) { return _this.onSaveSuccess2(res); }, function (res) { return _this.onError(res.json()); });
     };
     DemandemedicamentvffComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -130,6 +142,7 @@ DemandemedicamentvffComponent = __decorate([
     }),
     __metadata("design:paramtypes", [ng_jhipster_1.JhiLanguageService,
         demandemedicamentvff_service_1.DemandemedicamentvffService,
+        medicament_service_1.MedicamentService,
         ng_jhipster_1.ParseLinks,
         ng_jhipster_1.AlertService,
         shared_1.Principal,

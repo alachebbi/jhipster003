@@ -14,25 +14,13 @@ var _ = require("lodash");
 var ChartComponent = (function () {
     function ChartComponent(doctorservice) {
         this.doctorservice = doctorservice;
-        this.barChartOptions = {
-            scaleShowVerticalLines: false,
-            responsive: true,
-            scales: {
-                yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            stepSize: 1
-                        }
-                    }]
-            }
-        };
         this.barChartLabels = [];
-        this.barChartType = 'bar';
+        this.barChartType = 'radar';
         this.barChartLegend = true;
-        this.chartColors = [{
-                backgroundColor: 'dodgerblue',
-                hoverBackgroundColor: 'cornflowerblue'
-            }];
+        /* public chartColors: Array<Color> = [{
+             backgroundColor: 'dodgerblue',
+             hoverBackgroundColor: 'cornflowerblue'
+         }];*/
         this.barChartData = [
             { data: [], label: 'Doctor CHART BY SPECIALITEES' },
         ];
@@ -61,11 +49,70 @@ var ChartComponent = (function () {
         console.log(e);
     };
     ChartComponent.prototype.changeCharType = function () {
-        if (this.barChartType == "bar") {
-            this.barChartType = "line";
-        }
-        else {
+        if (this.barChartType == "radar") {
             this.barChartType = "bar";
+        }
+        if (this.barChartType == "polarArea") {
+            this.barChartType = "bar";
+        }
+        if (this.barChartType == "pie") {
+            this.barChartType = "bar";
+        }
+    };
+    ChartComponent.prototype.piechart = function () {
+        if (this.barChartType == "bar") {
+            this.barChartType = "pie";
+        }
+        if (this.barChartType == "polarArea") {
+            this.barChartType = "pie";
+        }
+        if (this.barChartType == "radar") {
+            this.barChartType = "pie";
+        }
+        if (this.barChartType == "doughnut") {
+            this.barChartType = "pie";
+        }
+    };
+    ChartComponent.prototype.radarchart = function () {
+        if (this.barChartType == "bar") {
+            this.barChartType = "radar";
+        }
+        if (this.barChartType == "polarArea") {
+            this.barChartType = "radar";
+        }
+        if (this.barChartType == "pie") {
+            this.barChartType = "radar";
+        }
+        if (this.barChartType == "doughnut") {
+            this.barChartType = "radar";
+        }
+    };
+    ChartComponent.prototype.polarArea = function () {
+        if (this.barChartType == "bar") {
+            this.barChartType = "polarArea";
+        }
+        if (this.barChartType == "radar") {
+            this.barChartType = "polarArea";
+        }
+        if (this.barChartType == "pie") {
+            this.barChartType = "polarArea";
+        }
+        if (this.barChartType == "doughnut") {
+            this.barChartType = "polarArea";
+        }
+    };
+    ChartComponent.prototype.douArea = function () {
+        if (this.barChartType == "bar") {
+            this.barChartType = "doughnut";
+        }
+        if (this.barChartType == "radar") {
+            this.barChartType = "doughnut";
+        }
+        if (this.barChartType == "pie") {
+            this.barChartType = "doughnut";
+        }
+        if (this.barChartType == "polarArea") {
+            this.barChartType = "doughnut";
         }
     };
     return ChartComponent;

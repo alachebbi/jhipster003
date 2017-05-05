@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var shared_1 = require("../../shared");
+var ngx_pipes_1 = require("ngx-pipes");
 var _1 = require("./");
 var ENTITY_STATES = _1.forsysRoute.concat(_1.forsysPopupRoute);
 var AvancementForsysModule = (function () {
@@ -19,6 +20,7 @@ AvancementForsysModule = __decorate([
     core_1.NgModule({
         imports: [
             shared_1.AvancementSharedModule,
+            ngx_pipes_1.NgPipesModule,
             router_1.RouterModule.forRoot(ENTITY_STATES, { useHash: true })
         ],
         declarations: [

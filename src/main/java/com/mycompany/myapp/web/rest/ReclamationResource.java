@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Likes;
+import com.mycompany.myapp.domain.Medicament;
 import com.mycompany.myapp.domain.Reclamation;
 
 import com.mycompany.myapp.repository.ReclamationRepository;
@@ -131,7 +132,20 @@ public class ReclamationResource {
         reclamationRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    @GetMapping("/mesreclamations/{recusername}")
+    @Timed
+    public ResponseEntity<List<Reclamation>> findByrecusername(@PathVariable String recusername)
+        throws URISyntaxException {
 
+        List<Reclamation> page = reclamationRepository.findByrecusername(recusername);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(page));
+
+
+
+
+
+
+        }
 
 
 }

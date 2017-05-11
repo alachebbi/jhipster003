@@ -25,6 +25,7 @@ AvancementReclamationModule = __decorate([
             _1.ReclamationComponent,
             _1.ReclamationDetailComponent,
             _1.ReclamationDialogComponent,
+            _1.MesreclamationsComponent,
             _1.ReclamationDeleteDialogComponent,
             _1.ReclamationPopupComponent,
             _1.ReclamationDeletePopupComponent,
@@ -32,6 +33,7 @@ AvancementReclamationModule = __decorate([
         entryComponents: [
             _1.ReclamationComponent,
             _1.ReclamationDialogComponent,
+            _1.MesreclamationsComponent,
             _1.ReclamationPopupComponent,
             _1.ReclamationDeleteDialogComponent,
             _1.ReclamationDeletePopupComponent,

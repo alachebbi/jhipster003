@@ -7,6 +7,7 @@ import { Reclamation } from './reclamation.model';
 export class ReclamationService {
 
     private resourceUrl = 'api/reclamations';
+    private resourceUrl2 = 'api/mesreclamations';
 
     constructor(private http: Http) { }
 
@@ -40,7 +41,12 @@ export class ReclamationService {
     delete(id: number): Observable<Response> {
         return this.http.delete(`${this.resourceUrl}/${id}`);
     }
+    findByrecusername(recusername : string): Observable<Reclamation[]> {
+        return this.http.get(`${this.resourceUrl2}/${recusername}`).map((res: Response) => {
+            return res.json();
+        });
 
+    }
 
 
     private createRequestOption(req?: any): BaseRequestOptions {

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var ng_jhipster_1 = require("ng-jhipster");
+var mesreclamations_component_1 = require("./mesreclamations.component");
 var reclamation_component_1 = require("./reclamation.component");
 var reclamation_detail_component_1 = require("./reclamation-detail.component");
 var reclamation_dialog_component_1 = require("./reclamation-dialog.component");
@@ -46,6 +47,17 @@ exports.reclamationRoute = [
             pageTitle: 'avancementApp.reclamation.home.title'
         }
     }, {
+        path: 'mesreclamations',
+        component: mesreclamations_component_1.MesreclamationComponent,
+        resolve: {
+            'pagingParams': ReclamationResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'avancementApp.reclamation.home.title'
+        }
+    },
+    {
         path: 'reclamation/:id',
         component: reclamation_detail_component_1.ReclamationDetailComponent,
         data: {

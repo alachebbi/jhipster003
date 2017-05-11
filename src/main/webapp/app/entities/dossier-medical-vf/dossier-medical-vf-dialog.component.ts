@@ -17,6 +17,8 @@ import { DossierMedicalVFService } from './dossier-medical-vf.service';
 import { MedicamentService } from '../medicament/medicament.service';
 import { Medicament } from '../medicament/medicament.model';
 
+import { Account, LoginModalService, Principal,LoginService } from '../../shared';
+
 
 @Component({
     selector: 'jhi-dossier-medical-vf-dialog',
@@ -26,6 +28,7 @@ export class DossierMedicalVFDialogComponent implements OnInit {
 
     dossierMedicalVF: DossierMedicalVF;
     doctors:Doctor[];
+    account: Account;
     medicaments:Medicament[];
     authorities: any[];
     isSaving: boolean;
@@ -34,6 +37,8 @@ export class DossierMedicalVFDialogComponent implements OnInit {
         private jhiLanguageService: JhiLanguageService,
         private doctorService: DoctorService,
         private medicamentService :MedicamentService,
+        private principal: Principal,
+        private loginModalService: LoginModalService,
         private dataUtils: DataUtils,
         private alertService: AlertService,
         private dossierMedicalVFService: DossierMedicalVFService,
@@ -44,9 +49,22 @@ export class DossierMedicalVFDialogComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.principal.identity().then((account) => {
+            this.account = account;
+
+        });
+        this.registerAuthenticationSuccess();
         this.isSaving = false;
         this.loadAlldoc();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+    }
+
+    registerAuthenticationSuccess() {
+        this.eventManager.subscribe('authenticationSuccess', (message) => {
+            this.principal.identity().then((account) => {
+                this.account = account;
+            });
+        });
     }
     byteSize(field) {
         return this.dataUtils.byteSize(field);
@@ -87,6 +105,7 @@ export class DossierMedicalVFDialogComponent implements OnInit {
             this.dossierMedicalVFService.update(this.dossierMedicalVF)
                 .subscribe((res: DossierMedicalVF) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         } else {
+            this.dossierMedicalVF.medecintraitant=this.account.firstName;
             this.dossierMedicalVFService.create(this.dossierMedicalVF)
                 .subscribe((res: DossierMedicalVF) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         }

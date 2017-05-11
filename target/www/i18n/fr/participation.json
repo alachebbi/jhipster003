@@ -1,0 +1,23 @@
+{
+    "avancementApp": {
+        "participation" : {
+            "home": {
+                "title": "Participations",
+                "createLabel": "Créer un nouveau Participation",
+                "createOrEditLabel": "Créer ou éditer un Participation",
+                "search": "Recherche pour Participation"
+            },
+            "created": "Un nouveau Participation a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Participation avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Participation avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Participation {{ id }} ?"
+            },
+            "detail": {
+                "title": "Participation"
+            },
+            "evenement": "Evenement",
+            "participant": "Participant"
+        }
+    }
+}

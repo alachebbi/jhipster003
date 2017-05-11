@@ -28,6 +28,8 @@ import { AvancementArticleModule } from './article/article.module';
 
 import { AvancementPharmacieModule } from './pharmacie/pharmacie.module';
 import { AvancementLikesModule } from './likes/likes.module';
+import { AvancementParticipationModule } from './participation/participation.module';
+import { AvancementEvenementModule } from './evenement/evenement.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -58,6 +60,8 @@ import { AvancementLikesModule } from './likes/likes.module';
         AvancementArticleModule,
         AvancementPharmacieModule,
         AvancementLikesModule,
+        AvancementParticipationModule,
+        AvancementEvenementModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

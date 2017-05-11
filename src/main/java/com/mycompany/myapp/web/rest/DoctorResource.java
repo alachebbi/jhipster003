@@ -158,6 +158,7 @@ public class DoctorResource {
      */
     @GetMapping("/doctors")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<List<Doctor>> getAllDoctors(@ApiParam Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Doctors");

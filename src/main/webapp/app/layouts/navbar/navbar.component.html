@@ -66,9 +66,46 @@
             <div style="padding-top: 50px;" [ngSwitch]="isAuthenticated()">
 
 
+                <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer">
+                <a style="padding-bottom: 10px;padding-top: 10px" class="dropdown-item" jhiHasAuthority= "ROLE_ADMIN"  routerLinkActive="active" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
+                    <span>
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                        <span class="hidden-sm-down">
+                            Gestion des personnels
+                        </span>
+                        <b class="caret"></b>
+                    </span>
+                </a>
+
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                    <li uiSrefActive="active">
+
+                        <a   style="padding-bottom: 10px;padding-top: 10px"  jhiHasAuthority= "ROLE_ADMIN" class="dropdown-item" routerLink="doctor" (click)="collapseNavbar()">
+
+                      <span class="fa fa-stethoscope"></span>       Gérer les medecins
+                        </a>
+                        <a class="dropdown-item" routerLink="pharmacie" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
+
+    <span class="fa fa-medkit"></span> Gestion des pharmaciens
+                        </a>
+                         <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" routerLink="servicemedical" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
+
+                     <span class="fa fa-hospital-o"></span>     Gestion des services medicals
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                </ul>
+            </li>
+
+
                 <a  class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_ADMIN"  routerLink="reclamation" (click)="collapseNavbar()">
 
-               <span class="fa fa-envelope-o"></span>     Envoyer une reclamation
+               <span class="fa fa-envelope-o"></span>     Traiter les reclamations
+                </a>
+
+                <a  class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_MEDECIN"    routerLink="mesreclamations" (click)="collapseNavbar()">
+
+               <span class="fa fa-envelope-o"></span>    Mes reclamations
                 </a>
 
 
@@ -94,10 +131,7 @@
 
                       <span class="fa fa-comments"></span>   Chat
                         </a>
-                        <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="doctor" (click)="collapseNavbar()">
 
-                      <span class="fa fa-stethoscope"></span>       Gérer les medecins
-                        </a>
                         <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_MEDECIN"  class="dropdown-item" routerLink="dossier-medical-vf" (click)="collapseNavbar()">
 
                         <span class="fa fa-archive"></span>     Dossier Medical
@@ -111,16 +145,15 @@
 
                  <span class="fa fa-comment-o"></span>  Avis Medical
                         </a>
+                 <a class="dropdown-item" routerLink="evenement" style="padding-bottom: 10px;padding-top: 10px" (click)="collapseNavbar()">
 
- <a class="dropdown-item" routerLink="pharmacie" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
-
-    <span class="fa fa-medkit"></span> Gestion des pharmaciens
+                 <span class="fa fa-calendar-o"></span>  Gérer les  événements
                         </a>
 
-                        <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" routerLink="servicemedical" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
 
-                     <span class="fa fa-hospital-o"></span>     Gestion des services medicals
-                        </a>
+
+
+
 
 
                         <!--<a class="dropdown-item" routerLink="fichemedicale"  (click)="collapseNavbar()">

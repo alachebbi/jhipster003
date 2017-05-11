@@ -293,7 +293,7 @@ a:focus {
     font-size: 20px;
     line-height: 50px;
     text-align: center;
-    width: 230px;
+    width: 250px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 0 15px;
     font-weight: 300;
@@ -405,7 +405,7 @@ a:focus {
     left: 0;
     padding-top: 50px;
     height: 100%;
-    width: 230px;
+    width: 250px;
     z-index: 810;
     -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
     -moz-transition: -moz-transform 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
@@ -2099,12 +2099,13 @@ a:focus {
 .nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type.active > a {
     border-left-width: 1px;
     border-right-width: 0;
+    color:white;
 }
 .nav-tabs-custom > .nav-tabs > li.header {
     line-height: 35px;
     padding: 0 10px;
     font-size: 20px;
-    color: #444;
+    color: white;
 }
 .nav-tabs-custom > .nav-tabs > li.header > .fa,
 .nav-tabs-custom > .nav-tabs > li.header > .glyphicon,
@@ -2127,7 +2128,7 @@ a:focus {
 /* PAGINATION */
 .pagination > li > a {
     background: #fafafa;
-    color: #666;
+    color:white;
 }
 .pagination > li:first-of-type a,
 .pagination > li:last-of-type a {
@@ -4100,7 +4101,7 @@ Gradient Background colors
 }
 @media (max-width: 767px) {
     .skin-blue .main-header .navbar .dropdown-menu li.divider {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: white;
     }
     .skin-blue .main-header .navbar .dropdown-menu li a {
         color: #fffbf0;

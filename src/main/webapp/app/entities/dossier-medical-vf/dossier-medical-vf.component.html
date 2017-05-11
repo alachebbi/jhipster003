@@ -27,7 +27,7 @@
 
         <div class="input-group">
     <span class="input-group-btn"> <div class="col-lg-3 col-xs-6">
-            <input type="text" [(ngModel)]="filter" class="form-control" placeholder="chercher par nom et prénom..." />
+            <input type="text" [(ngModel)]="filter" class="form-control" placeholder="chercher par nom ..." />
     </div>
                 <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span></div>
@@ -36,7 +36,7 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
 
-            <th jhiSortBy="nomprenom">Nom et prenom du patient </th>
+            <th jhiSortBy="nom">Nom  du patient </th>
             <th jhiSortBy="datenaissance">Date de naissance </th>
             <th jhiSortBy="situationfamiliale">Situation familiale </th>
             <th jhiSortBy="numerotel">Numéro de télephone </th>

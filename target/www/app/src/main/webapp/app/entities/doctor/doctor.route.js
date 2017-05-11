@@ -42,14 +42,14 @@ exports.doctorRoute = [
             'pagingParams': DoctorResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'avancementApp.doctor.home.title'
         }
     }, {
         path: 'doctor/:id',
         component: doctor_detail_component_1.DoctorDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'avancementApp.doctor.home.title'
         }
     }
@@ -59,7 +59,7 @@ exports.doctorPopupRoute = [
         path: 'doctor-new',
         component: doctor_dialog_component_1.DoctorPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'avancementApp.doctor.home.title'
         },
         outlet: 'popup'
@@ -68,7 +68,7 @@ exports.doctorPopupRoute = [
         path: 'doctor/:id/edit',
         component: doctor_dialog_component_1.DoctorPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'avancementApp.doctor.home.title'
         },
         outlet: 'popup'
@@ -77,7 +77,7 @@ exports.doctorPopupRoute = [
         path: 'doctor/:id/delete',
         component: doctor_delete_dialog_component_1.DoctorDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'avancementApp.doctor.home.title'
         },
         outlet: 'popup'

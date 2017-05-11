@@ -9,5 +9,6 @@ __export(require("./reclamation-dialog.component"));
 __export(require("./reclamation-delete-dialog.component"));
 __export(require("./reclamation-detail.component"));
 __export(require("./reclamation.component"));
+__export(require("./mesreclamations.component"));
 __export(require("./reclamation.route"));
 //# sourceMappingURL=index.js.map

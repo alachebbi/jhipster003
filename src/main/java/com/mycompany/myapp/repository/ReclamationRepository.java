@@ -1,6 +1,7 @@
 package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.Likes;
+import com.mycompany.myapp.domain.Medicament;
 import com.mycompany.myapp.domain.Reclamation;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -15,5 +16,6 @@ import java.util.List;
 public interface ReclamationRepository extends MongoRepository<Reclamation,String> {
 
 
-
+    @Query ("{ 'recusername' :  {'$regex' : ?0} }")
+    List<Reclamation> findByrecusername(String recusername);
 }

@@ -30,6 +30,8 @@ var demandemedicamentvff_module_1 = require("./demandemedicamentvff/demandemedic
 var article_module_1 = require("./article/article.module");
 var pharmacie_module_1 = require("./pharmacie/pharmacie.module");
 var likes_module_1 = require("./likes/likes.module");
+var participation_module_1 = require("./participation/participation.module");
+var evenement_module_1 = require("./evenement/evenement.module");
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 var AvancementEntityModule = (function () {
     function AvancementEntityModule() {
@@ -63,6 +65,8 @@ AvancementEntityModule = __decorate([
             article_module_1.AvancementArticleModule,
             pharmacie_module_1.AvancementPharmacieModule,
             likes_module_1.AvancementLikesModule,
+            participation_module_1.AvancementParticipationModule,
+            evenement_module_1.AvancementEvenementModule,
         ],
         declarations: [],
         entryComponents: [],

@@ -30,6 +30,11 @@ var DossierMedicalVFDialogComponent = (function () {
         this.jhiLanguageService.setLocations(['dossierMedicalVF']);
     }
     DossierMedicalVFDialogComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.principal.identity().then(function (account) {
+            _this.account = account;
+        });
+        this.registerAuthenticationSuccess();
         this.isSaving = false;
         this.loadAlldoc();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
@@ -70,6 +75,7 @@ var DossierMedicalVFDialogComponent = (function () {
                 .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
         }
         else {
+            this.dossierMedicalVF.medecintraitant = this.account.firstName;
             this.dossierMedicalVFService.create(this.dossierMedicalVF)
                 .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
         }

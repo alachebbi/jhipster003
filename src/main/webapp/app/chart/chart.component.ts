@@ -14,7 +14,7 @@ export class ChartComponent implements OnInit{
 
 
     public barChartLabels:string[] = [];
-    public barChartType:string = 'pie';
+    public barChartType:string = 'polarArea';
     public barChartLegend:boolean = true;
    /* public chartColors: Array<Color> = [{
         backgroundColor: 'dodgerblue',

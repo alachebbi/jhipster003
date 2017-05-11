@@ -11,7 +11,7 @@
         <jhi-alert-error></jhi-alert-error>
 
         <div class="form-group">
-            <label class="form-control-label"  for="field_nomprenom">Nom et prenom du patient </label>
+            <label class="form-control-label"  for="field_nomprenom">Nom du patient </label>
             <input  style="width : 60%;" type="text" class="form-control" name="nomprenom" id="field_nomprenom"
                 [(ngModel)]="dossierMedicalVF.nomprenom"
             minlength="7" />
@@ -21,6 +21,13 @@
                    This field is required to be at least 7 characters.
                 </small>
             </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  >Prenom du patient </label>
+            <input  style="width : 60%;" type="text" class="form-control"
+
+                />
+
         </div>
         <div class="form-group">
             <label class="form-control-label"  for="field_datenaissance">Date de naissance</label>
@@ -76,14 +83,7 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label class="form-control-label">Medecin traitant </label>
 
-
-            <select style="width : 60%;"  class="form-control" name="medecintraitant" [(ngModel)]="dossierMedicalVF.medecintraitant">
-                <option *ngFor="let doctor of doctors ;trackBy: trackId" [value]="doctor.nometprenom">{{doctor.nometprenom}}</option>
-            </select>
-        </div>
 
         <div class="form-group">
             <label class="form-control-label"  for="field_antecedents">Antécedents</label>

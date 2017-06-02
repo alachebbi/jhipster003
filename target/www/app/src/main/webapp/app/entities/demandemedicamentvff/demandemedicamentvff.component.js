@@ -78,6 +78,21 @@ var DemandemedicamentvffComponent = (function () {
             med.quantity -= Demandemedicamentvff.quatite;
             _this.medicamentService.modifier(med).subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
         });
+        this.loadAccepter();
+    };
+    DemandemedicamentvffComponent.prototype.loadAccepter = function () {
+        var _this = this;
+        this.demandemedicamentvffs.forEach(function (item, index) {
+            _this.demandemedicamentvffService.find(item.id)
+                .subscribe(function (demandemedicamentvff) {
+                if (demandemedicamentvff.etat !== "en attente ") {
+                    document.getElementById("l" + index).setAttribute("disabled", "disabled");
+                    document.getElementById("l" + index).style.opacity = "0.3";
+                    document.getElementById("k" + index).setAttribute("disabled", "disabled");
+                    document.getElementById("k" + index).style.opacity = "0.3";
+                }
+            });
+        });
     };
     DemandemedicamentvffComponent.prototype.onSaveSuccess = function (result) {
         this.eventManager.broadcast({ name: 'demandeModification', content: 'OK' });
@@ -129,6 +144,7 @@ var DemandemedicamentvffComponent = (function () {
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.demandemedicamentvffs = data;
+        this.loadAccepter();
     };
     DemandemedicamentvffComponent.prototype.onError = function (error) {
         this.alertService.error(error.message, null, null);

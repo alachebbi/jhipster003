@@ -25,6 +25,13 @@ var EvenementService = (function () {
             return res.json();
         });
     };
+    EvenementService.prototype.modifier = function (evenement) {
+        var copy = Object.assign({}, evenement);
+        copy.date;
+        return this.http.put(this.resourceUrl, copy).map(function (res) {
+            return res.json();
+        });
+    };
     EvenementService.prototype.update = function (evenement) {
         var copy = Object.assign({}, evenement);
         copy.date = this.dateUtils

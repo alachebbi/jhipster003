@@ -20,6 +20,7 @@ export class DemandemedicamentvffComponent implements OnInit, OnDestroy {
 
 currentAccount: any;
     demandemedicamentvffs: Demandemedicamentvff[];
+    demandemedicamentvff: Demandemedicamentvff;
     error: any;
     medicaments : Medicament [];
     success: any;
@@ -111,9 +112,33 @@ currentAccount: any;
 
 
                 });
+        this.loadAccepter();
 
 
     }
+
+    loadAccepter() {
+        this.demandemedicamentvffs.forEach((item,index)=>{
+                this.demandemedicamentvffService.find(item.id)
+                    .subscribe(
+                        demandemedicamentvff=>{
+                            if (demandemedicamentvff.etat !== "en attente " )
+                            {
+                                document.getElementById("l" + index).setAttribute("disabled","disabled")
+                                document.getElementById("l" + index).style.opacity="0.3"
+                                document.getElementById("k" + index).setAttribute("disabled","disabled")
+                                document.getElementById("k" + index).style.opacity="0.3"
+
+                                //style.opacity="0.3"
+                                // l.disabled=true;
+
+                            }
+                        }
+                    );
+            }
+        );
+    }
+
 
     private onSaveSuccess (result: Demandemedicamentvff) {
         this.eventManager.broadcast({ name: 'demandeModification', content: 'OK'});
@@ -176,6 +201,8 @@ currentAccount: any;
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.demandemedicamentvffs = data;
+        this.loadAccepter();
+
     }
 
     private onError (error) {

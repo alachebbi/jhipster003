@@ -27,6 +27,10 @@
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "image",
             "fieldValidateRules": []
+        },
+        {
+            "fieldName": "part",
+            "fieldType": "String"
         }
     ],
     "dto": "no",

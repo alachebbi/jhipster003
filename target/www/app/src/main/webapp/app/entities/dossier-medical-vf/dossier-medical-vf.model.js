@@ -1,6 +1,6 @@
 "use strict";
 var DossierMedicalVF = (function () {
-    function DossierMedicalVF(id, nomprenom, datenaissance, situationfamiliale, numerotel, groupesanguin, antecedents, perscriptionsmedicamenteuses, recommandations, resultatdernierexamen, notesparamedicaux, medecintraitant) {
+    function DossierMedicalVF(id, nomprenom, datenaissance, situationfamiliale, numerotel, groupesanguin, antecedents, perscriptionsmedicamenteuses, recommandations, resultatdernierexamen, notesparamedicaux, medecintraitant, medecintraitant2) {
         this.id = id;
         this.nomprenom = nomprenom;
         this.datenaissance = datenaissance;
@@ -13,6 +13,7 @@ var DossierMedicalVF = (function () {
         this.resultatdernierexamen = resultatdernierexamen;
         this.notesparamedicaux = notesparamedicaux;
         this.medecintraitant = medecintraitant;
+        this.medecintraitant2 = medecintraitant2;
     }
     return DossierMedicalVF;
 }());

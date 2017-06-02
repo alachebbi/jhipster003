@@ -120,39 +120,6 @@ var MesreclamationsComponent = (function () {
         var _this = this;
         this.eventSubscriber = this.eventManager.subscribe('reclamationListModification', function (response) { return _this.loadAll(); });
     };
-    /*reclamationTraiter(){
-     this.loadAll();
-     this.reclamations.forEach((item,index)=>{
-
-     if (item.etat=="Traitée" )
-     {
-     document.getElementById("l" ).setAttribute("disabled","disabled")
-     document.getElementById("l" + index).style.opacity="0.3"
-
-
-     }
-     }
-     );
-
-     }*/
-    MesreclamationsComponent.prototype.Traiter = function (Reclamation) {
-        var _this = this;
-        /*   this.reclamations.forEach((item,index)=>{
-
-         if (item.etat=="Traitée" )
-         {
-         // document.getElementById("l" + index).setAttribute("disabled","disabled")
-         document.getElementById("l" + index).style.opacity="0.3";
-         console.log("asslema");
-
-         }
-         }
-         );
-         */
-        Reclamation.etat = "Traitée";
-        this.reclamationService.update(Reclamation)
-            .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
-    };
     MesreclamationsComponent.prototype.onSaveSuccess = function (result) {
         this.eventManager.broadcast({ name: 'reclamationListModification', content: 'OK' });
         this.isSaving = false;

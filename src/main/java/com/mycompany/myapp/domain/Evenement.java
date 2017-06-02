@@ -41,6 +41,9 @@ public class Evenement implements Serializable {
     @Field("image_content_type")
     private String imageContentType;
 
+    @Field("part")
+    private String part;
+
     public String getId() {
         return id;
     }
@@ -140,6 +143,19 @@ public class Evenement implements Serializable {
         this.imageContentType = imageContentType;
     }
 
+    public String getPart() {
+        return part;
+    }
+
+    public Evenement part(String part) {
+        this.part = part;
+        return this;
+    }
+
+    public void setPart(String part) {
+        this.part = part;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -171,6 +187,7 @@ public class Evenement implements Serializable {
             ", date='" + date + "'" +
             ", image='" + image + "'" +
             ", imageContentType='" + imageContentType + "'" +
+            ", part='" + part + "'" +
             '}';
     }
 }

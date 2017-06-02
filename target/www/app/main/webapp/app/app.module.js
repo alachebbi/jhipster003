@@ -37,7 +37,7 @@ AvancementAppModule = __decorate([
             account_module_1.AvancementAccountModule,
             entity_module_1.AvancementEntityModule,
             chart_module_1.AvancementChartModule,
-            chartmedicament_module_1.AvancementChartMedicamentModule,
+            chartmedicament_module_1.AvancementChartmedicamentModule,
             chat_module_1.AvancementChatModule
         ],
         declarations: [

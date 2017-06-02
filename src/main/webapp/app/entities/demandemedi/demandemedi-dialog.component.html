@@ -1,0 +1,48 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myDemandemediLabel" jhiTranslate="avancementApp.demandemedi.home.createOrEditLabel">Create or edit a Demandemedi</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.demandemedi.etat" for="field_etat">Etat</label>
+            <input type="text" class="form-control" name="etat" id="field_etat"
+                [(ngModel)]="demandemedi.etat" readonly
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.demandemedi.date" for="field_date">Date</label>
+            <input type="text" class="form-control" name="etat" id="field_date"
+                   [(ngModel)]="demandemedi.date" readonly
+            />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.demandemedi.medicamentid" for="field_medicamentid">Medicamentid</label>
+            <input type="text" class="form-control" name="medicamentid" id="field_medicamentid"
+                [(ngModel)]="demandemedi.medicamentid"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.demandemedi.quantite" for="field_quantite">Quantite</label>
+            <input type="number" class="form-control" name="quantite" id="field_quantite"
+                [(ngModel)]="demandemedi.quantite"
+             />
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

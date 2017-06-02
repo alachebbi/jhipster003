@@ -22,6 +22,14 @@
         {
             "fieldName": "d",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "datte",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "c",
+            "fieldType": "LocalDate"
         }
     ],
     "dto": "no",

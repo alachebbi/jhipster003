@@ -42,8 +42,8 @@ var LikesService = (function () {
         var options = this.createRequestOption(req);
         return this.http.get(this.resourceUrl, options);
     };
-    LikesService.prototype.delete = function (id) {
-        return this.http.delete(this.resourceUrl + "/" + id);
+    LikesService.prototype.delete = function (articleid) {
+        return this.http.delete(this.resourceUrl + "/" + articleid);
     };
     LikesService.prototype.createRequestOption = function (req) {
         var options = new http_1.BaseRequestOptions();

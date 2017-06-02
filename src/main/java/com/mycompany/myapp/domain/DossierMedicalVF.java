@@ -64,6 +64,10 @@ public class DossierMedicalVF implements Serializable {
     @Field("medecintraitant")
     private String medecintraitant;
 
+
+    @Field("medecintraitant2")
+    private String medecintraitant2;
+
     public String getId() {
         return id;
     }
@@ -241,6 +245,19 @@ public class DossierMedicalVF implements Serializable {
         this.medecintraitant = medecintraitant;
     }
 
+    public String getMedecintraitant2() {
+        return medecintraitant2;
+    }
+
+    public DossierMedicalVF medecintraitant2(String medecintraitant2) {
+        this.medecintraitant2 = medecintraitant2;
+        return this;
+    }
+
+    public void setMedecintraitant2(String medecintraitant2) {
+        this.medecintraitant2 = medecintraitant2;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -278,6 +295,7 @@ public class DossierMedicalVF implements Serializable {
             ", resultatdernierexamenContentType='" + resultatdernierexamenContentType + "'" +
             ", notesparamedicaux='" + notesparamedicaux + "'" +
             ", medecintraitant='" + medecintraitant + "'" +
+            ", medecintraitant2='" + medecintraitant2 + "'" +
             '}';
     }
 }

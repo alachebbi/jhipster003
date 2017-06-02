@@ -1,5 +1,5 @@
 
-Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢
 fsquid:UselessImportCheck"=Remove this unused import 'com.mycompany.myapp.domain.Likes'.(òŸû¶8ü îŒ¿+
-Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(ÌÍ’Í
 Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(ÌÍ’Í
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢

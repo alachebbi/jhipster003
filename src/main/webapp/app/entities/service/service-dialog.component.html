@@ -1,0 +1,51 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myServiceLabel" jhiTranslate="avancementApp.service.home.createOrEditLabel">Create or edit a Service</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!service.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="service.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.service.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="service.nom"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.service.chef" for="field_chef">Chef</label>
+            <input type="text" class="form-control" name="chef" id="field_chef"
+                [(ngModel)]="service.chef"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.service.medicaments" for="field_medicaments">Medicaments</label>
+            <input type="text" class="form-control" name="medicaments" id="field_medicaments"
+                [(ngModel)]="service.medicaments"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.service.materiel" for="field_materiel">Materiel</label>
+            <input type="text" class="form-control" name="materiel" id="field_materiel"
+                [(ngModel)]="service.materiel"
+             />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

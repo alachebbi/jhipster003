@@ -21,7 +21,8 @@
             "nombreparticipants": "Nombreparticipants",
             "lieu": "Lieu",
             "date": "Date",
-            "image": "Image"
+            "image": "Image",
+            "part": "Part"
         }
     }
 }

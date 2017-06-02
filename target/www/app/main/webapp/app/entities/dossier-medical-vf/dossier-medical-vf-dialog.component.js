@@ -16,12 +16,15 @@ var doctor_service_1 = require("../doctor/doctor.service");
 var dossier_medical_vf_popup_service_1 = require("./dossier-medical-vf-popup.service");
 var dossier_medical_vf_service_1 = require("./dossier-medical-vf.service");
 var medicament_service_1 = require("../medicament/medicament.service");
+var shared_1 = require("../../shared");
 var DossierMedicalVFDialogComponent = (function () {
-    function DossierMedicalVFDialogComponent(activeModal, jhiLanguageService, doctorService, medicamentService, dataUtils, alertService, dossierMedicalVFService, eventManager, router) {
+    function DossierMedicalVFDialogComponent(activeModal, jhiLanguageService, doctorService, medicamentService, principal, loginModalService, dataUtils, alertService, dossierMedicalVFService, eventManager, router) {
         this.activeModal = activeModal;
         this.jhiLanguageService = jhiLanguageService;
         this.doctorService = doctorService;
         this.medicamentService = medicamentService;
+        this.principal = principal;
+        this.loginModalService = loginModalService;
         this.dataUtils = dataUtils;
         this.alertService = alertService;
         this.dossierMedicalVFService = dossierMedicalVFService;
@@ -38,6 +41,14 @@ var DossierMedicalVFDialogComponent = (function () {
         this.isSaving = false;
         this.loadAlldoc();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+    };
+    DossierMedicalVFDialogComponent.prototype.registerAuthenticationSuccess = function () {
+        var _this = this;
+        this.eventManager.subscribe('authenticationSuccess', function (message) {
+            _this.principal.identity().then(function (account) {
+                _this.account = account;
+            });
+        });
     };
     DossierMedicalVFDialogComponent.prototype.byteSize = function (field) {
         return this.dataUtils.byteSize(field);
@@ -104,6 +115,8 @@ DossierMedicalVFDialogComponent = __decorate([
         ng_jhipster_1.JhiLanguageService,
         doctor_service_1.DoctorService,
         medicament_service_1.MedicamentService,
+        shared_1.Principal,
+        shared_1.LoginModalService,
         ng_jhipster_1.DataUtils,
         ng_jhipster_1.AlertService,
         dossier_medical_vf_service_1.DossierMedicalVFService,

@@ -7,5 +7,6 @@ export class Evenement {
         public lieu?: string,
         public date?: any,
         public image?: any,
+        public part?: string,
     ) { }
 }

@@ -19,16 +19,22 @@ var DemandemedicamentvffService = (function () {
     }
     DemandemedicamentvffService.prototype.create = function (demandemedicamentvff) {
         var copy = Object.assign({}, demandemedicamentvff);
-        copy.date = this.dateUtils
-            .convertLocalDateToServer(demandemedicamentvff.date);
+        copy.date;
+        copy.datte = this.dateUtils
+            .convertLocalDateToServer(demandemedicamentvff.datte);
+        copy.c = this.dateUtils
+            .convertLocalDateToServer(demandemedicamentvff.c);
         return this.http.post(this.resourceUrl, copy).map(function (res) {
             return res.json();
         });
     };
     DemandemedicamentvffService.prototype.update = function (demandemedicamentvff) {
         var copy = Object.assign({}, demandemedicamentvff);
-        copy.date = this.dateUtils
-            .convertLocalDateToServer(demandemedicamentvff.date);
+        copy.date;
+        copy.datte = this.dateUtils
+            .convertLocalDateToServer(demandemedicamentvff.datte);
+        copy.c = this.dateUtils
+            .convertLocalDateToServer(demandemedicamentvff.c);
         return this.http.put(this.resourceUrl, copy).map(function (res) {
             return res.json();
         });
@@ -39,6 +45,10 @@ var DemandemedicamentvffService = (function () {
             var jsonResponse = res.json();
             jsonResponse.date = _this.dateUtils
                 .convertLocalDateFromServer(jsonResponse.date);
+            jsonResponse.datte = _this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.datte);
+            jsonResponse.c = _this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.c);
             return jsonResponse;
         });
     };
@@ -56,6 +66,10 @@ var DemandemedicamentvffService = (function () {
         for (var i = 0; i < jsonResponse.length; i++) {
             jsonResponse[i].date = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse[i].date);
+            jsonResponse[i].datte = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].datte);
+            jsonResponse[i].c = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].c);
         }
         res._body = jsonResponse;
         return res;

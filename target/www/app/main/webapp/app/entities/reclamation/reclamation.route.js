@@ -48,7 +48,7 @@ exports.reclamationRoute = [
         }
     }, {
         path: 'mesreclamations',
-        component: mesreclamations_component_1.MesreclamationComponent,
+        component: mesreclamations_component_1.MesreclamationsComponent,
         resolve: {
             'pagingParams': ReclamationResolvePagingParams
         },

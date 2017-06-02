@@ -14,17 +14,27 @@ var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var ng_jhipster_1 = require("ng-jhipster");
 var reclamation_popup_service_1 = require("./reclamation-popup.service");
 var reclamation_service_1 = require("./reclamation.service");
+var user_service_1 = require("../../shared/user/user.service");
+var shared_1 = require("../../shared");
 var ReclamationDialogComponent = (function () {
-    function ReclamationDialogComponent(activeModal, jhiLanguageService, alertService, reclamationService, eventManager, router) {
+    function ReclamationDialogComponent(activeModal, jhiLanguageService, alertService, userService, principal, loginModalService, reclamationService, eventManager, router) {
         this.activeModal = activeModal;
         this.jhiLanguageService = jhiLanguageService;
         this.alertService = alertService;
+        this.userService = userService;
+        this.principal = principal;
+        this.loginModalService = loginModalService;
         this.reclamationService = reclamationService;
         this.eventManager = eventManager;
         this.router = router;
         this.jhiLanguageService.setLocations(['reclamation']);
     }
     ReclamationDialogComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.principal.identity().then(function (account) {
+            _this.account = account;
+        });
+        this.registerAuthenticationSuccess();
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     };
@@ -40,9 +50,24 @@ var ReclamationDialogComponent = (function () {
                 .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
         }
         else {
+            this.reclamation.date = new Date();
+            this.reclamation.etat = "En atente";
+            this.reclamation.recusername = this.account.firstName;
+            this.reclamation.recusermail = this.account.email;
             this.reclamationService.create(this.reclamation)
                 .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
         }
+    };
+    ReclamationDialogComponent.prototype.registerAuthenticationSuccess = function () {
+        var _this = this;
+        this.eventManager.subscribe('authenticationSuccess', function (message) {
+            _this.principal.identity().then(function (account) {
+                _this.account = account;
+            });
+        });
+    };
+    ReclamationDialogComponent.prototype.isAuthenticated = function () {
+        return this.principal.isAuthenticated();
     };
     ReclamationDialogComponent.prototype.onSaveSuccess = function (result) {
         this.eventManager.broadcast({ name: 'reclamationListModification', content: 'OK' });
@@ -67,6 +92,9 @@ ReclamationDialogComponent = __decorate([
     __metadata("design:paramtypes", [ng_bootstrap_1.NgbActiveModal,
         ng_jhipster_1.JhiLanguageService,
         ng_jhipster_1.AlertService,
+        user_service_1.UserService,
+        shared_1.Principal,
+        shared_1.LoginModalService,
         reclamation_service_1.ReclamationService,
         ng_jhipster_1.EventManager,
         router_1.Router])

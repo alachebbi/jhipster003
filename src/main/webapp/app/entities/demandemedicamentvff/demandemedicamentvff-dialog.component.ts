@@ -45,6 +45,7 @@ export class DemandemedicamentvffDialogComponent implements OnInit {
         this.loadAllmed();
 
         this.demandemedicamentvff.etat = "en attente ";
+        this.demandemedicamentvff.date = new Date();
        // this.demandemedicamentvff.date = new Date().toISOString();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     }
@@ -59,6 +60,7 @@ export class DemandemedicamentvffDialogComponent implements OnInit {
             this.demandemedicamentvffService.update(this.demandemedicamentvff)
                 .subscribe((res: Demandemedicamentvff) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         } else {
+
             this.demandemedicamentvffService.create(this.demandemedicamentvff)
                 .subscribe((res: Demandemedicamentvff) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         }

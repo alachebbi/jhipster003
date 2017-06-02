@@ -2,8 +2,8 @@
 var shared_1 = require("../shared");
 var _1 = require("./");
 exports.CHARTMEDICAMENT_ROUTE = {
-    path: 'chart',
-    component: _1.ChartMedicamentComponent,
+    path: 'chartmedicament',
+    component: _1.ChartmedicamentComponent,
     data: {
         authorities: ['ROLE_ADMIN'],
         pageTitle: 'Welcome, Medicament Chart !'

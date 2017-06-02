@@ -19,7 +19,10 @@
             "etat": "Etat",
             "medicamentid": "Medicamentid",
             "quatite": "Quatite",
-            "date": "Date"
+            "date": "Date",
+            "d": "D",
+            "datte": "Datte",
+            "c": "C"
         }
     }
 }

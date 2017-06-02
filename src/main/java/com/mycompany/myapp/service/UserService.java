@@ -114,6 +114,7 @@ public class UserService {
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
         user.setEmail(userDTO.getEmail());
+        user.setPhoto(userDTO.getPhoto());
         user.setImageUrl(userDTO.getImageUrl());
         if (userDTO.getLangKey() == null) {
             user.setLangKey("fr"); // default language
@@ -146,6 +147,7 @@ public class UserService {
             user.setLastName(lastName);
             user.setEmail(email);
             user.setLangKey(langKey);
+
             userRepository.save(user);
             log.debug("Changed Information for User: {}", user);
         });

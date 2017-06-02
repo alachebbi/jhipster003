@@ -14,6 +14,7 @@ var ReclamationService = (function () {
     function ReclamationService(http) {
         this.http = http;
         this.resourceUrl = 'api/reclamations';
+        this.resourceUrl2 = 'api/mesreclamations';
     }
     ReclamationService.prototype.create = function (reclamation) {
         var copy = Object.assign({}, reclamation);
@@ -38,6 +39,11 @@ var ReclamationService = (function () {
     };
     ReclamationService.prototype.delete = function (id) {
         return this.http.delete(this.resourceUrl + "/" + id);
+    };
+    ReclamationService.prototype.findByrecusername = function (recusername) {
+        return this.http.get(this.resourceUrl2 + "/" + recusername).map(function (res) {
+            return res.json();
+        });
     };
     ReclamationService.prototype.createRequestOption = function (req) {
         var options = new http_1.BaseRequestOptions();

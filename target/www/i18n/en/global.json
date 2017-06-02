@@ -35,6 +35,11 @@
                 "pharmacie": "Pharmacie",
                 "likes": "Likes",
                 "evenement": "Evenement",
+                "demandepharmaciecentrale": "Demandepharmaciecentrale",
+                "demandemedi": "Demandemedi",
+                "dislike": "Dislike",
+                "chefService": "Chef Service",
+                "service": "Service",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

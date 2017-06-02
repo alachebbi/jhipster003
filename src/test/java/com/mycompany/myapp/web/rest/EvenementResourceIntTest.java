@@ -57,6 +57,9 @@ public class EvenementResourceIntTest {
     private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
+    private static final String DEFAULT_PART = "AAAAAAAAAA";
+    private static final String UPDATED_PART = "BBBBBBBBBB";
+
     @Autowired
     private EvenementRepository evenementRepository;
 
@@ -93,7 +96,8 @@ public class EvenementResourceIntTest {
                 .lieu(DEFAULT_LIEU)
                 .date(DEFAULT_DATE)
                 .image(DEFAULT_IMAGE)
-                .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
+                .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
+                .part(DEFAULT_PART);
         return evenement;
     }
 
@@ -125,6 +129,7 @@ public class EvenementResourceIntTest {
         assertThat(testEvenement.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testEvenement.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testEvenement.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
+        assertThat(testEvenement.getPart()).isEqualTo(DEFAULT_PART);
     }
 
     @Test
@@ -162,7 +167,8 @@ public class EvenementResourceIntTest {
             .andExpect(jsonPath("$.[*].lieu").value(hasItem(DEFAULT_LIEU.toString())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
+            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
+            .andExpect(jsonPath("$.[*].part").value(hasItem(DEFAULT_PART.toString())));
     }
 
     @Test
@@ -181,7 +187,8 @@ public class EvenementResourceIntTest {
             .andExpect(jsonPath("$.lieu").value(DEFAULT_LIEU.toString()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)));
+            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
+            .andExpect(jsonPath("$.part").value(DEFAULT_PART.toString()));
     }
 
     @Test
@@ -206,7 +213,8 @@ public class EvenementResourceIntTest {
                 .lieu(UPDATED_LIEU)
                 .date(UPDATED_DATE)
                 .image(UPDATED_IMAGE)
-                .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+                .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
+                .part(UPDATED_PART);
 
         restEvenementMockMvc.perform(put("/api/evenements")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -224,6 +232,7 @@ public class EvenementResourceIntTest {
         assertThat(testEvenement.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testEvenement.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testEvenement.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
+        assertThat(testEvenement.getPart()).isEqualTo(UPDATED_PART);
     }
 
     @Test

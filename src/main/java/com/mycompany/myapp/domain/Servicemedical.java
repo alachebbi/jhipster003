@@ -28,6 +28,9 @@ public class Servicemedical implements Serializable {
     @Field("image_content_type")
     private String imageContentType;
 
+    @Field("chef")
+    private String chef;
+
     public String getId() {
         return id;
     }
@@ -75,6 +78,19 @@ public class Servicemedical implements Serializable {
         this.imageContentType = imageContentType;
     }
 
+    public String getChef() {
+        return chef;
+    }
+
+    public Servicemedical chef(String chef) {
+        this.chef = chef;
+        return this;
+    }
+
+    public void setChef(String chef) {
+        this.chef = chef;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -102,6 +118,7 @@ public class Servicemedical implements Serializable {
             ", nom='" + nom + "'" +
             ", image='" + image + "'" +
             ", imageContentType='" + imageContentType + "'" +
+            ", chef='" + chef + "'" +
             '}';
     }
 }

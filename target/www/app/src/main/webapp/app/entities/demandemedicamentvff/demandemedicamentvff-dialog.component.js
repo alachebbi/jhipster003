@@ -31,6 +31,7 @@ var DemandemedicamentvffDialogComponent = (function () {
         this.isSaving = false;
         this.loadAllmed();
         this.demandemedicamentvff.etat = "en attente ";
+        this.demandemedicamentvff.date = new Date();
         // this.demandemedicamentvff.date = new Date().toISOString();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     };

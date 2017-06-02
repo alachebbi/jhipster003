@@ -1,0 +1,67 @@
+<div>
+    <h2><span jhiTranslate="avancementApp.demandemedi.home.title">Demandemedis</span>
+        <button class="btn btn-primary float-xs-right create-demandemedi" [routerLink]="['/', { outlets: { popup: ['demandemedi-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avancementApp.demandemedi.home.createLabel">
+            Create new Demandemedi
+            </span>
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="demandemedis">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="etat"><span jhiTranslate="avancementApp.demandemedi.etat">Etat</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="medicamentid"><span jhiTranslate="avancementApp.demandemedi.medicamentid">Medicamentid</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="quantite"><span jhiTranslate="avancementApp.demandemedi.quantite">Quantite</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="date"><span jhiTranslate="avancementApp.demandemedi.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let demandemedi of demandemedis ;trackBy: trackId">
+                <td><a [routerLink]="['../demandemedi', demandemedi.id ]">{{demandemedi.id}}</a></td>
+                <td>{{demandemedi.etat}}</td>
+                <td>{{demandemedi.medicamentid}}</td>
+                <td>{{demandemedi.quantite}}</td>
+                <td>{{demandemedi.date | date:'mediumDate'}}</td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+
+                        <button class="btn btn-warning pull-right" style="margin-right: 5px;"
+                                type="submit"
+                                [routerLink]="['../demandemedi', demandemedi.id ]"><i class="fa fa-eye"></i> </button>
+
+
+                        <button class="btn btn-primary pull-right" style="margin-right: 5px;" type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'demandemedi/'+ demandemedi.id + '/edit'} }]"
+                                replaceUrl="true"><i class="fa fa-edit"></i> </button>
+
+                        <!-- <button class="btn btn-danger pull-right" style="margin-right: 5px;" type="submit"
+                                 [routerLink]="['/', { outlets: { popup: 'demandemedicamentvff/'+ demandemedicamentvff.id + '/delete'} }]"
+                                 replaceUrl="true"><i class="fa fa-trash-o"></i> </button>-->
+
+
+
+                        <button class="btn btn-success pull-right" style="margin-right: 5px;" type="submit" (click)="Accepter(demandemedi,medicament)" ><i class="fa fa-check"></i></button>
+                        <button class="btn btn-danger pull-right" style="margin-right: 5px;" type="submit" (click)="Refuser(demandemedi)" ><i class="fa fa-ban"></i></button>
+
+
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="demandemedis && demandemedis.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>

@@ -17,6 +17,7 @@ export class EvenementDialogComponent implements OnInit {
     evenement: Evenement;
     authorities: any[];
     isSaving: boolean;
+    isPushed: boolean;
     constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
@@ -31,10 +32,15 @@ export class EvenementDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.isPushed = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     }
     byteSize(field) {
         return this.dataUtils.byteSize(field);
+    }
+    pushed(){
+        this.isPushed = true ;
+        this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
     }
 
     openFile(contentType, field) {

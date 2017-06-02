@@ -1,0 +1,77 @@
+
+
+
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+<div>
+    <h2><span jhiTranslate="avancementApp.service.home.title">Services</span>
+        <button class="btn btn-primary float-xs-right create-service" [routerLink]="['/', { outlets: { popup: ['service-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avancementApp.service.home.createLabel">
+            Create new Service
+            </span>
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="services">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nom"><span jhiTranslate="avancementApp.service.nom">Nom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="chef"><span jhiTranslate="avancementApp.service.chef">Chef</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="medicaments"><span jhiTranslate="avancementApp.service.medicaments">Medicaments</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="materiel"><span jhiTranslate="avancementApp.service.materiel">Materiel</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let service of services ;trackBy: trackId">
+                <td><a [routerLink]="['../service', service.id ]">{{service.id}}</a></td>
+                <td>{{service.nom}}</td>
+                <td>{{service.chef}}</td>
+                <td>{{service.medicaments}}</td>
+                <td>{{service.materiel}}</td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../service', service.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'service/'+ service.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'service/'+ service.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="services && services.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>
+        </div></section></div>

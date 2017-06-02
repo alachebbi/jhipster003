@@ -47,7 +47,9 @@
                   <br/>
 
 <button type="button" type="submit" [routerLink]="['../evenement', evenement.id ]"style="border-radius: 25px;" class="btn btn-info btn-sm ">Voir detail</button>
-
+<!--<button class="btn btn-danger pull-right" style="margin-right: 5px;" type="submit"
+        [routerLink]="['/', { outlets: { popup: 'evenement/'+ evenement.id + '/delete'} }]"
+        replaceUrl="true"><i class="fa fa-trash-o"></i> </button>-->
 <button type="button" type="submit" id="l{{i}}" (click)="VoterPour(evenement)"style="border-radius: 25px;float: right;" class="btn btn-danger btn-sm ">Je participe</button>
  <span style="margin-left: 40px" class="label-warning">{{evenement.nombreparticipants}} participants</span>
 

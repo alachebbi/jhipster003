@@ -11,73 +11,90 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var medicament_service_1 = require("../entities/medicament/medicament.service");
 var _ = require("lodash");
-var ChartMedicamentComponent = (function () {
-    function ChartMedicamentComponent(medicamentservice) {
+var ChartmedicamentComponent = (function () {
+    function ChartmedicamentComponent(medicamentservice) {
         this.medicamentservice = medicamentservice;
         this.barChartLabels = [];
-        this.barChartType = 'radar';
+        this.barChartType = 'bar';
         this.barChartLegend = true;
-        /* public chartColors: Array<Color> = [{
-             backgroundColor: 'dodgerblue',
-             hoverBackgroundColor: 'cornflowerblue'
-         }];*/
+        this.chartColors = [{
+                backgroundColor: ['#ffaa45',
+                    '#36a2eb',
+                    '#cc65fe',
+                    '#4228ff',
+                    '#5dff1d',
+                    '#8c3b4b',
+                    '#4228ff',
+                    '#fd99ff',
+                    '#4cffc7',
+                    '#2d8cff',
+                    '#ff8ab7',
+                    '#84c9ff',
+                    '#ffaa45',
+                    '#8c0f15',
+                    '#34318c',
+                    '#4b8c38',
+                    '#8c1a56'
+                ]
+            }];
         this.barChartData = [
             { data: [], label: 'Statistiques des médicaments' },
         ];
     }
-    ChartMedicamentComponent.prototype.ngOnInit = function () {
+    ChartmedicamentComponent.prototype.ngOnInit = function () {
         var _this = this;
         var titles = [];
         var values = [];
-        this.medicamentservice.getChartData()
+        this.medicamentservice.getAllMedicaments()
             .subscribe(function (data) {
             _.forEach(data, function (item) {
-                titles.push(item.title);
-                values.push(item.value);
+                titles.push(item.nom);
+                values.push(item.quantity);
             });
             var clone = JSON.parse(JSON.stringify(_this.barChartData));
             clone[0].data = values;
             _this.barChartLabels = titles;
             _this.barChartData = clone;
+            _this.chartColors;
         });
     };
     // events
-    ChartMedicamentComponent.prototype.chartClicked = function (e) {
+    ChartmedicamentComponent.prototype.chartClicked = function (e) {
         console.log(e);
     };
-    ChartMedicamentComponent.prototype.chartHovered = function (e) {
+    ChartmedicamentComponent.prototype.chartHovered = function (e) {
         console.log(e);
     };
-    ChartMedicamentComponent.prototype.changeCharType = function () {
+    ChartmedicamentComponent.prototype.changeCharType = function () {
         if (this.barChartType == "radar") {
             this.barChartType = "bar";
         }
-        if (this.barChartType == "polarArea") {
+        if (this.barChartType == "line") {
             this.barChartType = "bar";
         }
         if (this.barChartType == "pie") {
             this.barChartType = "bar";
         }
     };
-    ChartMedicamentComponent.prototype.piechart = function () {
+    ChartmedicamentComponent.prototype.linechart = function () {
         if (this.barChartType == "bar") {
-            this.barChartType = "pie";
+            this.barChartType = "line";
         }
         if (this.barChartType == "polarArea") {
             this.barChartType = "pie";
         }
         if (this.barChartType == "radar") {
-            this.barChartType = "pie";
+            this.barChartType = "line";
         }
         if (this.barChartType == "doughnut") {
             this.barChartType = "pie";
         }
     };
-    ChartMedicamentComponent.prototype.radarchart = function () {
+    ChartmedicamentComponent.prototype.radarchart = function () {
         if (this.barChartType == "bar") {
             this.barChartType = "radar";
         }
-        if (this.barChartType == "polarArea") {
+        if (this.barChartType == "line") {
             this.barChartType = "radar";
         }
         if (this.barChartType == "pie") {
@@ -87,7 +104,7 @@ var ChartMedicamentComponent = (function () {
             this.barChartType = "radar";
         }
     };
-    ChartMedicamentComponent.prototype.polarArea = function () {
+    ChartmedicamentComponent.prototype.polarArea = function () {
         if (this.barChartType == "bar") {
             this.barChartType = "polarArea";
         }
@@ -101,7 +118,7 @@ var ChartMedicamentComponent = (function () {
             this.barChartType = "polarArea";
         }
     };
-    ChartMedicamentComponent.prototype.douArea = function () {
+    ChartmedicamentComponent.prototype.douArea = function () {
         if (this.barChartType == "bar") {
             this.barChartType = "doughnut";
         }
@@ -115,9 +132,9 @@ var ChartMedicamentComponent = (function () {
             this.barChartType = "doughnut";
         }
     };
-    return ChartMedicamentComponent;
+    return ChartmedicamentComponent;
 }());
-ChartMedicamentComponent = __decorate([
+ChartmedicamentComponent = __decorate([
     core_1.Component({
         selector: 'bar-chart-demo',
         templateUrl: './chartmedicament.component.html',
@@ -126,6 +143,6 @@ ChartMedicamentComponent = __decorate([
         ]
     }),
     __metadata("design:paramtypes", [medicament_service_1.MedicamentService])
-], ChartMedicamentComponent);
-exports.ChartMedicamentComponent = ChartMedicamentComponent;
+], ChartmedicamentComponent);
+exports.ChartmedicamentComponent = ChartmedicamentComponent;
 //# sourceMappingURL=chartmedicament.component.js.map

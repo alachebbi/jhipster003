@@ -41,8 +41,32 @@ var ReclamationComponent = (function () {
         this.reclamationService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
-            sort: this.sort()
+            sort: this.sort(),
         }).subscribe(function (res) { return _this.onSuccess(res.json(), res.headers); }, function (res) { return _this.onError(res.json()); });
+    };
+    ReclamationComponent.prototype.loadAlllikes = function () {
+        var _this = this;
+        this.reclamations.forEach(function (item, index) {
+            _this.reclamationService.find(item.id)
+                .subscribe(function (reclamation) {
+                if (reclamation.etat == "Traitée") {
+                    document.getElementById("l" + index).setAttribute("disabled", "disabled");
+                    document.getElementById("l" + index).style.opacity = "0.3";
+                }
+            });
+        });
+    };
+    ReclamationComponent.prototype.loadAlllike = function () {
+        var _this = this;
+        this.reclamations.forEach(function (item, index2) {
+            _this.reclamationService.find(item.id)
+                .subscribe(function (reclamation) {
+                if (reclamation.etat == "Traitée") {
+                    document.getElementById("k" + index2).setAttribute("disabled", "disabled");
+                    document.getElementById("k" + index2).style.opacity = "0.3";
+                }
+            });
+        });
     };
     ReclamationComponent.prototype.loadPage = function (page) {
         if (page !== this.previousPage) {
@@ -51,7 +75,8 @@ var ReclamationComponent = (function () {
         }
     };
     ReclamationComponent.prototype.transition = function () {
-        this.router.navigate(['/reclamation'], { queryParams: {
+        this.router.navigate(['/reclamation'], {
+            queryParams: {
                 page: this.page,
                 size: this.itemsPerPage,
                 sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
@@ -85,6 +110,47 @@ var ReclamationComponent = (function () {
         var _this = this;
         this.eventSubscriber = this.eventManager.subscribe('reclamationListModification', function (response) { return _this.loadAll(); });
     };
+    /*reclamationTraiter(){
+            this.loadAll();
+        this.reclamations.forEach((item,index)=>{
+    
+                if (item.etat=="Traitée" )
+                {
+                    document.getElementById("l" ).setAttribute("disabled","disabled")
+                    document.getElementById("l" + index).style.opacity="0.3"
+    
+    
+                }
+            }
+        );
+    
+    }*/
+    ReclamationComponent.prototype.Traiter = function (Reclamation) {
+        var _this = this;
+        /*   this.reclamations.forEach((item,index)=>{
+   
+                   if (item.etat=="Traitée" )
+                   {
+                       // document.getElementById("l" + index).setAttribute("disabled","disabled")
+                       document.getElementById("l" + index).style.opacity="0.3";
+                       console.log("asslema");
+   
+                   }
+               }
+           );
+   */
+        Reclamation.etat = "Traitée";
+        this.reclamationService.update(Reclamation)
+            .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
+    };
+    ReclamationComponent.prototype.onSaveSuccess = function (result) {
+        this.eventManager.broadcast({ name: 'reclamationListModification', content: 'OK' });
+        this.isSaving = false;
+        this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true });
+    };
+    ReclamationComponent.prototype.onError = function (error) {
+        this.alertService.error(error.message, null, null);
+    };
     ReclamationComponent.prototype.sort = function () {
         var result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
         if (this.predicate !== 'id') {
@@ -98,9 +164,19 @@ var ReclamationComponent = (function () {
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.reclamations = data;
-    };
-    ReclamationComponent.prototype.onError = function (error) {
-        this.alertService.error(error.message, null, null);
+        this.loadAlllikes();
+        this.loadAlllike();
+        /*this.reclamations.forEach((item,index)=>{
+
+                if (item.etat=="Traitée" )
+                {
+                    // document.getElementById("l" + index).setAttribute("disabled","disabled")
+                    document.getElementById("l" + index).style.opacity="0.3";
+console.log("asslema");
+
+                }
+            }
+        );*/
     };
     return ReclamationComponent;
 }());

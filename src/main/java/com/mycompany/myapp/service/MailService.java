@@ -1,5 +1,6 @@
 package com.mycompany.myapp.service;
 
+import com.mycompany.myapp.domain.Demandepharmaciecentrale;
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.domain.Reclamation;
 
@@ -33,6 +34,8 @@ public class MailService {
     private static final String USER = "user";
 
     private static final String RECLAMATION = "reclamation";
+
+    private static final String DEMANDEPHARMACIECENTRALE = "demandepharmaciecentrale";
 
 
     private static final String BASE_URL = "baseUrl";
@@ -101,13 +104,24 @@ public class MailService {
     @Async
     public void sendReclamationEmail(Reclamation reclamation) {
         log.debug("Sending reclamation e-mail to '{}'", reclamation.getRecusermail());
-        Locale locale = Locale.forLanguageTag(reclamation.getTitre());
+        Locale locale = Locale.forLanguageTag(reclamation.getId());
         Context context = new Context(locale);
         context.setVariable(RECLAMATION, reclamation);
         context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
         String content = templateEngine.process("reclamationEmail", context);
         String subject = "Traitment Reclamation";
         sendEmail(reclamation.getRecusermail(), subject, content, false, true);
+    }
+    @Async
+    public void sendPharmacieEmail(Demandepharmaciecentrale demandepharmaciecentrale) {
+        log.debug("Sending demande e-mail to '{}'", demandepharmaciecentrale.getMail());
+        Locale locale = Locale.forLanguageTag(demandepharmaciecentrale.getId());
+        Context context = new Context(locale);
+        context.setVariable(DEMANDEPHARMACIECENTRALE, demandepharmaciecentrale);
+        context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+        String content = templateEngine.process("pharmacie", context);
+        String subject = "Demande d'alimentation de stock de médicament";
+        sendEmail(demandepharmaciecentrale.getMail(), subject, content, false, true);
     }
 
     @Async

@@ -10,6 +10,9 @@ import { ArticleService } from './article.service';
 import { LikesService } from '../likes/likes.service';
 import { Likes } from '../likes/likes.model';
 
+import { DislikeService } from '../dislike/dislike.service';
+import { Dislike } from '../dislike/dislike.model';
+
 
 
 import { ITEMS_PER_PAGE, Principal,Account } from '../../shared';
@@ -26,6 +29,7 @@ currentAccount: any;
     articles: Article[];
     likess : Likes[];
     likes: Likes;
+    dislike: Dislike;
     isPushed = false;
     account: Account;
     error: any;
@@ -43,6 +47,7 @@ currentAccount: any;
     reverse: any;
     isSaving: boolean;
 
+
     constructor(
         private jhiLanguageService: JhiLanguageService,
 
@@ -54,6 +59,7 @@ currentAccount: any;
         private dataUtils: DataUtils,
         private router: Router,
         private likesService: LikesService,
+        private dislikeService: DislikeService,
         private eventManager: EventManager,
         private paginationUtil: PaginationUtil,
         private paginationConfig: PaginationConfig
@@ -103,6 +109,7 @@ currentAccount: any;
         this.loadAll();
     }
     loadAlllikes() {
+
         this.articles.forEach((item,index)=>{
             this.likesService.findByidandname(item.id,this.currentAccount.firstName)
                 .subscribe(
@@ -111,8 +118,11 @@ currentAccount: any;
                         {
                             document.getElementById("l" + index).setAttribute("disabled","disabled")
                             document.getElementById("l" + index).style.opacity="0.3"
+
+                        //    document.getElementById("p" + index).removeAttribute("disabled")
                                 //style.opacity="0.3"
                              // l.disabled=true;
+
 
                         }
                     }
@@ -120,8 +130,60 @@ currentAccount: any;
             }
         );
     }
+    loadAlldislikes() {
+
+        this.articles.forEach((item,index)=>{
+                this.dislikeService.findByidandname(item.id,this.currentAccount.firstName)
+                    .subscribe(
+                        dislike=>{
+                            if (dislike.utilisateur==this.currentAccount.firstName )
+                            {
+
+                                document.getElementById("p" + index).setAttribute("disabled","disabled")
+                                document.getElementById("p" + index).style.opacity="0.3"
+                            //   document.getElementById("l" + index).removeAttribute("disabled")
+
+
+                                //style.opacity="0.3"
+                                // l.disabled=true;
+
+                            }
+                        }
+                    );
+            }
+        );
+
+    }
+
+enableLike(likes:Likes){
+
+
+    this.likess.forEach((item,index)=>{
+            this.dislikeService.findByidandname(item.id,this.likes.userid)
+                .subscribe(
+                    dislike=>{
+                        if (dislike.utilisateur==this.likes.userid )
+                        {
+
+                            this.likesService.delete(this.likes.id);
+                        }
+                    }
+                );
+        }
+    );
+}
+load(){
+    this.likesService.query().subscribe(
+        (res: Response) => {
+            this.likess = res.json();
+        },
+        (res: Response) => this.onError(res.json())
+    );
+}
+
     ngOnInit() {
         this.loadAll();
+        this.load();
 
         this.principal.identity().then((account) => {
             this.currentAccount = account;
@@ -149,17 +211,41 @@ currentAccount: any;
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
+
         this.likes.userid=this.currentAccount.firstName;
         this.likesService.create(this.likes)
             .subscribe((res: Likes) => this.onSaveSuccess2(res), (res: Response) => this.onSaveError(res.json()));
+
+
+
+
     }
-    VoterContre(Article) {
+    VoterContre(Article,dislike:Dislike) {
         Article.vote -= 1;
         this.articleService.modifier(Article)
             .subscribe((res: Article) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+
+        this.dislike= new Dislike;
+        this.dislike.article=Article.id;
+        this.dislike.c=1;
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
+        this.dislike.utilisateur=this.currentAccount.firstName;
+        this.dislikeService.create(this.dislike)
+            .subscribe((res: Likes) => this.onSaveSuccess3(res), (res: Response) => this.onSaveError(res.json()));
+
+            this.enableLike(this.likes);
+
+
     }
 
     private onSaveSuccess2 (result: Likes) {
+        this.eventManager.broadcast({ name: 'articleListModification', content: 'OK'});
+        this.isSaving = false;
+
+    }
+    private onSaveSuccess3 (result: Dislike) {
         this.eventManager.broadcast({ name: 'articleListModification', content: 'OK'});
         this.isSaving = false;
 
@@ -196,6 +282,31 @@ currentAccount: any;
         this.eventSubscriber = this.eventManager.subscribe('articleListModification', (response) => this.loadAll());
     }
 
+
+    likeClick(){
+
+
+
+    }
+
+
+    dislikeClick(){
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     sort () {
         let result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
         if (this.predicate !== 'id') {
@@ -210,7 +321,11 @@ currentAccount: any;
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.articles = data;
+        this.load();
+        this.loadAlldislikes();
         this.loadAlllikes();
+
+
     }
 
     private onError (error) {

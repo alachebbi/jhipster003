@@ -3,5 +3,6 @@ export class Servicemedical {
         public id?: string,
         public nom?: string,
         public image?: any,
+        public chef?: string,
     ) { }
 }

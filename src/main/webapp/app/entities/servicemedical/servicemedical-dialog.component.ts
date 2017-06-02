@@ -64,6 +64,8 @@ export class ServicemedicalDialogComponent implements OnInit {
             this.servicemedicalService.update(this.servicemedical)
                 .subscribe((res: Servicemedical) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         } else {
+
+            this.servicemedical.chef=="a";
             this.servicemedicalService.create(this.servicemedical)
                 .subscribe((res: Servicemedical) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         }

@@ -9,6 +9,9 @@ import { DossierMedicalVFDetailComponent } from './dossier-medical-vf-detail.com
 import { DossierMedicalVFPopupComponent } from './dossier-medical-vf-dialog.component';
 import { DossierMedicalVFDeletePopupComponent } from './dossier-medical-vf-delete-dialog.component';
 
+
+
+
 import { Principal } from '../../shared';
 
 @Injectable()
@@ -67,7 +70,7 @@ export const dossierMedicalVFPopupRoute: Routes = [
     },
     outlet: 'popup'
   },
-  {
+    {
     path: 'dossier-medical-vf/:id/delete',
     component: DossierMedicalVFDeletePopupComponent,
     data: {

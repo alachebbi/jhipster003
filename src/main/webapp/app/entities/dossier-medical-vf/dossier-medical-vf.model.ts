@@ -12,5 +12,6 @@ export class DossierMedicalVF {
         public resultatdernierexamen?: any,
         public notesparamedicaux?: string,
         public medecintraitant?: string,
+        public medecintraitant2?: string,
     ) { }
 }

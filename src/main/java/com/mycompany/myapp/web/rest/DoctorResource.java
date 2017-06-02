@@ -114,6 +114,15 @@ public class DoctorResource {
         if (doctor.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new infirmier cannot already have an ID")).body(null);
         }
+        if (doctorRepository.findOneByLogin(doctor.getLogin().toLowerCase()).isPresent()) {
+            return ResponseEntity.badRequest()
+                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "medecinexists", "Login already in use"))
+                .body(null);
+        } else if (doctorRepository.findOneByEmail(doctor.getEmail()).isPresent()) {
+            return ResponseEntity.badRequest()
+                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "emailexist", "Email already in use"))
+                .body(null);
+        } else {
         Set<String> autrority = new HashSet<>();
         // autrority.add("ROLE_MEDECIN_CHEF");
         autrority.add("ROLE_MEDECIN");
@@ -125,7 +134,7 @@ public class DoctorResource {
         return ResponseEntity.created(new URI("/api/doctors/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
-    }
+    }}
     /**
      * PUT  /doctors : Updates an existing doctor.
      *

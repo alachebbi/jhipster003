@@ -1,0 +1,25 @@
+{
+    "avancementApp": {
+        "demandemedi" : {
+            "home": {
+                "title": "Demandemedis",
+                "createLabel": "Créer un nouveau Demandemedi",
+                "createOrEditLabel": "Créer ou éditer un Demandemedi",
+                "search": "Recherche pour Demandemedi"
+            },
+            "created": "Un nouveau Demandemedi a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Demandemedi avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Demandemedi avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Demandemedi {{ id }} ?"
+            },
+            "detail": {
+                "title": "Demandemedi"
+            },
+            "etat": "Etat",
+            "medicamentid": "Medicamentid",
+            "quantite": "Quantite",
+            "date": "Date"
+        }
+    }
+}

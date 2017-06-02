@@ -41,6 +41,15 @@ var MesreclamationsComponent = (function () {
         this.reclamationService.findByrecusername(this.currentAccount).
             subscribe(function (reclamations) {
             _this.reclamations = reclamations;
+            _this.reclamations.forEach(function (item, index2) {
+                _this.reclamationService.find(item.id)
+                    .subscribe(function (reclamation) {
+                    if (reclamation.etat == "Traitée") {
+                        document.getElementById("k" + index2).setAttribute("disabled", "disabled");
+                        document.getElementById("k" + index2).style.opacity = "0.3";
+                    }
+                });
+            });
         });
     };
     MesreclamationsComponent.prototype.loadAlllikes = function () {
@@ -96,6 +105,8 @@ var MesreclamationsComponent = (function () {
         this.principal.identity().then(function (account) {
             _this.currentAccount = account;
             _this.loadAll();
+            _this.loadAlllikes();
+            _this.loadAlllike();
         });
         this.registerChangeInReclamations();
     };
@@ -108,39 +119,6 @@ var MesreclamationsComponent = (function () {
     MesreclamationsComponent.prototype.registerChangeInReclamations = function () {
         var _this = this;
         this.eventSubscriber = this.eventManager.subscribe('reclamationListModification', function (response) { return _this.loadAll(); });
-    };
-    /*reclamationTraiter(){
-     this.loadAll();
-     this.reclamations.forEach((item,index)=>{
-
-     if (item.etat=="Traitée" )
-     {
-     document.getElementById("l" ).setAttribute("disabled","disabled")
-     document.getElementById("l" + index).style.opacity="0.3"
-
-
-     }
-     }
-     );
-
-     }*/
-    MesreclamationsComponent.prototype.Traiter = function (Reclamation) {
-        var _this = this;
-        /*   this.reclamations.forEach((item,index)=>{
-
-         if (item.etat=="Traitée" )
-         {
-         // document.getElementById("l" + index).setAttribute("disabled","disabled")
-         document.getElementById("l" + index).style.opacity="0.3";
-         console.log("asslema");
-
-         }
-         }
-         );
-         */
-        Reclamation.etat = "Traitée";
-        this.reclamationService.update(Reclamation)
-            .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onError(res.json()); });
     };
     MesreclamationsComponent.prototype.onSaveSuccess = function (result) {
         this.eventManager.broadcast({ name: 'reclamationListModification', content: 'OK' });

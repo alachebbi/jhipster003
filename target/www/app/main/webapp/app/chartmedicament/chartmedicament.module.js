@@ -11,12 +11,12 @@ var shared_1 = require("../shared");
 var _1 = require("./");
 require('chart.js');
 var ng2_charts_1 = require("ng2-charts/ng2-charts");
-var AvancementChartMedicamentModule = (function () {
-    function AvancementChartMedicamentModule() {
+var AvancementChartmedicamentModule = (function () {
+    function AvancementChartmedicamentModule() {
     }
-    return AvancementChartMedicamentModule;
+    return AvancementChartmedicamentModule;
 }());
-AvancementChartMedicamentModule = __decorate([
+AvancementChartmedicamentModule = __decorate([
     core_1.NgModule({
         imports: [
             shared_1.AvancementSharedModule,
@@ -24,12 +24,12 @@ AvancementChartMedicamentModule = __decorate([
             ng2_charts_1.ChartsModule
         ],
         declarations: [
-            _1.ChartMedicamentComponent,
+            _1.ChartmedicamentComponent,
         ],
         entryComponents: [],
         providers: [],
         schemas: [core_1.CUSTOM_ELEMENTS_SCHEMA]
     })
-], AvancementChartMedicamentModule);
-exports.AvancementChartMedicamentModule = AvancementChartMedicamentModule;
+], AvancementChartmedicamentModule);
+exports.AvancementChartmedicamentModule = AvancementChartmedicamentModule;
 //# sourceMappingURL=chartmedicament.module.js.map

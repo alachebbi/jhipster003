@@ -29,8 +29,7 @@ Envoyer une nouvelle reclamation
 
                             <th>Titre</th>
 
-                            <th>Etat</th>
-                            <th>Date de reclamation </th>
+
 
 
                             <th></th>
@@ -39,17 +38,18 @@ Envoyer une nouvelle reclamation
                         <tbody>
 
 
-                             <tr *ngFor="let reclamation of reclamations ;let i=index; let k=index2 ">
+                        <tr *ngFor="let reclamation of reclamations  ; let i=index; let k=index2; ">
+                                                    <span *ngIf=" reclamation?.recusername==currentAccount?.firstName">
 
 
-                        <td>{{reclamation.titre}}</td>
+                            <td >{{reclamation.titre}}</td>
                             <!--<td>{{reclamation.objet}}</td>-->
-                            <td>{{reclamation.etat}}</td>
 
 
-                            <td>{{reclamation.date | date:'mediumDate'}}</td>
-                            <td class="text-xs-right">
-                                <div class="btn-group flex-btn-group-container">
+
+
+                            <td style="float: right" class="text-xs-right">
+                                <div   class="btn-group flex-btn-group-container">
                                     <button type="submit"
                                             style="margin-right: 5px;"
                                             [routerLink]="['../reclamation', reclamation.id ]"
@@ -78,8 +78,7 @@ Envoyer une nouvelle reclamation
                                     </button>
 
                                 </div>
-                            </td>
-                        </tr>
+                            </td>            </span>            </tr>
                         </tbody>
                     </table>
                 </div>

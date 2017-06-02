@@ -15,7 +15,7 @@ var ChartComponent = (function () {
     function ChartComponent(doctorservice) {
         this.doctorservice = doctorservice;
         this.barChartLabels = [];
-        this.barChartType = 'radar';
+        this.barChartType = 'polarArea';
         this.barChartLegend = true;
         /* public chartColors: Array<Color> = [{
              backgroundColor: 'dodgerblue',

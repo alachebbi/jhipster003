@@ -7,7 +7,9 @@ import {
     EvenementService,
     EvenementPopupService,
     EvenementComponent,
+    EvenementsComponent,
     EvenementDetailComponent,
+    EvenementsDetailComponent,
     EvenementDialogComponent,
     EvenementPopupComponent,
     EvenementDeletePopupComponent,
@@ -29,7 +31,9 @@ let ENTITY_STATES = [
     ],
     declarations: [
         EvenementComponent,
+        EvenementsComponent,
         EvenementDetailComponent,
+        EvenementsDetailComponent,
         EvenementDialogComponent,
         EvenementDeleteDialogComponent,
         EvenementPopupComponent,
@@ -37,6 +41,7 @@ let ENTITY_STATES = [
     ],
     entryComponents: [
         EvenementComponent,
+        EvenementsComponent,
         EvenementDialogComponent,
         EvenementPopupComponent,
         EvenementDeleteDialogComponent,

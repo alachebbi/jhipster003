@@ -35,6 +35,12 @@ public class Demandemedicamentvff implements Serializable {
     @Field("d")
     private String d;
 
+    @Field("datte")
+    private LocalDate datte;
+
+    @Field("c")
+    private LocalDate c;
+
     public String getId() {
         return id;
     }
@@ -108,6 +114,32 @@ public class Demandemedicamentvff implements Serializable {
         this.d = d;
     }
 
+    public LocalDate getDatte() {
+        return datte;
+    }
+
+    public Demandemedicamentvff datte(LocalDate datte) {
+        this.datte = datte;
+        return this;
+    }
+
+    public void setDatte(LocalDate datte) {
+        this.datte = datte;
+    }
+
+    public LocalDate getC() {
+        return c;
+    }
+
+    public Demandemedicamentvff c(LocalDate c) {
+        this.c = c;
+        return this;
+    }
+
+    public void setC(LocalDate c) {
+        this.c = c;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -137,6 +169,8 @@ public class Demandemedicamentvff implements Serializable {
             ", quatite='" + quatite + "'" +
             ", date='" + date + "'" +
             ", d='" + d + "'" +
+            ", datte='" + datte + "'" +
+            ", c='" + c + "'" +
             '}';
     }
 }

@@ -13,8 +13,11 @@ export class DemandemedicamentvffService {
 
     create(demandemedicamentvff: Demandemedicamentvff): Observable<Demandemedicamentvff> {
         let copy: Demandemedicamentvff = Object.assign({}, demandemedicamentvff);
-        copy.date = this.dateUtils
-            .convertLocalDateToServer(demandemedicamentvff.date);
+        copy.date;
+        copy.datte = this.dateUtils
+            .convertLocalDateToServer(demandemedicamentvff.datte);
+        copy.c = this.dateUtils
+            .convertLocalDateToServer(demandemedicamentvff.c);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -22,19 +25,25 @@ export class DemandemedicamentvffService {
 
     update(demandemedicamentvff: Demandemedicamentvff): Observable<Demandemedicamentvff> {
         let copy: Demandemedicamentvff = Object.assign({}, demandemedicamentvff);
-        copy.date = this.dateUtils
-            .convertLocalDateToServer(demandemedicamentvff.date);
+        copy.date;
+        copy.datte = this.dateUtils
+            .convertLocalDateToServer(demandemedicamentvff.datte);
+        copy.c = this.dateUtils
+            .convertLocalDateToServer(demandemedicamentvff.c);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
     }
 
-
-    find(id: number): Observable<Demandemedicamentvff> {
+    find(id: any): Observable<Demandemedicamentvff> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             let jsonResponse = res.json();
             jsonResponse.date = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse.date);
+            jsonResponse.datte = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.datte);
+            jsonResponse.c = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.c);
             return jsonResponse;
         });
     }
@@ -56,6 +65,10 @@ export class DemandemedicamentvffService {
         for (let i = 0; i < jsonResponse.length; i++) {
             jsonResponse[i].date = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse[i].date);
+            jsonResponse[i].datte = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].datte);
+            jsonResponse[i].c = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].c);
         }
         res._body = jsonResponse;
         return res;

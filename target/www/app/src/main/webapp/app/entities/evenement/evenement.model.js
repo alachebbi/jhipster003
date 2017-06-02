@@ -1,6 +1,6 @@
 "use strict";
 var Evenement = (function () {
-    function Evenement(id, nom, description, nombreparticipants, lieu, date, image) {
+    function Evenement(id, nom, description, nombreparticipants, lieu, date, image, part) {
         this.id = id;
         this.nom = nom;
         this.description = description;
@@ -8,6 +8,7 @@ var Evenement = (function () {
         this.lieu = lieu;
         this.date = date;
         this.image = image;
+        this.part = part;
     }
     return Evenement;
 }());

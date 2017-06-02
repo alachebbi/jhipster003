@@ -1,0 +1,42 @@
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+<div *ngIf="service">
+    <h2><span jhiTranslate="avancementApp.service.detail.title">Service</span> {{service.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.service.nom">Nom</span></dt>
+        <dd>
+            <span>{{service.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.service.chef">Chef</span></dt>
+        <dd>
+            <span>{{service.chef}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.service.medicaments">Medicaments</span></dt>
+        <dd>
+            <span>{{service.medicaments}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.service.materiel">Materiel</span></dt>
+        <dd>
+            <span>{{service.materiel}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'service/'+ service.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+        </div></section></div>

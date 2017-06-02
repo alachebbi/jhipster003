@@ -23,7 +23,9 @@ AvancementEvenementModule = __decorate([
         ],
         declarations: [
             _1.EvenementComponent,
+            _1.EvenementsComponent,
             _1.EvenementDetailComponent,
+            _1.EvenementsDetailComponent,
             _1.EvenementDialogComponent,
             _1.EvenementDeleteDialogComponent,
             _1.EvenementPopupComponent,
@@ -31,6 +33,7 @@ AvancementEvenementModule = __decorate([
         ],
         entryComponents: [
             _1.EvenementComponent,
+            _1.EvenementsComponent,
             _1.EvenementDialogComponent,
             _1.EvenementPopupComponent,
             _1.EvenementDeleteDialogComponent,

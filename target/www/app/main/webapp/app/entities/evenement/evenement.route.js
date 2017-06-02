@@ -11,7 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var ng_jhipster_1 = require("ng-jhipster");
 var evenement_component_1 = require("./evenement.component");
+var evenements_component_1 = require("./evenements.component");
 var evenement_detail_component_1 = require("./evenement-detail.component");
+var evenements_detail_component_1 = require("./evenements-detail.component");
 var evenement_dialog_component_1 = require("./evenement-dialog.component");
 var evenement_delete_dialog_component_1 = require("./evenement-delete-dialog.component");
 var EvenementResolvePagingParams = (function () {
@@ -45,9 +47,29 @@ exports.evenementRoute = [
             authorities: ['ROLE_USER'],
             pageTitle: 'avancementApp.evenement.home.title'
         }
-    }, {
+    },
+    {
+        path: 'evenements',
+        component: evenements_component_1.EvenementsComponent,
+        resolve: {
+            'pagingParams': EvenementResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'avancementApp.evenement.home.title'
+        }
+    },
+    {
         path: 'evenement/:id',
         component: evenement_detail_component_1.EvenementDetailComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'avancementApp.evenement.home.title'
+        }
+    },
+    {
+        path: 'p/evenement/:id',
+        component: evenements_detail_component_1.EvenementsDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'avancementApp.evenement.home.title'

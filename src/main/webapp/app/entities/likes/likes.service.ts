@@ -43,9 +43,11 @@ export class LikesService {
         ;
     }
 
-    delete(id: number): Observable<Response> {
-        return this.http.delete(`${this.resourceUrl}/${id}`);
+    delete(articleid: any): Observable<Response> {
+        return this.http.delete(`${this.resourceUrl}/${articleid}`);
     }
+
+
 
 
 

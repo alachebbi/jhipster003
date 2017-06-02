@@ -1,6 +1,7 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Dislike;
 import com.mycompany.myapp.domain.Servicemedical;
 
 import com.mycompany.myapp.repository.ServicemedicalRepository;
@@ -32,7 +33,7 @@ public class ServicemedicalResource {
     private final Logger log = LoggerFactory.getLogger(ServicemedicalResource.class);
 
     private static final String ENTITY_NAME = "servicemedical";
-        
+
     private final ServicemedicalRepository servicemedicalRepository;
 
     public ServicemedicalResource(ServicemedicalRepository servicemedicalRepository) {
@@ -98,17 +99,21 @@ public class ServicemedicalResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+
+
+
+
     /**
      * GET  /servicemedicals/:id : get the "id" servicemedical.
      *
      * @param id the id of the servicemedical to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the servicemedical, or with status 404 (Not Found)
      */
-    @GetMapping("/servicemedicals/{id}")
+    @GetMapping("/servicemedicals/{nom}")
     @Timed
-    public ResponseEntity<Servicemedical> getServicemedical(@PathVariable String id) {
-        log.debug("REST request to get Servicemedical : {}", id);
-        Servicemedical servicemedical = servicemedicalRepository.findOne(id);
+    public ResponseEntity<Servicemedical> getServicemedical(@PathVariable String nom) {
+        log.debug("REST request to get Servicemedical : {}", nom);
+        Servicemedical servicemedical = servicemedicalRepository.findOne(nom);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(servicemedical));
     }
 

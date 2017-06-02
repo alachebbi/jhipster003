@@ -1,0 +1,5 @@
+
+[squid:S1858"?"getId" returns a string, there's no need to call "toString()".(Ú˜ Š8ÃÍ¬Ã+
+[squid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢8ÃÍ¬Ã+
+gsquid:UselessImportCheck">Remove this unused import 'com.mycompany.myapp.domain.Doctor'.(¾Ôä«8«€ž¬Ã+
+Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ

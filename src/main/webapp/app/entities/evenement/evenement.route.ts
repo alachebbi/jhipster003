@@ -5,7 +5,9 @@ import { UserRouteAccessService } from '../../shared';
 import { PaginationUtil } from 'ng-jhipster';
 
 import { EvenementComponent } from './evenement.component';
+import { EvenementsComponent } from './evenements.component';
 import { EvenementDetailComponent } from './evenement-detail.component';
+import { EvenementsDetailComponent } from './evenements-detail.component';
 import { EvenementPopupComponent } from './evenement-dialog.component';
 import { EvenementDeletePopupComponent } from './evenement-delete-dialog.component';
 
@@ -34,18 +36,40 @@ export const evenementRoute: Routes = [
     resolve: {
       'pagingParams': EvenementResolvePagingParams
     },
+
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'avancementApp.evenement.home.title'
     }
-  }, {
+  },
+    {
+        path: 'evenements',
+        component: EvenementsComponent,
+        resolve: {
+            'pagingParams': EvenementResolvePagingParams
+        },
+
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'avancementApp.evenement.home.title'
+        }
+    },
+    {
     path: 'evenement/:id',
     component: EvenementDetailComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'avancementApp.evenement.home.title'
     }
-  }
+  },
+    {
+        path: 'p/evenement/:id',
+        component: EvenementsDetailComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'avancementApp.evenement.home.title'
+        }
+    }
 ];
 
 export const evenementPopupRoute: Routes = [

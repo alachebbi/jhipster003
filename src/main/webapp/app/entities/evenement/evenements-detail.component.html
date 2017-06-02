@@ -1,0 +1,81 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
+
+
+
+            <div *ngIf="evenement">
+
+                <h2 style="color:#8c0f15;float: left;padding-top:6px;margin-left:340px;padding-bottom:25px;font-family:Times New Roman;"> {{evenement.nom}}</h2>
+
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="col-md-7" *ngIf="evenement">
+                    <div class="box box-solid box-dan">
+                        <div class="box-header">
+                            <h3 class="box-title">Informations </h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+
+                            <p>{{evenement.description}}</p><br/><br/>
+
+                            <img  style="width: 30px;height: 30px;" src="https://st.depositphotos.com/1765462/1282/v/950/depositphotos_12826883-stock-illustration-doctor-icon.jpg">
+
+                            <span><strong style="color:#242b5d;font-family:Times New Roman; ">{{evenement.nombreparticipants}}</strong> personnes participent</span>
+                            <br/>
+
+                            <img  style="width: 30px;height: 30px;" src="http://ekfe.chan.sch.gr/images/icons/Custom-Icon-Design-Pretty-Office-7-Calendar.ico">
+                            <span style="padding-left: 5px;" >{{evenement.date| date:'EEE, d MMM,y' }}</span>
+                            <br/>
+
+
+
+                            <img  style="width: 30px;height: 30px;" src="http://www.myiconfinder.com/uploads/iconsets/256-256-89fdce5084dbe77556cf99f7b22ae7e8-pin.png">
+                            <span style="padding-left: 5px;" >{{evenement.lieu}}</span><br/>
+
+
+
+
+                    </div>
+                </div><!-- /.box-body --><br/>
+                    <button class="btn btn-primary pull-right" style="float: left;margin-left: 5px;" type="submit"
+                            [routerLink]="['/', { outlets: { popup: 'evenement/'+ evenement.id + '/edit'} }]"
+                            replaceUrl="true"><i class="fa fa-edit"></i> Modifier</button>
+                    <button class="btn btn-danger pull-right" style="margin-left: 5px;float:left;" type="submit"
+                            [routerLink]="['/', { outlets: { popup: 'evenement/'+ evenement.id + '/delete'} }]"
+                            replaceUrl="true"><i class="fa fa-trash-o"></i> Supprimer</button>
+
+
+
+                </div>
+                <div class="col-md-4" *ngIf="participations">
+                    <div class="box box-solid box-dan">
+                        <div class="box-header">
+                            <h3 class="box-title">Liste des participants</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                           <div *ngFor="let participation of participations ;trackBy: trackId">
+                               <td>{{participation.participant}}</td></div>
+
+                           </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+
+
+                <!-- /.box -->
+
+
+
+
+
+                </div>
+
+
+
+</div>
+    </section></div>

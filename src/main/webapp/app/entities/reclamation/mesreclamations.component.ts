@@ -53,28 +53,28 @@ export class MesreclamationsComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
-       this.reclamationService.findByrecusername(this.currentAccount).
-           subscribe(reclamations=>{this.reclamations=reclamations;
-           this.reclamations.forEach((item,index2)=>{
-                   this.reclamationService.find(item.id)
-                       .subscribe(
-                           reclamation=>{
-                               if (reclamation.etat=="Traitée" )
-                               {
-                                   document.getElementById("k" + index2).setAttribute("disabled","disabled")
-                                   document.getElementById("k" + index2).style.opacity="0.3"
+        this.reclamationService.findByrecusername(this.currentAccount).
+        subscribe(reclamations=>{this.reclamations=reclamations;
+            this.reclamations.forEach((item,index2)=>{
+                    this.reclamationService.find(item.id)
+                        .subscribe(
+                            reclamation=>{
+                                if (reclamation.etat=="Traitée" )
+                                {
+                                    document.getElementById("k" + index2).setAttribute("disabled","disabled")
+                                    document.getElementById("k" + index2).style.opacity="0.3"
 
-                                   //style.opacity="0.3"
-                                   // l.disabled=true;
+                                    //style.opacity="0.3"
+                                    // l.disabled=true;
 
-                               }
-                           }
-                       );
-               }
-           );
+                                }
+                            }
+                        );
+                }
+            );
 
 
-       })
+        })
 
 
 
@@ -179,45 +179,8 @@ export class MesreclamationsComponent implements OnInit, OnDestroy {
     }
 
 
-    /*reclamationTraiter(){
-     this.loadAll();
-     this.reclamations.forEach((item,index)=>{
-
-     if (item.etat=="Traitée" )
-     {
-     document.getElementById("l" ).setAttribute("disabled","disabled")
-     document.getElementById("l" + index).style.opacity="0.3"
 
 
-     }
-     }
-     );
-
-     }*/
-    Traiter( Reclamation  ) {
-
-
-        /*   this.reclamations.forEach((item,index)=>{
-
-         if (item.etat=="Traitée" )
-         {
-         // document.getElementById("l" + index).setAttribute("disabled","disabled")
-         document.getElementById("l" + index).style.opacity="0.3";
-         console.log("asslema");
-
-         }
-         }
-         );
-         */
-        Reclamation.etat = "Traitée";
-        this.reclamationService.update(Reclamation)
-            .subscribe((res: Reclamation) => this.onSaveSuccess(res),
-                (res: Response) => this.onError(res.json()));
-
-
-
-
-    }
     private onSaveSuccess(result: Reclamation) {
         this.eventManager.broadcast({name: 'reclamationListModification', content: 'OK'});
         this.isSaving = false;

@@ -6,5 +6,7 @@ export class Demandemedicamentvff {
         public quatite?: number,
         public date?: any,
         public d?: string,
+        public datte?: any,
+        public c?: any,
     ) { }
 }

@@ -1,0 +1,70 @@
+
+
+
+
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+            <div style="margin-left: 20px">
+                <div *ngIf="evenement">
+                    <h2 style="color:#8c0f15;float: left;padding-top:6px;margin-left:230px;text-align: center;padding-bottom:15px;font-family:Times New Roman;">{{evenement.nom}}</h2>
+                    <hr>
+                    <jhi-alert-error></jhi-alert-error>
+                    <dl class="row">
+
+                        <dt></dt>
+                        <dd>
+                            <div style="padding-top: 100px;margin-left:300px">
+                                <div *ngIf="evenement.image">
+                                    <a (click)="openFile(evenement.imageContentType, evenement.image)">
+                                        <img style="height: 400px;width: 400px"[src]="'data:' + evenement.imageContentType + ';base64,' + evenement.image" alt="evenement image"/>
+                                    </a>
+
+                                </div></div>
+                        </dd>
+
+                        <dt></dt><br/>
+                        <dd style=" margin-left: 15px;">
+                            <span>{{evenement.description}}</span>
+                            <br/>      <br/>        </dd>
+                        <dt></dt>
+                        <dd  style="line-height: 30px; margin-left: 15px;">
+
+
+                            <img  style="width: 30px;height: 30px;" src="https://st.depositphotos.com/1765462/1282/v/950/depositphotos_12826883-stock-illustration-doctor-icon.jpg">
+
+                            <span><strong style="color:#242b5d;font-family:Times New Roman; ">{{evenement.nombreparticipants}}</strong> personnes participent</span>
+                        </dd><br/>
+                        <div style="margin-left: 15px;">
+                            <dt></dt>
+                            <dd>   <img  style="width: 30px;height: 30px;" src="http://ekfe.chan.sch.gr/images/icons/Custom-Icon-Design-Pretty-Office-7-Calendar.ico">
+                                <span style="padding-left: 5px;" >{{evenement.date| date:'EEE, d MMM,y' }}</span></dd>
+                            <br/>
+                            <dt></dt>
+
+
+                            <dd>     <img  style="width: 30px;height: 30px;" src="http://www.myiconfinder.com/uploads/iconsets/256-256-89fdce5084dbe77556cf99f7b22ae7e8-pin.png">
+                                <span style="padding-left: 5px;" >{{evenement.lieu}}</span></dd>
+                        </div>
+                        <br/>
+
+                    </dl>
+
+                    <button type="submit"
+                            (click)="previousState()"
+                            class="btn btn-info"
+                            style="float: right">
+                        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+                    </button>
+
+                    <!-- <button type="button"
+                             [routerLink]="['/', { outlets: { popup: 'evenement/'+ evenement.id + '/edit'} }]"
+                             replaceUrl="true"
+                             class="btn btn-primary">
+                         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+                     </button>-->
+                </div>
+            </div> </div></section></div>

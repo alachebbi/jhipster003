@@ -1,0 +1,25 @@
+{
+    "avancementApp": {
+        "demandemedi" : {
+            "home": {
+                "title": "Demandemedis",
+                "createLabel": "Create a new Demandemedi",
+                "createOrEditLabel": "Create or edit a Demandemedi",
+                "search": "Search for Demandemedi"
+            },
+            "created": "A new Demandemedi is created with identifier {{ param }}",
+            "updated": "A Demandemedi is updated with identifier {{ param }}",
+            "deleted": "A Demandemedi is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Demandemedi {{ id }}?"
+            },
+            "detail": {
+                "title": "Demandemedi"
+            },
+            "etat": "Etat",
+            "medicamentid": "Medicamentid",
+            "quantite": "Quantite",
+            "date": "Date"
+        }
+    }
+}

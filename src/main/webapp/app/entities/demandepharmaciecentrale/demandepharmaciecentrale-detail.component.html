@@ -1,0 +1,52 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'><div style="padding-left: 30px;">
+<div *ngIf="demandepharmaciecentrale">
+    <h2>Demande {{demandepharmaciecentrale.medicament}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt>Medicament :</dt>
+        <dd>
+            <span>{{demandepharmaciecentrale.medicament}}</span>
+        </dd>
+        <dt>Type :</dt>
+        <dd>
+            <span>{{demandepharmaciecentrale.type}}</span>
+        </dd>
+        <dt>Quantite :</dt>
+        <dd>
+            <span>{{demandepharmaciecentrale.quantite}}</span>
+        </dd>
+        <dt>Date :</dt>
+        <dd>
+            <span>{{demandepharmaciecentrale.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt>Pharmacien :</dt>
+        <dd>
+            <span>{{demandepharmaciecentrale.nompharmacien}}</span>
+        </dd>
+        <dt>Mail :</dt>
+        <dd>
+            <span>{{demandepharmaciecentrale.mail}}</span>
+        </dd>
+
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'demandepharmaciecentrale/'+ demandepharmaciecentrale.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+        </div>     </div></section></div>

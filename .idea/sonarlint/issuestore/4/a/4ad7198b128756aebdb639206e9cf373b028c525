@@ -1,0 +1,4 @@
+
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢
+Ysquid:S1858"?"getId" returns a string, there's no need to call "toString()".(ÆÌÅúÿÿÿÿ
+Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ

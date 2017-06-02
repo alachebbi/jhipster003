@@ -29,6 +29,7 @@ var NavbarComponent = (function () {
         this.router = router;
         this.version = app_constants_1.DEBUG_INFO_ENABLED ? 'v' + app_constants_1.VERSION : '';
         this.isNavbarCollapsed = true;
+        this.loadAlldoc();
         this.languageService.addLocation('home');
     }
     NavbarComponent.prototype.ngOnInit = function () {
@@ -66,12 +67,14 @@ var NavbarComponent = (function () {
     };
     NavbarComponent.prototype.login = function () {
         this.modalRef = this.loginModalService.open();
+        this.loadAlldoc();
     };
     NavbarComponent.prototype.registerAuthenticationSuccess = function () {
         var _this = this;
         this.eventManager.subscribe('authenticationSuccess', function (message) {
             _this.principal.identity().then(function (account) {
                 _this.account = account;
+                _this.loadAlldoc();
             });
         });
     };

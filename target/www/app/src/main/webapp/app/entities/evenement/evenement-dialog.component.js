@@ -27,10 +27,15 @@ var EvenementDialogComponent = (function () {
     }
     EvenementDialogComponent.prototype.ngOnInit = function () {
         this.isSaving = false;
+        this.isPushed = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     };
     EvenementDialogComponent.prototype.byteSize = function (field) {
         return this.dataUtils.byteSize(field);
+    };
+    EvenementDialogComponent.prototype.pushed = function () {
+        this.isPushed = true;
+        this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true });
     };
     EvenementDialogComponent.prototype.openFile = function (contentType, field) {
         return this.dataUtils.openFile(contentType, field);

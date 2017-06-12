@@ -1,0 +1,5 @@
+
+Rsquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+ssquid:S1488"_Immediately return this expression instead of assigning it to the temporary variable "demande".(€¼¹O
+ssquid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(Êƒ„¿
+ssquid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(ì„§‰

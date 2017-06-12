@@ -1,0 +1,7 @@
+
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢
+Tsquid:S1213"8Move this variable to comply with Java Code Conventions.(’ñ¨£8ò·‘ë¼+
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(Í«™°
+psquid:UselessImportCheck"GRemove this unused import 'com.mycompany.myapp.security.SecurityUtils'.(·„¬¡8åµÜ£º+
+gsquid:UselessImportCheck">Remove this unused import 'com.mycompany.myapp.domain.Doctor'.(¾Ôä«8à•ë¼+
+Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ

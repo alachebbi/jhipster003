@@ -1,0 +1,42 @@
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'><div style="padding-left: 20px">
+<div *ngIf="demandemedicamentvff">
+
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.demandemedicamentvff.etat">Etat</span></dt>
+        <dd>
+            <span>{{demandemedicamentvff.etat}}</span>
+        </dd>
+        <dt>Medicament</dt>
+        <dd>
+            <span>{{demandemedicamentvff.medicamentid}}</span>
+        </dd>
+        <dt>Quantite</dt>
+        <dd>
+            <span>{{demandemedicamentvff.quatite}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demandemedicamentvff.date">Date</span></dt>
+        <dd>
+            <span>{{demandemedicamentvff.date | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'demandemedicamentvff/'+ demandemedicamentvff.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+        </div>   </div></section></div>

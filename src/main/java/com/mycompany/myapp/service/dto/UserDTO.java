@@ -6,6 +6,7 @@ import com.mycompany.myapp.domain.Authority;
 import com.mycompany.myapp.domain.User;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.*;
 import java.time.ZonedDateTime;
@@ -41,6 +42,9 @@ public class UserDTO {
     @Size(min = 2, max = 5)
     private String langKey;
 
+    @Field("photo")
+    private byte[] photo;
+
     private String createdBy;
 
     private ZonedDateTime createdDate;
@@ -59,14 +63,14 @@ public class UserDTO {
         this(user.getId(), user.getLogin(), user.getFirstName(), user.getLastName(),
             user.getEmail(), user.getActivated(), user.getImageUrl(), user.getLangKey(),
             user.getCreatedBy(), user.getCreatedDate(), user.getLastModifiedBy(), user.getLastModifiedDate(),
-            user.getAuthorities().stream().map(Authority::getName)
+            user.getPhoto(), user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
     public UserDTO(String id, String login, String firstName, String lastName,
-        String email, boolean activated, String imageUrl, String langKey,
-        String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate,
-        Set<String> authorities) {
+                   String email, boolean activated, String imageUrl, String langKey,
+                   String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate,
+                   byte[] photo, Set<String> authorities) {
 
         this.id = id;
         this.login = login;
@@ -109,6 +113,19 @@ public class UserDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public UserDTO photo(byte[] photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     public String getImageUrl() {
@@ -161,6 +178,7 @@ public class UserDTO {
             ", createdDate=" + createdDate +
             ", lastModifiedBy='" + lastModifiedBy + '\'' +
             ", lastModifiedDate=" + lastModifiedDate +
+            ", photo='" + photo + '\'' +
             ", authorities=" + authorities +
             "}";
     }

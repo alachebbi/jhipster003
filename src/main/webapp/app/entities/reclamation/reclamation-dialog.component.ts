@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgModule } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Response } from '@angular/http';
 
@@ -8,12 +8,21 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { Reclamation } from './reclamation.model';
 import { ReclamationPopupService } from './reclamation-popup.service';
 import { ReclamationService } from './reclamation.service';
+import {BrowserModule} from "@angular/platform-browser";
+
+import  { UserService} from  '../../shared/user/user.service'
+import { Account, LoginModalService, Principal,LoginService } from '../../shared';
+
 @Component({
     selector: 'jhi-reclamation-dialog',
     templateUrl: './reclamation-dialog.component.html'
 })
 export class ReclamationDialogComponent implements OnInit {
 
+
+
+    account: Account;
+    accounts:Account[];
     reclamation: Reclamation;
     authorities: any[];
     isSaving: boolean;
@@ -21,6 +30,9 @@ export class ReclamationDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
+        private userService : UserService,
+        private principal: Principal,
+        private loginModalService: LoginModalService,
         private reclamationService: ReclamationService,
         private eventManager: EventManager,
         private router: Router
@@ -29,6 +41,14 @@ export class ReclamationDialogComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.principal.identity().then((account) => {
+            this.account = account;
+
+        });
+        this.registerAuthenticationSuccess();
+
+
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     }
@@ -43,10 +63,29 @@ export class ReclamationDialogComponent implements OnInit {
             this.reclamationService.update(this.reclamation)
                 .subscribe((res: Reclamation) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         } else {
+
+            this.reclamation.date=new Date();
+            this.reclamation.etat="En atente";
+            this.reclamation.recusername=this.account.firstName;
+            this.reclamation.recusermail=this.account.email;
             this.reclamationService.create(this.reclamation)
                 .subscribe((res: Reclamation) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         }
     }
+
+    registerAuthenticationSuccess() {
+        this.eventManager.subscribe('authenticationSuccess', (message) => {
+            this.principal.identity().then((account) => {
+                this.account = account;
+            });
+        });
+    }
+
+    isAuthenticated() {
+        return this.principal.isAuthenticated();
+    }
+
+
 
     private onSaveSuccess (result: Reclamation) {
         this.eventManager.broadcast({ name: 'reclamationListModification', content: 'OK'});

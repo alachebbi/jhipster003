@@ -1,0 +1,29 @@
+{
+    "avancementApp": {
+        "chefService" : {
+            "home": {
+                "title": "Chef Services",
+                "createLabel": "Create a new Chef Service",
+                "createOrEditLabel": "Create or edit a Chef Service",
+                "search": "Search for Chef Service"
+            },
+            "created": "A new Chef Service is created with identifier {{ param }}",
+            "updated": "A Chef Service is updated with identifier {{ param }}",
+            "deleted": "A Chef Service is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Chef Service {{ id }}?"
+            },
+            "detail": {
+                "title": "Chef Service"
+            },
+            "nometprenom": "Nometprenom",
+            "login": "Login",
+            "motdepasse": "Motdepasse",
+            "servicemedi": "Servicemedi",
+            "photo": "Photo",
+            "specialite": "Specialite",
+            "datedenaissance": "Datedenaissance",
+            "email": "Email"
+        }
+    }
+}

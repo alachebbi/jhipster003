@@ -1,0 +1,24 @@
+{
+    "avancementApp": {
+        "dislike" : {
+            "home": {
+                "title": "Dislikes",
+                "createLabel": "Créer un nouveau Dislike",
+                "createOrEditLabel": "Créer ou éditer un Dislike",
+                "search": "Recherche pour Dislike"
+            },
+            "created": "Un nouveau Dislike a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Dislike avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Dislike avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Dislike {{ id }} ?"
+            },
+            "detail": {
+                "title": "Dislike"
+            },
+            "article": "Article",
+            "utilisateur": "Utilisateur",
+            "c": "C"
+        }
+    }
+}

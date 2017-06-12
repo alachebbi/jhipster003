@@ -1,0 +1,70 @@
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
+<div>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div  *ngIf="evenements">
+
+
+
+            <span *ngFor="let evenement of evenements ; let i=index;trackBy: trackId">
+
+
+<div style="display: block;margin: 50px;
+">
+
+ <div style="height: 600px;width:450px;float:left;padding-right: 40px;padding-bottom: 20px;padding-top: 15px; ">
+                <div class='box box-danger'>
+                  <div class='box-header with-border' style="height: 70px;">
+                      <h3 class='box-title' style="color: #242b5d"><strong>{{evenement.nom}}</strong></h3>
+                    <span class='label label-danger pull-right'></span>
+                  </div><!-- /.box-header -->
+                  <div class='box-body'>
+
+                     <a *ngIf="evenement.image" (click)="openFile(evenement.imageContentType, evenement.image)">
+                        <img style="width: 400px;height: 250px;"[src]="'data:' + evenement.imageContentType + ';base64,' + evenement.image"  alt="evenement image"/>
+                    </a><br/>
+                      <div style="display: block;">
+                           <br/>
+                     <img  style="width: 20px;height: 20px;" src="http://ekfe.chan.sch.gr/images/icons/Custom-Icon-Design-Pretty-Office-7-Calendar.ico">
+                    <span style="padding-left: 40px;" >{{evenement.date| date:'EEE, d MMM,y' }}</span></div>
+
+                  <br/>
+
+                       <div style="display: block;">
+                     <img  style="width: 20px;height: 20px;" src="http://www.myiconfinder.com/uploads/iconsets/256-256-89fdce5084dbe77556cf99f7b22ae7e8-pin.png">
+                    <span style="padding-left: 40px;" >{{evenement.lieu}}</span></div>
+                  <br/>
+
+<button type="button" type="submit" [routerLink]="['../evenement', evenement.id ]"style="border-radius: 25px;" class="btn btn-info btn-sm ">Voir detail</button>
+<!--<button class="btn btn-danger pull-right" style="margin-right: 5px;" type="submit"
+        [routerLink]="['/', { outlets: { popup: 'evenement/'+ evenement.id + '/delete'} }]"
+        replaceUrl="true"><i class="fa fa-trash-o"></i> </button>-->
+<button type="button" type="submit" id="l{{i}}" (click)="VoterPour(evenement)"style="border-radius: 25px;float: right;" class="btn btn-danger btn-sm ">Je participe</button>
+ <span style="margin-left: 40px" class="label-warning">{{evenement.nombreparticipants}} participants</span>
+
+                  </div>
+
+
+                </div><!-- /.box -->
+              </div><!-- /.col --></div>
+
+            </span>
+
+    </div>
+       <!-- <div class="text-xs-center" *ngIf="evenements && evenements.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>-->
+</div>
+        </div></section></div>

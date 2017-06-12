@@ -1,11 +1,20 @@
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
+
 <div>
-    <h2><span jhiTranslate="avancementApp.reclamation.home.title">Reclamations</span>
-        <button class="btn btn-primary float-xs-right create-reclamation" [routerLink]="['/', { outlets: { popup: ['reclamation-new'] } }]">
+    <div *ngIf="reclamations">
+    <h2><span jhiTranslate="avancementApp.reclamation.home.title">Vous avez {{reclamations.length}} reclamations </span>
+
+        <span *ngIf="currentAccount?.firstName!=='admin'">
+
+        <button class="btn btn-primary float-xs-right create-reclamation"style="margin-right: 5px;border-radius: 25px;" [routerLink]="['/', { outlets: { popup: ['reclamation-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="avancementApp.reclamation.home.createLabel">
-            Create new Reclamation
-            </span>
-        </button></h2>
+Envoyer une nouvelle reclamation
+        </button></span></h2></div>
     <jhi-alert></jhi-alert>
 
     <div class="container-fluid">
@@ -18,38 +27,62 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
 
-            <th jhiSortBy="titre"><span jhiTranslate="avancementApp.reclamation.titre">Titre</span> </th>
-            <th jhiSortBy="objet"><span jhiTranslate="avancementApp.reclamation.objet">Objet</span> </th>
+            <th>Titre</th>
+
+                <th>Etat</th>
+                <th>Date de reclamation </th>
+
+
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let reclamation of reclamations ;trackBy: trackId">
+            <tr *ngFor="let reclamation of reclamations ; let i=index; let k=index2;trackBy: trackId">
 
                 <td>{{reclamation.titre}}</td>
-                <td>{{reclamation.objet}}</td>
+                <!--<td>{{reclamation.objet}}</td>-->
+                <td>{{reclamation.etat}}</td>
+
+
+                <td>{{reclamation.date | date:'mediumDate'}}</td>
                 <td class="text-xs-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
+                                style="margin-right: 5px;"
                                 [routerLink]="['../reclamation', reclamation.id ]"
-                                class="btn btn-info btn-sm">
+                                class="btn btn-warning pull-right">
                             <span class="fa fa-eye"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+
                         </button>
-                        <button type="submit"
+                        <span *ngIf="currentAccount?.firstName!=='admin'"><button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'reclamation/'+ reclamation.id + '/edit'} }]"
                                 replaceUrl="true"
-                                class="btn btn-primary btn-sm">
+                                                                                  id="k{{i}}"
+                                                                            style="margin-right: 5px;"
+                                class="btn btn-primary pull-right">
                             <span class="fa fa-pencil"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
+
+                        </button></span>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'reclamation/'+ reclamation.id + '/delete'} }]"
                                 replaceUrl="true"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                               style="margin-right: 5px;"
+                                class="btn btn-danger pull-right">
+                            <span class="fa fa-trash-o"></span>
+
                         </button>
+<span *ngIf="currentAccount?.firstName=='admin'">
+                        <button type="submit"
+                                (click)="Traiter(reclamation)"
+
+
+                                id="l{{i}}"
+                                style="margin-right: 5px;opacity: 2;"
+                                class="btn btn-success pull-right">
+                            <span class="fa fa-check"></span>
+
+
+                        </button></span>
                     </div>
                 </td>
             </tr>
@@ -61,3 +94,4 @@
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
 </div>
+        </div></section></div>

@@ -1,74 +1,147 @@
+<span  *ngIf="isAuthenticated()">
+<div class="content-wrapper">
 
+    <section class="content">
 
-
-
-
+        <div class="row">
 
 
 
 <div class="row">
-   <span *ngIf="isAuthenticated()">
+        <!--    <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Configuration</span>
 
-<label class="leadd ">You are logged in as {{account?.firstName}} {{account?.lastName}}  </label>
-    <h1 >Bienvenue, Plateform E-Health </h1>
-    <p class="lead" >Hopital Numérique</p>
+                    </div>&lt;!&ndash; /.info-box-content &ndash;&gt;
+                </div>&lt;!&ndash; /.info-box &ndash;&gt;
+            </div>&lt;!&ndash; /.col &ndash;&gt;
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Contacter Ministère de santé</span>
+
+                    </div>&lt;!&ndash; /.info-box-content &ndash;&gt;
+                </div>&lt;!&ndash; /.info-box &ndash;&gt;
+            </div> -->
+
+            <!-- fix for small devices only -->
+        <!--    <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Contacter Pharmacie Centrale</span>
+
+                    </div>&lt;!&ndash; /.info-box-content &ndash;&gt;
+                </div>&lt;!&ndash; /.info-box &ndash;&gt;
+            </div> /.col -->
+        <!--    <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Nombre des utilisateurs</span>
+
+                            <span class="info-box-number">444</span>
+
+                </div>&lt;!&ndash; /.info-box &ndash;&gt;
+            </div>&lt;!&ndash; /.col &ndash;&gt;
+        </div>-->
+</div>
+
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>
+                            150
+                        </h3>
+                        <p>
+                            New Orders
+                        </p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">
+                        More info <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>
+                            53<sup style="font-size: 20px">%</sup>
+                        </h3>
+                        <p>
+                            Bounce Rate
+                        </p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">
+                        More info <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>
+                            44
+                        </h3>
+                        <p>
+                            User Registrations
+                        </p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">
+                        More info <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>
+                            65
+                        </h3>
+                        <p>
+                            Unique Visitors
+                        </p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">
+                        More info <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div><!-- ./col -->
+        </div><!-- /.row -->
+
+    </section></div></span>
+<span  *ngIf="!isAuthenticated()">
 
 
+<div class="est">    <!--<img style="margin-top:30px;height: 550px;width: 100%;" src="https://www.alsace-esante.fr/sites/default/files/styles/slider/public/slider_1.jpg?itok=_9u8dGWm"/>-->
 
-    <h3>C'est quoi l'hopital numérique?</h3>
-    <p> L'hopital numérique se base sur un plan de développment qui marque la modernité en particulier
-    et la modérenisation en géneral , c'est un systeme interne d'information hospitaliers qui sert
-    à faciliter la communication entre les personnels d'un hopital .
-    Ce systeme , a pour but de fixer des priorités et des objectifs .
-    L'hopital numérique de nos jours  est une invention qui temoin un succés incomptestable.
-    Ce dernier grantie la trassabilité , de plus ce system peut faciliter la compréhension des informations .
-    Ajoutons à cela , que par ce systéme on peut diminuer le taux de voler ainsi au il'y a des acteurs externes
-    qu'on nous communique pour offrir les materiels et les médicaments necessaires aux hopitaux.
-    </p><p>Arrivons au but qui semble étre le plus important que notre plateform conserve des données médicales
-    qui sont privées seulment et rien que le medecin concerné peuve les voir .
-    En effet ces données prennent en charge l'historique du patient , ses anciens examens , notes  médicales et ses allérgies ...
-    Et si un jours un patient change  l'emplacement vers une autre ville ou sous un raison d'urgence
-    il aura ses fichiers médicals donc il a un successur et ses dossiers pourront lui étre transmis .</p>
-
-    <h3>  Langues disponibles ?</h3>
-    <p>  Notre plateform fonctionne à travers deux langues français et anglais .
-    </p>
-    <h3>  Internet Of Things ???</h3>
-    <p>  Ajoutons pour terminer qu'il y a possibilité d'integrer des accessoirs liées à notre system qui pourront étre des
-        bonus qui valorisent notre systeme .
-    </p>
+   <h2 style="font-family: PinyonScript;
+	font-size: 40px;
+	padding-top: 30px;
+line-height: 260px;
+   margin-left: 110px;"> E-Health Plateforme</h2>
+<button type="button" type="submit" style="width: 200px;margin-left: 160px;border-radius: 25px;"(click)="login()" class="btn btn-danger ">Se Connecter</button>
+ </div>
 
   </span>
-    <span *ngIf="!isAuthenticated()">
-
-
-
-    <h1 >Bienvenue, Plateform E-Health </h1>
-    <p class="lead" >Hopital Numérique</p>
-
-
-
-    <h3>C'est quoi l'hopital numérique?</h3>
-    <p> L'hopital numérique se base sur un plan de développment qui marque la modernité en particulier
-    et la modérenisation en géneral , c'est un systeme interne d'information hospitaliers qui sert
-    à faciliter la communication entre les personnels d'un hopital .
-    Ce systeme , a pour but de fixer des priorités et des objectifs .
-    L'hopital numérique de nos jours  est une invention qui temoin un succés incomptestable.
-    Ce dernier grantie la trassabilité , de plus ce system peut faciliter la compréhension des informations .
-    Ajoutons à cela , que par ce systéme on peut diminuer le taux de voler ainsi au il'y a des acteurs externes
-    qu'on nous communique pour offrir les materiels et les médicaments necessaires aux hopitaux.
-    </p><p>Arrivons au but qui semble étre le plus important que notre plateform conserve des données médicales
-    qui sont privées seulment et rien que le medecin concerné peuve les voir .
-    En effet ces données prennent en charge l'historique du patient , ses anciens examens , notes  médicales et ses allérgies ...
-    Et si un jours un patient change  l'emplacement vers une autre ville ou sous un raison d'urgence
-    il aura ses fichiers médicals donc il a un successur et ses dossiers pourront lui étre transmis .</p>
-
-    <h3>  Langues disponibles ?</h3>
-    <p>  Notre plateform fonctionne à travers deux langues français et anglais .
-    </p>
-    <h3>  Internet Of Things ???</h3>
-    <p>  Ajoutons pour terminer qu'il y a possibilité d'integrer des accessoirs liées à notre system qui pourront étre des
-        bonus qui valorisent notre systeme .
-    </p>
-
-  </span></div>

@@ -9,6 +9,9 @@ import { MedicamentService } from './medicament.service';
 import { ITEMS_PER_PAGE, Principal } from '../../shared';
 import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
 
+import { DemandeMedicamentVf } from '../demande-medicament-vf/demande-medicament-vf.model';
+import { DemandeMedicamentVfService } from '../demande-medicament-vf/demande-medicament-vf.service';
+
 @Component({
     selector: 'jhi-medicament',
     templateUrl: './medicament.component.html'
@@ -28,6 +31,7 @@ currentAccount: any;
     page: any;
     predicate: any;
     previousPage: any;
+    demandes : DemandeMedicamentVf;
     reverse: any;
 
     constructor(
@@ -36,6 +40,7 @@ currentAccount: any;
         private parseLinks: ParseLinks,
         private alertService: AlertService,
         private principal: Principal,
+        private demandemedicamentService: DemandeMedicamentVfService,
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private eventManager: EventManager,
@@ -88,6 +93,7 @@ currentAccount: any;
     }
     ngOnInit() {
         this.loadAll();
+        this.loadAllDemandes();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
@@ -101,7 +107,14 @@ currentAccount: any;
     trackId (index: number, item: Medicament) {
         return item.id;
     }
-
+    loadAllDemandes(){
+        this.demandemedicamentService.query().subscribe(
+            (res: Response) => {
+                this.demandes = res.json();
+            },
+            (res: Response) => this.onError(res.json())
+        );
+    }
 
 
     registerChangeInMedicaments() {

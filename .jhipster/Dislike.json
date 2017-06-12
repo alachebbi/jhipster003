@@ -1,0 +1,22 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "article",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "utilisateur",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "c",
+            "fieldType": "Integer"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "dislike",
+    "pagination": "pagination"
+}

@@ -1,0 +1,11 @@
+{
+    "avancementApp": {
+        "Antecedents" : {
+            "null": "",
+            "Hypertension": "Hypertension",
+            "Hypotension": "Hypotension",
+            "Triglyceride": "Triglyceride",
+            "Diabete": "Diabete"
+        }
+    }
+}

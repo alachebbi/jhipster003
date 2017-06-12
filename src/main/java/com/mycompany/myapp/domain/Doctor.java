@@ -1,6 +1,7 @@
 package com.mycompany.myapp.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -46,6 +47,25 @@ public class Doctor implements Serializable {
 
     @Field("daten")
     private LocalDate daten;
+
+    @Field("email")
+    private String email;
+
+    @Field("date")
+    private LocalDate date;
+
+    @DBRef
+    private User user ;
+
+    public User getUser() {
+        return user;
+    }
+
+
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getId() {
         return id;
@@ -172,6 +192,32 @@ public class Doctor implements Serializable {
         this.daten = daten;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public Doctor email(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public Doctor date(LocalDate date) {
+        this.date = date;
+        return this;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -205,6 +251,8 @@ public class Doctor implements Serializable {
             ", nometprenom='" + nometprenom + "'" +
             ", datenaissance='" + datenaissance + "'" +
             ", daten='" + daten + "'" +
+            ", email='" + email + "'" +
+            ", date='" + date + "'" +
             '}';
     }
 }

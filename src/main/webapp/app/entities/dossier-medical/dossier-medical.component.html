@@ -1,0 +1,99 @@
+
+
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
+
+
+<div>
+    <h2><span jhiTranslate="avancementApp.dossierMedical.home.title">Dossier Medicals</span>
+        <button class="btn btn-primary float-xs-right create-dossier-medical" [routerLink]="['/', { outlets: { popup: ['dossier-medical-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avancementApp.dossierMedical.home.createLabel">
+            Create new Dossier Medical
+            </span>
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="dossierMedicals">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th>Medecin Traitant</th>
+            <th jhiSortBy="nomdupatient"><span jhiTranslate="avancementApp.dossierMedical.nomdupatient">Nomdupatient</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numerotel"><span jhiTranslate="avancementApp.dossierMedical.numerotel">Numerotel</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="datedenaissance"><span jhiTranslate="avancementApp.dossierMedical.datedenaissance">Datedenaissance</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="antecedents"><span jhiTranslate="avancementApp.dossierMedical.antecedents">Antecedents</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ant"><span jhiTranslate="avancementApp.dossierMedical.ant">Ant</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupessanguin"><span jhiTranslate="avancementApp.dossierMedical.groupessanguin">Groupessanguin</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="recommandations"><span jhiTranslate="avancementApp.dossierMedical.recommandations">Recommandations</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="resultatdudernierexamen"><span jhiTranslate="avancementApp.dossierMedical.resultatdudernierexamen">Resultatdudernierexamen</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="resultatdudernierexamenn"><span jhiTranslate="avancementApp.dossierMedical.resultatdudernierexamenn">Resultatdudernierexamenn</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="situationfamiliale"><span jhiTranslate="avancementApp.dossierMedical.situationfamiliale">Situationfamiliale</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="notesparamedicaux"><span jhiTranslate="avancementApp.dossierMedical.notesparamedicaux">Notesparamedicaux</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dossierMedical of dossierMedicals | filterBy : ['medecinTraitant']: currentAccount.login ;trackBy: trackId ">
+                <td><a [routerLink]="['../dossier-medical', dossierMedical.id ]">{{dossierMedical.id}}</a></td>
+                <td>{{dossierMedical.medecinTraitant}}</td>
+                <td>{{dossierMedical.perscreptionsmedicamenteuses}}</td>
+                <td>{{dossierMedical.nomdupatient}}</td>
+                <td>{{dossierMedical.numerotel}}</td>
+                <td>{{dossierMedical.datedenaissance | date:'mediumDate'}}</td>
+                <td>{{dossierMedical.antecedents}}</td>
+                <td>{{dossierMedical.ant}}</td>
+                <td>{{dossierMedical.groupessanguin}}</td>
+                <td>{{dossierMedical.recommandations}}</td>
+                <td>{{dossierMedical.resultatdudernierexamen}}</td>
+                <td>
+                    <a *ngIf="dossierMedical.resultatdudernierexamenn" (click)="openFile(dossierMedical.resultatdudernierexamennContentType, dossierMedical.resultatdudernierexamenn)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="dossierMedical.resultatdudernierexamenn">{{dossierMedical.resultatdudernierexamennContentType}}, {{byteSize(dossierMedical.resultatdudernierexamenn)}}</span>
+                </td>
+                <td>{{dossierMedical.situationfamiliale}}</td>
+                <td>{{dossierMedical.notesparamedicaux}}</td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../dossier-medical', dossierMedical.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dossier-medical/'+ dossierMedical.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dossier-medical/'+ dossierMedical.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="dossierMedicals && dossierMedicals.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>
+        </div></section></div>

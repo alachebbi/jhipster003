@@ -1,13 +1,33 @@
-<div style="margin-left: 30px;">
+
+
+
+
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
 <div *ngIf="reclamation">
     <h2> {{reclamation.titre}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row">
+    <dl >
         <dt><span jhiTranslate="avancementApp.reclamation.titre">Titre</span></dt>
+        <dd>
+            <span>{{reclamation.titre}}</span>
+        </dd>
         <dt><span jhiTranslate="avancementApp.reclamation.objet">Objet</span></dt>
         <dd>
             <span>{{reclamation.objet}}</span>
+        </dd>
+        <dt>Envoyé par</dt>
+        <dd>
+            <span>{{reclamation.recusername}}</span>
+        </dd>
+        <dt>Mail de l'utilisateur</dt>
+        <dd>
+            <span>{{reclamation.recusermail}}</span>
         </dd>
     </dl>
 
@@ -24,4 +44,4 @@
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
 </div>
-</div>
+        </div></section></div>

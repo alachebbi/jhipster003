@@ -5,6 +5,7 @@ import { homeRoute } from '../home';
 import { navbarRoute } from '../app.route';
 import { errorRoute } from './';
 
+
 let LAYOUT_ROUTES = [
     homeRoute,
     navbarRoute,

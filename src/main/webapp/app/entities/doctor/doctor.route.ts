@@ -35,14 +35,14 @@ export const doctorRoute: Routes = [
       'pagingParams': DoctorResolvePagingParams
     },
     data: {
-        authorities: ['ROLE_USER'],
+        authorities: ['ROLE_ADMIN'],
         pageTitle: 'avancementApp.doctor.home.title'
     }
   }, {
     path: 'doctor/:id',
     component: DoctorDetailComponent,
     data: {
-        authorities: ['ROLE_USER'],
+        authorities: ['ROLE_ADMIN'],
         pageTitle: 'avancementApp.doctor.home.title'
     }
   }
@@ -53,7 +53,7 @@ export const doctorPopupRoute: Routes = [
     path: 'doctor-new',
     component: DoctorPopupComponent,
     data: {
-        authorities: ['ROLE_USER'],
+        authorities: ['ROLE_ADMIN'],
         pageTitle: 'avancementApp.doctor.home.title'
     },
     outlet: 'popup'
@@ -62,7 +62,7 @@ export const doctorPopupRoute: Routes = [
     path: 'doctor/:id/edit',
     component: DoctorPopupComponent,
     data: {
-        authorities: ['ROLE_USER'],
+        authorities: ['ROLE_ADMIN'],
         pageTitle: 'avancementApp.doctor.home.title'
     },
     outlet: 'popup'
@@ -71,7 +71,7 @@ export const doctorPopupRoute: Routes = [
     path: 'doctor/:id/delete',
     component: DoctorDeletePopupComponent,
     data: {
-        authorities: ['ROLE_USER'],
+        authorities: ['ROLE_ADMIN'],
         pageTitle: 'avancementApp.doctor.home.title'
     },
     outlet: 'popup'

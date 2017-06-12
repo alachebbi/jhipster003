@@ -1,10 +1,17 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
 <div>
-    <h2><span jhiTranslate="avancementApp.servicemedical.home.title">Servicemedicals</span>
+    <h2><span jhiTranslate="avancementApp.servicemedical.home.title">Services medicals</span>
         <button class="btn btn-primary float-xs-right create-servicemedical" [routerLink]="['/', { outlets: { popup: ['servicemedical-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="avancementApp.servicemedical.home.createLabel">
-            Create new Servicemedical
-            </span>
+
+
+
         </button></h2>
 
     <jhi-alert></jhi-alert>
@@ -68,3 +75,4 @@
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
 </div>
+        </div></section></div>

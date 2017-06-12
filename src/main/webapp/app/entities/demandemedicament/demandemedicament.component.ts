@@ -8,6 +8,7 @@ import { Demandemedicament } from './demandemedicament.model';
 import { DemandemedicamentService } from './demandemedicament.service';
 import { ITEMS_PER_PAGE, Principal } from '../../shared';
 import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
     selector: 'jhi-demandemedicament',
@@ -29,15 +30,18 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    isSaving: boolean;
 
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private demandemedicamentService: DemandemedicamentService,
         private parseLinks: ParseLinks,
         private alertService: AlertService,
+
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
         private router: Router,
+        public activeModal: NgbActiveModal,
         private eventManager: EventManager,
         private paginationUtil: PaginationUtil,
         private paginationConfig: PaginationConfig
@@ -51,6 +55,19 @@ currentAccount: any;
         });
         this.jhiLanguageService.setLocations(['demandemedicament']);
     }
+
+    private onSaveSuccess (result: Demandemedicament) {
+        this.eventManager.broadcast({ name: 'demandemedicamentListModification', content: 'OK'});
+        this.isSaving = false;
+        this.activeModal.dismiss(result);
+        this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+    }
+
+    private onSaveError (error) {
+        this.isSaving = false;
+        this.onError(error);
+    }
+
 
     loadAll() {
         this.demandemedicamentService.query({

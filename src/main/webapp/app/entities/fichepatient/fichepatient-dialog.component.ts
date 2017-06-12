@@ -8,8 +8,8 @@ import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jh
 import { Fichepatient } from './fichepatient.model';
 import { FichepatientPopupService } from './fichepatient-popup.service';
 import { FichepatientService } from './fichepatient.service';
-import { Medecin } from '../medecin/medecin.model';
-import {MedecinService }from'../medecin/medecin.service';
+import { Doctor } from '../doctor/doctor.model';
+import {DoctorService }from'../doctor/doctor.service';
 @Component({
     selector: 'jhi-fichepatient-dialog',
     templateUrl: './fichepatient-dialog.component.html'
@@ -17,7 +17,7 @@ import {MedecinService }from'../medecin/medecin.service';
 export class FichepatientDialogComponent implements OnInit {
 
     fichepatient: Fichepatient;
-    medecins: Medecin[];
+    doctors: Doctor[];
     authorities: any[];
     isSaving: boolean;
     constructor(
@@ -25,7 +25,7 @@ export class FichepatientDialogComponent implements OnInit {
         private jhiLanguageService: JhiLanguageService,
         private dataUtils: DataUtils,
         private alertService: AlertService,
-        private medecinService: MedecinService,
+        private doctorService: DoctorService,
         private fichepatientService: FichepatientService,
         private eventManager: EventManager,
         private router: Router
@@ -63,9 +63,9 @@ export class FichepatientDialogComponent implements OnInit {
         this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
     }
     loadAllserv() {
-        this.medecinService.query().subscribe(
+        this.doctorService.query().subscribe(
             (res: Response) => {
-                this.medecins = res.json();
+                this.doctors = res.json();
             },
             (res: Response) => this.onError(res.json())
         );

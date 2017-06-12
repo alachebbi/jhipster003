@@ -1,0 +1,70 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+            <div style="margin-left: 60px;" *ngIf="chefService"></div>
+
+            <div style="margin-left: 30px;">
+                <div *ngIf="chefService">
+                    <div  *ngIf="chefService.photo" >
+                        <a (click)="openFile(chefService.photoContentType, chefService.photo)">
+                            <img [src]="'data:' + chefService.photoContentType + ';base64,' + chefService.photo" style="max-width: 100px;max-height: 100px;" alt="chefService image"/>
+                        </a>
+
+                    </div>
+                    <hr>
+                    <jhi-alert-error></jhi-alert-error>
+                    <dl class="row">
+                        <dt> <span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Nom et prenom :</span> </dt>
+                        <dd>
+                            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 140px;font-family:Times New Roman;">{{chefService.nometprenom}}</span>
+                        </dd>
+
+                        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Specialité :</span> </dt>
+                        <dd>
+                            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 140px;font-family:Times New Roman;">{{chefService.specialite}}</span>
+                        </dd>
+                        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Service medical :</span></dt>
+                        <dd>
+                            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 140px;font-family:Times New Roman;">{{chefService.servicemedi}}</span>
+                        </dd>
+
+                        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Email :</span></dt>
+                        <dd>
+                            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 140px;font-family:Times New Roman;">{{chefService.email}}</span>
+                        </dd>
+                        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Login</span></dt>
+                        <dd>
+                            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 140px;font-family:Times New Roman;">{{chefService.login}}</span>
+                        </dd>
+
+
+
+
+
+                    </dl>
+
+                    <button type="submit"
+                            (click)="previousState()"
+                            class="btn btn-info"
+                            style="border-radius: 25px">
+                        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+                    </button>
+
+                    <button type="button"
+                            [routerLink]="['/', { outlets: { popup: 'chef-service/'+ chefService.id + '/edit'} }]"
+                            replaceUrl="true"
+                            class="btn btn-primary"
+                            style="border-radius: 25px">
+                        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+                    </button>
+                </div>
+            </div>
+
+        </div >
+
+    </section >
+
+</div>

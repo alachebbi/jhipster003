@@ -1,0 +1,138 @@
+
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
+            <div>
+
+                <button style="border-radius: 25px;" class="btn btn-danger float-xs-right create-article" [routerLink]="['/', { outlets: { popup: ['article-new'] } }]">
+                    <span class="fa fa-plus"></span>
+                    <span  jhiTranslate="avancementApp.article.home.createLabel">
+            Create new Article
+            </span>
+                </button>
+                <jhi-alert></jhi-alert>
+
+                <div class="container-fluid">
+                    <div class="row">
+                    </div>
+                </div>
+                <br/>
+
+
+                <span *ngFor="let article of articles ;trackBy: trackId">
+
+
+<div style="margin-left: 30px; padding-top: 20px;">
+<div class="row">
+
+
+     <!-- <h3>      <span style="float: left;padding-top:6px;margin-left:340px;padding-bottom:15px;display: inline-block;width: 140px;font-family:Times New Roman;">{{article.titre}}</span></h3>
+   <p style="float: left;margin-left: 10px;font-family:Times New Roman;">{{article.text}}</p><br/>
+ <span  style="float: left;padding-bottom: 30px;font-family:Times New Roman;">Publié par :</span>
+            <span style="float: left;margin-left: 10px;font-family:Times New Roman;">{{article.utilisateur}}</span>-->
+   <h3 style="float: left;padding-top:6px;margin-left:340px;padding-bottom:15px;font-family:Times New Roman;">{{article.titre}}</h3><br/>
+    <p style=" width:100%;margin-top: 40px;font-family:Times New Roman ;padding-right: 18px;">{{article.text}}</p><br/>
+  <div style="display: inline;" > <strong style="font-family:Times New Roman; ">Publié par</strong><p style="font-family:Times New Roman; ">{{article.utilisateur}}</p></div>
+
+
+
+
+     <p style="float:right;padding-right: 50px;margin-left: 5px;">{{article.vote}}</p>
+
+    <span *ngFor="let likes of likess ;trackBy: trackId">
+       <!-- <span *ngIf="likes.articleid === article.id && likes.userid === currentAccount.firstName">
+
+             <button type= "submit"
+                     (click)=" VoterPour(article,likes)"
+                     disabled
+                     style="border-radius: 25px;float: right;margin-right: 5px;margin-left: 5px;"
+                     class="btn btn-danger btn-sm">
+                            <span class="fa fa-thumbs-up"></span>
+
+                        </button>
+
+        </span>
+-->
+ala
+
+
+    </span>
+     <button type= "submit"
+             (click)=" VoterPour(article)"
+
+             style="border-radius: 25px;float: right;margin-right: 5px;margin-left: 5px;"
+             class="btn btn-danger btn-sm">
+                            <span class="fa fa-thumbs-up"></span>
+
+                        </button>
+    <button type="submit"
+            (click)=" VoterContre(article)"
+            class="btn btn-danger btn-sm"
+            style="border-radius: 25px;float: right;margin-right: 5px;margin-left: 5px">
+        <span class="fa fa-frown-o"></span>
+    </button>
+
+
+
+    <span *ngIf="currentAccount.firstName==article.utilisateur ">
+        <button type="submit"
+                [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/delete'} }]"
+                replaceUrl="true"
+                style="border-radius: 25px;float: right;margin-right: 5px;margin-left: 5px;"
+                class="btn btn-primary btn-sm">
+                            <span class="fa fa-trash-o"></span>
+
+                        </button>
+    </span>
+    <span *ngIf="currentAccount.firstName==article.utilisateur ">
+        <button type="submit"
+                [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/edit'} }]"
+                replaceUrl="true"
+                style="border-radius: 25px;float: right;margin-right: 5px;margin-left: 5px;"
+                class="btn btn-success btn-sm">
+                            <span class="fa fa-edit"></span>
+
+                        </button>
+    </span>
+
+    <!--  <td>
+          <a *ngIf="article.doc" (click)="openFile(article.docContentType, article.doc)" jhiTranslate="entity.action.open">open</a>
+
+      </td>
+      <td class="text-xs-right">
+          <div class="btn-group flex-btn-group-container">
+              <button type="submit"
+                      [routerLink]="['../article', article.id ]"
+                      class="btn btn-info btn-sm">
+                  <span class="fa fa-eye"></span>
+                  <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+              </button>
+              <button type="submit"
+                      [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/edit'} }]"
+                      replaceUrl="true"
+                      class="btn btn-primary btn-sm">
+                  <span class="fa fa-pencil"></span>
+                  <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+              <button type="submit"
+                      [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/delete'} }]"
+                      replaceUrl="true"
+                      class="btn btn-danger btn-sm">
+                  <span class="fa fa-remove"></span>
+                  <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+          </div>
+      </td>-->
+</div>  </div>  </span>
+
+            </div>
+            <!--  <div class="text-xs-center" *ngIf="articles && articles.length">
+                  <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+                  <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+              </div>-->
+        </div>
+    </section></div>

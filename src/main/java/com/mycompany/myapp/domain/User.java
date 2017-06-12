@@ -60,6 +60,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Field("image_url")
     private String imageUrl;
 
+    @Field("photo")
+    private byte[] photo;
+
     @Size(max = 20)
     @Field("activation_key")
     @JsonIgnore
@@ -86,6 +89,20 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public String getLogin() {
         return login;
     }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public User photo(byte[] photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
 
     //Lowercase the login before saving it in database
     public void setLogin(String login) {
@@ -212,6 +229,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated='" + activated + '\'' +
+            ", photo='" + photo + '\'' +
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +
             "}";

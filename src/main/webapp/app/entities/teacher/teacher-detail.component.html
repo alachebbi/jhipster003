@@ -1,0 +1,37 @@
+
+<div *ngIf="teacher">
+    <h2><span jhiTranslate="avancementApp.teacher.detail.title">Teacher</span> {{teacher.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.teacher.nom">Nom</span></dt>
+        <dd>
+            <span>{{teacher.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.teacher.prenom">Prenom</span></dt>
+        <dd>
+            <span>{{teacher.prenom}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.teacher.email">Email</span></dt>
+        <dd>
+            <span>{{teacher.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.teacher.specialite">Specialite</span></dt>
+        <dd>
+            <span>{{teacher.specialite}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'teacher/'+ teacher.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

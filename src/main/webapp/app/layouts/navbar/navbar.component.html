@@ -1,290 +1,323 @@
-<nav class="navbar navbar-dark jh-navbar">
-    <div class="jh-logo-container float-xs-left">
-        <a class="jh-navbar-toggler hidden-lg-up float-xs-left" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
-            <i class="fa fa-bars"></i>
-        </a>
-        <a class="navbar-brand logo float-xs-right" routerLink="/" (click)="collapseNavbar()">
-            <span class="logo-img"></span>
-         <h5> Hopital Numerique</h5>
-        </a>
-    </div>
 
 
+<body class="skin-blue">
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a  class="logo"><b>E-</b>Health</a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
 
 
+                    <li class="dropdown tasks-menu">
 
-    <div class="collapse navbar-toggleable-md float-lg-left" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
-        <ul class="nav navbar-nav float-lg-right">
-
-            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer">
+                        <ul class="dropdown-menu">
 
 
-            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer">
+                            <li class="footer">
+                                <a href="#">View all tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <span  *ngIf="isAuthenticated()">
+                    <li class="dropdown user user-menu">
+                        <a (click)="logout()" id="logout" data-toggle="dropdown">
+
+                            <span class="hidden-xs">Se Déconnecter</span>
+                        </a>
+                    </li></span>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <span  *ngIf="isAuthenticated()">
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+                                     <div class="user-panel" style="padding-top: 10px">
+                                         <div *ngIf="account?.firstName=='admin'">
+            <div class="pull-left image">
+                <img  style="width: 60px;height: 60px;border-radius: 40px;" src="http://www.shzongyue.com/data/out/3/38655058-admin.png"></div></div>
+<div *ngFor="let doctor of doctor  ">
+    <div *ngIf="doctor.nometprenom == account?.firstName">
 
 
-                <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chart" (click)="collapseNavbar()">
+                                        <div class="pull-left image">
+                                         <img style="width: 60px;height: 60px;border-radius: 40px;" [src]="'data:' + doctor.photoContentType + ';base64,' + doctor.photo" alt="doctor image"/>
+                                        </div></div></div>
+<!--<span>pp</span></div>-->
+                                                   <div class="pull-left info">
+                                                       <p>{{account?.firstName}} </p>
 
-                    Chart
-                </a>
-            <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chat" (click)="collapseNavbar()">
+                                                              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                                                   </div>
+                                        </div>
 
-                Chat
-            </a>
-                <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="doctor" (click)="collapseNavbar()">
-
-                    Gérer les medecins
-                </a>
-                <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="infirmier" (click)="collapseNavbar()">
-
-                    Gérer les infirmiers
-                </a>
-                <a  uiSrefActive="active"  jhiHasAuthority= "ROLE_CHEF_SERVICE"  class="dropdown-item" routerLink="medecin" (click)="collapseNavbar()">
-
-                    Gérer les medecins
-                </a>
-              <a class="dropdown-item" routerLink="servicemedical" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
-
-                  Gestion des services medicals
-            </a>
-              <a class="dropdown-item" routerLink="reclamation" (click)="collapseNavbar()">
-
-                  Envoyer une reclamation
-            </a>
-              <a class="dropdown-item" routerLink="fichemedicale"  (click)="collapseNavbar()">
-
-               Gestion des fiches medicales
-            </a>
-                <a class="dropdown-item" routerLink="fichepatient"  (click)="collapseNavbar()">
-
-                    Gestion des fiches patients
-                </a>
-            <a class="dropdown-item" routerLink="patient" jhiHasAuthority="ROLE_MEDECIN, ROLE_CHEF_SERVICE"(click)="collapseNavbar()">
-
-           Gestion des Patients
-            </a>
-                 <a class="dropdown-item" routerLink="materiel" jhiHasAuthority="ROLE_CHEF_SERVICE" (click)="collapseNavbar()">
-
-       Gestion des Materiels
-            </a>
-
-                <a class="dropdown-item" routerLink="hello" jhiHasAuthority="ROLE_MEDECIN" (click)="collapseNavbar()">
-
-                    Gestion des traitements
-                </a>
-                <a class="dropdown-item" routerLink="traitement" jhiHasAuthority="ROLE_CHEF_SERVICE" (click)="collapseNavbar()">
-
-                    Gestion des traitements
-                </a>
-            <a class="dropdown-item" jhiHasAuthority="ROLE_MEDECIN, ROLE_CHEF_SERVICE"routerLink="medicament" (click)="collapseNavbar()">
-
-              Gestion des Medicaments
-            </a>
-             <a class="dropdown-item" jhiHasAuthority="ROLE_CHEF_SERVICE , ROLE_PHARMACIEN"routerLink="demandemedicament" (click)="collapseNavbar()">
-
-               Demandes des medicaments
-            </a>
-            <a class="dropdown-item" jhiHasAuthority="ROLE_CHEF_SERVICE , ROLE_GESTIONNAIREDEMATERIEL"routerLink="demandemateriel" routerLinkActive="active" (click)="collapseNavbar()">
-
-                  Demandes des materiels
-            </a></li>
-            <li class="dropdown-item"  jhiHasAuthority="['ROLE_ADMIN','ROLE_USER']"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="chart" (click)="collapseNavbar()">
-                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                    <span class="hidden-sm-down">Chart Medecin</span>
-                </a>
-                <a class="nav-link" routerLink="chat" (click)="collapseNavbar()">
-                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                    <span class="hidden-sm-down">Chat Module</span>
-                </a>
-            </li>
+            <!-- search form -->
 
 
-            <li *ngSwitchCase="true" jhiHasAuthority="ROLE_ADMIN" ngbDropdown class="nav-item dropdown pointer">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
+            <div style="padding-top: 50px;" [ngSwitch]="isAuthenticated()">
+
+
+                <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer">
+                <a style="padding-bottom: 10px;padding-top: 10px" class="dropdown-item" jhiHasAuthority= "ROLE_ADMIN"  routerLinkActive="active" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
                     <span>
-                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                        <span class="hidden-sm-down" jhiTranslate="global.menu.admin.main">Administration</span>
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                        <span class="hidden-sm-down">
+                            Gestion des personnels
+                        </span>
                         <b class="caret"></b>
                     </span>
                 </a>
+
                 <ul class="dropdown-menu" ngbDropdownMenu>
-                    <li>
-                        <a class="dropdown-item" routerLink="user-management" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-user" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.admin.userManagement">User management</span>
+                    <li uiSrefActive="active">
+
+                         <a   style="padding-bottom: 10px;padding-top: 10px;color: white"  jhiHasAuthority= "ROLE_ADMIN" class="dropdown-item" routerLink="chef-service" (click)="collapseNavbar()">
+
+                      <span class="fa fa-stethoscope"></span>       Gérer les chefs service
+                        </a>
+
+                        <a   style="padding-bottom: 10px;padding-top: 10px;color: white"  jhiHasAuthority= "ROLE_ADMIN" class="dropdown-item" routerLink="doctor" (click)="collapseNavbar()">
+
+                      <span class="fa fa-stethoscope"></span>       Gérer les medecins
+                        </a>
+                        <a class="dropdown-item" routerLink="pharmacie" style=";color: white;padding-bottom: 10px;padding-top: 10px" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
+
+    <span class="fa fa-medkit"></span> Gestion des pharmaciens
+                        </a>
+                         <a class="dropdown-item" style=";color: white;padding-bottom: 10px;padding-top: 10px" routerLink="servicemedical" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
+
+                     <span class="fa fa-hospital-o"></span>     Gestion des services medicals
                         </a>
                     </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="jhi-metrics" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-tachometer" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.admin.metrics">Metrics</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="jhi-health" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-heart" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.admin.health">Health</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="jhi-configuration" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-list" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.admin.configuration">Configuration</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="audits" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-bell" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.admin.audits">Audits</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="logs" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-tasks" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.admin.logs">Logs</span>
-                        </a>
-                    </li>
-                    <li *ngIf="swaggerEnabled">
-                        <a class="dropdown-item" routerLink="docs" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-book" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.admin.apidocs">API</span>
-                        </a>
-                    </li>
-                    <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           <span *ngIf="!isAuthenticated()">
-            <a class="dropdown-item" (click)="login()"  id="login">
-                <i class="fa fa-fw fa-sign-in" aria-hidden="true"></i>
-                <span jhiTranslate="global.menu.account.login">Sign in</span>
-            </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <a class="dropdown-item" routerLink="register" routerLinkActive="active" (click)="collapseNavbar()">
-                <i class="fa fa-fw fa-registered"  aria-hidden="true"></i>
-                <span jhiTranslate="global.menu.account.register">Register</span>
-            </a></span>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <span *ngIf="isAuthenticated()">
-            <li ngbDropdown class="nav-item dropdown pointer">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
-                  <span *ngIf="!getImageUrl()">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <span class="hidden-sm" jhiTranslate="global.menu.account.main">
-                      Account
+<li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer">
+                <a style="margin-top:0px;padding-bottom: 10px;padding-top: 10px" class="dropdown-item" jhiHasAuthority= "ROLE_ADMIN"  routerLinkActive="active" ngbDropdownToggle href="javascript:void(0);" >
+                    <span>
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                        <span class="hidden-sm-down">
+                           Évenements
+                        </span>
+                        <b class="caret"></b>
                     </span>
-                    <b class="caret"></b>
-                  </span>
-                    <span *ngIf="getImageUrl()">
-                      <img [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
-                  </span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-left" ngbDropdownMenu>
-                    <li *ngSwitchCase="true">
-                        <a class="dropdown-item" routerLink="settings" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-wrench" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.account.settings">Settings</span>
+
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                    <li uiSrefActive="active">
+
+
+                        <a class="dropdown-item" routerLink="evenements" jhiHasAuthority= "ROLE_ADMIN" style=";color: white;padding-bottom: 10px;padding-top: 10px" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
+
+    <span class="fa fa-calendar-o"></span> Liste des événements
+                        </a>
+                         <a class="dropdown-item" style=";color: white;padding-bottom: 10px;padding-top: 10px" [routerLink]="['/', { outlets: { popup: ['evenement-new'] } }]" jhiHasAuthority="ROLE_ADMIN" (click)="collapseNavbar()">
+
+                     <span class="fa fa-calendar-o"></span>     Organiser une évenement
                         </a>
                     </li>
-                    <li *ngSwitchCase="true">
-                        <a class="dropdown-item" (click)="logout()" id="logout">
-                            <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.account.logout">Sign out</span>
-                        </a>
-                    </li>
-                    <li *ngSwitchCase="true">
-                        <a class="dropdown-item" routerLink="password" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.account.password">Password</span>
-                        </a>
-                    </li>
-
-
-
-
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>
-            </span>
-        </ul>
-    </div>
-</nav>
+
+                <a  class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_ADMIN"  routerLink="reclamation" (click)="collapseNavbar()">
+
+               <span class="fa fa-envelope-o"></span>     Traiter les reclamations
+                </a>
+                  <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_MEDECIN"  class="dropdown-item" routerLink="dossier-medical-vf" (click)="collapseNavbar()">
+
+                        <span class="fa fa-archive"></span>     Dossier Medical
+                        </a>
+<a class="dropdown-item" jhiHasAuthority= "ROLE_medecin" routerLink="article" style="padding-bottom: 10px;padding-top: 10px" (click)="collapseNavbar()">
+
+                 <span class="fa fa-comment-o"></span>  Avis Medical
+                        </a>
+                <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_MEDECIN"  class="dropdown-item" routerLink="chart" (click)="collapseNavbar()">
+
+                            <span class="fa fa-adjust"> </span>  Statistiques des medecins
+                        </a>
+ <a  uiSrefActive="active"style="padding-bottom: 10px;padding-top: 10px"  jhiHasAuthority= "ROLE_medecin"  class="dropdown-item" routerLink="chat" (click)="collapseNavbar()">
+
+                      <span class="fa fa-comments"></span>   Chat
+                        </a>
+
+                <a  class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_MEDECIN"    routerLink="mesreclamations" (click)="collapseNavbar()">
+
+               <span class="fa fa-envelope-o"></span>    Mes reclamations
+                </a>
+                <a  class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_PHARMACIEN"    routerLink="mesreclamations" (click)="collapseNavbar()">
+
+               <span class="fa fa-envelope-o"></span>    Mes reclamations
+                </a>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chart" (click)="collapseNavbar()">
+
+                            <span class="fa fa-adjust"> </span>  Statistiques des medecins
+                        </a>
+                 <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chartmedicament" (click)="collapseNavbar()">
+
+                         <span class="fa fa-bar-chart-o"></span>   Statistiques des medicaments
+                        </a>
+
+
+                <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_PHARMACIEN"routerLink="medicament" (click)="collapseNavbar()">
+
+                      <span class="fa fa-medkit"></span>    Gestion des Medicaments
+                        </a>
+                <a class="dropdown-item" routerLink="demandepharmaciecentrale" jhiHasAuthority= "ROLE_PHARMACIEN" style="padding-bottom: 10px;padding-top: 10px" (click)="collapseNavbar()">
+
+                 <span class="fa fa-calendar-o"></span>  Pharmacie centrale
+                        </a>
+<a class="dropdown-item" routerLink="demandemedicamentvff"style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_PHARMACIEN" (click)="collapseNavbar()">
+
+                       <span class="fa fa-plus-square"></span>   Gestion des demandes
+                        </a>
+
+                <a  uiSrefActive="active" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority= "ROLE_PHARMACIEN" class="dropdown-item" routerLink="chartmedicament" (click)="collapseNavbar()">
+
+                         <span class="fa fa-bar-chart-o"></span>   Statistiques des medicaments
+                        </a>
+                <a  uiSrefActive="active"style="padding-bottom: 10px;padding-top: 10px"  jhiHasAuthority= "ROLE_PHARMACIEN"  class="dropdown-item" routerLink="chat" (click)="collapseNavbar()">
+
+                      <span class="fa fa-comments"></span>   Chat
+                        </a>
+                        <a  uiSrefActive="active"style="padding-bottom: 10px;padding-top: 10px"  jhiHasAuthority= "ROLE_ADMIN"  class="dropdown-item" routerLink="chat" (click)="collapseNavbar()">
+
+                      <span class="fa fa-comments"></span>   Chat
+                        </a>
+                 <a  uiSrefActive="active"style="padding-bottom: 10px;padding-top: 10px"  jhiHasAuthority= "ROLE_MEDECIN"  class="dropdown-item" routerLink="chat" (click)="collapseNavbar()">
+
+                      <span class="fa fa-comments"></span>   Chat
+                        </a>
+
+
+<a class="dropdown-item" jhiHasAuthority= "ROLE_MEDECIN" routerLink="article" style="padding-bottom: 10px;padding-top: 10px" (click)="collapseNavbar()">
+
+                 <span class="fa fa-comment-o"></span>  Avis Medical
+                        </a>
+
+<a class="dropdown-item" jhiHasAuthority= "ROLE_PHARMACIEN" routerLink="article" style="padding-bottom: 10px;padding-top: 10px" (click)="collapseNavbar()">
+
+                 <span class="fa fa-comment-o"></span>  Avis Medical
+                        </a>
+                <a class="dropdown-item" jhiHasAuthority= "ROLE_ADMIN" routerLink="article" style="padding-bottom: 10px;padding-top: 10px" (click)="collapseNavbar()">
+
+                 <span class="fa fa-comment-o"></span>  Avis Medical
+                        </a>
+
+
+  <a class="dropdown-item" routerLink="evenement"  jhiHasAuthority= "ROLE_PHARMACIEN" style="padding-bottom: 10px;padding-top: 10px" (click)="collapseNavbar()">
+
+                 <span class="fa fa-calendar-o"></span>  Événements
+                        </a>
+                <a class="dropdown-item" routerLink="evenement"  jhiHasAuthority= "ROLE_MEDECIN" style="padding-bottom: 10px;padding-top: 10px" (click)="collapseNavbar()">
+
+                 <span class="fa fa-calendar-o"></span>  Événements
+                        </a>
+
+
+
+
+
+
+                        <!--<a class="dropdown-item" routerLink="fichemedicale"  (click)="collapseNavbar()">
+
+                           Gestion des fiches medicales
+                        </a>-->
+                       <!-- <a class="dropdown-item" routerLink="fichepatient"  (click)="collapseNavbar()">
+
+                            Gestion des fiches patients
+                        </a>-->
+                      <!--  <a class="dropdown-item" routerLink="patient" jhiHasAuthority="ROLE_MEDECIN, ROLE_CHEF_SERVICE"(click)="collapseNavbar()">
+
+                            Gestion des Patients
+                        </a>-->
+                        <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" routerLink="materiel" jhiHasAuthority="ROLE_CHEF_SERVICE" (click)="collapseNavbar()">
+
+                     <span class="fa fa-wheelchair"></span>  Gestion des Materiels
+                        </a>
+
+                        <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px" jhiHasAuthority="ROLE_MEDECIN"routerLink="hello" (click)="collapseNavbar()">
+
+                         <span class="fa fa-plus-square"></span>    Gestion des traitements
+                        </a>
+
+
+                       <!-- <a class="dropdown-item" jhiHasAuthority="ROLE_MEDECIN"routerLink="demande-medicament-vf" (click)="collapseNavbar()">
+
+                            <strong>    Demandes des medicaments</strong>
+                        </a>-->
+                        <a class="dropdown-item" style="padding-bottom: 10px;padding-top: 10px"  jhiHasAuthority="['ROLE_CHEF_SERVICE' , 'ROLE_MEDECIN','ROLE_GESTIONNAIREDEMATERIEL']"routerLink="demandemateriel" routerLinkActive="active" (click)="collapseNavbar()">
+
+                   <span class="fa  fa-wheelchair"></span>   Demandes des materiels
+                        </a>
+                   <!-- <li class="dropdown-item"  jhiHasAuthority="[ROLE_ADMIN,ROLE_MEDECIN]"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link" routerLink="chart" (click)="collapseNavbar()">
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                            <span class="hidden-sm-down">Chart Medecin</span>
+                        </a>
+                        <a class="nav-link" routerLink="chat" (click)="collapseNavbar()">
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                            <span class="hidden-sm-down">Chat Module</span>
+                        </a>
+                    </li>-->
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    </span>
+
+
+</div><!-- ./wrapper -->
+
+
+</body>
+
+

@@ -17,7 +17,8 @@
                 "title": "Servicemedical"
             },
             "nom": "Nom",
-            "image": "Image"
+            "image": "Image",
+            "chef": "Chef"
         }
     }
 }

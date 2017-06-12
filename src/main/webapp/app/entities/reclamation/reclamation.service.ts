@@ -7,6 +7,7 @@ import { Reclamation } from './reclamation.model';
 export class ReclamationService {
 
     private resourceUrl = 'api/reclamations';
+    private resourceUrl2 = 'api/mesreclamations';
 
     constructor(private http: Http) { }
 
@@ -17,6 +18,7 @@ export class ReclamationService {
         });
     }
 
+
     update(reclamation: Reclamation): Observable<Reclamation> {
         let copy: Reclamation = Object.assign({}, reclamation);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
@@ -24,7 +26,7 @@ export class ReclamationService {
         });
     }
 
-    find(id: number): Observable<Reclamation> {
+    find(id: string): Observable<Reclamation> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             return res.json();
         });
@@ -39,7 +41,12 @@ export class ReclamationService {
     delete(id: number): Observable<Response> {
         return this.http.delete(`${this.resourceUrl}/${id}`);
     }
+    findByrecusername(recusername : string): Observable<Reclamation[]> {
+        return this.http.get(`${this.resourceUrl2}/${recusername}`).map((res: Response) => {
+            return res.json();
+        });
 
+    }
 
 
     private createRequestOption(req?: any): BaseRequestOptions {

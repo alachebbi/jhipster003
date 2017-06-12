@@ -6,7 +6,7 @@ import { Color} from 'ng2-charts';
 import  * as _ from 'lodash'
 @Component({
     selector: 'bar-chart-demo',
-    templateUrl: './chart.component.html',
+    templateUrl: './chartmedicament.component.html',
     styleUrls: [
         'chart.css'
     ]

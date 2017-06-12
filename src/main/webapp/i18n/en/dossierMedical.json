@@ -1,0 +1,33 @@
+{
+    "avancementApp": {
+        "dossierMedical" : {
+            "home": {
+                "title": "Dossier Medicals",
+                "createLabel": "Create a new Dossier Medical",
+                "createOrEditLabel": "Create or edit a Dossier Medical",
+                "search": "Search for Dossier Medical"
+            },
+            "created": "A new Dossier Medical is created with identifier {{ param }}",
+            "updated": "A Dossier Medical is updated with identifier {{ param }}",
+            "deleted": "A Dossier Medical is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Dossier Medical {{ id }}?"
+            },
+            "detail": {
+                "title": "Dossier Medical"
+            },
+            "perscreptionsmedicamenteuses": "Perscreptionsmedicamenteuses",
+            "nomdupatient": "Nomdupatient",
+            "numerotel": "Numerotel",
+            "datedenaissance": "Datedenaissance",
+            "antecedents": "Antecedents",
+            "ant": "Ant",
+            "groupessanguin": "Groupessanguin",
+            "recommandations": "Recommandations",
+            "resultatdudernierexamen": "Resultatdudernierexamen",
+            "resultatdudernierexamenn": "Resultatdudernierexamenn",
+            "situationfamiliale": "Situationfamiliale",
+            "notesparamedicaux": "Notesparamedicaux"
+        }
+    }
+}

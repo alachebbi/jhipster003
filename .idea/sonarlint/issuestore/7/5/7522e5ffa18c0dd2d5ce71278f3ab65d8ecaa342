@@ -1,0 +1,5 @@
+
+ssquid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(ÖŸÓÊ
+xsquid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(şÊ´öşÿÿÿÿ
+wsquid:S1488"]Immediately return this expression instead of assigning it to the temporary variable "likes".(¸æ½áÿÿÿÿÿ
+Rsquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ

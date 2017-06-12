@@ -43,6 +43,9 @@ public class ServicemedicalResourceIntTest {
     private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
+    private static final String DEFAULT_CHEF = "AAAAAAAAAA";
+    private static final String UPDATED_CHEF = "BBBBBBBBBB";
+
     @Autowired
     private ServicemedicalRepository servicemedicalRepository;
 
@@ -75,7 +78,8 @@ public class ServicemedicalResourceIntTest {
         Servicemedical servicemedical = new Servicemedical()
                 .nom(DEFAULT_NOM)
                 .image(DEFAULT_IMAGE)
-                .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
+                .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
+                .chef(DEFAULT_CHEF);
         return servicemedical;
     }
 
@@ -103,6 +107,7 @@ public class ServicemedicalResourceIntTest {
         assertThat(testServicemedical.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testServicemedical.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testServicemedical.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
+        assertThat(testServicemedical.getChef()).isEqualTo(DEFAULT_CHEF);
     }
 
     @Test
@@ -136,7 +141,8 @@ public class ServicemedicalResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(servicemedical.getId())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM.toString())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
+            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
+            .andExpect(jsonPath("$.[*].chef").value(hasItem(DEFAULT_CHEF.toString())));
     }
 
     @Test
@@ -151,7 +157,8 @@ public class ServicemedicalResourceIntTest {
             .andExpect(jsonPath("$.id").value(servicemedical.getId()))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM.toString()))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)));
+            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
+            .andExpect(jsonPath("$.chef").value(DEFAULT_CHEF.toString()));
     }
 
     @Test
@@ -172,7 +179,8 @@ public class ServicemedicalResourceIntTest {
         updatedServicemedical
                 .nom(UPDATED_NOM)
                 .image(UPDATED_IMAGE)
-                .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+                .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
+                .chef(UPDATED_CHEF);
 
         restServicemedicalMockMvc.perform(put("/api/servicemedicals")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -186,6 +194,7 @@ public class ServicemedicalResourceIntTest {
         assertThat(testServicemedical.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testServicemedical.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testServicemedical.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
+        assertThat(testServicemedical.getChef()).isEqualTo(UPDATED_CHEF);
     }
 
     @Test

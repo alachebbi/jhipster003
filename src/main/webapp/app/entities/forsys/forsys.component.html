@@ -1,0 +1,75 @@
+
+
+
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
+
+<div>
+    <h2><span jhiTranslate="avancementApp.forsys.home.title">Forsys</span>
+        <button class="btn btn-primary float-xs-right create-forsys" [routerLink]="['/', { outlets: { popup: ['forsys-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avancementApp.forsys.home.createLabel">
+            Create new Forsys
+            </span>
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="forsys">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="medecintraitant"><span jhiTranslate="avancementApp.forsys.medecintraitant">Medecintraitant</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="patient"><span jhiTranslate="avancementApp.forsys.patient">Patient</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let forsys of forsys | filterBy : ['medecintraitant']: currentAccount.login;trackBy: trackId">
+                <td><a [routerLink]="['../forsys', forsys.id ]">{{forsys.id}}</a></td>
+                <td>{{forsys.medecintraitant}}</td>
+                <td>{{forsys.patient}}</td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../forsys', forsys.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'forsys/'+ forsys.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'forsys/'+ forsys.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="forsys && forsys.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>
+        </div></section></div>

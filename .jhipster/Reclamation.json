@@ -9,6 +9,22 @@
         {
             "fieldName": "objet",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "recusermail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recusername",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "etat",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
         }
     ],
     "dto": "no",

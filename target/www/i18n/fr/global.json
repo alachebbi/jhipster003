@@ -21,6 +21,26 @@
                 "doctor": "Doctor",
                 "traitement": "Traitement",
                 "infirmier": "Infirmier",
+                "dosier": "Dosier",
+                "dossierMedical": "Dossier Medical",
+                "med": "Med",
+                "teacher": "Teacher",
+                "forsys": "Forsys",
+                "dossierMedicalVf": "Dossier Medical VF",
+                "demandeMedicamentVf": "Demande Medicament Vf",
+                "demande": "Demande",
+                "demandemedicamentvff": "Demandemedicamentvff",
+                "article": "Article",
+                "pharmacien": "Pharmacien",
+                "pharmacie": "Pharmacie",
+                "likes": "Likes",
+                "participation": "Participation",
+                "evenement": "Evenement",
+                "demandepharmaciecentrale": "Demandepharmaciecentrale",
+                "demandemedi": "Demandemedi",
+                "dislike": "Dislike",
+                "chefService": "Chef Service",
+                "service": "Service",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -78,6 +98,7 @@
                     "minlength": "Votre mot de passe doit comporter au moins 5 caractères.",
                     "maxlength": "Votre mot de passe ne doit pas comporter plus de 50 caractères.",
                     "strength": "Robustesse du mot de passe :"
+
                 },
                 "confirmpassword": {
                     "required": "Votre confirmation du mot de passe est requise.",
@@ -88,7 +109,8 @@
                     "required": "Votre email est requis.",
                     "minlength": "Votre email doit comporter au moins 5 caractères.",
                     "maxlength": "Votre email ne doit pas comporter plus de 50 caractères.",
-                    "invalid": "Votre email n'est pas valide."
+                    "invalid": "Votre email n'est pas valide.",
+                    "emailexist":"email exist"
                 }
             }
         },
@@ -137,7 +159,8 @@
         "NotNull": "Le champ {{fieldName}} ne peut pas être vide !",
         "Size": "Le champ {{fieldName}} ne respecte pas les critères minimum et maximum !",
         "userexists": "Login déja utilisé !",
-        "emailexists": "Email déja utilisé !",
+        "medecinexists": "Email déja utilisé !",
+        "emailexist":"Email déja utilisé",
         "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'ID !"
     },
     "footer": "Ceci est votre pied de page"

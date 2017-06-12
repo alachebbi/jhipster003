@@ -15,6 +15,26 @@ import { AvancementFichepatientModule } from './fichepatient/fichepatient.module
 import { AvancementDoctorModule } from './doctor/doctor.module';
 import { AvancementTraitementModule } from './traitement/traitement.module';
 import { AvancementInfirmierModule } from './infirmier/infirmier.module';
+import { AvancementDosierModule } from './dosier/dosier.module';
+import { AvancementDossierMedicalModule } from './dossier-medical/dossier-medical.module';
+
+
+import { AvancementForsysModule } from './forsys/forsys.module';
+import { AvancementDossierMedicalVFModule } from './dossier-medical-vf/dossier-medical-vf.module';
+import { AvancementDemandeMedicamentVfModule } from './demande-medicament-vf/demande-medicament-vf.module';
+import { AvancementDemandeModule } from './demande/demande.module';
+import { AvancementDemandemedicamentvffModule } from './demandemedicamentvff/demandemedicamentvff.module';
+import { AvancementArticleModule } from './article/article.module';
+
+import { AvancementPharmacieModule } from './pharmacie/pharmacie.module';
+import { AvancementLikesModule } from './likes/likes.module';
+import { AvancementParticipationModule } from './participation/participation.module';
+import { AvancementEvenementModule } from './evenement/evenement.module';
+import { AvancementDemandepharmaciecentraleModule } from './demandepharmaciecentrale/demandepharmaciecentrale.module';
+import { AvancementDemandemediModule } from './demandemedi/demandemedi.module';
+import { AvancementDislikeModule } from './dislike/dislike.module';
+import { AvancementChefServiceModule } from './chef-service/chef-service.module';
+import { AvancementServiceModule } from './service/service.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -33,6 +53,25 @@ import { AvancementInfirmierModule } from './infirmier/infirmier.module';
         AvancementDoctorModule,
         AvancementTraitementModule,
         AvancementInfirmierModule,
+        AvancementDosierModule,
+        AvancementDossierMedicalModule,
+
+
+        AvancementForsysModule,
+        AvancementDossierMedicalVFModule,
+        AvancementDemandeMedicamentVfModule,
+        AvancementDemandeModule,
+        AvancementDemandemedicamentvffModule,
+        AvancementArticleModule,
+        AvancementPharmacieModule,
+        AvancementLikesModule,
+        AvancementParticipationModule,
+        AvancementEvenementModule,
+        AvancementDemandepharmaciecentraleModule,
+        AvancementDemandemediModule,
+        AvancementDislikeModule,
+        AvancementChefServiceModule,
+        AvancementServiceModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

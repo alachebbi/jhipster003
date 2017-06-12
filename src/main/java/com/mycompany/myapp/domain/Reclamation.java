@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -24,6 +25,18 @@ public class Reclamation implements Serializable {
 
     @Field("objet")
     private String objet;
+
+    @Field("recusermail")
+    private String recusermail;
+
+    @Field("recusername")
+    private String recusername;
+
+    @Field("etat")
+    private String etat;
+
+    @Field("date")
+    private LocalDate date;
 
     public String getId() {
         return id;
@@ -59,6 +72,58 @@ public class Reclamation implements Serializable {
         this.objet = objet;
     }
 
+    public String getRecusermail() {
+        return recusermail;
+    }
+
+    public Reclamation recusermail(String recusermail) {
+        this.recusermail = recusermail;
+        return this;
+    }
+
+    public void setRecusermail(String recusermail) {
+        this.recusermail = recusermail;
+    }
+
+    public String getRecusername() {
+        return recusername;
+    }
+
+    public Reclamation recusername(String recusername) {
+        this.recusername = recusername;
+        return this;
+    }
+
+    public void setRecusername(String recusername) {
+        this.recusername = recusername;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public Reclamation etat(String etat) {
+        this.etat = etat;
+        return this;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public Reclamation date(LocalDate date) {
+        this.date = date;
+        return this;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -85,6 +150,10 @@ public class Reclamation implements Serializable {
             "id=" + id +
             ", titre='" + titre + "'" +
             ", objet='" + objet + "'" +
+            ", recusermail='" + recusermail + "'" +
+            ", recusername='" + recusername + "'" +
+            ", etat='" + etat + "'" +
+            ", date='" + date + "'" +
             '}';
     }
 }

@@ -31,13 +31,13 @@
         <div class="form-group">
             <label>Durée : </label>
             <select class="form-control" name="duree" [(ngModel)]="traitement.duree">
-                <option >3 jours</option>
-                <option >4 jours</option>
-                <option >1 semaine</option>
-                <option >2 semaines</option>
-                <option >3 semaines</option>
-                <option >1 mois</option>
-                <option>À vie</option>
+                <option [value]="medicament.duree">3 jours</option>
+                <option [value]="medicament.duree">4 jours</option>
+                <option [value]="medicament.duree">1 semaine</option>
+                <option [value]="medicament.duree">2 semaines</option>
+                <option [value]="medicament.duree">3 semaines</option>
+                <option [value]="medicament.duree">1 mois</option>
+                <option [value]="medicament.duree">À vie</option>
             </select>
         </div>
 

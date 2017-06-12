@@ -8,6 +8,7 @@ import { DateUtils } from 'ng-jhipster';
 export class MedicamentService {
 
     private resourceUrl = 'api/medicaments';
+    private resourceUrl2 = 'api/medicaments2';
 
     constructor(private http: Http, private dateUtils: DateUtils) { }
 
@@ -22,13 +23,35 @@ export class MedicamentService {
         });
     }
 
+    modifier(medicament: Medicament): Observable<Medicament> {
+        let copy: Medicament = Object.assign({}, medicament);
+        copy.datevalidite ;//= this.dateUtils;//.toDate(medicament.datevalidite);
+            //.convertLocalDateToServer(medicament.datevalidite);
+        copy.dateproduction;// = this.dateUtils;//.toDate(medicament.dateproduction);
+            //.convertLocalDateToServer(medicament.dateproduction);
+        return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+            return res.json();
+        });
+    }
+
     update(medicament: Medicament): Observable<Medicament> {
         let copy: Medicament = Object.assign({}, medicament);
-        copy.datevalidite = this.dateUtils
-            .convertLocalDateToServer(medicament.datevalidite);
-        copy.dateproduction = this.dateUtils
-            .convertLocalDateToServer(medicament.dateproduction);
+        copy.datevalidite = this.dateUtils//.toDate(medicament.datevalidite);
+        .convertLocalDateToServer(medicament.datevalidite);
+        copy.dateproduction = this.dateUtils//.toDate(medicament.dateproduction);
+        .convertLocalDateToServer(medicament.dateproduction);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+            return res.json();
+        });
+    }
+
+    getChartData(): Observable<any> {
+        return this.http.get(this.resourceUrl+'/chartdata').map((res: Response) => {
+            return res.json();
+        });
+    }
+    getAllMedicaments(): Observable<any> {
+        return this.http.get(this.resourceUrl).map((res: Response) => {
             return res.json();
         });
     }
@@ -43,6 +66,20 @@ export class MedicamentService {
             return jsonResponse;
         });
     }
+
+
+
+    findbyname(nom: string): Observable<Medicament> {
+        return this.http.get(`${this.resourceUrl2}/${nom}`).map((res: Response) => {
+            let jsonResponse = res.json();
+            jsonResponse.datevalidite = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.datevalidite);
+            jsonResponse.dateproduction = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.dateproduction);
+            return jsonResponse;
+        });
+    }
+
 
     query(req?: any): Observable<Response> {
         let options = this.createRequestOption(req);

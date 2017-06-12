@@ -1,0 +1,162 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myDossierMedicalVFLabel" jhiTranslate="avancementApp.dossierMedicalVF.home.createOrEditLabel">Create or edit a Dossier Medical VF</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+            <label class="form-control-label"  for="field_nomprenom">Nom du patient </label>
+            <input  style="width : 60%;" type="text" class="form-control" name="nomprenom" id="field_nomprenom"
+                [(ngModel)]="dossierMedicalVF.nomprenom"
+            minlength="7" />
+            <div [hidden]="!(editForm.controls.nomprenom?.dirty && editForm.controls.nomprenom?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nomprenom?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 7 }">
+                   This field is required to be at least 7 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  >Prenom du patient </label>
+            <input  style="width : 60%;" type="text" class="form-control"
+
+                />
+
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_datenaissance">Date de naissance</label>
+            <div class="input-group">
+                <input type="date" style="width : 60%;" id="field_datenaissance"  class="form-control" name="datenaissance" ngbDatepicker  #datenaissanceDp="ngbDatepicker" [(ngModel)]="dossierMedicalVF.datenaissance"
+                required/>
+
+            </div>
+            <div [hidden]="!(editForm.controls.datenaissance?.dirty && editForm.controls.datenaissance?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.datenaissance?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_situationfamiliale">Situation familiale</label>
+
+            <select style="width : 60%;" class="form-control"  name="situationfamiliale" id="field_situationfamiliale" [(ngModel)]="dossierMedicalVF.situationfamiliale"  >
+                <option value="célibataire" >Celibataire</option>
+                <option value="marié" >Marié(e)</option>
+                <option value="divorcé" >Divorcé(e)</option>
+                <option value="veuf" >Veuf(ve)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_numerotel">Numéro de télephone</label>
+            <input style="width : 60%;" type="number" class="form-control" name="numerotel" id="field_numerotel"
+                [(ngModel)]="dossierMedicalVF.numerotel"
+            min="8" max="8"/>
+            <div [hidden]="!(editForm.controls.numerotel?.dirty && editForm.controls.numerotel?.invalid)">
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numerotel?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 8 }">
+                    This field should be  8.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numerotel?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_groupesanguin">Groupe sanguin</label>
+            <select style="width : 60%;" class="form-control"  name="groupesanguin" id="field_groupesanguin" [(ngModel)]="dossierMedicalVF.groupesanguin"  >
+                <option value="A + " >A +</option>
+                <option value="A -" >A -</option>
+                <option value="B +" >B +</option>
+                <option value="B -" >B -</option>
+                <option value="O +" >O +</option>
+                <option value="O -" >O -</option>
+                <option value="AB -" >AB +</option>
+                <option value="AB +" >AB -</option>
+            </select>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="form-control-label"  for="field_antecedents">Antécedents</label>
+            <div>
+                <div *ngIf="dossierMedicalVF.antecedents" class="form-text text-danger clearfix">
+                    <a class="pull-left"  (click)="openFile(dossierMedicalVF.antecedentsContentType, dossierMedicalVF.antecedents)" jhiTranslate="entity.action.open">open</a><br>
+
+                    <button type="button" style="border-radius: 25px;"  (click)="dossierMedicalVF.antecedents=null;dossierMedicalVF.antecedentsContentType=null;"
+                            class="btn btn-danger">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file"  style="border-radius: 25px;" class="btn btn-primary" (change)="setFileData($event, dossierMedicalVF, 'antecedents', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="antecedents" id="field_antecedents"
+                [(ngModel)]="dossierMedicalVF.antecedents"
+            required />
+            <input type="hidden" class="form-control" name="antecedentsContentType" id="field_antecedentsContentType"
+                [(ngModel)]="dossierMedicalVF.antecedentsContentType" />
+            <div [hidden]="!(editForm.controls.antecedents?.dirty && editForm.controls.antecedents?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.antecedents?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_resultatdernierexamen">Resultat du dernier examen</label>
+            <div>
+                <div *ngIf="dossierMedicalVF.resultatdernierexamen" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(dossierMedicalVF.resultatdernierexamenContentType, dossierMedicalVF.resultatdernierexamen)" jhiTranslate="entity.action.open">open</a><br>
+
+                    <button type="button" style="border-radius: 25px;" (click)="dossierMedicalVF.resultatdernierexamen=null;dossierMedicalVF.resultatdernierexamenContentType=null;"
+                            class="btn primary">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" style="border-radius: 25px;"  class="btn btn-primary"(change)="setFileData($event, dossierMedicalVF, 'resultatdernierexamen', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="resultatdernierexamen" id="field_resultatdernierexamen"
+                   [(ngModel)]="dossierMedicalVF.resultatdernierexamen"
+            />
+            <input type="hidden" class="form-control" name="resultatdernierexamenContentType" id="field_resultatdernierexamenContentType"
+                   [(ngModel)]="dossierMedicalVF.resultatdernierexamenContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_perscriptionsmedicamenteuses">Perscriptions médicamenteuses</label>
+            <textarea style="width : 60%;height: 100px;" type="text" class="form-control" name="perscriptionsmedicamenteuses" id="field_perscriptionsmedicamenteuses"
+                [(ngModel)]="dossierMedicalVF.perscriptionsmedicamenteuses"
+            ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_recommandations">Récommandations</label>
+            <textarea style="width : 60%;height: 100px;" type="text" class="form-control" name="recommandations" id="field_recommandations"
+                [(ngModel)]="dossierMedicalVF.recommandations"
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_notesparamedicaux">Notes paramedicaux</label>
+            <textarea  style="width : 60%;height: 100px;"type="text" class="form-control" name="notesparamedicaux" id="field_notesparamedicaux"
+                [(ngModel)]="dossierMedicalVF.notesparamedicaux"
+            ></textarea>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" style="border-radius: 25px;" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" style="border-radius: 25px;" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

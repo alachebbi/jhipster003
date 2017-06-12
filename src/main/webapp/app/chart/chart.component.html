@@ -1,5 +1,10 @@
-<div>
-    <div style="display: block" class="chart">
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+            <div class='col-md-7'>
         <canvas baseChart
                 [datasets]="barChartData"
                 [labels]="barChartLabels"
@@ -10,5 +15,10 @@
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
     </div>
-    <button type="button" class="btn btn-primary"  (click)="changeCharType()">change chart type</button>
-</div>
+
+   <!-- <button type="button" class="btn btn-danger" style="border-radius: 25px;"  (click)="piechart()">Pie Chart</button>
+     <button type="button" class="btn btn-danger" style="border-radius: 25px;"  (click)="douArea()">Doughnut Chart</button>
+
+            <button type="button" class="btn btn-danger" style="border-radius: 25px;"  (click)="polarArea()">Polar Chart</button>
+-->
+        </div></section></div>

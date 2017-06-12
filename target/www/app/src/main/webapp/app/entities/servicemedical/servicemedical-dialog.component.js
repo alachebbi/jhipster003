@@ -59,6 +59,7 @@ var ServicemedicalDialogComponent = (function () {
                 .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
         }
         else {
+            this.servicemedical.chef == "a";
             this.servicemedicalService.create(this.servicemedical)
                 .subscribe(function (res) { return _this.onSaveSuccess(res); }, function (res) { return _this.onSaveError(res.json()); });
         }

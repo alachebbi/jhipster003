@@ -11,25 +11,15 @@ import  * as _ from 'lodash'
     ]
 })
 export class ChartComponent implements OnInit{
-    public barChartOptions:any = {
-        scaleShowVerticalLines: false,
-        responsive: true,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true,
-                    stepSize:1
-                }
-            }]
-        }
-    };
+
+
     public barChartLabels:string[] = [];
-    public barChartType:string = 'bar';
+    public barChartType:string = 'polarArea';
     public barChartLegend:boolean = true;
-    public chartColors: Array<Color> = [{
+   /* public chartColors: Array<Color> = [{
         backgroundColor: 'dodgerblue',
         hoverBackgroundColor: 'cornflowerblue'
-    }];
+    }];*/
 
     public barChartData:any[] = [
         {data: [], label: 'Doctor CHART BY SPECIALITEES'},
@@ -66,10 +56,86 @@ export class ChartComponent implements OnInit{
     }
 
     public changeCharType(){
-        if(this.barChartType == "bar"){
-            this.barChartType = "line" ;
-        }else{
+        if(this.barChartType == "radar") {
+            this.barChartType = "bar";
+        }
+        if(this.barChartType == "polarArea"){
             this.barChartType ="bar" ;
         }
+        if(this.barChartType == "pie"){
+            this.barChartType ="bar" ;
+        }
+
+        }
+    public piechart(){
+        if(this.barChartType == "bar") {
+            this.barChartType = "pie";
+        }
+        if(this.barChartType == "polarArea"){
+            this.barChartType ="pie" ;
+        }
+        if(this.barChartType == "radar"){
+            this.barChartType ="pie" ;
+        }
+        if (this.barChartType == "doughnut") {
+            this.barChartType = "pie";
+        }}
+
+    public radarchart() {
+        if (this.barChartType == "bar") {
+            this.barChartType = "radar";
+        }
+        if (this.barChartType == "polarArea") {
+            this.barChartType = "radar";
+        }
+        if (this.barChartType == "pie") {
+            this.barChartType = "radar";
+        }
+        if (this.barChartType == "doughnut") {
+            this.barChartType = "radar";
+        }
     }
+
+    public polarArea() {
+        if (this.barChartType == "bar") {
+            this.barChartType = "polarArea";
+        }
+        if (this.barChartType == "radar") {
+            this.barChartType = "polarArea";
+        }
+        if (this.barChartType == "pie") {
+            this.barChartType = "polarArea";
+        }
+        if (this.barChartType == "doughnut") {
+            this.barChartType = "polarArea";
+        }
+    }
+
+
+    public douArea() {
+        if (this.barChartType == "bar") {
+            this.barChartType = "doughnut";
+        }
+        if (this.barChartType == "radar") {
+            this.barChartType = "doughnut";
+        }
+        if (this.barChartType == "pie") {
+            this.barChartType = "doughnut";
+        }
+        if (this.barChartType == "polarArea") {
+            this.barChartType = "doughnut";
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

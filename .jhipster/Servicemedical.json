@@ -10,6 +10,10 @@
             "fieldName": "image",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "chef",
+            "fieldType": "String"
         }
     ],
     "dto": "no",

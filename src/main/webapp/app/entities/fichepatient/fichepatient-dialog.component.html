@@ -23,17 +23,12 @@
              />
         </div>
         <div class="form-group">
-            <label>Nom du medecin traitant</label>
-            <select class="form-control" name="medecin" [(ngModel)]="fichepatient.medid">
-                <option *ngFor="let medecin of medecins ;trackBy: trackId" [value]="medecin.nom">{{medecin.nom}}</option>
+            <label>Medecin traitant</label>
+            <select class="form-control" name="medid" [(ngModel)]="fichepatient.medid">
+                <option *ngFor="let doctor of doctors ;trackBy: trackId" [value]="doctor.nometprenom">{{doctor.nometprenom}}</option>
             </select>
         </div>
-        <div class="form-group">
-            <label>Prénom du medecin traitant</label>
-            <select class="form-control" name="medecin" [(ngModel)]="fichepatient.medid">
-                <option *ngFor="let medecin of medecins ;trackBy: trackId" [value]="medecin.prenom">{{medecin.prenom}}</option>
-            </select>
-        </div>
+
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.datedenaissance" for="field_datedenaissance">Datedenaissance</label>

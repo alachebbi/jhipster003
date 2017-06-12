@@ -1,0 +1,27 @@
+{
+    "avancementApp": {
+        "pharmacien" : {
+            "home": {
+                "title": "Pharmaciens",
+                "createLabel": "Créer un nouveau Pharmacien",
+                "createOrEditLabel": "Créer ou éditer un Pharmacien",
+                "search": "Recherche pour Pharmacien"
+            },
+            "created": "Un nouveau Pharmacien a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Pharmacien avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Pharmacien avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Pharmacien {{ id }} ?"
+            },
+            "detail": {
+                "title": "Pharmacien"
+            },
+            "nometprenom": "Nometprenom",
+            "datedenaissance": "Datedenaissance",
+            "email": "Email",
+            "photo": "Photo",
+            "login": "Login",
+            "motdepasse": "Motdepasse"
+        }
+    }
+}

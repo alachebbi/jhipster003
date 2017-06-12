@@ -2,12 +2,14 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AvancementSharedModule } from '../../shared';
+import {NgPipesModule} from 'ngx-pipes';
 
 import {
     ReclamationService,
     ReclamationPopupService,
     ReclamationComponent,
     ReclamationDetailComponent,
+    MesreclamationsComponent,
     ReclamationDialogComponent,
     ReclamationPopupComponent,
     ReclamationDeletePopupComponent,
@@ -25,12 +27,14 @@ let ENTITY_STATES = [
 @NgModule({
     imports: [
         AvancementSharedModule,
+        NgPipesModule,
         RouterModule.forRoot(ENTITY_STATES, { useHash: true })
     ],
     declarations: [
         ReclamationComponent,
         ReclamationDetailComponent,
         ReclamationDialogComponent,
+        MesreclamationsComponent,
         ReclamationDeleteDialogComponent,
         ReclamationPopupComponent,
         ReclamationDeletePopupComponent,
@@ -38,6 +42,7 @@ let ENTITY_STATES = [
     entryComponents: [
         ReclamationComponent,
         ReclamationDialogComponent,
+        MesreclamationsComponent,
         ReclamationPopupComponent,
         ReclamationDeleteDialogComponent,
         ReclamationDeletePopupComponent,

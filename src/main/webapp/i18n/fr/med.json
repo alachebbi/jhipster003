@@ -1,0 +1,25 @@
+{
+    "avancementApp": {
+        "med" : {
+            "home": {
+                "title": "Meds",
+                "createLabel": "Créer un nouveau Med",
+                "createOrEditLabel": "Créer ou éditer un Med",
+                "search": "Recherche pour Med"
+            },
+            "created": "Un nouveau Med a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Med avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Med avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Med {{ id }} ?"
+            },
+            "detail": {
+                "title": "Med"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "email": "Email",
+            "specialite": "Specialite"
+        }
+    }
+}

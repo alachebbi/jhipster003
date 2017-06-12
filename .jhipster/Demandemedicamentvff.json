@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "etat",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "medicamentid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quatite",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "d",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "datte",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "c",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "demandemedicamentvff",
+    "pagination": "pagination"
+}

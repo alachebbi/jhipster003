@@ -4,6 +4,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActiva
 import { UserRouteAccessService } from '../../shared';
 import { PaginationUtil } from 'ng-jhipster';
 
+import { MesreclamationsComponent } from './mesreclamations.component';
 import { ReclamationComponent } from './reclamation.component';
 import { ReclamationDetailComponent } from './reclamation-detail.component';
 import { ReclamationPopupComponent } from './reclamation-dialog.component';
@@ -39,6 +40,17 @@ export const reclamationRoute: Routes = [
         pageTitle: 'avancementApp.reclamation.home.title'
     }
   }, {
+        path: 'mesreclamations',
+        component: MesreclamationsComponent,
+        resolve: {
+            'pagingParams': ReclamationResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'avancementApp.reclamation.home.title'
+        }
+    },
+    {
     path: 'reclamation/:id',
     component: ReclamationDetailComponent,
     data: {

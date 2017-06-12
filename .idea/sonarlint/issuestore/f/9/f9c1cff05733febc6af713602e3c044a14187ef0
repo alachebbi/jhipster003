@@ -1,0 +1,5 @@
+
+}squid:S1488"cImmediately return this expression instead of assigning it to the temporary variable "traitements".(Ìë™Åüÿÿÿÿ
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(·ä¢
+Tsquid:S1858"?"getId" returns a string, there's no need to call "toString()".(íŠµô
+Zsquid:S1858"E"id" is already a string, there's no need to call "toString()" on it.(¢¾ŠÀ

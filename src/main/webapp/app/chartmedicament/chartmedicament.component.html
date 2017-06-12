@@ -1,0 +1,22 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+            <div class='col-md-11'>
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [colors]="chartColors"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+   <!-- <button type="button" class="btn btn-danger" style="border-radius: 25px;"  (click)="changeCharType()">Bar Chart</button>
+            <button type="button" class="btn btn-danger" style="border-radius: 25px;"  (click)="radarchart()">Radar Chart</button>
+            <button type="button" class="btn btn-danger" style="border-radius: 25px;"  (click)="linechart()">Line Chart</button>
+-->
+        </div></section></div>

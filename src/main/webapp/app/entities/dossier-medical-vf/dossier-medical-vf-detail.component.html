@@ -1,0 +1,92 @@
+
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+<div style="margin-left: 60px;" *ngIf="dossierMedicalVF">
+    <h2><span jhiTranslate="avancementApp.dossierMedicalVF.detail.title">Dossier Medical VF</span> {{dossierMedicalVF.nomprenom}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt> <span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Nom  du patient :</span></dt>
+        <dd><span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+            <span>{{dossierMedicalVF.nomprenom}}</span></span>
+        </dd>
+        <dt> <span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Prenom du patient :</span></dt>
+        <dd><span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+            <span>{{dossierMedicalVF.nomprenom}}</span></span>
+        </dd>
+        <dt> <span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Date de naissance :</span></dt>
+        <dd><span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+            <span>{{dossierMedicalVF.datenaissance | date:'mediumDate'}}</span></span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Situation familiale :</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+                <span>{{dossierMedicalVF.situationfamiliale}}</span></span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Numéro de téléphone :</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+                <span>{{dossierMedicalVF.numerotel}}</span></span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Groupe sanguin</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+                <span>{{dossierMedicalVF.groupesanguin}}</span></span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Antécedents :</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+            <div *ngIf="dossierMedicalVF.antecedents">
+                <a (click)="openFile(dossierMedicalVF.antecedentsContentType, dossierMedicalVF.antecedents)" jhiTranslate="entity.action.open">open</a>
+                {{dossierMedicalVF.antecedentsContentType}}, {{byteSize(dossierMedicalVF.antecedents)}}
+            </div></span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Pérscriptions médicamenteuses :</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+                <span>{{dossierMedicalVF.perscriptionsmedicamenteuses}}</span></span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Récommandations :</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+                <span>{{dossierMedicalVF.recommandations}}</span></span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Résultat du dernier examen</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+            <div *ngIf="dossierMedicalVF.resultatdernierexamen">
+                <a (click)="openFile(dossierMedicalVF.resultatdernierexamenContentType, dossierMedicalVF.resultatdernierexamen)" jhiTranslate="entity.action.open">open</a>
+                {{dossierMedicalVF.resultatdernierexamenContentType}}, {{byteSize(dossierMedicalVF.resultatdernierexamen)}}
+            </div></span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Notes paramedicaux</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+                <span>{{dossierMedicalVF.notesparamedicaux}}</span></span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Medecin traitant</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:300px;display: inline-block;width: 450px;font-family:Times New Roman;">
+                <span>{{dossierMedicalVF.medecintraitant}}</span></span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info"
+            style="border-radius: 25px;">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span  jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dossier-medical-vf/'+ dossierMedicalVF.id + '/edit'} }]"
+            replaceUrl="true"
+            style="border-radius: 25px;"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span style="border-radius: 25px;" jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+        </div></section></div>

@@ -1,0 +1,45 @@
+
+<div *ngIf="demande">
+    <h2><span jhiTranslate="avancementApp.demande.detail.title">Demande</span> {{demande.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.demande.etat">Etat</span></dt>
+        <dd>
+            <span>{{demande.etat}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demande.medicamentid">Medicamentid</span></dt>
+        <dd>
+            <span>{{demande.medicamentid}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demande.date">Date</span></dt>
+        <dd>
+            <span>{{demande.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demande.quatity">Quatity</span></dt>
+        <dd>
+            <span>{{demande.quatity}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demande.a">A</span></dt>
+        <dd>
+            <span>{{demande.a}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.demande.ze">Ze</span></dt>
+        <dd>
+            <span>{{demande.ze}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'demande/'+ demande.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,29 @@
+
+<div *ngIf="forsys">
+    <h2><span jhiTranslate="avancementApp.forsys.detail.title">Forsys</span> {{forsys.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.forsys.medecintraitant">Medecintraitant</span></dt>
+        <dd>
+            <span>{{forsys.medecintraitant}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.forsys.patient">Patient</span></dt>
+        <dd>
+            <span>{{forsys.patient}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'forsys/'+ forsys.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -24,7 +24,9 @@ export class ServicemedicalService {
         });
     }
 
-    find(id: number): Observable<Servicemedical> {
+
+
+    find(id: string): Observable<Servicemedical> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             return res.json();
         });

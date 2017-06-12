@@ -6,8 +6,9 @@
 	<parameter name="ID" class="java.lang.String"/>
 	<field name="nometprenom" class="java.lang.String"/>
 	<field name="specialite" class="java.lang.String"/>
+	<field name="servicemedi" class="java.lang.String"/>
 	<field name="login" class="java.lang.String"/>
-	<field name="password" class="java.lang.String"/>
+    <field name="photo" class="java.sql.Blob"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -20,72 +21,220 @@
 				</textElement>
 				<text><![CDATA[Medecin Detail]]></text>
 			</staticText>
-			<image>
+
+
+
+            <image>
 				<reportElement x="0" y="0" width="122" height="40" isRemoveLineWhenBlank="true" uuid="3ac65a0a-6d2b-461e-9c4b-2bff434eb6cb"/>
 				<imageExpression><![CDATA["jrxml/logo.png"]]></imageExpression>
-			</image>
-		</band>
+            </image>
+
+
+
+
+        </band>
 	</title>
-	<pageHeader>
+
+
+
+    <pageHeader>
 		<band splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
+    </pageHeader>
+
+
+
+    <columnHeader>
 		<band splitType="Stretch"/>
 	</columnHeader>
-	<detail>
-		<band height="190" splitType="Stretch">
-			<textField>
-				<reportElement x="131" y="5" width="400" height="20" uuid="3e5186d4-71f3-43de-ada5-fa25a951e69c"/>
+
+
+
+    <detail>
+
+
+        <band height="190" splitType="Stretch">
+
+
+            <image>
+                <reportElement x="80" y="25" width="122" height="40" isRemoveLineWhenBlank="true" uuid="3ac65a0a-7d2b-461e-9c4b-2bff434eb6cb"/>
+                <imageExpression class="java.io.InputStream"><![CDATA[$F{photo}.getBinaryStream()]]></imageExpression>
+            </image>
+
+            <textField>
+				<reportElement x="100" y="75" width="400" height="20" uuid="3e5186d4-71f3-43de-ada5-fa25a951e69c"/>
 				<textFieldExpression><![CDATA[$F{nometprenom}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="131" y="35" width="400" height="20" uuid="c0d22357-d9bc-46a4-ab8b-c4c941f23876"/>
+
+
+
+
+            <textField>
+				<reportElement x="100" y="105" width="400" height="20" uuid="c0d22357-d9bc-46a4-ab8b-c4c941f23876"/>
 				<textFieldExpression><![CDATA[$F{specialite}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="131" y="132" width="400" height="20" uuid="a2552d88-efae-4340-9436-15ea45a6506b"/>
+
+
+
+
+            <textField>
+                <reportElement x="100" y="135" width="400" height="20" uuid="c0d22357-efbf-46a4-ab8b-c4c941f23876"/>
+                <textFieldExpression><![CDATA[$F{servicemedi}]]></textFieldExpression>
+            </textField>
+
+
+
+
+            <textField>
+				<reportElement x="100" y="165" width="400" height="20" uuid="a2552d88-efae-4340-9436-15ea45a6506b"/>
 				<textFieldExpression><![CDATA[$F{login}]]></textFieldExpression>
 			</textField>
 
+
+
+
+
+
+
+
 			<staticText>
-				<reportElement x="45" y="5" width="86" height="20" uuid="c0ba80b4-6960-4c01-8ad6-242101fd2126"/>
+				<reportElement x="15" y="75" width="86" height="20" uuid="c0ba80b4-6960-4c01-8ad6-242101fd2126"/>
 				<textElement>
 					<font size="12" isBold="true" isItalic="false" isUnderline="false"/>
 				</textElement>
-				<text><![CDATA[Nom et Prenom :]]></text>
+				<text><![CDATA[Medecin :]]></text>
 			</staticText>
 
 
-			<staticText>
-				<reportElement x="44" y="132" width="87" height="20" uuid="d32978d1-4fdf-442e-9f3c-9c5061f3b7c1"/>
+
+
+
+            <staticText>
+				<reportElement x="15" y="105" width="87" height="20" uuid="d32978d1-4fdf-442e-9f3c-9c5061f3b7c1"/>
 				<textElement>
 					<font size="12" isBold="true" isItalic="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Specialite :]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="44" y="100" width="87" height="20" uuid="5b36a53e-8bae-4219-9442-d986c571f4c4"/>
+
+
+
+            <staticText>
+                <reportElement x="15" y="135" width="87" height="20" uuid="c0d22357-efbf-46a4-ab8b-c4c941f23876"/>
+                <textElement>
+                    <font size="12" isBold="true" isItalic="false" isUnderline="false"/>
+                </textElement>
+                <text><![CDATA[Service Medical :]]></text>
+            </staticText>
+
+
+
+            <staticText>
+				<reportElement x="15" y="165" width="87" height="20" uuid="5a2552d88-efae-4340-9436-15ea45a6506b"/>
 				<textElement>
 					<font size="12" isBold="true" isItalic="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Login :]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="131" y="100" width="400" height="20" uuid="6ef3a556-9ce1-4c2a-9440-de9d436e9796"/>
-				<textFieldExpression><![CDATA[$F{specialite}]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="0" y="-3" width="555" height="1" uuid="d9d657fc-61a1-4874-a828-5406aee625a3"/>
-			</line>
+
+
+
+
+
+
+
+
+
+
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="1" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="3" splitType="Stretch"/>
-	</summary>
+
+
+
+
+    <columnFooter>
+        <band />
+    </columnFooter>
+    <pageFooter>
+        <band height="27" splitType="Stretch">
+            <textField evaluationTime="Report" pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="false">
+                <reportElement key="textField-8" x="1" y="7" width="148" height="19" uuid="91ee3dcf-2617-4874-b340-bc33926d1e50"/>
+                <box>
+                    <topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement key="line-2" x="1" y="2" width="535" height="1" forecolor="#000000" uuid="102402b0-6ba3-43ba-9ac1-81237a3b3b1a"/>
+            </line>
+            <textField pattern="" isBlankWhenNull="false">
+                <reportElement key="textField-9" x="386" y="5" width="108" height="19" uuid="7eff11f4-6f7e-4175-a539-b32113a513dd"/>
+                <box>
+                    <topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " /"]]></textFieldExpression>
+            </textField>
+            <textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+                <reportElement key="textField-10" x="498" y="5" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="3eab573d-0a02-4a6e-b020-f72cba429b05"/>
+                <box>
+                    <topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <textElement textAlignment="Left" verticalAlignment="Top" rotation="None">
+                    <font size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="CP1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement key="staticText-2" x="166" y="3" width="217" height="17" uuid="ed779786-dbe8-4729-b92b-5b16a40738b7"/>
+                <box>
+                    <topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Serif" size="7"/>
+                </textElement>
+                <text><![CDATA[hospital signature]]></text>
+            </staticText>
+        </band>
+    </pageFooter>
+    <summary>
+        <band height="50" splitType="Stretch">
+            <rectangle radius="0">
+                <reportElement key="element-29" mode="Opaque" x="2" y="15" width="534" height="17" forecolor="#000000" backcolor="#999999" uuid="55430967-35d8-4c6f-b5f5-4c1b8a213304"/>
+                <graphicElement>
+                    <pen lineWidth="0.5" lineStyle="Solid"/>
+                </graphicElement>
+            </rectangle>
+            <textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+                <reportElement key="textField-16" x="71" y="16" width="328" height="15" uuid="52d9feee-803f-4504-92e5-f550e588adfd"/>
+                <box leftPadding="2" rightPadding="2">
+                    <topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <textElement>
+                    <font fontName="Serif" size="8"/>
+                </textElement>
+
+            </textField>
+        </band>
+    </summary>
 </jasperReport>

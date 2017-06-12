@@ -17,7 +17,11 @@
                 "title": "Reclamation"
             },
             "titre": "Titre",
-            "objet": "Objet"
+            "objet": "Objet",
+            "recusermail": "Recusermail",
+            "recusername": "Recusername",
+            "etat": "Etat",
+            "date": "Date"
         }
     }
 }

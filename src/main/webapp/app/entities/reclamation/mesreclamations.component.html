@@ -1,0 +1,90 @@
+<div class="content-wrapper">
+
+    <section class="content">
+
+        <div class='row'>
+
+
+            <div>
+                <div *ngIf="reclamations">
+                    <h2><span jhiTranslate="avancementApp.reclamation.home.title">Vous avez {{reclamations.length}} reclamations </span>
+
+                        <span *ngIf="currentAccount?.firstName!=='admin'">
+
+        <button class="btn btn-primary float-xs-right create-reclamation"style="margin-right: 5px;border-radius: 25px;" [routerLink]="['/', { outlets: { popup: ['reclamation-new'] } }]">
+            <span class="fa fa-plus"></span>
+Envoyer une nouvelle reclamation
+        </button></span></h2></div>
+                <jhi-alert></jhi-alert>
+
+                <div class="container-fluid">
+                    <div class="row">
+                    </div>
+                </div>
+                <br/>
+                <div class="table-responsive" *ngIf="reclamations">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+
+                            <th>Titre</th>
+
+
+
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr *ngFor="let reclamation of reclamations  ; let i=index; let k=index2; ">
+                                                    <span *ngIf=" reclamation?.recusername==currentAccount?.firstName">
+
+
+                            <td >{{reclamation.titre}}</td>
+                            <!--<td>{{reclamation.objet}}</td>-->
+
+
+
+
+                            <td style="float: right" class="text-xs-right">
+                                <div   class="btn-group flex-btn-group-container">
+                                    <button type="submit"
+                                            style="margin-right: 5px;"
+                                            [routerLink]="['../reclamation', reclamation.id ]"
+                                            class="btn btn-warning pull-right">
+                                        <span class="fa fa-eye"></span>
+
+                                    </button>
+
+                                    <button type="submit"
+                                            [routerLink]="['/', { outlets: { popup: 'reclamation/'+ reclamation.id + '/delete'} }]"
+                                            replaceUrl="true"
+                                            style="margin-right: 5px;"
+                                            class="btn btn-danger pull-right">
+                                        <span class="fa fa-trash-o"></span>
+
+
+                                    </button>
+                                    <button type="submit"
+                                            [routerLink]="['/', { outlets: { popup: 'reclamation/'+ reclamation.id + '/edit'} }]"
+                                            replaceUrl="true"
+                                            id="k{{i}}"
+                                            style="margin-right: 5px;"
+                                            class="btn btn-primary pull-right">
+                                        <span class="fa fa-pencil"></span>
+
+                                    </button>
+
+                                </div>
+                            </td>            </span>            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-xs-center" *ngIf="reclamations && reclamations.length">
+                    <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+                    <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+                </div>
+            </div>
+        </div></section></div>

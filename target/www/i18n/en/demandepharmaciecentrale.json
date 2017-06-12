@@ -1,0 +1,27 @@
+{
+    "avancementApp": {
+        "demandepharmaciecentrale" : {
+            "home": {
+                "title": "Demandepharmaciecentrales",
+                "createLabel": "Create a new Demandepharmaciecentrale",
+                "createOrEditLabel": "Create or edit a Demandepharmaciecentrale",
+                "search": "Search for Demandepharmaciecentrale"
+            },
+            "created": "A new Demandepharmaciecentrale is created with identifier {{ param }}",
+            "updated": "A Demandepharmaciecentrale is updated with identifier {{ param }}",
+            "deleted": "A Demandepharmaciecentrale is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Demandepharmaciecentrale {{ id }}?"
+            },
+            "detail": {
+                "title": "Demandepharmaciecentrale"
+            },
+            "medicament": "Medicament",
+            "type": "Type",
+            "date": "Date",
+            "nompharmacien": "Nompharmacien",
+            "mail": "Mail",
+            "quantite": "Quantite"
+        }
+    }
+}
